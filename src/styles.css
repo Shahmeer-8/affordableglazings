@@ -161,3 +161,65 @@
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
+
+/* Scroll reveal — driven by IntersectionObserver adding [data-visible] */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms var(--ease-out-expo),
+    transform 900ms var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="fade"] { transform: none; }
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal="right"] { transform: translateX(28px); }
+[data-reveal="zoom"] { transform: scale(0.96); }
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Premium card hover */
+@utility card-lift {
+  transition:
+    transform 500ms var(--ease-out-expo),
+    box-shadow 500ms var(--ease-out-expo),
+    border-color 300ms ease;
+}
+@utility card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-elegant);
+}
+
+@utility text-gradient-brand {
+  background: linear-gradient(135deg, var(--brand-blue-2), color-mix(in oklab, white 70%, var(--brand-blue)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes shimmer-move {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+@utility btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 45%, transparent) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 800ms var(--ease-out-expo);
+}
+@utility btn-shine:hover::after {
+  transform: translateX(100%);
+}
+
