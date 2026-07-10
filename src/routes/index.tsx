@@ -277,9 +277,14 @@ function WhyUs() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {WHY.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="p-8 rounded-3xl bg-soft-gray hover:bg-white hover:shadow-elegant border border-transparent hover:border-navy/5 transition-all duration-300 group">
-              <div className="size-12 rounded-2xl bg-white grid place-items-center text-brand-blue mb-6 shadow-soft group-hover:bg-brand-blue group-hover:text-white transition-colors">
+          {WHY.map(({ icon: Icon, title, body }, i) => (
+            <div
+              key={title}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
+              className="p-8 rounded-3xl bg-soft-gray hover:bg-white hover:shadow-elegant border border-transparent hover:border-brand-blue/20 transition-all duration-500 group"
+            >
+              <div className="size-12 rounded-2xl bg-white grid place-items-center text-brand-blue mb-6 shadow-soft group-hover:bg-gradient-to-br group-hover:from-brand-blue group-hover:to-brand-blue-2 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                 <Icon className="size-5" />
               </div>
               <h3 className="text-xl font-display font-semibold text-navy mb-2">{title}</h3>
