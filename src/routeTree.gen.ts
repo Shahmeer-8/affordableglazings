@@ -10,8 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WindowsRouteImport } from './routes/windows'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RooflineRouteImport } from './routes/roofline'
+import { Route as RepairsRouteImport } from './routes/repairs'
+import { Route as QuoteRouteImport } from './routes/quote'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DoorsRouteImport } from './routes/doors'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConservatoriesRouteImport } from './routes/conservatories'
+import { Route as CommercialRouteImport } from './routes/commercial'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WindowsRoute = WindowsRouteImport.update({
@@ -19,14 +34,89 @@ const WindowsRoute = WindowsRouteImport.update({
   path: '/windows',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RooflineRoute = RooflineRouteImport.update({
+  id: '/roofline',
+  path: '/roofline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RepairsRoute = RepairsRouteImport.update({
+  id: '/repairs',
+  path: '/repairs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceRoute = FinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DoorsRoute = DoorsRouteImport.update({
   id: '/doors',
   path: '/doors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConservatoriesRoute = ConservatoriesRouteImport.update({
   id: '/conservatories',
   path: '/conservatories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialRoute = CommercialRouteImport.update({
+  id: '/commercial',
+  path: '/commercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,35 +127,153 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/commercial': typeof CommercialRoute
   '/conservatories': typeof ConservatoriesRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/doors': typeof DoorsRoute
+  '/faq': typeof FaqRoute
+  '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
+  '/privacy': typeof PrivacyRoute
+  '/quote': typeof QuoteRoute
+  '/repairs': typeof RepairsRoute
+  '/roofline': typeof RooflineRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
+  '/testimonials': typeof TestimonialsRoute
   '/windows': typeof WindowsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/commercial': typeof CommercialRoute
   '/conservatories': typeof ConservatoriesRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/doors': typeof DoorsRoute
+  '/faq': typeof FaqRoute
+  '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
+  '/privacy': typeof PrivacyRoute
+  '/quote': typeof QuoteRoute
+  '/repairs': typeof RepairsRoute
+  '/roofline': typeof RooflineRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
+  '/testimonials': typeof TestimonialsRoute
   '/windows': typeof WindowsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/commercial': typeof CommercialRoute
   '/conservatories': typeof ConservatoriesRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/doors': typeof DoorsRoute
+  '/faq': typeof FaqRoute
+  '/finance': typeof FinanceRoute
+  '/gallery': typeof GalleryRoute
+  '/privacy': typeof PrivacyRoute
+  '/quote': typeof QuoteRoute
+  '/repairs': typeof RepairsRoute
+  '/roofline': typeof RooflineRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
+  '/testimonials': typeof TestimonialsRoute
   '/windows': typeof WindowsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/conservatories' | '/doors' | '/windows'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/commercial'
+    | '/conservatories'
+    | '/contact'
+    | '/cookies'
+    | '/doors'
+    | '/faq'
+    | '/finance'
+    | '/gallery'
+    | '/privacy'
+    | '/quote'
+    | '/repairs'
+    | '/roofline'
+    | '/sitemap.xml'
+    | '/terms'
+    | '/testimonials'
+    | '/windows'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/conservatories' | '/doors' | '/windows'
-  id: '__root__' | '/' | '/conservatories' | '/doors' | '/windows'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/commercial'
+    | '/conservatories'
+    | '/contact'
+    | '/cookies'
+    | '/doors'
+    | '/faq'
+    | '/finance'
+    | '/gallery'
+    | '/privacy'
+    | '/quote'
+    | '/repairs'
+    | '/roofline'
+    | '/sitemap.xml'
+    | '/terms'
+    | '/testimonials'
+    | '/windows'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/commercial'
+    | '/conservatories'
+    | '/contact'
+    | '/cookies'
+    | '/doors'
+    | '/faq'
+    | '/finance'
+    | '/gallery'
+    | '/privacy'
+    | '/quote'
+    | '/repairs'
+    | '/roofline'
+    | '/sitemap.xml'
+    | '/terms'
+    | '/testimonials'
+    | '/windows'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  CommercialRoute: typeof CommercialRoute
   ConservatoriesRoute: typeof ConservatoriesRoute
+  ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
   DoorsRoute: typeof DoorsRoute
+  FaqRoute: typeof FaqRoute
+  FinanceRoute: typeof FinanceRoute
+  GalleryRoute: typeof GalleryRoute
+  PrivacyRoute: typeof PrivacyRoute
+  QuoteRoute: typeof QuoteRoute
+  RepairsRoute: typeof RepairsRoute
+  RooflineRoute: typeof RooflineRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
+  TestimonialsRoute: typeof TestimonialsRoute
   WindowsRoute: typeof WindowsRoute
 }
 
@@ -78,6 +286,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WindowsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roofline': {
+      id: '/roofline'
+      path: '/roofline'
+      fullPath: '/roofline'
+      preLoaderRoute: typeof RooflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/repairs': {
+      id: '/repairs'
+      path: '/repairs'
+      fullPath: '/repairs'
+      preLoaderRoute: typeof RepairsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance': {
+      id: '/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/doors': {
       id: '/doors'
       path: '/doors'
@@ -85,11 +363,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DoorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/conservatories': {
       id: '/conservatories'
       path: '/conservatories'
       fullPath: '/conservatories'
       preLoaderRoute: typeof ConservatoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial': {
+      id: '/commercial'
+      path: '/commercial'
+      fullPath: '/commercial'
+      preLoaderRoute: typeof CommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -104,8 +417,23 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  CommercialRoute: CommercialRoute,
   ConservatoriesRoute: ConservatoriesRoute,
+  ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
   DoorsRoute: DoorsRoute,
+  FaqRoute: FaqRoute,
+  FinanceRoute: FinanceRoute,
+  GalleryRoute: GalleryRoute,
+  PrivacyRoute: PrivacyRoute,
+  QuoteRoute: QuoteRoute,
+  RepairsRoute: RepairsRoute,
+  RooflineRoute: RooflineRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
+  TestimonialsRoute: TestimonialsRoute,
   WindowsRoute: WindowsRoute,
 }
 export const routeTree = rootRouteImport
