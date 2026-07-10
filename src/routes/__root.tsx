@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import { StickyQuote } from "../components/site/StickyQuote";
+import { ScrollProgress } from "../components/site/ScrollProgress";
+import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
 function NotFoundComponent() {
   return (
@@ -117,10 +119,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useScrollReveal();
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-soft-gray text-navy">
+        <ScrollProgress />
         <Header />
         <main>
           <Outlet />

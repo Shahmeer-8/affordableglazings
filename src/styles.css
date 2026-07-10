@@ -41,18 +41,25 @@
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, var(--navy) 25%, transparent);
-  --shadow-soft: 0 8px 30px -12px color-mix(in oklab, var(--navy) 15%, transparent);
+  --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--navy) 45%, transparent), 0 4px 12px -4px color-mix(in oklab, var(--navy) 12%, transparent);
+  --shadow-soft: 0 12px 40px -14px color-mix(in oklab, var(--navy) 20%, transparent);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--brand-blue) 55%, transparent);
+  --gradient-hero: linear-gradient(135deg, var(--navy) 0%, oklch(0.24 0.09 265) 55%, var(--brand-blue) 100%);
+  --gradient-brand: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-2) 100%);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 :root {
   --radius: 1rem;
 
-  /* Brand palette */
-  --navy: oklch(0.19 0.06 260);
-  --brand-blue: oklch(0.58 0.19 260);
-  --soft-gray: oklch(0.965 0.008 260);
-  --canvas: oklch(0.985 0.004 260);
+  /* Brand palette — deep navy, royal blue, silver */
+  --navy: oklch(0.16 0.055 265);
+  --navy-2: oklch(0.22 0.07 265);
+  --brand-blue: oklch(0.52 0.22 265);
+  --brand-blue-2: oklch(0.62 0.20 260);
+  --silver: oklch(0.86 0.008 260);
+  --soft-gray: oklch(0.965 0.006 260);
+  --canvas: oklch(0.985 0.003 260);
   --success: oklch(0.62 0.16 145);
 
   /* Semantic (shadcn) */
@@ -154,3 +161,62 @@
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
+
+/* Scroll reveal — driven by IntersectionObserver adding [data-visible] */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms var(--ease-out-expo),
+    transform 900ms var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="fade"] { transform: none; }
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal="right"] { transform: translateX(28px); }
+[data-reveal="zoom"] { transform: scale(0.96); }
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Premium card hover */
+@utility card-lift {
+  transition:
+    transform 500ms var(--ease-out-expo),
+    box-shadow 500ms var(--ease-out-expo),
+    border-color 300ms ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-elegant);
+  }
+}
+
+@utility text-gradient-brand {
+  background: linear-gradient(135deg, var(--brand-blue-2), color-mix(in oklab, white 70%, var(--brand-blue)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 45%, transparent) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 800ms var(--ease-out-expo);
+    pointer-events: none;
+  }
+  &:hover::after {
+    transform: translateX(100%);
+  }
+}
+

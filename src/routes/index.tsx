@@ -19,6 +19,7 @@ import productDoors from "@/assets/product-doors.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import craftsman from "@/assets/craftsman.jpg";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,40 +57,65 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-24 overflow-hidden">
+    <section className="relative min-h-[94vh] flex items-center pt-24 overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <img
-          src={heroHome}
-          alt="Modern British home with floor-to-ceiling glass at dusk"
+        <video
           className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/60 to-navy/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={heroHome}
+          aria-hidden="true"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/7578540/7578540-hd_1920_1080_30fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/10 to-transparent" />
+        {/* subtle grain */}
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "3px 3px" }} />
       </div>
 
       <div className="container-page relative z-10 w-full py-16">
-        <div className="max-w-3xl space-y-8 text-white animate-reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase">
-            <span className="size-1.5 bg-green-400 rounded-full animate-pulse" />
+        <div className="max-w-3xl space-y-8 text-white">
+          <div
+            data-reveal="fade"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase"
+          >
+            <span className="size-1.5 bg-emerald-400 rounded-full animate-pulse" />
             Premium British Engineering · Since 1994
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance">
+          <h1
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "80ms" }}
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance"
+          >
             Redefining the <br />
-            <span className="text-brand-blue">view of home.</span>
+            <span className="text-gradient-brand">view of home.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
+          <p
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "180ms" }}
+            className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed"
+          >
             Bespoke windows, doors and conservatories — engineered for energy efficiency,
             security and timeless British elegance.
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "260ms" }}
+            className="flex flex-wrap gap-3 pt-2"
+          >
             <Link
               to="/quote"
-              className="group inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-xl font-semibold text-base hover:shadow-2xl hover:shadow-brand-blue/30 transition-all hover:-translate-y-0.5"
+              className="group btn-shine inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-blue-2 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-[0_10px_40px_-10px_var(--brand-blue)] hover:shadow-[0_20px_60px_-10px_var(--brand-blue)] transition-all hover:-translate-y-0.5"
             >
               Get Free Quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
@@ -102,7 +128,11 @@ function Hero() {
             </Link>
           </div>
 
-          <div className="pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm">
+          <div
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "360ms" }}
+            className="pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm"
+          >
             {[
               { k: "10 Year", v: "Guarantee" },
               { k: "A++", v: "Energy Rated" },
@@ -110,7 +140,7 @@ function Hero() {
               { k: "4.9/5", v: "Google Reviews" },
             ].map((s) => (
               <div key={s.k} className="flex items-center gap-3">
-                <BadgeCheck className="size-5 text-brand-blue" />
+                <BadgeCheck className="size-5 text-brand-blue-2" />
                 <div>
                   <div className="font-semibold">{s.k}</div>
                   <div className="text-white/60 text-xs uppercase tracking-wider">{s.v}</div>
@@ -189,12 +219,15 @@ function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <Link
               key={s.to}
               to={s.to}
-              className="group relative overflow-hidden rounded-3xl bg-white p-4 shadow-sm hover:shadow-elegant transition-all duration-500 hover:-translate-y-1"
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
+              className="group relative overflow-hidden rounded-3xl bg-white p-4 border border-navy/5 card-lift"
             >
+
               <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-6">
                 <img
                   src={s.img}
@@ -244,9 +277,14 @@ function WhyUs() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {WHY.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="p-8 rounded-3xl bg-soft-gray hover:bg-white hover:shadow-elegant border border-transparent hover:border-navy/5 transition-all duration-300 group">
-              <div className="size-12 rounded-2xl bg-white grid place-items-center text-brand-blue mb-6 shadow-soft group-hover:bg-brand-blue group-hover:text-white transition-colors">
+          {WHY.map(({ icon: Icon, title, body }, i) => (
+            <div
+              key={title}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
+              className="p-8 rounded-3xl bg-soft-gray hover:bg-white hover:shadow-elegant border border-transparent hover:border-brand-blue/20 transition-all duration-500 group"
+            >
+              <div className="size-12 rounded-2xl bg-white grid place-items-center text-brand-blue mb-6 shadow-soft group-hover:bg-gradient-to-br group-hover:from-brand-blue group-hover:to-brand-blue-2 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                 <Icon className="size-5" />
               </div>
               <h3 className="text-xl font-display font-semibold text-navy mb-2">{title}</h3>
@@ -262,36 +300,42 @@ function WhyUs() {
 /* ---------------------------- PERFORMANCE --------------------------- */
 
 function Performance() {
-  const stats = [
-    { k: "0.8", label: "U-Value Performance" },
-    { k: "100%", label: "Recyclable Aluminium" },
-    { k: "35dB", label: "Noise Reduction" },
-    { k: "PAS24", label: "Security Certified" },
+  const stats: { node: import("react").ReactNode; label: string }[] = [
+    { node: <AnimatedCounter to={0.8} decimals={1} />, label: "U-Value Performance" },
+    { node: <><AnimatedCounter to={100} />%</>, label: "Recyclable Aluminium" },
+    { node: <><AnimatedCounter to={35} />dB</>, label: "Noise Reduction" },
+    { node: "PAS24", label: "Security Certified" },
   ];
 
   return (
     <section className="py-24 md:py-32 bg-navy text-white overflow-hidden relative">
-      <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/20 blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue/10 blur-3xl" />
+      <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/25 blur-3xl animate-float" />
+      <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue-2/15 blur-3xl" />
 
       <div className="container-page grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative">
         <div className="space-y-10">
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em]">Performance</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-[1.02]">
+          <p data-reveal="up" className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em]">Performance</p>
+          <h2 data-reveal="up" style={{ ["--reveal-delay" as never]: "80ms" }} className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-[1.02]">
             Engineered for the future of thermal comfort.
           </h2>
-          <p className="text-white/70 max-w-lg text-lg leading-relaxed">
+          <p data-reveal="up" style={{ ["--reveal-delay" as never]: "160ms" }} className="text-white/70 max-w-lg text-lg leading-relaxed">
             Our systems exceed the latest Building Regulations for thermal efficiency, acoustic insulation and security.
           </p>
 
           <div className="grid grid-cols-2 gap-8 pt-4">
-            {stats.map((s) => (
-              <div key={s.k} className="border-t border-white/10 pt-6">
-                <div className="text-4xl md:text-5xl font-display font-semibold text-brand-blue mb-2">{s.k}</div>
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                data-reveal="up"
+                style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
+                className="border-t border-white/10 pt-6"
+              >
+                <div className="text-4xl md:text-5xl font-display font-semibold text-gradient-brand mb-2">{s.node}</div>
                 <div className="text-xs uppercase tracking-[0.2em] text-white/50">{s.label}</div>
               </div>
             ))}
           </div>
+
 
           <div className="flex flex-wrap gap-3 pt-4">
             <Link
@@ -356,8 +400,13 @@ function Process() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {STEPS.map(({ n, icon: Icon, title, body }) => (
-            <div key={n} className="relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/30 transition-colors">
+          {STEPS.map(({ n, icon: Icon, title, body }, i) => (
+            <div
+              key={n}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
+              className="relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500"
+            >
               <div className="flex items-start justify-between mb-8">
                 <span className="text-3xl font-display font-semibold text-brand-blue">{n}</span>
                 <Icon className="size-6 text-navy/40" />
@@ -449,8 +498,13 @@ function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {REVIEWS.map((r) => (
-            <figure key={r.name} className="p-8 rounded-3xl bg-white border border-navy/5 hover:shadow-elegant transition-shadow">
+          {REVIEWS.map((r, i) => (
+            <figure
+              key={r.name}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
+              className="p-8 rounded-3xl bg-white border border-navy/5 card-lift"
+            >
               <div className="flex gap-0.5 text-brand-blue mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
@@ -494,11 +548,13 @@ function Journal() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {POSTS.map((p) => (
+          {POSTS.map((p, i) => (
             <Link
               key={p.title}
               to="/blog"
-              className="group rounded-3xl overflow-hidden bg-soft-gray hover:bg-navy hover:text-white transition-colors"
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
+              className="group rounded-3xl overflow-hidden bg-soft-gray hover:bg-navy hover:text-white hover:-translate-y-1 hover:shadow-elegant transition-all duration-500"
             >
               <div className="aspect-[4/3] bg-navy/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-navy/40 group-hover:scale-105 transition-transform duration-700" />
