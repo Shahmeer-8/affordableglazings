@@ -548,11 +548,13 @@ function Journal() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {POSTS.map((p) => (
+          {POSTS.map((p, i) => (
             <Link
               key={p.title}
               to="/blog"
-              className="group rounded-3xl overflow-hidden bg-soft-gray hover:bg-navy hover:text-white transition-colors"
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
+              className="group rounded-3xl overflow-hidden bg-soft-gray hover:bg-navy hover:text-white hover:-translate-y-1 hover:shadow-elegant transition-all duration-500"
             >
               <div className="aspect-[4/3] bg-navy/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-navy/40 group-hover:scale-105 transition-transform duration-700" />
