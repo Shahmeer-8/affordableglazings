@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WindowsRouteImport } from './routes/windows'
+import { Route as DoorsRouteImport } from './routes/doors'
+import { Route as ConservatoriesRouteImport } from './routes/conservatories'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WindowsRoute = WindowsRouteImport.update({
+  id: '/windows',
+  path: '/windows',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoorsRoute = DoorsRouteImport.update({
+  id: '/doors',
+  path: '/doors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConservatoriesRoute = ConservatoriesRouteImport.update({
+  id: '/conservatories',
+  path: '/conservatories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conservatories': typeof ConservatoriesRoute
+  '/doors': typeof DoorsRoute
+  '/windows': typeof WindowsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/conservatories': typeof ConservatoriesRoute
+  '/doors': typeof DoorsRoute
+  '/windows': typeof WindowsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conservatories': typeof ConservatoriesRoute
+  '/doors': typeof DoorsRoute
+  '/windows': typeof WindowsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/conservatories' | '/doors' | '/windows'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/conservatories' | '/doors' | '/windows'
+  id: '__root__' | '/' | '/conservatories' | '/doors' | '/windows'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConservatoriesRoute: typeof ConservatoriesRoute
+  DoorsRoute: typeof DoorsRoute
+  WindowsRoute: typeof WindowsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/windows': {
+      id: '/windows'
+      path: '/windows'
+      fullPath: '/windows'
+      preLoaderRoute: typeof WindowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doors': {
+      id: '/doors'
+      path: '/doors'
+      fullPath: '/doors'
+      preLoaderRoute: typeof DoorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conservatories': {
+      id: '/conservatories'
+      path: '/conservatories'
+      fullPath: '/conservatories'
+      preLoaderRoute: typeof ConservatoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConservatoriesRoute: ConservatoriesRoute,
+  DoorsRoute: DoorsRoute,
+  WindowsRoute: WindowsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
