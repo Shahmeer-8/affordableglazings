@@ -400,8 +400,13 @@ function Process() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {STEPS.map(({ n, icon: Icon, title, body }) => (
-            <div key={n} className="relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/30 transition-colors">
+          {STEPS.map(({ n, icon: Icon, title, body }, i) => (
+            <div
+              key={n}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
+              className="relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500"
+            >
               <div className="flex items-start justify-between mb-8">
                 <span className="text-3xl font-display font-semibold text-brand-blue">{n}</span>
                 <Icon className="size-6 text-navy/40" />
