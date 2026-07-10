@@ -19,6 +19,7 @@ import productDoors from "@/assets/product-doors.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import craftsman from "@/assets/craftsman.jpg";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
