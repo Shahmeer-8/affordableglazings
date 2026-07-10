@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import { StickyQuote } from "../components/site/StickyQuote";
+import { ScrollProgress } from "../components/site/ScrollProgress";
+import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
 function NotFoundComponent() {
   return (
