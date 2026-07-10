@@ -190,10 +190,10 @@
     transform 500ms var(--ease-out-expo),
     box-shadow 500ms var(--ease-out-expo),
     border-color 300ms ease;
-}
-@utility card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-elegant);
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-elegant);
+  }
 }
 
 @utility text-gradient-brand {
@@ -203,23 +203,20 @@
   color: transparent;
 }
 
-@keyframes shimmer-move {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
 @utility btn-shine {
   position: relative;
   overflow: hidden;
-}
-@utility btn-shine::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 45%, transparent) 50%, transparent 70%);
-  transform: translateX(-100%);
-  transition: transform 800ms var(--ease-out-expo);
-}
-@utility btn-shine:hover::after {
-  transform: translateX(100%);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 45%, transparent) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 800ms var(--ease-out-expo);
+    pointer-events: none;
+  }
+  &:hover::after {
+    transform: translateX(100%);
+  }
 }
 
