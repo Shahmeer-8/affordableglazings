@@ -56,40 +56,65 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-24 overflow-hidden">
+    <section className="relative min-h-[94vh] flex items-center pt-24 overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <img
-          src={heroHome}
-          alt="Modern British home with floor-to-ceiling glass at dusk"
+        <video
           className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/60 to-navy/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={heroHome}
+          aria-hidden="true"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/7578540/7578540-hd_1920_1080_30fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/10 to-transparent" />
+        {/* subtle grain */}
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "3px 3px" }} />
       </div>
 
       <div className="container-page relative z-10 w-full py-16">
-        <div className="max-w-3xl space-y-8 text-white animate-reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase">
-            <span className="size-1.5 bg-green-400 rounded-full animate-pulse" />
+        <div className="max-w-3xl space-y-8 text-white">
+          <div
+            data-reveal="fade"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase"
+          >
+            <span className="size-1.5 bg-emerald-400 rounded-full animate-pulse" />
             Premium British Engineering · Since 1994
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance">
+          <h1
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "80ms" }}
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance"
+          >
             Redefining the <br />
-            <span className="text-brand-blue">view of home.</span>
+            <span className="text-gradient-brand">view of home.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
+          <p
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "180ms" }}
+            className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed"
+          >
             Bespoke windows, doors and conservatories — engineered for energy efficiency,
             security and timeless British elegance.
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "260ms" }}
+            className="flex flex-wrap gap-3 pt-2"
+          >
             <Link
               to="/quote"
-              className="group inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-xl font-semibold text-base hover:shadow-2xl hover:shadow-brand-blue/30 transition-all hover:-translate-y-0.5"
+              className="group btn-shine inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-blue-2 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-[0_10px_40px_-10px_var(--brand-blue)] hover:shadow-[0_20px_60px_-10px_var(--brand-blue)] transition-all hover:-translate-y-0.5"
             >
               Get Free Quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
@@ -102,7 +127,11 @@ function Hero() {
             </Link>
           </div>
 
-          <div className="pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm">
+          <div
+            data-reveal="up"
+            style={{ ["--reveal-delay" as never]: "360ms" }}
+            className="pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm"
+          >
             {[
               { k: "10 Year", v: "Guarantee" },
               { k: "A++", v: "Energy Rated" },
@@ -110,7 +139,7 @@ function Hero() {
               { k: "4.9/5", v: "Google Reviews" },
             ].map((s) => (
               <div key={s.k} className="flex items-center gap-3">
-                <BadgeCheck className="size-5 text-brand-blue" />
+                <BadgeCheck className="size-5 text-brand-blue-2" />
                 <div>
                   <div className="font-semibold">{s.k}</div>
                   <div className="text-white/60 text-xs uppercase tracking-wider">{s.v}</div>
