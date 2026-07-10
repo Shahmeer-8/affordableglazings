@@ -69,8 +69,17 @@ function Hero() {
           poster={heroHome}
           aria-hidden="true"
         >
+          {/* Aerial drone footage of a modern contemporary home — Pexels (royalty-free) */}
           <source
-            src="https://videos.pexels.com/video-files/7578540/7578540-hd_1920_1080_30fps.mp4"
+            src="https://videos.pexels.com/video-files/3773487/3773487-hd_1920_1080_30fps.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="https://videos.pexels.com/video-files/7578541/7578541-hd_1920_1080_30fps.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="https://videos.pexels.com/video-files/2249402/2249402-hd_1920_1080_24fps.mp4"
             type="video/mp4"
           />
         </video>
