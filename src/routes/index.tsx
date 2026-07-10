@@ -219,12 +219,15 @@ function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <Link
               key={s.to}
               to={s.to}
-              className="group relative overflow-hidden rounded-3xl bg-white p-4 shadow-sm hover:shadow-elegant transition-all duration-500 hover:-translate-y-1"
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
+              className="group relative overflow-hidden rounded-3xl bg-white p-4 border border-navy/5 card-lift"
             >
+
               <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-6">
                 <img
                   src={s.img}
