@@ -300,7 +300,7 @@ function WhyUs() {
 /* ---------------------------- PERFORMANCE --------------------------- */
 
 function Performance() {
-  const stats: { node: React.ReactNode; label: string }[] = [
+  const stats: { node: import("react").ReactNode; label: string }[] = [
     { node: <AnimatedCounter to={0.8} decimals={1} />, label: "U-Value Performance" },
     { node: <><AnimatedCounter to={100} />%</>, label: "Recyclable Aluminium" },
     { node: <><AnimatedCounter to={35} />dB</>, label: "Noise Reduction" },
