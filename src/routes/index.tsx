@@ -292,36 +292,42 @@ function WhyUs() {
 /* ---------------------------- PERFORMANCE --------------------------- */
 
 function Performance() {
-  const stats = [
-    { k: "0.8", label: "U-Value Performance" },
-    { k: "100%", label: "Recyclable Aluminium" },
-    { k: "35dB", label: "Noise Reduction" },
-    { k: "PAS24", label: "Security Certified" },
+  const stats: { node: React.ReactNode; label: string }[] = [
+    { node: <AnimatedCounter to={0.8} decimals={1} />, label: "U-Value Performance" },
+    { node: <><AnimatedCounter to={100} />%</>, label: "Recyclable Aluminium" },
+    { node: <><AnimatedCounter to={35} />dB</>, label: "Noise Reduction" },
+    { node: "PAS24", label: "Security Certified" },
   ];
 
   return (
     <section className="py-24 md:py-32 bg-navy text-white overflow-hidden relative">
-      <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/20 blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue/10 blur-3xl" />
+      <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/25 blur-3xl animate-float" />
+      <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue-2/15 blur-3xl" />
 
       <div className="container-page grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative">
         <div className="space-y-10">
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em]">Performance</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-[1.02]">
+          <p data-reveal="up" className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em]">Performance</p>
+          <h2 data-reveal="up" style={{ ["--reveal-delay" as never]: "80ms" }} className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-[1.02]">
             Engineered for the future of thermal comfort.
           </h2>
-          <p className="text-white/70 max-w-lg text-lg leading-relaxed">
+          <p data-reveal="up" style={{ ["--reveal-delay" as never]: "160ms" }} className="text-white/70 max-w-lg text-lg leading-relaxed">
             Our systems exceed the latest Building Regulations for thermal efficiency, acoustic insulation and security.
           </p>
 
           <div className="grid grid-cols-2 gap-8 pt-4">
-            {stats.map((s) => (
-              <div key={s.k} className="border-t border-white/10 pt-6">
-                <div className="text-4xl md:text-5xl font-display font-semibold text-brand-blue mb-2">{s.k}</div>
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                data-reveal="up"
+                style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
+                className="border-t border-white/10 pt-6"
+              >
+                <div className="text-4xl md:text-5xl font-display font-semibold text-gradient-brand mb-2">{s.node}</div>
                 <div className="text-xs uppercase tracking-[0.2em] text-white/50">{s.label}</div>
               </div>
             ))}
           </div>
+
 
           <div className="flex flex-wrap gap-3 pt-4">
             <Link
