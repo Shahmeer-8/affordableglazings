@@ -498,8 +498,13 @@ function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {REVIEWS.map((r) => (
-            <figure key={r.name} className="p-8 rounded-3xl bg-white border border-navy/5 hover:shadow-elegant transition-shadow">
+          {REVIEWS.map((r, i) => (
+            <figure
+              key={r.name}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
+              className="p-8 rounded-3xl bg-white border border-navy/5 card-lift"
+            >
               <div className="flex gap-0.5 text-brand-blue mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
