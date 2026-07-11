@@ -1,48 +1,65 @@
 import { useEffect } from "react";
 import { useRouter } from "@tanstack/react-router";
 
+declare global {
+  interface Window {
+    __revealScan?: () => void;
+  }
+}
+
 /**
- * Global scroll-reveal observer. Any element with [data-reveal] gets
- * data-visible="true" once it enters the viewport, triggering the CSS transition.
- * Elements can opt in with variants: data-reveal="up|fade|left|right|zoom".
- * Delay via style={{ ["--reveal-delay" as any]: "120ms" }}.
+ * Scroll-reveal is primarily driven by an inline <head> script (see __root.tsx)
+ * that sets up the IntersectionObserver before hydration, so elements reveal on
+ * first paint. This hook re-scans after client-side route transitions to observe
+ * any freshly mounted [data-reveal] elements, and provides a fallback observer if
+ * the inline script never ran.
  */
 export function useScrollReveal() {
   const router = useRouter();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (typeof IntersectionObserver === "undefined") return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).dataset.visible = "true";
-            io.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
-    );
+    let fallbackIo: IntersectionObserver | null = null;
 
     const scan = () => {
-      document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-visible])").forEach((el) => io.observe(el));
+      if (window.__revealScan) {
+        window.__revealScan();
+        return;
+      }
+      // Fallback: inline script didn't run — create our own observer.
+      if (typeof IntersectionObserver === "undefined") {
+        document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+          el.dataset.visible = "true";
+        });
+        return;
+      }
+      if (!fallbackIo) {
+        fallbackIo = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                (entry.target as HTMLElement).dataset.visible = "true";
+                fallbackIo!.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+        );
+      }
+      document
+        .querySelectorAll<HTMLElement>("[data-reveal]:not([data-visible])")
+        .forEach((el) => fallbackIo!.observe(el));
     };
 
     scan();
-    // Rescan after route transitions
+
     const unsub = router.subscribe("onResolved", () => {
-      requestAnimationFrame(() => {
-        // reset for new elements
-        document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
-          if (!el.dataset.visible) io.observe(el);
-        });
-      });
+      requestAnimationFrame(scan);
     });
 
     return () => {
-      io.disconnect();
+      fallbackIo?.disconnect();
       unsub();
     };
   }, [router]);

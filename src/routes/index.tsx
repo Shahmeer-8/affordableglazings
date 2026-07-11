@@ -80,6 +80,8 @@ function Hero() {
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
+        {/* Header-safe scrim: guarantees nav legibility regardless of what the video is showing up top */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-navy/70 via-navy/25 to-transparent" />
         {/* subtle grain */}
         <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "3px 3px" }} />
       </div>
@@ -87,35 +89,31 @@ function Hero() {
       <div className="container-page relative z-10 w-full py-16">
         <div className="max-w-3xl space-y-8 text-white">
           <div
-            data-reveal="fade"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase border border-brass/30"
+            className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase border border-brass/30"
           >
             <span className="size-1.5 bg-brass rounded-full animate-pulse" />
             Premium British Engineering · Since 1994
           </div>
 
           <h1
-            data-reveal="up"
-            style={{ ["--reveal-delay" as never]: "80ms" }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance"
+            style={{ animationDelay: "80ms" }}
+            className="animate-reveal text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance"
           >
             Redefining the <br />
             <span className="text-gradient-brand">view of home.</span>
           </h1>
 
           <p
-            data-reveal="up"
-            style={{ ["--reveal-delay" as never]: "180ms" }}
-            className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed"
+            style={{ animationDelay: "180ms" }}
+            className="animate-reveal text-lg md:text-xl text-white/80 max-w-xl leading-relaxed"
           >
             Bespoke windows, doors and conservatories — engineered for energy efficiency,
             security and timeless British elegance.
           </p>
 
           <div
-            data-reveal="up"
-            style={{ ["--reveal-delay" as never]: "260ms" }}
-            className="flex flex-wrap gap-3 pt-2"
+            style={{ animationDelay: "260ms" }}
+            className="animate-reveal flex flex-wrap gap-3 pt-2"
           >
             <Link
               to="/quote"
@@ -133,9 +131,8 @@ function Hero() {
           </div>
 
           <div
-            data-reveal="up"
-            style={{ ["--reveal-delay" as never]: "360ms" }}
-            className="pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm"
+            style={{ animationDelay: "360ms" }}
+            className="animate-reveal pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm"
           >
             {[
               { k: "10 Year", v: "Guarantee" },

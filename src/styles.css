@@ -159,6 +159,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-pan { animation: none; transform: scale(1.02); }
+  .animate-reveal, .animate-fade-in { animation: none; opacity: 1; transform: none; }
 }
 @utility glass {
   background: color-mix(in oklab, white 60%, transparent);

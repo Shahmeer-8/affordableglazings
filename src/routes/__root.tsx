@@ -88,7 +88,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -103,11 +105,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Runs synchronously as the browser parses <head>, before the JS bundle loads or
+// React hydrates — so scroll-reveal elements animate in the moment they enter view
+// instead of staying invisible until hydration completes (critical on slow networks).
+const revealScript = `(function(){
+  if (typeof IntersectionObserver === "undefined") {
+    document.addEventListener("DOMContentLoaded", function(){
+      document.querySelectorAll("[data-reveal]").forEach(function(el){ el.dataset.visible = "true"; });
+    });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.dataset.visible = "true"; io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+  function scan(){
+    document.querySelectorAll("[data-reveal]:not([data-visible])").forEach(function(el){ io.observe(el); });
+  }
+  window.__revealScan = scan;
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", scan);
+  else scan();
+})();`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: revealScript }} />
       </head>
       <body>
         {children}
