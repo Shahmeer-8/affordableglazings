@@ -1,9 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Calendar, Check, ClipboardList, UserRound } from "lucide-react";
 
 const PRODUCTS = ["Windows", "Doors", "Conservatories", "Roofline", "Repairs", "Commercial"] as const;
 const TIMING = ["ASAP", "1–3 months", "3–6 months", "Just researching"] as const;
+const STEP_META = [
+  { icon: ClipboardList, label: "Project" },
+  { icon: Calendar, label: "Timing" },
+  { icon: UserRound, label: "Details" },
+] as const;
 
 export const Route = createFileRoute("/quote")({
   head: () => ({
@@ -35,10 +40,36 @@ function QuotePage() {
         </div>
 
         {!done && (
-          <div className="mb-6 flex items-center gap-2">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className={`h-1.5 flex-1 rounded-full ${n <= step ? "bg-brand-blue" : "bg-navy/10"}`} />
-            ))}
+          <div className="mb-10">
+            <div className="flex items-center justify-between mb-3">
+              {STEP_META.map(({ icon: Icon, label }, i) => {
+                const n = i + 1;
+                const active = n <= step;
+                return (
+                  <div key={label} className="flex items-center gap-2">
+                    <span
+                      className={`size-9 rounded-full grid place-items-center border-2 transition-colors duration-300 ${
+                        active ? "bg-brand-blue border-brand-blue text-white" : "border-navy/15 text-navy/40"
+                      }`}
+                    >
+                      <Icon className="size-4" />
+                    </span>
+                    <span className={`text-xs font-semibold hidden sm:inline ${active ? "text-navy" : "text-navy/40"}`}>
+                      {label}
+                    </span>
+                  </div>
+                );
+              })}
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">
+                {Math.round((step / 3) * 100)}%
+              </span>
+            </div>
+            <div className="h-1.5 rounded-full bg-navy/10 overflow-hidden">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-brand-blue to-brass transition-all duration-500 ease-out"
+                style={{ width: `${(step / 3) * 100}%` }}
+              />
+            </div>
           </div>
         )}
 

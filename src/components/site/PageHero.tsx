@@ -13,10 +13,10 @@ export function PageHero({
 }) {
   return (
     <section className="relative pt-40 pb-20 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white to-soft-gray" />
-      <div className="absolute -top-32 -right-40 -z-10 size-[520px] rounded-full bg-brand-blue/10 blur-3xl" />
-      <div className="absolute -top-24 -left-40 -z-10 size-[420px] rounded-full bg-navy/5 blur-3xl" />
-      <div className="container-page">
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-white to-soft-gray" />
+      <div className="absolute -top-32 -right-40 z-0 size-[520px] rounded-full bg-brand-blue/10 blur-3xl" />
+      <div className="absolute -top-24 -left-40 z-0 size-[420px] rounded-full bg-navy/5 blur-3xl" />
+      <div className="container-page relative z-10">
         <span className="inline-block text-xs font-bold tracking-[0.22em] uppercase text-brand-blue mb-5 animate-reveal">
           {eyebrow}
         </span>

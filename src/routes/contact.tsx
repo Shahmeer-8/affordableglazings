@@ -2,6 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 
+const LOCATIONS = [
+  { name: "London HQ", x: 46, y: 62, primary: true },
+  { name: "Kent", x: 64, y: 70 },
+  { name: "Manchester", x: 34, y: 30 },
+  { name: "Birmingham", x: 38, y: 46 },
+];
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
@@ -62,12 +69,70 @@ function ContactPage() {
 
       <section className="pb-24">
         <div className="container-page">
-          <div className="rounded-[36px] overflow-hidden aspect-[16/6] bg-gradient-to-br from-navy to-brand-blue relative grid place-items-center text-white">
-            <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:20px_20px]" />
-            <div className="relative text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/60 mb-2">Coverage</p>
-              <p className="text-2xl md:text-3xl font-display font-semibold">Installing across mainland UK</p>
+          <div className="rounded-[36px] overflow-hidden min-h-[22rem] md:aspect-[16/6] bg-gradient-to-br from-navy to-brand-blue relative text-white p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
+            <div className="relative z-10 max-w-xs shrink-0">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brass mb-3">Coverage</p>
+              <p className="text-2xl md:text-3xl font-display font-semibold leading-tight mb-3">
+                Installing across mainland UK
+              </p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                HQ in London, with regional showrooms in Kent, Manchester and Birmingham serving homeowners nationwide.
+              </p>
             </div>
+
+            <div className="relative flex-1 w-full h-56 md:h-full">
+              <svg viewBox="0 0 100 100" className="w-full h-full" aria-hidden="true">
+                {LOCATIONS.filter((l) => !l.primary).map((l) => {
+                  const hub = LOCATIONS.find((h) => h.primary)!;
+                  return (
+                    <line
+                      key={l.name}
+                      x1={hub.x}
+                      y1={hub.y}
+                      x2={l.x}
+                      y2={l.y}
+                      stroke="white"
+                      strokeOpacity={0.25}
+                      strokeWidth={0.4}
+                      strokeDasharray="2 2"
+                    />
+                  );
+                })}
+                {LOCATIONS.map((l) => (
+                  <circle
+                    key={`${l.name}-pulse`}
+                    cx={l.x}
+                    cy={l.y}
+                    r={l.primary ? 3 : 2}
+                    fill="none"
+                    stroke={l.primary ? "var(--brass)" : "white"}
+                    strokeOpacity={0.5}
+                    strokeWidth={0.5}
+                    className="animate-pulse"
+                  />
+                ))}
+                {LOCATIONS.map((l) => (
+                  <circle
+                    key={l.name}
+                    cx={l.x}
+                    cy={l.y}
+                    r={l.primary ? 1.6 : 1.2}
+                    fill={l.primary ? "var(--brass)" : "white"}
+                  />
+                ))}
+              </svg>
+              {LOCATIONS.map((l) => (
+                <span
+                  key={`${l.name}-label`}
+                  className="absolute -translate-x-1/2 text-[10px] md:text-xs font-semibold uppercase tracking-wide text-white/80 bg-navy/40 backdrop-blur px-2 py-0.5 rounded-full whitespace-nowrap"
+                  style={{ left: `${l.x}%`, top: `${l.y}%`, transform: "translate(-50%, 10px)" }}
+                >
+                  {l.name}
+                </span>
+              ))}
+            </div>
+
+            <div className="absolute -bottom-16 -right-16 size-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
           </div>
         </div>
       </section>

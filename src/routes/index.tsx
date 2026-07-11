@@ -18,8 +18,15 @@ import productWindows from "@/assets/product-windows.jpg";
 import productDoors from "@/assets/product-doors.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import craftsman from "@/assets/craftsman.jpg";
+import consVictorian from "@/assets/cons-victorian.jpg";
+import consTiled from "@/assets/cons-tiled.jpg";
+import windowsSash from "@/assets/windows-sash.jpg";
+import windowsDetail from "@/assets/windows-detail.jpg";
+import doorsBifold from "@/assets/doors-bifold.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
+import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,9 +65,9 @@ function HomePage() {
 function Hero() {
   return (
     <section className="relative min-h-[94vh] flex items-center pt-24 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-[1.08] animate-hero-pan"
           autoPlay
           muted
           loop
@@ -69,22 +76,10 @@ function Hero() {
           poster={heroHome}
           aria-hidden="true"
         >
-          {/* Aerial drone footage of a modern contemporary home — Pexels (royalty-free) */}
-          <source
-            src="https://videos.pexels.com/video-files/3773487/3773487-hd_1920_1080_30fps.mp4"
-            type="video/mp4"
-          />
-          <source
-            src="https://videos.pexels.com/video-files/7578541/7578541-hd_1920_1080_30fps.mp4"
-            type="video/mp4"
-          />
-          <source
-            src="https://videos.pexels.com/video-files/2249402/2249402-hd_1920_1080_24fps.mp4"
-            type="video/mp4"
-          />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
         {/* subtle grain */}
         <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "3px 3px" }} />
       </div>
@@ -93,9 +88,9 @@ function Hero() {
         <div className="max-w-3xl space-y-8 text-white">
           <div
             data-reveal="fade"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase border border-brass/30"
           >
-            <span className="size-1.5 bg-emerald-400 rounded-full animate-pulse" />
+            <span className="size-1.5 bg-brass rounded-full animate-pulse" />
             Premium British Engineering · Since 1994
           </div>
 
@@ -444,6 +439,10 @@ function BeforeAfter() {
           <p className="text-navy/60 leading-relaxed mb-8 max-w-lg">
             From dated conservatories to award-winning glass extensions — every project tells a story of transformation, comfort and value.
           </p>
+          <p className="text-sm text-navy/40 mb-8 flex items-center gap-2">
+            <span className="size-1.5 rounded-full bg-brass" />
+            Drag the slider to compare
+          </p>
           <Link
             to="/gallery"
             className="inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
@@ -451,14 +450,7 @@ function BeforeAfter() {
             View the full gallery <ArrowRight className="size-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-3xl overflow-hidden aspect-[3/4] bg-soft-gray">
-            <img src={productWindows} alt="Casement window installation" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="rounded-3xl overflow-hidden aspect-[3/4] bg-soft-gray mt-8">
-            <img src={productConservatories} alt="Conservatory extension" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-        </div>
+        <BeforeAfterSlider before={consVictorian} after={consTiled} beforeLabel="Before" afterLabel="After" />
       </div>
     </section>
   );
@@ -483,6 +475,14 @@ const REVIEWS = [
     body: "Our heating bill dropped by over a third in the first year. The A++ windows have paid for themselves faster than I imagined.",
   },
 ];
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase();
+}
 
 function Testimonials() {
   return (
@@ -520,9 +520,14 @@ function Testimonials() {
                 ))}
               </div>
               <blockquote className="text-navy/80 leading-relaxed mb-6">"{r.body}"</blockquote>
-              <figcaption className="text-sm">
-                <div className="font-semibold text-navy">{r.name}</div>
-                <div className="text-navy/50">{r.location}</div>
+              <figcaption className="flex items-center gap-3 text-sm">
+                <div className="size-11 rounded-full grid place-items-center text-white font-semibold text-xs shrink-0 bg-gradient-to-br from-brand-blue to-brand-blue-2 ring-2 ring-brass/30 ring-offset-2 ring-offset-white">
+                  {initials(r.name)}
+                </div>
+                <div>
+                  <div className="font-semibold text-navy">{r.name}</div>
+                  <div className="text-navy/50">{r.location}</div>
+                </div>
               </figcaption>
             </figure>
           ))}
@@ -535,9 +540,9 @@ function Testimonials() {
 /* ------------------------------ JOURNAL ----------------------------- */
 
 const POSTS = [
-  { title: "Choosing the right glazing for a period property", tag: "Guides", read: "6 min" },
-  { title: "How A++ windows lower your energy bills in 2026", tag: "Efficiency", read: "4 min" },
-  { title: "Bi-folds vs sliding doors: a designer's take", tag: "Design", read: "8 min" },
+  { title: "Choosing the right glazing for a period property", tag: "Guides", read: "6 min", img: windowsSash },
+  { title: "How A++ windows lower your energy bills in 2026", tag: "Efficiency", read: "4 min", img: windowsDetail },
+  { title: "Bi-folds vs sliding doors: a designer's take", tag: "Design", read: "8 min", img: doorsBifold },
 ];
 
 function Journal() {
@@ -566,7 +571,13 @@ function Journal() {
               className="group rounded-3xl overflow-hidden bg-soft-gray hover:bg-navy hover:text-white hover:-translate-y-1 hover:shadow-elegant transition-all duration-500"
             >
               <div className="aspect-[4/3] bg-navy/5 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-navy/40 group-hover:scale-105 transition-transform duration-700" />
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/0 to-navy/0" />
                 <span className="absolute top-4 left-4 text-[10px] font-bold tracking-[0.2em] uppercase bg-white/90 text-navy px-3 py-1.5 rounded-full">
                   {p.tag}
                 </span>
