@@ -1,26 +1,41 @@
 // Product catalogue — content mirrors the reference site (affordableglazings.co.uk/products)
 // verbatim: category taglines, product names, summaries, detail taglines and feature lists.
-import productWindows from "@/assets/product-windows.jpg";
-import windowsHero from "@/assets/windows-hero.jpg";
-import windowsDetail from "@/assets/windows-detail.jpg";
-import windowsInterior from "@/assets/windows-interior.jpg";
-import windowsSash from "@/assets/windows-sash.jpg";
-import windowsBay from "@/assets/windows-bay.jpg";
-import productDoors from "@/assets/product-doors.jpg";
-import doorsHero from "@/assets/doors-hero.jpg";
-import doorsHardware from "@/assets/doors-hardware.jpg";
-import doorsFrench from "@/assets/doors-french.jpg";
-import doorsSliding from "@/assets/doors-sliding.jpg";
-import doorsBifold from "@/assets/doors-bifold.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
-import consHero from "@/assets/cons-hero.jpg";
-import consGable from "@/assets/cons-gable.jpg";
-import consInterior from "@/assets/cons-interior.jpg";
-import consVictorian from "@/assets/cons-victorian.jpg";
-import consTiled from "@/assets/cons-tiled.jpg";
-import heroHome from "@/assets/hero-home.jpg";
-import craftsman from "@/assets/craftsman.jpg";
-import installer from "@/assets/installer.jpg";
+// Imagery: every product has its own dedicated photo set (no image is shared between
+// products or reused elsewhere on the site). Photos sourced from Pexels (free licence).
+import sash1 from '@/assets/products/sash-1.jpg';
+import sash2 from '@/assets/products/sash-2.jpg';
+import sash3 from '@/assets/products/sash-3.jpg';
+import casement1 from '@/assets/products/casement-1.jpg';
+import casement2 from '@/assets/products/casement-2.jpg';
+import casement3 from '@/assets/products/casement-3.jpg';
+import heritage1 from '@/assets/products/heritage-1.jpg';
+import heritage2 from '@/assets/products/heritage-2.jpg';
+import heritage3 from '@/assets/products/heritage-3.jpg';
+import bay1 from '@/assets/products/bay-1.jpg';
+import bay2 from '@/assets/products/bay-2.jpg';
+import bay3 from '@/assets/products/bay-3.jpg';
+import flush1 from '@/assets/products/flush-1.jpg';
+import flush2 from '@/assets/products/flush-2.jpg';
+import single1 from '@/assets/products/single-1.jpg';
+import single2 from '@/assets/products/single-2.jpg';
+import single3 from '@/assets/products/single-3.jpg';
+import crittall1 from '@/assets/products/crittall-1.jpg';
+import crittall2 from '@/assets/products/crittall-2.jpg';
+import french1 from '@/assets/products/french-1.jpg';
+import french2 from '@/assets/products/french-2.jpg';
+import french3 from '@/assets/products/french-3.jpg';
+import sliding1 from '@/assets/products/sliding-1.jpg';
+import sliding2 from '@/assets/products/sliding-2.jpg';
+import bifold1 from '@/assets/products/bifold-1.jpg';
+import bifold2 from '@/assets/products/bifold-2.jpg';
+import slimroof1 from '@/assets/products/slimroof-1.jpg';
+import slimroof2 from '@/assets/products/slimroof-2.jpg';
+import slimroof3 from '@/assets/products/slimroof-3.jpg';
+import pyramid1 from '@/assets/products/pyramid-1.jpg';
+import pyramid2 from '@/assets/products/pyramid-2.jpg';
+import cons1 from '@/assets/products/cons-1.jpg';
+import cons2 from '@/assets/products/cons-2.jpg';
+import cons3 from '@/assets/products/cons-3.jpg';
 
 export type Product = {
   slug: string;
@@ -60,7 +75,7 @@ const WINDOWS: Product[] = [
       "High-quality draught proofing",
       "Low maintenance uPVC or aluminium options",
     ],
-    images: [windowsSash, windowsDetail, installer],
+    images: [sash1, sash2, sash3],
   },
   {
     slug: "casementwindows",
@@ -75,7 +90,7 @@ const WINDOWS: Product[] = [
       "Secure hinge and locking systems",
       "Suitable for all property types",
     ],
-    images: [productWindows, windowsHero, installer],
+    images: [casement1, casement2, casement3],
   },
   {
     slug: "heritagewindows",
@@ -90,7 +105,7 @@ const WINDOWS: Product[] = [
       "Superior insulation",
       "Customisable colours and finishes",
     ],
-    images: [windowsBay, windowsSash, craftsman],
+    images: [heritage1, heritage2, heritage3],
   },
   {
     slug: "baywindows",
@@ -105,7 +120,7 @@ const WINDOWS: Product[] = [
       "Stylish and energy-efficient",
       "Custom configurations available",
     ],
-    images: [windowsBay, heroHome, windowsDetail],
+    images: [bay1, bay2, bay3],
   },
   {
     slug: "flushwindows",
@@ -120,7 +135,7 @@ const WINDOWS: Product[] = [
       "Modern or traditional timber-look finish",
       "Low-maintenance uPVC or aluminium options",
     ],
-    images: [windowsDetail, windowsHero, productWindows],
+    images: [flush1, flush2],
   },
 ];
 
@@ -138,7 +153,7 @@ const DOORS: Product[] = [
       "Excellent thermal efficiency",
       "Low maintenance and long-lasting performance",
     ],
-    images: [doorsHero, doorsHardware, craftsman],
+    images: [single1, single2, single3],
   },
   {
     slug: "crittalldoors",
@@ -153,7 +168,7 @@ const DOORS: Product[] = [
       "Strong steel or aluminium build",
       "High natural light flow",
     ],
-    images: [windowsInterior, windowsDetail, productDoors],
+    images: [crittall1, crittall2],
   },
   {
     slug: "frenchdoors",
@@ -168,7 +183,7 @@ const DOORS: Product[] = [
       "Secure multi-point locking",
       "Energy-efficient glazing options",
     ],
-    images: [doorsFrench, doorsHero, doorsHardware],
+    images: [french1, french2, french3],
   },
   {
     slug: "slidingdoors",
@@ -183,7 +198,7 @@ const DOORS: Product[] = [
       "Energy-efficient double or triple glazing",
       "Ideal for patios, gardens, and balconies",
     ],
-    images: [doorsSliding, productDoors, heroHome],
+    images: [sliding1, sliding2],
   },
   {
     slug: "bifoldingdoors",
@@ -198,7 +213,7 @@ const DOORS: Product[] = [
       "High thermal insulation",
       "Secure locking and enhanced weather resistance",
     ],
-    images: [doorsBifold, productDoors, doorsSliding],
+    images: [bifold1, bifold2],
   },
 ];
 
@@ -217,7 +232,7 @@ const ROOFLIGHTS: Product[] = [
       "High thermal efficiency",
       "Ideal for kitchens, extensions & flat roofs",
     ],
-    images: [consHero, consInterior],
+    images: [slimroof1, slimroof2, slimroof3],
   },
   {
     slug: "pyramidrooflight",
@@ -233,7 +248,7 @@ const ROOFLIGHTS: Product[] = [
       "Excellent insulation performance",
       "Suitable for flat and pitched roofs",
     ],
-    images: [consGable, consHero],
+    images: [pyramid1, pyramid2],
   },
 ];
 
@@ -252,7 +267,7 @@ const CONSERVATORIES: Product[] = [
       "Low-maintenance uPVC or aluminium frames",
       "Custom designs: Victorian, Edwardian, Lean-to & bespoke styles",
     ],
-    images: [productConservatories, consVictorian, consTiled, consInterior],
+    images: [cons1, cons2, cons3],
   },
 ];
 

@@ -14,6 +14,7 @@ import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RooflineRouteImport } from './routes/roofline'
+import { Route as RooflightsRouteImport } from './routes/rooflights'
 import { Route as RepairsRouteImport } from './routes/repairs'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -53,6 +54,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const RooflineRoute = RooflineRouteImport.update({
   id: '/roofline',
   path: '/roofline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RooflightsRoute = RooflightsRouteImport.update({
+  id: '/rooflights',
+  path: '/rooflights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RepairsRoute = RepairsRouteImport.update({
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
   '/repairs': typeof RepairsRoute
+  '/rooflights': typeof RooflightsRoute
   '/roofline': typeof RooflineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
   '/repairs': typeof RepairsRoute
+  '/rooflights': typeof RooflightsRoute
   '/roofline': typeof RooflineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -190,6 +198,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
   '/repairs': typeof RepairsRoute
+  '/rooflights': typeof RooflightsRoute
   '/roofline': typeof RooflineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -214,6 +223,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/quote'
     | '/repairs'
+    | '/rooflights'
     | '/roofline'
     | '/sitemap.xml'
     | '/terms'
@@ -236,6 +246,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/quote'
     | '/repairs'
+    | '/rooflights'
     | '/roofline'
     | '/sitemap.xml'
     | '/terms'
@@ -258,6 +269,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/quote'
     | '/repairs'
+    | '/rooflights'
     | '/roofline'
     | '/sitemap.xml'
     | '/terms'
@@ -281,6 +293,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   QuoteRoute: typeof QuoteRoute
   RepairsRoute: typeof RepairsRoute
+  RooflightsRoute: typeof RooflightsRoute
   RooflineRoute: typeof RooflineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/roofline'
       fullPath: '/roofline'
       preLoaderRoute: typeof RooflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooflights': {
+      id: '/rooflights'
+      path: '/rooflights'
+      fullPath: '/rooflights'
+      preLoaderRoute: typeof RooflightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/repairs': {
@@ -449,6 +469,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   QuoteRoute: QuoteRoute,
   RepairsRoute: RepairsRoute,
+  RooflightsRoute: RooflightsRoute,
   RooflineRoute: RooflineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,

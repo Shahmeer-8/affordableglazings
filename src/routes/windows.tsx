@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Award, CheckCircle2, Layers, Palette, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Ruler, Lock, Sun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ProductRange } from "@/components/site/ProductRange";
 import windowsHero from "@/assets/windows-hero.jpg";
 import windowsDetail from "@/assets/windows-detail.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
@@ -113,6 +114,9 @@ function WindowsPage() {
           </div>
         </div>
       </section>
+
+      {/* Product range */}
+      <ProductRange category="Windows" dark />
 
       {/* Intro editorial */}
       <section className="py-28 bg-white">

@@ -6,6 +6,13 @@ import { CtaBanner } from "@/components/site/CtaBanner";
 import { Lightbox } from "@/components/site/Lightbox";
 import { getProduct, SUPPLIERS, type Product } from "@/data/products";
 
+const CATEGORY_PATHS: Record<string, string> = {
+  Windows: "/windows",
+  Doors: "/doors",
+  Rooflights: "/rooflights",
+  Conservatories: "/conservatories",
+};
+
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
     const product = getProduct(params.slug);
@@ -45,10 +52,11 @@ function ProductDetailPage() {
             Request a quote <ArrowRight className="size-4" />
           </Link>
           <Link
-            to="/products"
+            to={CATEGORY_PATHS[product.category] ?? "/"}
+            hash="range"
             className="inline-flex items-center gap-2 border border-navy/10 text-navy px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white transition-colors"
           >
-            <ArrowLeft className="size-4" /> Back to all products
+            <ArrowLeft className="size-4" /> Back to all {product.category.toLowerCase()}
           </Link>
         </div>
       </PageHero>

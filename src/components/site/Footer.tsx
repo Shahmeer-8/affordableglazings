@@ -25,11 +25,10 @@ export function Footer() {
           <FooterCol
             title="Products"
             links={[
-              { to: "/products", label: "All Products" },
-              { to: "/products", label: "Windows", hash: "windows" },
-              { to: "/products", label: "Doors", hash: "doors" },
-              { to: "/products", label: "Rooflights", hash: "rooflights" },
-              { to: "/products", label: "Conservatories", hash: "conservatories" },
+              { to: "/windows", label: "Windows" },
+              { to: "/doors", label: "Doors" },
+              { to: "/rooflights", label: "Rooflights" },
+              { to: "/conservatories", label: "Conservatories" },
               { to: "/roofline", label: "Roofline" },
             ]}
           />

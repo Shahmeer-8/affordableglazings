@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Compass, Home, Layers, PenTool, Ruler, Sparkles, Sun, ThermometerSun, TreePine, Wrench } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ProductRange } from "@/components/site/ProductRange";
 import consHero from "@/assets/cons-hero.jpg";
 import consVictorian from "@/assets/cons-victorian.jpg";
 import consInterior from "@/assets/cons-interior.jpg";
@@ -111,6 +112,9 @@ function Page() {
           </div>
         </div>
       </section>
+
+      {/* Product range */}
+      <ProductRange category="Conservatories" dark />
 
       {/* Why build */}
       <section className="py-28 bg-canvas">

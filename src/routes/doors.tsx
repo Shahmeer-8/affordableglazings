@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, DoorOpen, Fingerprint, KeyRound, Layers, Lock, Palette, ShieldCheck, Smartphone, Sparkles, ThermometerSun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ProductRange } from "@/components/site/ProductRange";
 import doorsHero from "@/assets/doors-hero.jpg";
 import doorsSliding from "@/assets/doors-sliding.jpg";
 import doorsBifold from "@/assets/doors-bifold.jpg";
@@ -126,6 +127,9 @@ function DoorsPage() {
           <p className="text-lg text-navy/60 leading-relaxed">Whether it's the entrance that greets your visitors or the wall of glass that opens onto a summer garden, a well-made door changes the rhythm of your day. We spend as long designing the door you will touch a thousand times as some builders spend on entire rooms.</p>
         </div>
       </section>
+
+      {/* Product range */}
+      <ProductRange category="Doors" dark />
 
       {/* Collection — bento */}
       <section className="py-28 bg-canvas">

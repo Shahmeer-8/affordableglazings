@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 
 const BASE_URL = "";
 const productSlugs = ["sashwindows", "casementwindows", "heritagewindows", "baywindows", "flushwindows", "singledoors", "crittalldoors", "frenchdoors", "slidingdoors", "bifoldingdoors", "slimrooflight", "pyramidrooflight", "conservatories"];
-const paths = ["/", "/about", "/windows", "/doors", "/conservatories", "/roofline", "/repairs", "/commercial", "/gallery", "/products", ...productSlugs.map((s) => `/products/${s}`), "/testimonials", "/blog", "/faq", "/quote", "/privacy", "/terms", "/cookies"];
+const paths = ["/", "/about", "/windows", "/doors", "/rooflights", "/conservatories", "/roofline", "/repairs", "/commercial", "/gallery", ...productSlugs.map((s) => `/products/${s}`), "/testimonials", "/blog", "/faq", "/quote", "/privacy", "/terms", "/cookies"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
