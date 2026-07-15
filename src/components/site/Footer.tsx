@@ -43,10 +43,9 @@ export function Footer() {
           <FooterCol
             title="Support"
             links={[
-              { to: "/finance", label: "Finance" },
               { to: "/faq", label: "FAQs" },
               { to: "/repairs", label: "Repairs" },
-              { to: "/contact", label: "Contact" },
+              { to: "/about", label: "Contact", hash: "contact" },
             ]}
           />
 
@@ -73,14 +72,14 @@ export function Footer() {
   );
 }
 
-function FooterCol({ title, links }: { title: string; links: { to: string; label: string }[] }) {
+function FooterCol({ title, links }: { title: string; links: { to: string; label: string; hash?: string }[] }) {
   return (
     <div>
       <h5 className="font-bold uppercase text-[10px] tracking-widest text-navy/40 mb-5">{title}</h5>
       <ul className="space-y-2.5 text-sm font-medium text-navy/70">
         {links.map((l) => (
-          <li key={l.to}>
-            <Link to={l.to} className="hover:text-brand-blue transition-colors">{l.label}</Link>
+          <li key={l.label}>
+            <Link to={l.to} hash={l.hash} className="hover:text-brand-blue transition-colors">{l.label}</Link>
           </li>
         ))}
       </ul>

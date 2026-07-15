@@ -32,7 +32,7 @@ function NotFoundComponent() {
           <Link to="/" className="bg-navy text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors">
             Go home
           </Link>
-          <Link to="/contact" className="border border-navy/10 text-navy px-6 py-3 rounded-full text-sm font-semibold hover:bg-white transition-colors">
+          <Link to="/about" hash="contact" className="border border-navy/10 text-navy px-6 py-3 rounded-full text-sm font-semibold hover:bg-white transition-colors">
             Contact us
           </Link>
         </div>

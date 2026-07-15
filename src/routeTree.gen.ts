@@ -18,7 +18,6 @@ import { Route as RepairsRouteImport } from './routes/repairs'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DoorsRouteImport } from './routes/doors'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -72,11 +71,6 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FinanceRoute = FinanceRouteImport.update({
-  id: '/finance',
-  path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -135,7 +129,6 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/doors': typeof DoorsRoute
   '/faq': typeof FaqRoute
-  '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
@@ -156,7 +149,6 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/doors': typeof DoorsRoute
   '/faq': typeof FaqRoute
-  '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
@@ -178,7 +170,6 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/doors': typeof DoorsRoute
   '/faq': typeof FaqRoute
-  '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
   '/privacy': typeof PrivacyRoute
   '/quote': typeof QuoteRoute
@@ -201,7 +192,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/doors'
     | '/faq'
-    | '/finance'
     | '/gallery'
     | '/privacy'
     | '/quote'
@@ -222,7 +212,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/doors'
     | '/faq'
-    | '/finance'
     | '/gallery'
     | '/privacy'
     | '/quote'
@@ -243,7 +232,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/doors'
     | '/faq'
-    | '/finance'
     | '/gallery'
     | '/privacy'
     | '/quote'
@@ -265,7 +253,6 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   DoorsRoute: typeof DoorsRoute
   FaqRoute: typeof FaqRoute
-  FinanceRoute: typeof FinanceRoute
   GalleryRoute: typeof GalleryRoute
   PrivacyRoute: typeof PrivacyRoute
   QuoteRoute: typeof QuoteRoute
@@ -340,13 +327,6 @@ declare module '@tanstack/react-router' {
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/finance': {
-      id: '/finance'
-      path: '/finance'
-      fullPath: '/finance'
-      preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -425,7 +405,6 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   DoorsRoute: DoorsRoute,
   FaqRoute: FaqRoute,
-  FinanceRoute: FinanceRoute,
   GalleryRoute: GalleryRoute,
   PrivacyRoute: PrivacyRoute,
   QuoteRoute: QuoteRoute,
