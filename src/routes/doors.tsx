@@ -27,15 +27,6 @@ export const Route = createFileRoute("/doors")({
   component: DoorsPage,
 });
 
-const COLLECTION = [
-  { title: "Composite Front Doors", tag: "Signature", body: "A 48mm solid-timber core wrapped in a colour-through GRP skin. Warmer than uPVC, more secure than timber, and impervious to warping, splitting or fading.", img: doorsHero },
-  { title: "uPVC Doors", tag: "Practical", body: "The most cost-effective way to modernise a home. Multi-chambered profiles, steel reinforcement and a lifetime of low-maintenance colour options.", img: productDoors },
-  { title: "French Doors", tag: "Timeless", body: "Double-opening classic doors — perfect for gardens, terraces and formal dining rooms. Slim sightlines, elegant proportions, unmistakable charm.", img: doorsFrench },
-  { title: "Sliding Patio Doors", tag: "Panoramic", body: "Whisper-quiet ultra-slim aluminium sliders with panes up to 3m tall. The cleanest possible transition between garden and living space.", img: doorsSliding },
-  { title: "Bi-Fold Doors", tag: "Statement", body: "Fold-back panels that stack neatly to one side, opening entire walls to the outside. Available in aluminium and hybrid alu-clad timber.", img: doorsBifold },
-  { title: "Stable Doors", tag: "Country", body: "Independently opening upper and lower leaves — the country-cottage classic, updated with modern locking and thermal cores.", img: productDoors },
-];
-
 const SECURITY = [
   { icon: ShieldCheck, title: "PAS 24:2022", body: "Every door passes 30+ attack tests, from body slams to jemmy bars." },
   { icon: KeyRound, title: "TS007 3★ cylinders", body: "Anti-snap, anti-drill, anti-bump and anti-pick as standard on all entrances." },
@@ -130,41 +121,6 @@ function DoorsPage() {
 
       {/* Product range */}
       <ProductRange category="Doors" dark />
-
-      {/* Collection — bento */}
-      <section className="py-28 bg-canvas">
-        <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-16" data-reveal="up">
-            <div className="max-w-xl">
-              <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">The full collection</p>
-              <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Seven doors. Endless possibilities.</h2>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-5 auto-rows-[280px]">
-            {COLLECTION.map((c, i) => {
-              const span = [
-                "md:col-span-4 md:row-span-2",
-                "md:col-span-2 md:row-span-1",
-                "md:col-span-2 md:row-span-1",
-                "md:col-span-3 md:row-span-2",
-                "md:col-span-3 md:row-span-1",
-                "md:col-span-3 md:row-span-1",
-              ][i] || "md:col-span-3";
-              return (
-                <div key={c.title} className={`${span} group relative rounded-[28px] overflow-hidden bg-navy`} data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 80}ms` } as Record<string, string>}>
-                  <img src={c.img} alt={c.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110 opacity-90 group-hover:opacity-100" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/30 to-transparent" />
-                  <div className="absolute inset-0 p-7 flex flex-col justify-end text-white">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-brand-blue-2 mb-2">{c.tag}</span>
-                    <h3 className="text-2xl md:text-3xl font-display font-semibold mb-2">{c.title}</h3>
-                    <p className="text-sm text-white/75 leading-relaxed max-w-md">{c.body}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Full-bleed lifestyle */}
       <section className="relative h-[75vh] overflow-hidden">

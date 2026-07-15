@@ -5,8 +5,6 @@ import { ProductRange } from "@/components/site/ProductRange";
 import windowsHero from "@/assets/windows-hero.jpg";
 import windowsDetail from "@/assets/windows-detail.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
-import windowsSash from "@/assets/windows-sash.jpg";
-import windowsBay from "@/assets/windows-bay.jpg";
 import installer from "@/assets/installer.jpg";
 import productWindows from "@/assets/product-windows.jpg";
 import homeowners from "@/assets/homeowners.jpg";
@@ -28,14 +26,6 @@ export const Route = createFileRoute("/windows")({
   }),
   component: WindowsPage,
 });
-
-const STYLES = [
-  { title: "Casement Windows", body: "The nation's favourite. Side-hung sashes provide unrivalled ventilation, cleaning access and configuration freedom — from single fixed lights to wide multi-pane runs.", img: productWindows },
-  { title: "Tilt & Turn Windows", body: "German-engineered dual-action opening. Tilt inwards for secure night-time airflow, or swing fully open for cleaning and emergency egress.", img: windowsInterior },
-  { title: "Flush Sash Windows", body: "A contemporary flat-faced profile where the sash sits perfectly level with the frame. The clean modern look loved by architects and heritage homes alike.", img: windowsDetail },
-  { title: "Sliding Sash Windows", body: "Faithful Georgian and Victorian proportions with modern thermal performance, deep bottom rails, run-through horns and traditional astragal bars.", img: windowsSash },
-  { title: "Bay & Bow Windows", body: "Statement projections that flood period homes with natural light. Three-, four- and five-sided configurations with structural load-bearing options.", img: windowsBay },
-];
 
 const PERFORMANCE = [
   { icon: ThermometerSun, title: "0.8 W/m²K U-Value", body: "Beyond passive-house standard. Triple-glazed argon-filled units with warm-edge spacer bars and soft-coat Low-E glass keep every room warm in winter, cool in summer." },
@@ -148,33 +138,6 @@ function WindowsPage() {
             "The light through these windows changed the whole feeling of the house. It's like living in a different home."
             <footer className="mt-6 text-sm uppercase tracking-widest text-white/60">— Elizabeth H., Guildford</footer>
           </blockquote>
-        </div>
-      </section>
-
-      {/* Styles — alternating layout */}
-      <section className="py-28 bg-canvas">
-        <div className="container-page">
-          <div className="max-w-2xl mb-20" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Window styles</p>
-            <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">A style for every home, a home for every style.</h2>
-          </div>
-          <div className="space-y-24">
-            {STYLES.map((s, i) => (
-              <div key={s.title} className={`grid lg:grid-cols-2 gap-14 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`} data-reveal="up">
-                <div className="overflow-hidden rounded-[32px] shadow-elegant group">
-                  <img src={s.img} alt={s.title} className="w-full aspect-[4/5] object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">0{i + 1} / 05</p>
-                  <h3 className="text-3xl md:text-5xl font-display font-semibold text-navy mb-6 leading-[1.05]">{s.title}</h3>
-                  <p className="text-lg text-navy/65 leading-relaxed mb-8">{s.body}</p>
-                  <Link to="/quote" className="inline-flex items-center gap-2 text-navy font-semibold text-sm border-b-2 border-brand-blue pb-1 hover:text-brand-blue transition-colors">
-                    Enquire about {s.title.toLowerCase()} <ArrowRight className="size-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -35,14 +35,6 @@ const REASONS = [
   { icon: ThermometerSun, t: "Year-round comfort", d: "Modern thermally-broken frames and Low-E roof glass mean warm winters and cool summers, not saunas." },
 ];
 
-const STYLES = [
-  { n: "01", t: "Victorian", d: "Faceted three- or five-sided bay with ornate ridge cresting. The classic British conservatory — perfect for period townhouses and gardens with a view worth wrapping around.", img: consVictorian },
-  { n: "02", t: "Edwardian", d: "A rectangular or square footprint that maximises usable floor space. Simple, elegant lines that suit both period and contemporary homes.", img: productConservatories },
-  { n: "03", t: "Lean-To", d: "A refined, cost-effective single-slope roof extension — ideal for bungalows, terraces and cottages where a low profile is essential.", img: consInterior },
-  { n: "04", t: "Gable-End", d: "A soaring vertical front wall with a vaulted ceiling that creates cathedral-like proportions. Dramatic, architectural and unforgettable.", img: consGable },
-  { n: "05", t: "Orangery", d: "A solid perimeter of brick or render with a glazed lantern roof — the sophistication of an extension with the light of a conservatory.", img: consHero },
-];
-
 const ROOFS = [
   { icon: Sun, t: "Solar Control Glass", d: "Self-cleaning Low-E glass with a solar coating that reflects 78% of solar heat gain while transmitting daylight — no more overheating in July." },
   { icon: Layers, t: "Polycarbonate", d: "Multi-wall thermally efficient panels — the most economical way to weatherproof a conservatory. Ideal on tighter budgets." },
@@ -129,30 +121,6 @@ function Page() {
                 <Icon className="size-7 text-brand-blue mb-6" />
                 <h3 className="font-display font-semibold text-navy text-xl mb-3">{t}</h3>
                 <p className="text-sm text-navy/60 leading-relaxed">{d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Styles — alternating story */}
-      <section className="py-28 bg-white">
-        <div className="container-page">
-          <div className="max-w-2xl mb-20" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Five styles</p>
-            <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Find the shape your home is asking for.</h2>
-          </div>
-          <div className="space-y-28">
-            {STYLES.map((s, i) => (
-              <div key={s.t} className={`grid lg:grid-cols-12 gap-14 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`} data-reveal="up">
-                <div className="lg:col-span-7 rounded-[32px] overflow-hidden shadow-elegant group">
-                  <img src={s.img} alt={s.t} className="w-full aspect-[16/11] object-cover transition-transform duration-[1400ms] group-hover:scale-105" loading="lazy" />
-                </div>
-                <div className="lg:col-span-5">
-                  <div className="text-6xl font-display font-semibold text-brand-blue/30 mb-4">{s.n}</div>
-                  <h3 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">{s.t}</h3>
-                  <p className="text-lg text-navy/65 leading-relaxed">{s.d}</p>
-                </div>
               </div>
             ))}
           </div>
