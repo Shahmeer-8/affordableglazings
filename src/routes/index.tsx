@@ -49,8 +49,8 @@ function HomePage() {
       <Hero />
       <TrustStrip />
       <Services />
-      <WhyUs />
-      <Performance />
+      {/* <WhyUs /> */}
+      {/* <Performance /> */}
       <Process />
       <BeforeAfter />
       <Testimonials />
@@ -87,32 +87,38 @@ function Hero() {
       </div>
 
       <div className="container-page relative z-10 w-full py-16">
-        <div className="max-w-3xl space-y-8 text-white">
+        <div className="max-w-3xl space-y-7 text-white">
           <div
             className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase border border-brass/30"
           >
             <span className="size-1.5 bg-brass rounded-full animate-pulse" />
-            Premium British Engineering · Since 1994
+            British Engineering · Est. 1994
           </div>
 
-          <h1
-            style={{ animationDelay: "80ms" }}
-            className="animate-reveal text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight text-balance"
-          >
-            Redefining the <br />
-            <span className="text-gradient-brand">view of home.</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight">
+            <span className="hero-line">
+              {"Redefining the".split(" ").map((w, i) => (
+                <span key={w} className="hero-word" style={{ ["--wd" as never]: `${120 + i * 110}ms` }}>
+                  {w}&nbsp;
+                </span>
+              ))}
+            </span>
+            <span className="hero-line">
+              <span className="hero-word" style={{ ["--wd" as never]: "400ms" }}>
+                <span className="text-gradient-brand text-gradient-animate">view of home.</span>
+              </span>
+            </span>
           </h1>
 
           <p
-            style={{ animationDelay: "180ms" }}
+            style={{ animationDelay: "560ms" }}
             className="animate-reveal text-lg md:text-xl text-white/80 max-w-xl leading-relaxed"
           >
-            Bespoke windows, doors and conservatories — engineered for energy efficiency,
-            security and timeless British elegance.
+            Bespoke windows, doors and conservatories — crafted in Britain.
           </p>
 
           <div
-            style={{ animationDelay: "260ms" }}
+            style={{ animationDelay: "680ms" }}
             className="animate-reveal flex flex-wrap gap-3 pt-2"
           >
             <Link
@@ -124,29 +130,24 @@ function Hero() {
             </Link>
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 glass-dark text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-white/15 transition-colors"
+              className="inline-flex items-center gap-2 glass-dark text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-white/15 hover:-translate-y-0.5 transition-all"
             >
               View Our Work
             </Link>
           </div>
 
           <div
-            style={{ animationDelay: "360ms" }}
-            className="animate-reveal pt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm"
+            style={{ animationDelay: "800ms" }}
+            className="animate-reveal pt-4 flex flex-wrap gap-2.5"
           >
-            {[
-              { k: "10 Year", v: "Guarantee" },
-              { k: "A++", v: "Energy Rated" },
-              { k: "FENSA", v: "Registered" },
-              { k: "4.9/5", v: "Google Reviews" },
-            ].map((s) => (
-              <div key={s.k} className="flex items-center gap-3">
-                <BadgeCheck className="size-5 text-brand-blue-2" />
-                <div>
-                  <div className="font-semibold">{s.k}</div>
-                  <div className="text-white/60 text-xs uppercase tracking-wider">{s.v}</div>
-                </div>
-              </div>
+            {["10-Year Guarantee", "A++ Energy Rated", "4.9/5 Google Reviews"].map((s) => (
+              <span
+                key={s}
+                className="inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 text-xs font-semibold text-white/85 border border-white/10"
+              >
+                <BadgeCheck className="size-3.5 text-brand-blue-2" />
+                {s}
+              </span>
             ))}
           </div>
         </div>
@@ -185,64 +186,62 @@ const SERVICES = [
     title: "Casement Windows",
     tag: "Signature",
     img: productWindows,
-    body: "A++ rated with ultra-slim sightlines and precision engineering.",
+    body: "A++ rated with ultra-slim sightlines.",
   },
   {
     to: "/doors",
     title: "Bi-Fold Systems",
     tag: "Grand Entrances",
     img: productDoors,
-    body: "Seamless indoor-outdoor living, secured to PAS 24 standards.",
+    body: "Seamless indoor-outdoor living, PAS 24 secured.",
   },
   {
     to: "/conservatories",
     title: "Sun Rooms",
     tag: "Living Spaces",
     img: productConservatories,
-    body: "Advanced thermal glass for year-round comfort and light.",
+    body: "Thermal glass for year-round comfort.",
   },
 ];
 
 function Services() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-24">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-8">
-          <div className="max-w-2xl">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Our Specialisms</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-navy leading-[1.03] text-balance">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+          <div className="max-w-xl">
+            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our Specialisms</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-navy leading-[1.05] text-balance">
               Architectural solutions for every modern space.
             </h2>
           </div>
-          <p className="text-navy/60 max-w-sm">
-            From heritage restoration to ultra-modern extensions — bespoke glazing that transforms daily life.
-          </p>
+          <p className="text-navy/60 text-sm max-w-xs">From heritage homes to modern extensions.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {SERVICES.map((s, i) => (
             <Link
               key={s.to}
               to={s.to}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
-              className="group relative overflow-hidden rounded-3xl bg-white p-4 border border-navy/5 card-lift"
+              className="group relative overflow-hidden rounded-3xl bg-white p-3 border border-navy/5 card-lift"
             >
 
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-6">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
                 <img
                   src={s.img}
                   alt={s.title}
                   loading="lazy"
                   width={800}
-                  height={1000}
+                  height={600}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[900ms] ease-out"
                 />
               </div>
-              <div className="px-3 pb-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-blue mb-2">{s.tag}</p>
-                <h3 className="text-2xl font-display font-semibold text-navy mb-2">{s.title}</h3>
-                <p className="text-navy/60 text-sm mb-5">{s.body}</p>
+              <div className="px-3 pb-3">
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-blue mb-1.5">{s.tag}</p>
+                <h3 className="text-xl font-display font-semibold text-navy mb-1.5">{s.title}</h3>
+                <p className="text-navy/60 text-sm mb-4">{s.body}</p>
                 <span className="text-brand-blue font-semibold flex items-center gap-2 text-sm group-hover:gap-3 transition-all">
                   Explore range <ArrowRight className="size-4" />
                 </span>

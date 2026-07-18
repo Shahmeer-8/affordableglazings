@@ -161,6 +161,38 @@
   .animate-hero-pan { animation: none; transform: scale(1.02); }
   .animate-reveal, .animate-fade-in { animation: none; opacity: 1; transform: none; }
 }
+
+/* Hero headline — masked word-by-word rise */
+@keyframes word-rise {
+  to { transform: translateY(0); }
+}
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.hero-word {
+  display: inline-block;
+  transform: translateY(115%);
+  animation: word-rise 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: var(--wd, 0ms);
+}
+
+/* Slow drift across the brand gradient (pairs with text-gradient-brand) */
+@keyframes gradient-drift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+.text-gradient-animate {
+  background-size: 200% 100%;
+  animation: gradient-drift 6s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word { animation: none; transform: none; }
+  .text-gradient-animate { animation: none; }
+}
 @utility glass {
   background: color-mix(in oklab, white 60%, transparent);
   backdrop-filter: blur(18px) saturate(140%);
