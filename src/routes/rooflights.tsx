@@ -71,8 +71,8 @@ function RooflightsPage() {
       </section>
 
       {/* Intro */}
-      <section className="py-24 bg-white">
-        <div className="container-page grid lg:grid-cols-12 gap-14 items-start">
+      <section className="py-14 md:py-16 bg-white">
+        <div className="container-page grid lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why roof glazing</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] text-balance">

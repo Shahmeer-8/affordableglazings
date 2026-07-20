@@ -92,8 +92,8 @@ function Page() {
       </section>
 
       {/* Intro */}
-      <section className="py-28 bg-white">
-        <div className="container-page grid lg:grid-cols-12 gap-14 items-start">
+      <section className="py-14 md:py-20 bg-white">
+        <div className="container-page grid lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Introduction</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] text-balance">More than a room. A different way of living at home.</h2>
@@ -109,9 +109,9 @@ function Page() {
       <ProductRange category="Conservatories" dark />
 
       {/* Why build */}
-      <section className="py-28 bg-canvas">
+      <section className="py-14 md:py-20 bg-canvas">
         <div className="container-page">
-          <div className="max-w-2xl mb-16" data-reveal="up">
+          <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Why build a conservatory</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Four reasons your future self will thank you.</h2>
           </div>
@@ -140,9 +140,9 @@ function Page() {
       </section>
 
       {/* Roofs */}
-      <section className="py-28 bg-navy text-white">
+      <section className="py-14 md:py-20 bg-navy text-white">
         <div className="container-page">
-          <div className="max-w-2xl mb-16" data-reveal="up">
+          <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Roof options</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">The roof does the heavy lifting.</h2>
             <p className="mt-6 text-white/60 text-lg">Glass or tile, lantern or lean-to — the roof you choose defines the room, the light, the temperature, and the energy bill.</p>
@@ -168,8 +168,8 @@ function Page() {
       </section>
 
       {/* Planning */}
-      <section className="py-28 bg-canvas">
-        <div className="container-page grid lg:grid-cols-12 gap-14 items-center">
+      <section className="py-14 md:py-20 bg-canvas">
+        <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Planning advice</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">We handle the paperwork.</h2>
@@ -190,9 +190,9 @@ function Page() {
       </section>
 
       {/* Process */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="container-page">
-          <div className="max-w-2xl mb-16" data-reveal="up">
+          <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Construction process</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Six stages, one team.</h2>
           </div>
@@ -209,7 +209,7 @@ function Page() {
       </section>
 
       {/* Before & After / project gallery */}
-      <section className="py-28 bg-canvas">
+      <section className="py-14 md:py-20 bg-canvas">
         <div className="container-page">
           <div className="flex items-end justify-between mb-12" data-reveal="up">
             <div className="max-w-xl">
@@ -229,8 +229,8 @@ function Page() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-28 bg-white">
-        <div className="container-page grid lg:grid-cols-2 gap-14 items-center">
+      <section className="py-14 md:py-20 bg-white">
+        <div className="container-page grid lg:grid-cols-2 gap-8 items-center">
           <div className="rounded-[32px] overflow-hidden aspect-[4/5]" data-reveal="left">
             <img src={homeowners} alt="Happy homeowners in front of their new conservatory" className="w-full h-full object-cover" loading="lazy" />
           </div>
@@ -248,8 +248,8 @@ function Page() {
       </section>
 
       {/* FAQ */}
-      <section className="py-28 bg-soft-gray">
-        <div className="container-page grid lg:grid-cols-12 gap-14">
+      <section className="py-14 md:py-20 bg-soft-gray">
+        <div className="container-page grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">FAQs</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Questions from prospective clients.</h2>
@@ -273,7 +273,7 @@ function Page() {
       </section>
 
       {/* Related */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid md:grid-cols-2 gap-6">
           {[
             { to: "/windows" as const, t: "Windows", d: "Complete the glazing story", img: productWindows },

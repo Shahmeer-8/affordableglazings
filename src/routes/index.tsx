@@ -206,7 +206,7 @@ const SERVICES = [
 
 function Services() {
   return (
-    <section className="py-20 md:py-24">
+    <section className="pt-12 md:pt-16 pb-8 md:pb-10">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
           <div className="max-w-xl">
@@ -267,9 +267,9 @@ const WHY = [
 
 function WhyUs() {
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-14 md:py-20 bg-white">
       <div className="container-page">
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-8">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why choose us</p>
           <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] text-balance">
             Craftsmanship you can feel, performance you can measure.
@@ -308,11 +308,11 @@ function Performance() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-navy text-white overflow-hidden relative">
+    <section className="py-14 md:py-20 bg-navy text-white overflow-hidden relative">
       <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/25 blur-3xl animate-float" />
       <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue-2/15 blur-3xl" />
 
-      <div className="container-page grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative">
+      <div className="container-page grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center relative">
         <div className="space-y-10">
           <p data-reveal="up" className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em]">Performance</p>
           <h2 data-reveal="up" style={{ ["--reveal-delay" as never]: "80ms" }} className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold leading-[1.02]">
@@ -390,9 +390,9 @@ const STEPS = [
 
 function Process() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="pt-8 md:pt-10 pb-14 md:pb-20">
       <div className="container-page">
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-8">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The process</p>
           <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">
             Four steps, one flawless finish.
@@ -425,8 +425,8 @@ function Process() {
 
 function BeforeAfter() {
   return (
-    <section className="py-24 md:py-32 bg-white">
-      <div className="container-page grid lg:grid-cols-2 gap-16 items-center">
+    <section className="py-14 md:py-20 bg-white">
+      <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Recent projects</p>
           <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">
@@ -482,9 +482,9 @@ function initials(name: string) {
 
 function Testimonials() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-14 md:py-20">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-14">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-8">
           <div>
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Reviews</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] max-w-xl">
@@ -543,9 +543,9 @@ const POSTS = [
 
 function Journal() {
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-14 md:py-20 bg-white">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-14">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-8">
           <div>
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Journal</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">

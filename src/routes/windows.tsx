@@ -109,8 +109,8 @@ function WindowsPage() {
       <ProductRange category="Windows" dark />
 
       {/* Intro editorial */}
-      <section className="py-28 bg-white">
-        <div className="container-page grid lg:grid-cols-12 gap-16 items-start">
+      <section className="py-14 md:py-20 bg-white">
+        <div className="container-page grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-32" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The brief</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">
@@ -142,10 +142,10 @@ function WindowsPage() {
       </section>
 
       {/* Performance */}
-      <section className="py-28 bg-navy text-white relative overflow-hidden">
+      <section className="py-14 md:py-20 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, var(--brand-blue) 0%, transparent 50%)" }} />
         <div className="container-page relative">
-          <div className="max-w-2xl mb-16" data-reveal="up">
+          <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Performance</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">Silence. Warmth. Security. Measured.</h2>
           </div>
@@ -162,9 +162,9 @@ function WindowsPage() {
       </section>
 
       {/* Glass options */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="container-page">
-          <div className="grid lg:grid-cols-12 gap-14">
+          <div className="grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-5" data-reveal="left">
               <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Glass options</p>
               <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">The glass is where the magic happens.</h2>
@@ -185,9 +185,9 @@ function WindowsPage() {
       </section>
 
       {/* Colours */}
-      <section className="py-28 bg-soft-gray">
+      <section className="py-14 md:py-20 bg-soft-gray">
         <div className="container-page">
-          <div className="max-w-2xl mb-14" data-reveal="up">
+          <div className="max-w-2xl mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Colour & finish</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">200+ RAL colours. Zero compromise.</h2>
             <p className="mt-6 text-lg text-navy/60">Dual-tone, textured, matt, satin or high-gloss — the entire RAL palette is available, alongside hand-applied woodgrain foils that even joiners struggle to tell from timber.</p>
@@ -204,7 +204,7 @@ function WindowsPage() {
       </section>
 
       {/* Hardware / Security row */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="container-page grid lg:grid-cols-3 gap-6">
           {[
             { icon: Lock, t: "Multi-point locking", d: "Shootbolts, mushroom cams and anti-lift blocks on every opening sash." },
@@ -221,8 +221,8 @@ function WindowsPage() {
       </section>
 
       {/* Manufacturing & process */}
-      <section className="py-28 bg-canvas">
-        <div className="container-page grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-14 md:py-20 bg-canvas">
+        <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
           <div className="rounded-[36px] overflow-hidden aspect-[4/5] shadow-elegant" data-reveal="left">
             <img src={installer} alt="Professional window installer at work" className="w-full h-full object-cover" loading="lazy" />
           </div>
@@ -245,7 +245,7 @@ function WindowsPage() {
       </section>
 
       {/* Testimonial pair */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="container-page grid md:grid-cols-2 gap-10">
           {[
             { q: "The old sash windows in our Victorian townhouse were letting the winter in. The new heritage sashes look period-perfect and the house is warm for the first time in twenty years.", n: "Michael & Priya D.", w: "Islington, London", img: homeowners },
@@ -267,8 +267,8 @@ function WindowsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-28 bg-soft-gray">
-        <div className="container-page grid lg:grid-cols-12 gap-14">
+      <section className="py-14 md:py-20 bg-soft-gray">
+        <div className="container-page grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">FAQs</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Everything you wanted to ask.</h2>
@@ -289,7 +289,7 @@ function WindowsPage() {
       </section>
 
       {/* Related */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page">
           <div className="flex items-end justify-between mb-12" data-reveal="up">
             <div>

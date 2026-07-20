@@ -109,7 +109,7 @@ function DoorsPage() {
       </section>
 
       {/* Intro */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page max-w-4xl text-center" data-reveal="up">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The threshold matters</p>
           <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.05] mb-8 text-balance">
@@ -136,8 +136,8 @@ function DoorsPage() {
       </section>
 
       {/* Security */}
-      <section className="py-28 bg-white">
-        <div className="container-page grid lg:grid-cols-12 gap-14 items-center">
+      <section className="py-14 md:py-20 bg-white">
+        <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Security</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">Peace of mind, engineered into every millimetre.</h2>
@@ -156,8 +156,8 @@ function DoorsPage() {
       </section>
 
       {/* Smart lock */}
-      <section className="py-28 bg-soft-gray">
-        <div className="container-page grid lg:grid-cols-2 gap-14 items-center">
+      <section className="py-14 md:py-20 bg-soft-gray">
+        <div className="container-page grid lg:grid-cols-2 gap-8 items-center">
           <div data-reveal="left" className="order-2 lg:order-1">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Smart-lock ready</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-8">Your keys, whenever you want them.</h2>
@@ -182,9 +182,9 @@ function DoorsPage() {
       </section>
 
       {/* Colour + Glass */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="container-page">
-          <div className="max-w-2xl mb-16" data-reveal="up">
+          <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Design your door</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Colour. Glass. Hardware. Yours.</h2>
           </div>
@@ -218,7 +218,7 @@ function DoorsPage() {
       </section>
 
       {/* Gallery grid */}
-      <section className="py-24 bg-canvas">
+      <section className="py-14 md:py-16 bg-canvas">
         <div className="container-page">
           <div className="flex items-end justify-between mb-10" data-reveal="up">
             <div>
@@ -238,9 +238,9 @@ function DoorsPage() {
       </section>
 
       {/* Process — vertical */}
-      <section className="py-28 bg-navy text-white">
+      <section className="py-14 md:py-20 bg-navy text-white">
         <div className="container-page">
-          <div className="max-w-2xl mb-16" data-reveal="up">
+          <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">How we install</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">Four unhurried steps.</h2>
           </div>
@@ -257,7 +257,7 @@ function DoorsPage() {
       </section>
 
       {/* Reviews strip */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page">
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -279,9 +279,9 @@ function DoorsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-28 bg-soft-gray">
+      <section className="py-14 md:py-20 bg-soft-gray">
         <div className="container-page max-w-4xl">
-          <div className="text-center mb-14" data-reveal="up">
+          <div className="text-center mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Frequently asked</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Doors, answered.</h2>
           </div>
@@ -297,7 +297,7 @@ function DoorsPage() {
       </section>
 
       {/* Related */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid md:grid-cols-2 gap-6">
           {[
             { to: "/windows" as const, t: "Windows", d: "Casement, sash, tilt & turn", img: productWindows },

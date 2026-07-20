@@ -11,7 +11,7 @@ export function ProductRange({ category, dark = false }: { category: string; dar
   if (!cat) return null;
 
   return (
-    <section id="range" className={`scroll-mt-28 py-24 md:py-28 ${dark ? "bg-soft-gray" : "bg-white"}`}>
+    <section id="range" className={`scroll-mt-20 py-14 md:py-16 ${dark ? "bg-soft-gray" : "bg-white"}`}>
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div className="max-w-2xl">

@@ -6,7 +6,7 @@ export function CtaBanner({
   subtitle = "Request a bespoke consultation with our specialists. Free, no-obligation, delivered within 24 hours.",
 }: { title?: string; subtitle?: string }) {
   return (
-    <section className="py-24 md:py-32 px-6">
+    <section className="py-14 md:py-20 px-6">
       <div className="max-w-7xl mx-auto bg-brand-blue rounded-[40px] p-12 md:p-24 relative overflow-hidden">
         <div className="relative z-10 text-center max-w-2xl mx-auto space-y-8">
           <h2 className="text-4xl md:text-6xl font-display font-semibold text-white leading-[1.05]">{title}</h2>

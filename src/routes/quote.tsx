@@ -30,7 +30,7 @@ function QuotePage() {
   const [done, setDone] = useState(false);
 
   return (
-    <section className="pt-32 pb-24 min-h-screen">
+    <section className="pt-28 pb-16 min-h-screen">
       <div className="container-page max-w-3xl">
         <div className="mb-10">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Free quote · 60 seconds</p>

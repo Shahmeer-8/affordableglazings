@@ -75,7 +75,7 @@ function ProductDetailPage() {
 
 function Features({ product }: { product: Product }) {
   return (
-    <section className="py-20 md:py-24 bg-white">
+    <section className="py-12 md:py-16 bg-white">
       <div className="container-page">
         <div className="max-w-2xl mb-12">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why choose this range</p>
@@ -110,7 +110,7 @@ function Gallery({ product }: { product: Product }) {
   }));
 
   return (
-    <section className="py-20 md:py-24">
+    <section className="py-12 md:py-16">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div>

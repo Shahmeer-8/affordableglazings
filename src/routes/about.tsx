@@ -39,7 +39,7 @@ function AboutContactPage() {
 
       {/* Story */}
       <section className="py-16">
-        <div className="container-page grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
           <div className="rounded-[36px] overflow-hidden aspect-[4/5] shadow-elegant">
             <img src={craftsman} alt="Craftsman at work" className="w-full h-full object-cover" loading="lazy" />
           </div>
@@ -52,7 +52,7 @@ function AboutContactPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { k: "30+", l: "Years of craft" },
@@ -69,9 +69,9 @@ function AboutContactPage() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-28 py-24">
+      <section id="contact" className="scroll-mt-20 py-14 md:py-20">
         <div className="container-page">
-          <div className="max-w-2xl mb-14">
+          <div className="max-w-2xl mb-8">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Get in touch</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] text-balance">
               Let's start the conversation.
@@ -125,7 +125,7 @@ function AboutContactPage() {
       </section>
 
       {/* Coverage */}
-      <section className="pb-24">
+      <section className="pb-14 md:pb-20">
         <div className="container-page">
           <div className="rounded-[36px] overflow-hidden min-h-[22rem] md:aspect-[16/6] bg-gradient-to-br from-navy to-brand-blue relative text-white p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
             <div className="relative z-10 max-w-xs shrink-0">
