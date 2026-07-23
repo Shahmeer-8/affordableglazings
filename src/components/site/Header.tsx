@@ -117,6 +117,15 @@ export function Header() {
 
             {/* Primary nav (desktop) */}
             <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-semibold text-navy">
+              <Link
+                to="/"
+                onMouseEnter={() => openMenu("")}
+                className="h-[74px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
+                activeProps={{ className: "text-brand-blue" }}
+                activeOptions={{ exact: true }}
+              >
+                Home
+              </Link>
               {MEGA.map((m) => (
                 <button
                   key={m.key}
@@ -348,6 +357,9 @@ function MobileDrawer({
           </form>
 
           <nav className="flex flex-col" aria-label="Mobile">
+            <Link to="/" onClick={onClose} className="py-3.5 text-base font-semibold text-navy border-b border-navy/5">
+              Home
+            </Link>
             {MEGA.map((m) => {
               const cat = PRODUCT_CATEGORIES.find((c) => c.title === m.category);
               const isOpen = expanded === m.key;
