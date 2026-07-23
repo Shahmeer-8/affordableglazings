@@ -24,7 +24,7 @@ function QuotePage() {
             Tell us about your <span className="text-brand-blue">project.</span>
           </h1>
         </div>
-        <QuoteWizard />
+        <QuoteWizard showIntro={false} />
       </div>
     </section>
   );
