@@ -201,8 +201,19 @@
 @utility animate-slide-in-right {
   animation: slide-in-right 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Header dropdown / mega-menu entrance */
+@keyframes mega-drop {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@utility animate-mega-drop {
+  animation: mega-drop 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-slide-in-right { animation: none; }
+  .animate-slide-in-right,
+  .animate-mega-drop { animation: none; }
 }
 @utility glass {
   background: color-mix(in oklab, white 60%, transparent);
