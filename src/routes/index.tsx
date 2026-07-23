@@ -429,28 +429,36 @@ function Process() {
 
 function BeforeAfter() {
   return (
-    <section className="py-14 md:py-16 bg-white">
-      <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
+    <section className="py-12 md:py-16 bg-white">
+      <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Recent projects</p>
-          <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">
+          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Recent projects</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-navy leading-[1.05] mb-3">
             See the difference precision makes.
           </h2>
-          <p className="text-navy/60 leading-relaxed mb-8 max-w-lg">
-            From dated conservatories to award-winning glass extensions — every project tells a story of transformation, comfort and value.
+          <p className="text-navy/60 leading-relaxed mb-5 max-w-lg">
+            From dated conservatories to award-winning glass extensions — every project tells a story of transformation.
           </p>
-          <p className="text-sm text-navy/40 mb-8 flex items-center gap-2">
-            <span className="size-1.5 rounded-full bg-brass" />
-            Drag the slider to compare
-          </p>
-          <Link
-            to="/gallery"
-            className="inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
-          >
-            View the full gallery <ArrowRight className="size-4" />
-          </Link>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-2 bg-navy text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
+            >
+              View the full gallery <ArrowRight className="size-4" />
+            </Link>
+            <span className="text-sm text-navy/40 flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-brass" />
+              Drag to compare
+            </span>
+          </div>
         </div>
-        <BeforeAfterSlider before={consVictorian} after={consTiled} beforeLabel="Before" afterLabel="After" />
+        <BeforeAfterSlider
+          before={consVictorian}
+          after={consTiled}
+          beforeLabel="Before"
+          afterLabel="After"
+          className="mx-auto w-full max-w-xl"
+        />
       </div>
     </section>
   );

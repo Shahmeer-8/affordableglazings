@@ -42,7 +42,7 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className={`relative select-none overflow-hidden rounded-3xl aspect-[4/5] cursor-ew-resize touch-none ${className}`}
+      className={`relative select-none overflow-hidden rounded-3xl aspect-[4/3] w-full cursor-ew-resize touch-none ${className}`}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
