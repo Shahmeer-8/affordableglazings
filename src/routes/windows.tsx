@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, CheckCircle2, Layers, Palette, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Ruler, Lock, Sun } from "lucide-react";
+import { ArrowRight, Award, Layers, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Sun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
 import windowsHero from "@/assets/windows-hero.jpg";
-import windowsDetail from "@/assets/windows-detail.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
 import installer from "@/assets/installer.jpg";
 import productDoors from "@/assets/product-doors.jpg";
@@ -50,6 +49,14 @@ const COLOURS = [
   { name: "Rosewood", hex: "#4a2a1a" },
   { name: "Irish Oak", hex: "#6b3f22" },
   { name: "Arctic White", hex: "#f5f5f2" },
+];
+
+const HANDLES = [
+  { name: "Chrome", hex: "linear-gradient(135deg,#e6eaee,#aab2ba)" },
+  { name: "Brushed Nickel", hex: "linear-gradient(135deg,#c3c4bd,#9a9b93)" },
+  { name: "Brass", hex: "linear-gradient(135deg,#d8b878,#a97f3f)" },
+  { name: "Matt Black", hex: "#17181b" },
+  { name: "Heritage Cast Iron", hex: "#33352f" },
 ];
 
 const PROCESS = [
@@ -106,29 +113,8 @@ function WindowsPage() {
       {/* Product range */}
       <ProductRange category="Windows" dark />
 
-      {/* Intro editorial */}
-      <section className="py-14 md:py-16 bg-white">
-        <div className="container-page grid lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-5 lg:sticky lg:top-32" data-reveal="left">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The brief</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">
-              Every window we fit is an act of quiet craftsmanship.
-            </h2>
-          </div>
-          <div className="lg:col-span-7 space-y-6 text-lg text-navy/70 leading-relaxed" data-reveal="right">
-            <p>For more than two decades we have been designing, building and installing windows for British homes — from Grade-II listed cottages to contemporary new-builds. Every project begins the same way: a real conversation, on your sofa, with the person who will manage your installation.</p>
-            <p>We only work with manufacturers whose factories we have visited, whose steel reinforcement we have weighed, and whose hardware we have stress-tested. When a window carries our name, it is because it has earned it.</p>
-            <div className="grid sm:grid-cols-2 gap-4 pt-4">
-              {["Which? Trusted Trader", "FENSA registered", "Secured by Design", "Made in Britain"].map((c) => (
-                <div key={c} className="flex items-center gap-3 text-sm text-navy font-medium"><CheckCircle2 className="size-5 text-brand-blue shrink-0" />{c}</div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Full-bleed lifestyle */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section className="relative h-[48vh] min-h-[340px] overflow-hidden">
         <img src={windowsInterior} alt="Luxury interior flooded with light through floor-to-ceiling windows" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
         <div className="container-page relative z-10 h-full flex items-end pb-16">
@@ -162,19 +148,48 @@ function WindowsPage() {
       {/* Glass options */}
       <section className="py-14 md:py-16 bg-white">
         <div className="container-page">
-          <div className="grid lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-5" data-reveal="left">
-              <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Glass options</p>
-              <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">The glass is where the magic happens.</h2>
-              <p className="text-navy/65 leading-relaxed mb-8">More than 70% of a window's performance is decided by the glass. We build every sealed unit around the way you live — from north-facing bedrooms to south-facing kitchens, from bustling town centres to rural retreats.</p>
-              <img src={windowsDetail} alt="Close-up of premium aluminium window frame detail" className="rounded-3xl w-full aspect-[4/5] object-cover shadow-elegant" loading="lazy" />
-            </div>
-            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4" data-reveal="right">
-              {GLASS.map((g) => (
-                <div key={g.title} className="p-7 rounded-2xl bg-soft-gray border border-transparent hover:border-brand-blue/30 hover:bg-white hover:shadow-soft transition-all">
-                  <Layers className="size-5 text-brand-blue mb-4" />
-                  <h3 className="font-display font-semibold text-navy text-lg mb-2">{g.title}</h3>
-                  <p className="text-sm text-navy/60 leading-relaxed">{g.body}</p>
+          <div className="max-w-2xl mb-8" data-reveal="up">
+            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Glass options</p>
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-3">The glass is where the magic happens.</h2>
+            <p className="text-navy/60 leading-relaxed">More than 70% of a window's performance is decided by the glass — we build every sealed unit around the way you live.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GLASS.map((g, i) => (
+              <div key={g.title} data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>} className="p-5 rounded-2xl bg-soft-gray border border-transparent hover:border-brand-blue/30 hover:bg-white hover:shadow-soft transition-all">
+                <Layers className="size-5 text-brand-blue mb-3" />
+                <h3 className="font-display font-semibold text-navy mb-1.5">{g.title}</h3>
+                <p className="text-sm text-navy/60 leading-relaxed">{g.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Colours & handle finishes */}
+      <section className="py-14 md:py-16 bg-soft-gray">
+        <div className="container-page">
+          <div className="max-w-2xl mb-8" data-reveal="up">
+            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Colour & finish</p>
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-3">200+ RAL colours. Zero compromise.</h2>
+            <p className="text-navy/60">Matt, satin, textured or high-gloss — plus hand-applied woodgrain foils and a full range of handle finishes.</p>
+          </div>
+
+          <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
+            {COLOURS.map((c, i) => (
+              <div key={c.name} className="group" data-reveal="zoom" style={{ ["--reveal-delay" as string]: `${i * 40}ms` } as Record<string, string>}>
+                <div className="aspect-square rounded-xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} />
+                <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <p className="text-xs font-bold text-navy/50 uppercase tracking-[0.18em] mb-4">Handle finishes</p>
+            <div className="flex flex-wrap gap-x-8 gap-y-4">
+              {HANDLES.map((h) => (
+                <div key={h.name} className="flex items-center gap-3">
+                  <span className="size-8 rounded-full shadow-soft ring-1 ring-navy/10" style={{ background: h.hex }} />
+                  <span className="text-sm font-medium text-navy">{h.name}</span>
                 </div>
               ))}
             </div>
@@ -182,57 +197,21 @@ function WindowsPage() {
         </div>
       </section>
 
-      {/* Colours */}
-      <section className="py-14 md:py-16 bg-soft-gray">
-        <div className="container-page">
-          <div className="max-w-2xl mb-8" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Colour & finish</p>
-            <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">200+ RAL colours. Zero compromise.</h2>
-            <p className="mt-6 text-lg text-navy/60">Dual-tone, textured, matt, satin or high-gloss — the entire RAL palette is available, alongside hand-applied woodgrain foils that even joiners struggle to tell from timber.</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-            {COLOURS.map((c, i) => (
-              <div key={c.name} className="group" data-reveal="zoom" style={{ ["--reveal-delay" as string]: `${i * 50}ms` } as Record<string, string>}>
-                <div className="aspect-square rounded-2xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} />
-                <p className="mt-3 text-xs font-medium text-navy text-center">{c.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Hardware / Security row */}
-      <section className="py-14 md:py-16 bg-white">
-        <div className="container-page grid lg:grid-cols-3 gap-6">
-          {[
-            { icon: Lock, t: "Multi-point locking", d: "Shootbolts, mushroom cams and anti-lift blocks on every opening sash." },
-            { icon: Palette, t: "Premium handles", d: "Chrome, brushed nickel, brass, black and heritage cast iron finishes." },
-            { icon: Ruler, t: "Trickle vents", d: "Discreet acoustic trickle vents that meet Part F Building Regs 2022." },
-          ].map(({ icon: Icon, t, d }, i) => (
-            <div key={t} className="p-10 rounded-3xl bg-canvas border border-navy/5 card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 120}ms` } as Record<string, string>}>
-              <Icon className="size-8 text-brand-blue mb-6" />
-              <h3 className="text-2xl font-display font-semibold text-navy mb-3">{t}</h3>
-              <p className="text-navy/60 leading-relaxed">{d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Manufacturing & process */}
       <section className="py-14 md:py-16 bg-canvas">
-        <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
-          <div className="rounded-[36px] overflow-hidden aspect-[4/5] shadow-elegant" data-reveal="left">
+        <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="rounded-[28px] overflow-hidden aspect-[4/3] shadow-elegant" data-reveal="left">
             <img src={installer} alt="Professional window installer at work" className="w-full h-full object-cover" loading="lazy" />
           </div>
           <div data-reveal="right">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our process</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-10">From first visit to final polish.</h2>
-            <ol className="space-y-6">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-6">From first visit to final polish.</h2>
+            <ol className="space-y-4">
               {PROCESS.map((p) => (
-                <li key={p.n} className="flex gap-6 group">
-                  <div className="text-3xl font-display font-semibold text-brand-blue/50 group-hover:text-brand-blue transition-colors shrink-0 w-14">{p.n}</div>
+                <li key={p.n} className="flex gap-5 group">
+                  <div className="text-2xl font-display font-semibold text-brand-blue/50 group-hover:text-brand-blue transition-colors shrink-0 w-10">{p.n}</div>
                   <div>
-                    <h3 className="font-display font-semibold text-navy text-lg mb-1">{p.t}</h3>
+                    <h3 className="font-display font-semibold text-navy mb-0.5">{p.t}</h3>
                     <p className="text-navy/60 text-sm leading-relaxed">{p.d}</p>
                   </div>
                 </li>

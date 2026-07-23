@@ -21,9 +21,6 @@ import productConservatories from "@/assets/product-conservatories.jpg";
 import craftsman from "@/assets/craftsman.jpg";
 import consVictorian from "@/assets/cons-victorian.jpg";
 import consTiled from "@/assets/cons-tiled.jpg";
-import windowsSash from "@/assets/windows-sash.jpg";
-import windowsDetail from "@/assets/windows-detail.jpg";
-import doorsBifold from "@/assets/doors-bifold.jpg";
 import heroVideo from "@/assets/hero-video.mp4";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
@@ -547,55 +544,21 @@ function Testimonials() {
 
 /* ------------------------------ JOURNAL ----------------------------- */
 
-const POSTS = [
-  { title: "Choosing the right glazing for a period property", tag: "Guides", read: "6 min", img: windowsSash },
-  { title: "How A++ windows lower your energy bills in 2026", tag: "Efficiency", read: "4 min", img: windowsDetail },
-  { title: "Bi-folds vs sliding doors: a designer's take", tag: "Design", read: "8 min", img: doorsBifold },
-];
-
 function Journal() {
   return (
     <section className="py-14 md:py-16 bg-white">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-8">
-          <div>
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Journal</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">
-              Insights from the workshop.
-            </h2>
-          </div>
-          <Link to="/blog" className="text-sm font-semibold text-navy hover:text-brand-blue inline-flex items-center gap-2">
-            All articles <ArrowRight className="size-4" />
+        <div className="rounded-[32px] bg-soft-gray border border-navy/5 px-8 py-12 md:px-14 md:py-14 text-center flex flex-col items-center" data-reveal="up">
+          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our work</p>
+          <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] max-w-xl">
+            See what precision looks like in real British homes.
+          </h2>
+          <Link
+            to="/gallery"
+            className="mt-7 inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
+          >
+            Browse the gallery <ArrowRight className="size-4" />
           </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {POSTS.map((p, i) => (
-            <Link
-              key={p.title}
-              to="/blog"
-              data-reveal="up"
-              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
-              className="group rounded-3xl overflow-hidden bg-soft-gray hover:bg-navy hover:text-white hover:-translate-y-1 hover:shadow-elegant transition-all duration-500"
-            >
-              <div className="aspect-[4/3] bg-navy/5 relative overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/0 to-navy/0" />
-                <span className="absolute top-4 left-4 text-[10px] font-bold tracking-[0.2em] uppercase bg-white/90 text-navy px-3 py-1.5 rounded-full">
-                  {p.tag}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-display font-semibold mb-3 leading-tight">{p.title}</h3>
-                <div className="text-xs uppercase tracking-widest opacity-60">{p.read} read</div>
-              </div>
-            </Link>
-          ))}
         </div>
       </div>
     </section>

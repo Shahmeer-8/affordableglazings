@@ -3,9 +3,9 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-navy/5 pt-16 pb-12">
+    <footer className="bg-white border-t border-navy/5 pt-14 pb-10">
       <div className="container-page">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 mb-12">
           <div className="col-span-2">
             <div className="text-2xl font-display font-semibold mb-5 text-navy">
               Affordable<span className="text-brand-blue">Glazings</span>
@@ -53,9 +53,17 @@ export function Footer() {
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <h5 className="font-bold uppercase text-[10px] tracking-widest text-navy/40 mb-5">Get in touch</h5>
             <ul className="space-y-3 text-sm text-navy/70">
-              <li className="flex items-start gap-2"><Phone className="size-4 mt-0.5 text-brand-blue" /> 0800 123 4567</li>
-              <li className="flex items-start gap-2"><Mail className="size-4 mt-0.5 text-brand-blue" /> hello@affordableglazings.co.uk</li>
-              <li className="flex items-start gap-2"><MapPin className="size-4 mt-0.5 text-brand-blue" /> Mayfair Industrial Estate, London</li>
+              <li>
+                <a href="tel:08001234567" className="flex items-start gap-2 hover:text-brand-blue transition-colors">
+                  <Phone className="size-4 mt-0.5 text-brand-blue shrink-0" /> 0800 123 4567
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@affordableglazings.co.uk" className="flex items-start gap-2 hover:text-brand-blue transition-colors break-all">
+                  <Mail className="size-4 mt-0.5 text-brand-blue shrink-0" /> hello@affordableglazings.co.uk
+                </a>
+              </li>
+              <li className="flex items-start gap-2"><MapPin className="size-4 mt-0.5 text-brand-blue shrink-0" /> Mayfair Industrial Estate, London</li>
             </ul>
           </div>
         </div>
