@@ -5,6 +5,7 @@ import {
   Award,
   BadgeCheck,
   Clock,
+  Flag,
   Hammer,
   Leaf,
   Ruler,
@@ -136,17 +137,20 @@ function Hero() {
             </Link>
           </div>
 
-          <div
-            style={{ animationDelay: "800ms" }}
-            className="animate-reveal pt-4 flex flex-wrap gap-2.5"
-          >
-            {["10-Year Guarantee", "A++ Energy Rated", "4.9/5 Google Reviews"].map((s) => (
+          <div className="pt-5 flex flex-wrap gap-2.5">
+            {[
+              { icon: Award, label: "10-Year Guarantee" },
+              { icon: Flag, label: "Made in Britain" },
+              { icon: Leaf, label: "A++ Energy Rated" },
+              { icon: ShieldCheck, label: "FENSA Registered" },
+            ].map(({ icon: Icon, label }, i) => (
               <span
-                key={s}
-                className="inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 text-xs font-semibold text-white/85 border border-white/10"
+                key={label}
+                style={{ animationDelay: `${900 + i * 130}ms` }}
+                className="animate-reveal inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 text-xs font-semibold text-white/85 border border-white/10 transition-transform duration-300 hover:-translate-y-0.5 hover:border-brass/40"
               >
-                <BadgeCheck className="size-3.5 text-brand-blue-2" />
-                {s}
+                <Icon className="size-3.5 text-brand-blue-2" />
+                {label}
               </span>
             ))}
           </div>

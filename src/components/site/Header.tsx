@@ -1,17 +1,6 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import {
-  Award,
-  BadgeCheck,
-  ChevronDown,
-  Flag,
-  Leaf,
-  Menu,
-  Phone,
-  Search,
-  ShieldCheck,
-  X,
-} from "lucide-react";
+import { ChevronDown, Menu, Phone, Search, X } from "lucide-react";
 import { PRODUCT_CATEGORIES } from "@/data/products";
 import windowsHero from "@/assets/windows-hero.jpg";
 import doorsHero from "@/assets/doors-hero.jpg";
@@ -63,13 +52,6 @@ const SIMPLE: { key: string; label: string; links: { label: string; to: string; 
   },
 ];
 
-const TRUST = [
-  { icon: Award, label: "10-Year Guarantee" },
-  { icon: Flag, label: "Made in Britain" },
-  { icon: Leaf, label: "A++ Energy Rated" },
-  { icon: ShieldCheck, label: "FENSA Registered" },
-];
-
 export function Header() {
   const [active, setActive] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -110,66 +92,19 @@ export function Header() {
   };
 
   const activeMega = MEGA.find((m) => m.key === active);
-  const activeSimple = SIMPLE.find((m) => m.key === active);
 
   return (
     <header className="relative z-50">
-      {/* Sticky block: utility row + nav row (+ dropdown panels). Trust strip below scrolls away. */}
       <div className="sticky top-0 z-50 bg-white border-b border-navy/10">
-        {/* Utility row */}
-        <div className="container-page flex items-center gap-4 lg:gap-6 h-16 lg:h-[68px]">
-          <Link to="/" className="shrink-0 text-xl lg:text-2xl font-display font-semibold tracking-tight text-navy">
-            Affordable<span className="text-brand-blue">Glazings</span>
-          </Link>
-
-          <form onSubmit={submitSearch} className="hidden md:block relative flex-1 max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-navy/40" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search windows, doors, conservatories…"
-              aria-label="Search products"
-              className="w-full pl-11 pr-4 py-2.5 rounded-full bg-soft-gray border border-transparent text-sm text-navy outline-none focus:border-brand-blue/40 focus:bg-white transition-colors"
-            />
-          </form>
-
-          <div className="ml-auto flex items-center gap-3 lg:gap-5 shrink-0">
-            <a href={PHONE_HREF} className="hidden lg:block text-right leading-tight group">
-              <span className="block text-lg font-display font-semibold text-navy group-hover:text-brand-blue transition-colors">
-                {PHONE_DISPLAY}
-              </span>
-              <span className="block text-[11px] text-navy/50">Mon–Sat, 8am–6pm</span>
-            </a>
-            <a href={PHONE_HREF} className="lg:hidden inline-flex items-center justify-center size-10 rounded-full bg-soft-gray text-navy" aria-label="Call us">
-              <Phone className="size-4" />
-            </a>
-            <Link
-              to="/quote"
-              className="hidden sm:inline-flex items-center gap-2 bg-brand-blue text-white pl-5 pr-4 py-2.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors shadow-soft"
-            >
-              Free Quote
-              <span className="inline-flex items-center justify-center size-5 rounded-full bg-white/20">
-                <ChevronDown className="size-3.5 -rotate-90" />
-              </span>
+        <div className="relative" onMouseLeave={scheduleClose}>
+          <div className="container-page flex items-center gap-8 h-16 lg:h-[74px]">
+            {/* Logo — sits before the primary nav, with a comfortable gap */}
+            <Link to="/" className="shrink-0 text-xl lg:text-2xl font-display font-semibold tracking-tight text-navy">
+              Affordable<span className="text-brand-blue">Glazings</span>
             </Link>
-            <button
-              aria-label="Open menu"
-              aria-expanded={mobileOpen}
-              className="lg:hidden inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy"
-              onClick={() => setMobileOpen(true)}
-            >
-              <Menu className="size-5" />
-            </button>
-          </div>
-        </div>
 
-        {/* Nav row (desktop) + dropdown panels */}
-        <div
-          className="hidden lg:block relative border-t border-navy/5"
-          onMouseLeave={scheduleClose}
-        >
-          <div className="container-page flex items-center h-14">
-            <nav aria-label="Primary" className="flex items-center gap-7 text-sm font-semibold text-navy">
+            {/* Primary nav (desktop) */}
+            <nav aria-label="Primary" className="hidden lg:flex items-center gap-7 text-sm font-semibold text-navy">
               {MEGA.map((m) => (
                 <button
                   key={m.key}
@@ -177,7 +112,7 @@ export function Header() {
                   onMouseEnter={() => openMenu(m.key)}
                   onClick={() => navigate({ to: m.to })}
                   aria-expanded={active === m.key}
-                  className={`inline-flex items-center gap-1 py-2 border-b-2 -mb-px transition-colors ${
+                  className={`inline-flex items-center gap-1 h-[74px] border-b-2 -mb-px transition-colors ${
                     active === m.key ? "text-brand-blue border-brass" : "border-transparent hover:text-brand-blue"
                   }`}
                 >
@@ -188,71 +123,98 @@ export function Header() {
               <Link
                 to="/gallery"
                 onMouseEnter={() => openMenu("")}
-                className="py-2 border-b-2 border-transparent hover:text-brand-blue -mb-px"
+                className="h-[74px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
                 activeProps={{ className: "text-brand-blue" }}
               >
                 Gallery
               </Link>
             </nav>
 
-            <div className="ml-auto flex items-center gap-6 text-sm font-semibold text-navy/70">
-              {SIMPLE.map((m) => (
-                <button
-                  key={m.key}
-                  type="button"
-                  onMouseEnter={() => openMenu(m.key)}
-                  aria-expanded={active === m.key}
-                  className={`inline-flex items-center gap-1 py-2 transition-colors ${active === m.key ? "text-brand-blue" : "hover:text-brand-blue"}`}
-                >
-                  {m.label}
-                  <ChevronDown className={`size-3.5 transition-transform ${active === m.key ? "rotate-180" : ""}`} />
-                </button>
-              ))}
+            {/* Right cluster */}
+            <div className="ml-auto flex items-center gap-3 lg:gap-5 shrink-0">
+              <div className="hidden lg:flex items-center gap-5 text-sm font-semibold text-navy/70">
+                {SIMPLE.map((m) => (
+                  <div
+                    key={m.key}
+                    className="relative self-stretch flex items-center"
+                    onMouseEnter={() => openMenu(m.key)}
+                  >
+                    <button
+                      type="button"
+                      aria-expanded={active === m.key}
+                      className={`inline-flex items-center gap-1 transition-colors ${active === m.key ? "text-brand-blue" : "hover:text-brand-blue"}`}
+                    >
+                      {m.label}
+                      <ChevronDown className={`size-3.5 transition-transform ${active === m.key ? "rotate-180" : ""}`} />
+                    </button>
+                    {active === m.key && (
+                      <div className="absolute right-0 top-full bg-white border border-navy/10 rounded-b-2xl shadow-elegant animate-fade-in min-w-52 py-2">
+                        {m.links.map((l) => (
+                          <Link
+                            key={l.label}
+                            to={l.to}
+                            hash={l.hash}
+                            onClick={() => setActive(null)}
+                            className="block px-5 py-2.5 text-sm font-medium text-navy/80 hover:text-brand-blue hover:bg-soft-gray transition-colors"
+                          >
+                            {l.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                to="/search"
+                search={{ q: "" }}
+                aria-label="Search"
+                className="hidden lg:inline-flex items-center justify-center size-10 rounded-full text-navy/70 hover:bg-soft-gray hover:text-brand-blue transition-colors"
+              >
+                <Search className="size-5" />
+              </Link>
+
+              <a href={PHONE_HREF} className="hidden xl:block text-right leading-tight group">
+                <span className="block text-base font-display font-semibold text-navy group-hover:text-brand-blue transition-colors">
+                  {PHONE_DISPLAY}
+                </span>
+                <span className="block text-[11px] text-navy/50">Mon–Sat, 8am–6pm</span>
+              </a>
+              <a href={PHONE_HREF} className="xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-soft-gray text-navy" aria-label="Call us">
+                <Phone className="size-4" />
+              </a>
+
+              <Link
+                to="/quote"
+                className="hidden sm:inline-flex items-center gap-2 bg-brand-blue text-white pl-5 pr-4 py-2.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors shadow-soft"
+              >
+                Free Quote
+                <span className="inline-flex items-center justify-center size-5 rounded-full bg-white/20">
+                  <ChevronDown className="size-3.5 -rotate-90" />
+                </span>
+              </Link>
+
+              <button
+                aria-label="Open menu"
+                aria-expanded={mobileOpen}
+                className="lg:hidden inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy"
+                onClick={() => setMobileOpen(true)}
+              >
+                <Menu className="size-5" />
+              </button>
             </div>
           </div>
 
           {/* Full-width mega panel */}
           {activeMega && (
             <div
-              className="absolute left-0 right-0 top-full bg-white border-t border-navy/5 shadow-elegant animate-fade-in"
+              className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-navy/5 shadow-elegant animate-fade-in"
               onMouseEnter={() => openMenu(activeMega.key)}
             >
               <MegaPanel menu={activeMega} onNavigate={() => setActive(null)} />
             </div>
           )}
-
-          {/* Compact dropdown panel (About / Support) */}
-          {activeSimple && (
-            <div
-              className="absolute right-0 top-full bg-white border border-navy/10 rounded-b-2xl shadow-elegant animate-fade-in min-w-52 py-2"
-              style={{ marginRight: "max(1.5rem, calc((100vw - 80rem) / 2))" }}
-              onMouseEnter={() => openMenu(activeSimple.key)}
-            >
-              {activeSimple.links.map((l) => (
-                <Link
-                  key={l.label}
-                  to={l.to}
-                  hash={l.hash}
-                  onClick={() => setActive(null)}
-                  className="block px-5 py-2.5 text-sm font-medium text-navy/80 hover:text-brand-blue hover:bg-soft-gray transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Trust strip — scrolls away under the sticky block */}
-      <div className="hidden md:block bg-soft-gray border-b border-navy/5">
-        <div className="container-page flex items-center justify-between gap-4 py-2.5">
-          {TRUST.map(({ icon: Icon, label }) => (
-            <span key={label} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-navy/55">
-              <Icon className="size-4 text-brand-blue" />
-              {label}
-            </span>
-          ))}
         </div>
       </div>
 
