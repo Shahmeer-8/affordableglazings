@@ -10,7 +10,6 @@ import consTiled from "@/assets/cons-tiled.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import productWindows from "@/assets/product-windows.jpg";
 import productDoors from "@/assets/product-doors.jpg";
-import homeowners from "@/assets/homeowners.jpg";
 import { CtaBanner } from "@/components/site/CtaBanner";
 
 export const Route = createFileRoute("/conservatories")({
@@ -81,9 +80,9 @@ function Page() {
             Architect-led conservatories, orangeries and glass extensions — built for British weather, designed for the way you actually live.
           </p>
           <div className="mt-12 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-            <Link to="/quote" className="btn-shine bg-brand-blue text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors inline-flex items-center gap-2">
+            <a href="#quote" className="btn-shine bg-brand-blue text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors inline-flex items-center gap-2">
               Design your extension <ArrowRight className="size-4" />
-            </Link>
+            </a>
             <Link to="/gallery" className="border border-white/30 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors">
               See recent projects
             </Link>
@@ -92,7 +91,7 @@ function Page() {
       </section>
 
       {/* Intro */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Introduction</p>
@@ -109,7 +108,7 @@ function Page() {
       <ProductRange category="Conservatories" dark />
 
       {/* Why build */}
-      <section className="py-14 md:py-20 bg-canvas">
+      <section className="py-14 md:py-16 bg-canvas">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Why build a conservatory</p>
@@ -140,7 +139,7 @@ function Page() {
       </section>
 
       {/* Roofs */}
-      <section className="py-14 md:py-20 bg-navy text-white">
+      <section className="py-14 md:py-16 bg-navy text-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Roof options</p>
@@ -168,7 +167,7 @@ function Page() {
       </section>
 
       {/* Planning */}
-      <section className="py-14 md:py-20 bg-canvas">
+      <section className="py-14 md:py-16 bg-canvas">
         <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Planning advice</p>
@@ -190,7 +189,7 @@ function Page() {
       </section>
 
       {/* Process */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Construction process</p>
@@ -209,7 +208,7 @@ function Page() {
       </section>
 
       {/* Before & After / project gallery */}
-      <section className="py-14 md:py-20 bg-canvas">
+      <section className="py-14 md:py-16 bg-canvas">
         <div className="container-page">
           <div className="flex items-end justify-between mb-12" data-reveal="up">
             <div className="max-w-xl">
@@ -228,27 +227,9 @@ function Page() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-14 md:py-20 bg-white">
-        <div className="container-page grid lg:grid-cols-2 gap-8 items-center">
-          <div className="rounded-[32px] overflow-hidden aspect-[4/5]" data-reveal="left">
-            <img src={homeowners} alt="Happy homeowners in front of their new conservatory" className="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div data-reveal="right">
-            <div className="text-brand-blue text-2xl mb-6">★★★★★</div>
-            <blockquote className="text-2xl md:text-4xl font-display font-medium text-navy leading-[1.15] text-balance">
-              "We were nervous about the disruption, but the team handled everything — drawings, planning, groundworks, decorating. Twelve weeks later we're eating breakfast in a room that feels like it's been part of the house forever."
-            </blockquote>
-            <div className="mt-10 pt-6 border-t border-navy/10">
-              <div className="font-semibold text-navy">Robert & Helen T.</div>
-              <div className="text-sm text-navy/50">Edwardian conservatory · Winchester · 2025</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ */}
-      <section className="py-14 md:py-20 bg-soft-gray">
+      <section className="py-14 md:py-16 bg-soft-gray">
         <div className="container-page grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">FAQs</p>

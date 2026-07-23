@@ -94,6 +94,15 @@ export function Header() {
     setMobileOpen(false);
   };
 
+  // Scroll to the on-page quote form if present, else route to the quote page.
+  const goToQuote = () => {
+    const el = typeof document !== "undefined" ? document.getElementById("quote") : null;
+    setMobileOpen(false);
+    setActive(null);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else navigate({ to: "/quote" });
+  };
+
   const activeMega = MEGA.find((m) => m.key === active);
 
   return (
@@ -179,15 +188,16 @@ export function Header() {
                 <Phone className="size-4" />
               </a>
 
-              <Link
-                to="/quote"
+              <button
+                type="button"
+                onClick={goToQuote}
                 className="hidden sm:inline-flex items-center gap-2 bg-brand-blue text-white pl-5 pr-4 py-2.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors shadow-soft"
               >
                 Free Quote
                 <span className="inline-flex items-center justify-center size-5 rounded-full bg-white/20">
                   <ChevronDown className="size-3.5 -rotate-90" />
                 </span>
-              </Link>
+              </button>
 
               <button
                 aria-label="Open menu"
@@ -218,6 +228,7 @@ export function Header() {
           query={query}
           setQuery={setQuery}
           onSubmitSearch={submitSearch}
+          onQuote={goToQuote}
           expanded={mobileSection}
           setExpanded={setMobileSection}
           onClose={() => setMobileOpen(false)}
@@ -298,6 +309,7 @@ function MobileDrawer({
   query,
   setQuery,
   onSubmitSearch,
+  onQuote,
   expanded,
   setExpanded,
   onClose,
@@ -305,6 +317,7 @@ function MobileDrawer({
   query: string;
   setQuery: (v: string) => void;
   onSubmitSearch: (e: React.FormEvent) => void;
+  onQuote: () => void;
   expanded: string | null;
   setExpanded: (v: string | null) => void;
   onClose: () => void;
@@ -407,9 +420,13 @@ function MobileDrawer({
           <a href={PHONE_HREF} className="inline-flex items-center justify-center gap-2 text-navy font-semibold">
             <Phone className="size-4 text-brand-blue" /> {PHONE_DISPLAY}
           </a>
-          <Link to="/quote" onClick={onClose} className="bg-brand-blue text-white text-center py-3.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors">
+          <button
+            type="button"
+            onClick={onQuote}
+            className="bg-brand-blue text-white text-center py-3.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors"
+          >
             Get Free Quote
-          </Link>
+          </button>
         </div>
       </div>
     </div>

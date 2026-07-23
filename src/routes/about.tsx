@@ -69,7 +69,7 @@ function AboutContactPage() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-20 py-14 md:py-20">
+      <section id="contact" className="scroll-mt-20 py-14 md:py-16">
         <div className="container-page">
           <div className="max-w-2xl mb-8">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Get in touch</p>

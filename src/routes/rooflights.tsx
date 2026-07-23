@@ -54,12 +54,12 @@ function RooflightsPage() {
             data-reveal="up"
             style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}
           >
-            <Link
-              to="/quote"
+            <a
+              href="#quote"
               className="btn-shine bg-white text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2"
             >
               Get your free quote <ArrowRight className="size-4" />
-            </Link>
+            </a>
             <Link
               to="/gallery"
               className="border border-white/30 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors"

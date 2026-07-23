@@ -18,7 +18,7 @@ export const Route = createFileRoute("/commercial")({
         title={<>Architectural glazing for <span className="text-brand-blue">specifiers.</span></>}
         description="Turnkey commercial glazing partnerships for developers, architects and main contractors."
       />
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="container-page grid md:grid-cols-3 gap-5">
           {[
             { t: "Curtain walling", b: "Stick, unitised and structural glazing systems." },

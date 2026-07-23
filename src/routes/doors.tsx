@@ -83,9 +83,9 @@ function DoorsPage() {
               From solid-core composite front doors to floor-to-ceiling sliding walls of glass — every door we install is built to welcome you home for a lifetime.
             </p>
             <div className="mt-10 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-              <Link to="/quote" className="btn-shine bg-navy text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors inline-flex items-center gap-2">
+              <a href="#quote" className="btn-shine bg-navy text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors inline-flex items-center gap-2">
                 Get a free door quote <ArrowRight className="size-4" />
-              </Link>
+              </a>
               <Link to="/gallery" className="border border-navy/15 text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-white transition-colors">
                 View installations
               </Link>
@@ -136,7 +136,7 @@ function DoorsPage() {
       </section>
 
       {/* Security */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Security</p>
@@ -156,7 +156,7 @@ function DoorsPage() {
       </section>
 
       {/* Smart lock */}
-      <section className="py-14 md:py-20 bg-soft-gray">
+      <section className="py-14 md:py-16 bg-soft-gray">
         <div className="container-page grid lg:grid-cols-2 gap-8 items-center">
           <div data-reveal="left" className="order-2 lg:order-1">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Smart-lock ready</p>
@@ -182,7 +182,7 @@ function DoorsPage() {
       </section>
 
       {/* Colour + Glass */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Design your door</p>
@@ -238,7 +238,7 @@ function DoorsPage() {
       </section>
 
       {/* Process — vertical */}
-      <section className="py-14 md:py-20 bg-navy text-white">
+      <section className="py-14 md:py-16 bg-navy text-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">How we install</p>
@@ -256,30 +256,8 @@ function DoorsPage() {
         </div>
       </section>
 
-      {/* Reviews strip */}
-      <section className="py-14 md:py-16 bg-white">
-        <div className="container-page">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { q: "The new bi-folds have completely transformed how we live. We're outside constantly.", n: "Chris & Amy P.", w: "Cheltenham" },
-              { q: "The composite front door is an absolute tank. Beautiful too — half our street has asked where it's from.", n: "Diane R.", w: "Bristol" },
-              { q: "Sliding doors were fitted in a single day, and the finish is flawless. Genuine craftsmanship.", n: "Nadeem J.", w: "Manchester" },
-            ].map((t, i) => (
-              <figure key={i} className="p-8 rounded-3xl bg-canvas border border-navy/5 card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
-                <div className="text-brand-blue mb-4">★★★★★</div>
-                <blockquote className="text-navy leading-relaxed mb-6">"{t.q}"</blockquote>
-                <figcaption className="text-sm">
-                  <div className="font-semibold text-navy">{t.n}</div>
-                  <div className="text-navy/50 text-xs">{t.w}</div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="py-14 md:py-20 bg-soft-gray">
+      <section className="py-14 md:py-16 bg-soft-gray">
         <div className="container-page max-w-4xl">
           <div className="text-center mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Frequently asked</p>

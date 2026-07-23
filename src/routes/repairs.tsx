@@ -18,7 +18,7 @@ export const Route = createFileRoute("/repairs")({
         title={<>When glass fails, we <span className="text-brand-blue">fix it fast.</span></>}
         description="Same-day emergency call-outs and scheduled repairs for windows, doors and locks — any make, any model."
       />
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="container-page grid md:grid-cols-4 gap-5">
           {["Misted units", "Broken locks", "Hinge failure", "Handle replacement"].map((t) => (
             <div key={t} className="p-6 rounded-2xl bg-soft-gray">

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/roofline")({
         title={<>The <span className="text-brand-blue">finishing touch</span> your home deserves.</>}
         description="Fascias, soffits, bargeboards, guttering and cladding — protecting your home from the elements for decades."
       />
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="container-page grid md:grid-cols-3 gap-5">
           {[
             { t: "Fascias & Soffits", b: "Solid uPVC and aluminium boards in 20+ colours, made to measure." },

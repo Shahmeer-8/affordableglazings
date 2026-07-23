@@ -122,13 +122,13 @@ function Hero() {
             style={{ animationDelay: "680ms" }}
             className="animate-reveal flex flex-wrap gap-3 pt-2"
           >
-            <Link
-              to="/quote"
+            <a
+              href="#quote"
               className="group btn-shine inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-blue-2 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-[0_10px_40px_-10px_var(--brand-blue)] hover:shadow-[0_20px_60px_-10px_var(--brand-blue)] transition-all hover:-translate-y-0.5"
             >
               Get Free Quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
             <Link
               to="/gallery"
               className="inline-flex items-center gap-2 glass-dark text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-white/15 hover:-translate-y-0.5 transition-all"
@@ -271,7 +271,7 @@ const WHY = [
 
 function WhyUs() {
   return (
-    <section className="py-14 md:py-20 bg-white">
+    <section className="py-14 md:py-16 bg-white">
       <div className="container-page">
         <div className="max-w-2xl mb-8">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why choose us</p>
@@ -312,7 +312,7 @@ function Performance() {
   ];
 
   return (
-    <section className="py-14 md:py-20 bg-navy text-white overflow-hidden relative">
+    <section className="py-14 md:py-16 bg-navy text-white overflow-hidden relative">
       <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/25 blur-3xl animate-float" />
       <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue-2/15 blur-3xl" />
 
@@ -429,7 +429,7 @@ function Process() {
 
 function BeforeAfter() {
   return (
-    <section className="py-14 md:py-20 bg-white">
+    <section className="py-14 md:py-16 bg-white">
       <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Recent projects</p>
@@ -486,7 +486,7 @@ function initials(name: string) {
 
 function Testimonials() {
   return (
-    <section className="py-14 md:py-20">
+    <section className="py-14 md:py-16">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-8">
           <div>
@@ -547,7 +547,7 @@ const POSTS = [
 
 function Journal() {
   return (
-    <section className="py-14 md:py-20 bg-white">
+    <section className="py-14 md:py-16 bg-white">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-8">
           <div>

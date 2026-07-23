@@ -6,8 +6,6 @@ import windowsHero from "@/assets/windows-hero.jpg";
 import windowsDetail from "@/assets/windows-detail.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
 import installer from "@/assets/installer.jpg";
-import productWindows from "@/assets/product-windows.jpg";
-import homeowners from "@/assets/homeowners.jpg";
 import productDoors from "@/assets/product-doors.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import { CtaBanner } from "@/components/site/CtaBanner";
@@ -87,9 +85,9 @@ function WindowsPage() {
             Precision-engineered aluminium, uPVC and timber windows — bespoke to your home, built in Britain and installed by craftsmen who treat your property as their own.
           </p>
           <div className="mt-10 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-            <Link to="/quote" className="btn-shine bg-white text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2">
+            <a href="#quote" className="btn-shine bg-white text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2">
               Get your free quote <ArrowRight className="size-4" />
-            </Link>
+            </a>
             <Link to="/gallery" className="border border-white/30 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors">
               Explore the gallery
             </Link>
@@ -109,7 +107,7 @@ function WindowsPage() {
       <ProductRange category="Windows" dark />
 
       {/* Intro editorial */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-32" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The brief</p>
@@ -142,7 +140,7 @@ function WindowsPage() {
       </section>
 
       {/* Performance */}
-      <section className="py-14 md:py-20 bg-navy text-white relative overflow-hidden">
+      <section className="py-14 md:py-16 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, var(--brand-blue) 0%, transparent 50%)" }} />
         <div className="container-page relative">
           <div className="max-w-2xl mb-10" data-reveal="up">
@@ -162,7 +160,7 @@ function WindowsPage() {
       </section>
 
       {/* Glass options */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page">
           <div className="grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-5" data-reveal="left">
@@ -185,7 +183,7 @@ function WindowsPage() {
       </section>
 
       {/* Colours */}
-      <section className="py-14 md:py-20 bg-soft-gray">
+      <section className="py-14 md:py-16 bg-soft-gray">
         <div className="container-page">
           <div className="max-w-2xl mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Colour & finish</p>
@@ -204,7 +202,7 @@ function WindowsPage() {
       </section>
 
       {/* Hardware / Security row */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-16 bg-white">
         <div className="container-page grid lg:grid-cols-3 gap-6">
           {[
             { icon: Lock, t: "Multi-point locking", d: "Shootbolts, mushroom cams and anti-lift blocks on every opening sash." },
@@ -221,7 +219,7 @@ function WindowsPage() {
       </section>
 
       {/* Manufacturing & process */}
-      <section className="py-14 md:py-20 bg-canvas">
+      <section className="py-14 md:py-16 bg-canvas">
         <div className="container-page grid lg:grid-cols-2 gap-10 items-center">
           <div className="rounded-[36px] overflow-hidden aspect-[4/5] shadow-elegant" data-reveal="left">
             <img src={installer} alt="Professional window installer at work" className="w-full h-full object-cover" loading="lazy" />
@@ -244,30 +242,8 @@ function WindowsPage() {
         </div>
       </section>
 
-      {/* Testimonial pair */}
-      <section className="py-14 md:py-20 bg-white">
-        <div className="container-page grid md:grid-cols-2 gap-10">
-          {[
-            { q: "The old sash windows in our Victorian townhouse were letting the winter in. The new heritage sashes look period-perfect and the house is warm for the first time in twenty years.", n: "Michael & Priya D.", w: "Islington, London", img: homeowners },
-            { q: "Every stage was smooth — the surveyor, the office, the fitters. Absolutely spotless finish. The double glazing has already knocked £40 a month off the heating bill.", n: "Sandra B.", w: "Reading, Berkshire", img: productWindows },
-          ].map((t, i) => (
-            <figure key={i} className="p-10 rounded-[32px] bg-canvas border border-navy/5 card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 120}ms` } as Record<string, string>}>
-              <div className="flex gap-1 text-brand-blue mb-6">{"★★★★★".split("").map((s, k) => <span key={k}>{s}</span>)}</div>
-              <blockquote className="text-lg text-navy leading-relaxed">"{t.q}"</blockquote>
-              <figcaption className="flex items-center gap-4 mt-8 pt-6 border-t border-navy/5">
-                <img src={t.img} alt="" className="size-12 rounded-full object-cover" loading="lazy" />
-                <div>
-                  <div className="font-semibold text-navy text-sm">{t.n}</div>
-                  <div className="text-xs text-navy/50">{t.w}</div>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="py-14 md:py-20 bg-soft-gray">
+      <section className="py-14 md:py-16 bg-soft-gray">
         <div className="container-page grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">FAQs</p>
