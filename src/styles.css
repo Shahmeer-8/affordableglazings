@@ -193,6 +193,17 @@
   .hero-word { animation: none; transform: none; }
   .text-gradient-animate { animation: none; }
 }
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@utility animate-slide-in-right {
+  animation: slide-in-right 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-in-right { animation: none; }
+}
 @utility glass {
   background: color-mix(in oklab, white 60%, transparent);
   backdrop-filter: blur(18px) saturate(140%);

@@ -74,11 +74,11 @@ function WindowsPage() {
   return (
     <>
       {/* Immersive hero */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[78vh] flex items-end overflow-hidden">
         <img src={windowsHero} alt="Modern British home with premium aluminium windows" className="absolute inset-0 w-full h-full object-cover" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
-        <div className="container-page relative z-10 pb-20 pt-40 text-white">
+        <div className="container-page relative z-10 pb-16 pt-20 text-white">
           <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-white/70 mb-6" data-reveal="fade">Windows Collection</span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] max-w-5xl text-balance" data-reveal="up">
             Windows that <span className="italic text-brand-blue-2">redefine</span> the way you see home.

@@ -13,6 +13,7 @@ import { Route as WindowsRouteImport } from './routes/windows'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as RooflineRouteImport } from './routes/roofline'
 import { Route as RooflightsRouteImport } from './routes/rooflights'
 import { Route as RepairsRouteImport } from './routes/repairs'
@@ -49,6 +50,11 @@ const TermsRoute = TermsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RooflineRoute = RooflineRouteImport.update({
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/repairs': typeof RepairsRoute
   '/rooflights': typeof RooflightsRoute
   '/roofline': typeof RooflineRoute
+  '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
@@ -176,6 +183,7 @@ export interface FileRoutesByTo {
   '/repairs': typeof RepairsRoute
   '/rooflights': typeof RooflightsRoute
   '/roofline': typeof RooflineRoute
+  '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/repairs': typeof RepairsRoute
   '/rooflights': typeof RooflightsRoute
   '/roofline': typeof RooflineRoute
+  '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
@@ -225,6 +234,7 @@ export interface FileRouteTypes {
     | '/repairs'
     | '/rooflights'
     | '/roofline'
+    | '/search'
     | '/sitemap.xml'
     | '/terms'
     | '/testimonials'
@@ -248,6 +258,7 @@ export interface FileRouteTypes {
     | '/repairs'
     | '/rooflights'
     | '/roofline'
+    | '/search'
     | '/sitemap.xml'
     | '/terms'
     | '/testimonials'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '/repairs'
     | '/rooflights'
     | '/roofline'
+    | '/search'
     | '/sitemap.xml'
     | '/terms'
     | '/testimonials'
@@ -295,6 +307,7 @@ export interface RootRouteChildren {
   RepairsRoute: typeof RepairsRoute
   RooflightsRoute: typeof RooflightsRoute
   RooflineRoute: typeof RooflineRoute
+  SearchRoute: typeof SearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roofline': {
@@ -471,6 +491,7 @@ const rootRouteChildren: RootRouteChildren = {
   RepairsRoute: RepairsRoute,
   RooflightsRoute: RooflightsRoute,
   RooflineRoute: RooflineRoute,
+  SearchRoute: SearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,

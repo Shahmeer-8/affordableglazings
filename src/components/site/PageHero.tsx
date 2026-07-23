@@ -12,7 +12,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative pt-32 pb-14 overflow-hidden">
+    <section className="relative pt-14 md:pt-16 pb-14 overflow-hidden">
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-white to-soft-gray" />
       <div className="absolute -top-32 -right-40 z-0 size-[520px] rounded-full bg-brand-blue/10 blur-3xl" />
       <div className="absolute -top-24 -left-40 z-0 size-[420px] rounded-full bg-navy/5 blur-3xl" />

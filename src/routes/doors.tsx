@@ -72,7 +72,7 @@ function DoorsPage() {
   return (
     <>
       {/* Split hero */}
-      <section className="relative pt-32 pb-16 bg-canvas overflow-hidden">
+      <section className="relative pt-14 md:pt-16 pb-16 bg-canvas overflow-hidden">
         <div className="container-page grid lg:grid-cols-12 gap-10 items-center pt-10">
           <div className="lg:col-span-6 relative z-10">
             <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-brand-blue mb-6" data-reveal="fade">Doors Collection</span>

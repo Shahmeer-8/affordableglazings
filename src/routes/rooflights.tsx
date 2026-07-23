@@ -24,7 +24,7 @@ function RooflightsPage() {
   return (
     <>
       {/* Immersive hero */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[78vh] flex items-end overflow-hidden">
         <img
           src={consGable}
           alt="Glazed roof lantern glowing at dusk"
@@ -34,7 +34,7 @@ function RooflightsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
-        <div className="container-page relative z-10 pb-20 pt-40 text-white">
+        <div className="container-page relative z-10 pb-16 pt-20 text-white">
           <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-white/70 mb-6" data-reveal="fade">
             Rooflights Collection
           </span>

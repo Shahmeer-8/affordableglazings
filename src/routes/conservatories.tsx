@@ -69,7 +69,7 @@ function Page() {
   return (
     <>
       {/* Cinematic hero */}
-      <section className="relative h-[100vh] min-h-[720px] flex items-center overflow-hidden">
+      <section className="relative h-[82vh] min-h-[600px] flex items-center overflow-hidden">
         <img src={consHero} alt="Elegant orangery conservatory at dusk with warm lighting" className="absolute inset-0 w-full h-full object-cover scale-105" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/30 to-navy/85" />
         <div className="container-page relative z-10 text-white">
