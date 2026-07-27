@@ -215,6 +215,58 @@
   .animate-slide-in-right,
   .animate-mega-drop { animation: none; }
 }
+
+/* ---------- Ambient premium background ---------- */
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(3%, 2%, 0) scale(1.12); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--canvas) 0%, var(--soft-gray) 100%);
+}
+.ambient-bg::before,
+.ambient-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+.ambient-bg::before {
+  width: 60vw; height: 60vw;
+  top: -18vw; left: -12vw;
+  background: radial-gradient(circle, color-mix(in oklab, var(--brand-blue) 32%, transparent) 0%, transparent 68%);
+  opacity: 0.30;
+  animation: aurora-drift 24s var(--ease-out-expo) infinite;
+}
+.ambient-bg::after {
+  width: 55vw; height: 55vw;
+  bottom: -20vw; right: -14vw;
+  background: radial-gradient(circle, color-mix(in oklab, var(--brass) 28%, transparent) 0%, transparent 68%);
+  opacity: 0.24;
+  animation: aurora-drift 30s var(--ease-out-expo) infinite reverse;
+}
+
+/* Fine film-grain — subtle premium texture over the whole page */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg::before, .ambient-bg::after { animation: none; }
+}
 @utility glass {
   background: color-mix(in oklab, white 60%, transparent);
   backdrop-filter: blur(18px) saturate(140%);
