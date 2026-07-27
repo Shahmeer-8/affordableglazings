@@ -32,7 +32,7 @@ export function ProductRange({ category, dark = false }: { category: string; dar
               className={`group relative overflow-hidden rounded-3xl border border-navy/5 card-lift flex flex-col ${dark ? "bg-white" : "bg-soft-gray"}`}
             >
               <Link to="/products/$slug" params={{ slug: p.slug }} className="block p-4 pb-0" aria-label={p.name}>
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden">
+                <div className="glass-glint aspect-[4/3] rounded-2xl overflow-hidden">
                   <img
                     src={p.images[0]}
                     alt={p.name}

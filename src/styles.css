@@ -216,56 +216,71 @@
   .animate-mega-drop { animation: none; }
 }
 
-/* ---------- Ambient premium background ---------- */
-@keyframes aurora-drift {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  50%  { transform: translate3d(3%, 2%, 0) scale(1.12); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
-}
-.ambient-bg {
+/* ---------- Signature: the glazing bar ----------
+   The site's one unifying motif: a background that reads like looking at
+   an actual window instead of decorative blur. A fine astragal grid (small
+   panes) plus a bolder grid at 3x the spacing (the main sash divisions) —
+   exactly how a real Georgian window is built from a few large lights
+   subdivided by thin glazing bars. A soft skylight vignette keeps it from
+   feeling like graph paper. */
+.glazing-grid {
   position: fixed;
   inset: 0;
   z-index: -10;
-  overflow: hidden;
-  background: linear-gradient(180deg, var(--canvas) 0%, var(--soft-gray) 100%);
+  background-color: var(--canvas);
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--navy) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--navy) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in oklab, var(--navy) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--navy) 5%, transparent) 1px, transparent 1px);
+  background-size: 258px 258px, 258px 258px, 86px 86px, 86px 86px;
+  background-position: -1px -1px;
 }
-.ambient-bg::before,
-.ambient-bg::after {
+.glazing-grid::before {
   content: "";
   position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  will-change: transform;
-}
-.ambient-bg::before {
-  width: 60vw; height: 60vw;
-  top: -18vw; left: -12vw;
-  background: radial-gradient(circle, color-mix(in oklab, var(--brand-blue) 32%, transparent) 0%, transparent 68%);
-  opacity: 0.30;
-  animation: aurora-drift 24s var(--ease-out-expo) infinite;
-}
-.ambient-bg::after {
-  width: 55vw; height: 55vw;
-  bottom: -20vw; right: -14vw;
-  background: radial-gradient(circle, color-mix(in oklab, var(--brass) 28%, transparent) 0%, transparent 68%);
-  opacity: 0.24;
-  animation: aurora-drift 30s var(--ease-out-expo) infinite reverse;
+  inset: 0;
+  background:
+    radial-gradient(90% 55% at 50% -8%, color-mix(in oklab, white 70%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg, transparent 0%, var(--soft-gray) 92%);
 }
 
-/* Fine film-grain — subtle premium texture over the whole page */
-.grain-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 45;
+/* Slow glass-glint sweep — sunlight passing over a pane. One deliberate
+   signature moment on the homepage hero, not scattered across the site. */
+@keyframes glint-sweep {
+  0%, 92%, 100% { transform: translateX(-140%) skewX(-18deg); opacity: 0; }
+  4% { opacity: 0.55; }
+  46% { transform: translateX(140%) skewX(-18deg); opacity: 0; }
+}
+.hero-glint {
+  position: absolute;
+  inset: -20% -10%;
   pointer-events: none;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 140px 140px;
+  background: linear-gradient(100deg, transparent 42%, color-mix(in oklab, white 75%, transparent) 50%, transparent 58%);
+  animation: glint-sweep 11s ease-in-out infinite;
+}
+
+/* Glass catching light — used on product/service photography so the
+   interaction itself means "this is glass", not a generic hover lift. */
+@utility glass-glint {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -30% -10%;
+    background: linear-gradient(100deg, transparent 40%, color-mix(in oklab, white 65%, transparent) 50%, transparent 60%);
+    transform: translateX(-160%) skewX(-14deg);
+    transition: transform 900ms var(--ease-out-expo);
+    pointer-events: none;
+  }
+  &:hover::after {
+    transform: translateX(160%) skewX(-14deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ambient-bg::before, .ambient-bg::after { animation: none; }
+  .hero-glint { animation: none; display: none; }
 }
 @utility glass {
   background: color-mix(in oklab, white 60%, transparent);

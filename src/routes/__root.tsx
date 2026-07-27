@@ -150,8 +150,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen text-navy">
-        <div className="ambient-bg" aria-hidden="true" />
-        <div className="grain-overlay" aria-hidden="true" />
+        <div className="glazing-grid" aria-hidden="true" />
         <ScrollProgress />
         <Header />
         <main>

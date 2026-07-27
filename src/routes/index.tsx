@@ -82,6 +82,8 @@ function Hero() {
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-navy/70 via-navy/25 to-transparent" />
         {/* subtle grain */}
         <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "3px 3px" }} />
+        {/* Signature moment: sunlight passing over the glass, once every ~11s */}
+        <div className="hero-glint" />
       </div>
 
       <div className="container-page relative z-10 w-full py-16">
@@ -229,7 +231,7 @@ function Services() {
               className="group relative overflow-hidden rounded-3xl bg-white p-3 border border-navy/5 card-lift"
             >
 
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+              <div className="glass-glint aspect-[4/3] rounded-2xl overflow-hidden mb-4">
                 <img
                   src={s.img}
                   alt={s.title}
