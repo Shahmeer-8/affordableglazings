@@ -69,7 +69,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[82vh] flex items-center pt-12 overflow-hidden">
+    <section className="relative min-h-[62vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover scale-[1.08] animate-hero-pan"

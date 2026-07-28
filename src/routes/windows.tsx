@@ -77,17 +77,17 @@ function WindowsPage() {
   return (
     <>
       {/* Immersive hero */}
-      <section className="relative min-h-[78vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[58vh] flex items-end overflow-hidden">
         <img src={windowsHero} alt="Modern British home with premium aluminium windows" className="absolute inset-0 w-full h-full object-cover" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
-        <div className="container-page relative z-10 pb-12 pt-16 text-white">
-          <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-white/70 mb-6" data-reveal="fade">Windows Collection</span>
+        <div className="container-page relative z-10 w-full pb-10 pt-14 text-white">
+          <p className="eyebrow eyebrow-on-dark mb-3" data-reveal="fade">Windows collection</p>
           <h1 className="display-1 max-w-5xl text-balance" data-reveal="up">
-            Windows that <span className="italic text-brand-blue-2">redefine</span> the way you see home.
+            Windows that <span className="italic text-brand-blue-2">redefine</span> home.
           </h1>
           <p className="mt-5 text-base md:text-lg text-white/75 measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
-            Precision-engineered aluminium, uPVC and timber windows — bespoke to your home, built in Britain and installed by craftsmen who treat your property as their own.
+            Aluminium, uPVC and timber — bespoke to your home, built in Britain.
           </p>
           <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
             <a href="#quote" className="btn-shine bg-white text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2">
@@ -97,10 +97,10 @@ function WindowsPage() {
               Explore the gallery
             </Link>
           </div>
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl" data-reveal="up" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
+          <div className="mt-8 grid grid-cols-4 gap-4 max-w-2xl" data-reveal="up" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
             {[["12k+", "Homes glazed"], ["A++", "Energy rating"], ["4.9★", "10-year avg."], ["10yr", "Guarantee"]].map(([n, l]) => (
               <div key={l}>
-                <div className="text-3xl md:text-4xl font-display font-semibold">{n}</div>
+                <div className="text-xl md:text-2xl font-display font-semibold">{n}</div>
                 <div className="text-xs uppercase tracking-widest text-white/50 mt-1">{l}</div>
               </div>
             ))}

@@ -23,7 +23,7 @@ function RooflightsPage() {
   return (
     <>
       {/* Immersive hero */}
-      <section className="relative min-h-[78vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[58vh] flex items-end overflow-hidden">
         <img
           src={consGable}
           alt="Glazed roof lantern glowing at dusk"
@@ -33,10 +33,8 @@ function RooflightsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
-        <div className="container-page relative z-10 pb-12 pt-16 text-white">
-          <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-white/70 mb-6" data-reveal="fade">
-            Rooflights Collection
-          </span>
+        <div className="container-page relative z-10 w-full pb-10 pt-14 text-white">
+          <p className="eyebrow eyebrow-on-dark mb-3" data-reveal="fade">Rooflights collection</p>
           <h1 className="display-1 max-w-5xl text-balance" data-reveal="up">
             Daylight, delivered <span className="italic text-brand-blue-2">from above.</span>
           </h1>
@@ -45,8 +43,7 @@ function RooflightsPage() {
             data-reveal="up"
             style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}
           >
-            Precision-built roof glazing that brightens extensions while maintaining thermal comfort — from ultra-slim lanterns to
-            architectural pyramid designs.
+            Precision-built roof glazing that brightens extensions without losing warmth.
           </p>
           <div
             className="mt-7 flex flex-wrap gap-3"

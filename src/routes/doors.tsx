@@ -9,7 +9,7 @@ import doorsFrench from "@/assets/doors-french.jpg";
 import doorsHardware from "@/assets/doors-hardware.jpg";
 import productDoors from "@/assets/product-doors.jpg";
 import productWindows from "@/assets/product-windows.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
+import productConservatories from "@/assets/product-conservatories.jpg";
 export const Route = createFileRoute("/doors")({
   head: () => ({
     meta: [
@@ -64,37 +64,34 @@ function DoorsPage() {
   return (
     <>
       {/* Split hero */}
-      <section className="relative pt-14 md:pt-16 pb-16 bg-canvas overflow-hidden">
-        <div className="container-page grid lg:grid-cols-12 gap-10 items-center pt-10">
+      <section className="relative py-10 md:py-12 bg-canvas overflow-hidden">
+        <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-6 relative z-10">
-            <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-brand-blue mb-6" data-reveal="fade">Doors Collection</span>
-            <h1 className="display-1 text-navy text-balance" data-reveal="up">
+            <p className="eyebrow mb-3" data-reveal="fade">Doors collection</p>
+            <h1 className="display-1 text-navy" data-reveal="up">
               Grand entrances. <span className="italic text-brand-blue">Effortless</span> everyday.
             </h1>
-            <p className="mt-5 text-base md:text-lg text-ink-muted measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
-              From solid-core composite front doors to floor-to-ceiling sliding walls of glass — every door we install is built to welcome you home for a lifetime.
+            <p className="mt-4 text-base text-ink-muted measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
+              Composite front doors to sliding walls of glass — built to last a lifetime.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-              <a href="#quote" className="btn-shine bg-navy text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors inline-flex items-center gap-2">
+            <div className="mt-6 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
+              <a href="#quote" className="btn-shine bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors inline-flex items-center gap-2">
                 Get a free door quote <ArrowRight className="size-4" />
               </a>
-              <Link to="/gallery" className="border border-navy/15 text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-white transition-colors">
+              <Link to="/gallery" className="border border-navy/15 text-navy px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white transition-colors">
                 View installations
               </Link>
             </div>
-            <div className="mt-12 flex flex-wrap gap-6 text-xs uppercase tracking-widest text-navy/50" data-reveal="fade" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-ink-muted" data-reveal="fade" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
               <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue" /> PAS 24 Secured</span>
-              <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue" /> Smart-lock ready</span>
               <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue" /> 10-year guarantee</span>
             </div>
           </div>
+          {/* Landscape crop instead of a 4/5 portrait — the portrait was what
+              pushed this hero past one screen. */}
           <div className="lg:col-span-6 relative" data-reveal="right">
-            <div className="rounded-[32px] overflow-hidden aspect-[4/5] shadow-elegant">
-              <img src={doorsHero} alt="Luxury anthracite composite front door with brass hardware" className="w-full h-full object-cover" width={1600} height={1000} />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-elegant max-w-[220px] hidden md:block animate-float">
-              <div className="text-3xl font-display font-semibold text-navy">1.0</div>
-              <div className="text-xs text-navy/60 mt-1">W/m²K U-value on our signature composite range</div>
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-elegant">
+              <img src={doorsHero} alt="Luxury anthracite composite front door with brass hardware" className="w-full h-full object-cover" width={1600} height={1200} />
             </div>
           </div>
         </div>

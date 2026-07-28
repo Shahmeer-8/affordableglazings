@@ -66,16 +66,16 @@ function Page() {
   return (
     <>
       {/* Cinematic hero */}
-      <section className="relative h-[82vh] min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative min-h-[58vh] flex items-center overflow-hidden">
         <img src={consHero} alt="Elegant orangery conservatory at dusk with warm lighting" className="absolute inset-0 w-full h-full object-cover scale-105" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/30 to-navy/85" />
-        <div className="container-page relative z-10 text-white">
-          <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-brand-blue-2 mb-6" data-reveal="fade">Conservatories · Orangeries · Extensions</span>
+        <div className="container-page relative z-10 w-full text-white">
+          <p className="eyebrow eyebrow-on-dark mb-3" data-reveal="fade">Conservatories · Orangeries</p>
           <h1 className="display-1 max-w-6xl text-balance" data-reveal="up">
             Rooms that live <em className="not-italic text-brand-blue-2">with the light</em>.
           </h1>
           <p className="mt-5 text-base md:text-lg text-white/75 measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
-            Architect-led conservatories, orangeries and glass extensions — built for British weather, designed for the way you actually live.
+            Architect-led conservatories and orangeries, built for British weather.
           </p>
           <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
             <a href="#quote" className="btn-shine bg-brand-blue text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors inline-flex items-center gap-2">
