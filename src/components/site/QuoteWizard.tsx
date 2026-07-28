@@ -7,11 +7,11 @@ const PRODUCTS = ["Windows", "Doors", "Rooflights", "Conservatories", "Roofline"
  * Single-step "Fast Quote" form used on the /quote page and inside the CTA
  * section on every page. Styled to the site theme (navy / brand-blue).
  */
-export function QuoteWizard({ showIntro = true }: { showIntro?: boolean }) {
+export function QuoteWizard({ showIntro = true, onDark = false }: { showIntro?: boolean; onDark?: boolean }) {
   const [done, setDone] = useState(false);
 
   return (
-    <div className="rounded-[28px] bg-white border border-navy/5 shadow-elegant p-6 md:p-8">
+    <div className={`rounded-[28px] p-6 md:p-8 ${onDark ? "bg-canvas shadow-2xl" : "bg-white border border-line shadow-elegant"}`}>
       {done ? (
         <div className="text-center py-8">
           <div className="mx-auto size-14 rounded-full bg-green-100 text-green-700 grid place-items-center mb-5">

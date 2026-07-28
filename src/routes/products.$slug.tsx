@@ -2,9 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
 import { Lightbox } from "@/components/site/Lightbox";
-import { getProduct, SUPPLIERS, type Product } from "@/data/products";
+import { getProduct, type Product } from "@/data/products";
+import { SupplierMarquee } from "@/components/site/SupplierMarquee";
 
 const CATEGORY_PATHS: Record<string, string> = {
   Windows: "/windows",
@@ -63,12 +63,8 @@ function ProductDetailPage() {
 
       <Features product={product} />
       <Gallery product={product} />
-      <Suppliers />
+      <SupplierMarquee />
 
-      <CtaBanner
-        title="Need specification advice?"
-        subtitle="Share your plans, preferred system, or any inspiration photos and we'll respond with a tailored estimate within 24 hours."
-      />
     </>
   );
 }
@@ -155,19 +151,3 @@ function Gallery({ product }: { product: Product }) {
   );
 }
 
-function Suppliers() {
-  return (
-    <section className="border-y border-navy/5 bg-white">
-      <div className="container-page py-10">
-        <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-navy/40 mb-6">Trusted Suppliers</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-          {SUPPLIERS.map((s) => (
-            <span key={s} className="text-sm md:text-base font-display font-semibold tracking-wide text-navy/50">
-              {s}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}

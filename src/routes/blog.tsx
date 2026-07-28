@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import { PageHero } from "@/components/site/PageHero";
 const POSTS = [
   { title: "Choosing the right glazing for a period property", tag: "Guides", read: "6 min", excerpt: "Balancing heritage aesthetics with modern thermal performance is easier than you think." },
   { title: "How A++ windows lower your energy bills in 2026", tag: "Efficiency", read: "4 min", excerpt: "Every degree matters. Here's the maths behind the savings." },
@@ -43,7 +41,6 @@ export const Route = createFileRoute("/blog")({
           ))}
         </div>
       </section>
-      <CtaBanner />
     </>
   ),
 });

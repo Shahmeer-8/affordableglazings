@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import { PageHero } from "@/components/site/PageHero";
 export const Route = createFileRoute("/commercial")({
   head: () => ({
     meta: [
@@ -32,7 +30,6 @@ export const Route = createFileRoute("/commercial")({
           ))}
         </div>
       </section>
-      <CtaBanner title="Bidding a project?" subtitle="Send us your drawings — we return specification-ready quotes within 48 hours." />
     </>
   ),
 });

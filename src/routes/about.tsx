@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
 import craftsman from "@/assets/craftsman.jpg";
 
 const LOCATIONS = [
@@ -52,7 +51,7 @@ function AboutContactPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { k: "30+", l: "Years of craft" },
@@ -69,7 +68,7 @@ function AboutContactPage() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-20 py-14 md:py-16">
+      <section id="contact" className="scroll-mt-20 py-12 md:py-14">
         <div className="container-page">
           <div className="max-w-2xl mb-8">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Get in touch</p>
@@ -125,7 +124,7 @@ function AboutContactPage() {
       </section>
 
       {/* Coverage */}
-      <section className="pb-14 md:pb-20">
+      <section className="pb-12 md:pb-16">
         <div className="container-page">
           <div className="rounded-[36px] overflow-hidden min-h-[22rem] md:aspect-[16/6] bg-gradient-to-br from-navy to-brand-blue relative text-white p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
             <div className="relative z-10 max-w-xs shrink-0">
@@ -195,7 +194,6 @@ function AboutContactPage() {
         </div>
       </section>
 
-      <CtaBanner />
     </>
   );
 }

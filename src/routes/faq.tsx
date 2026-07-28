@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
-import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import { PageHero } from "@/components/site/PageHero";
 const FAQS = [
   { q: "How long does a typical installation take?", a: "Most window installations complete in 1–3 days. Doors typically take a single day. Conservatories and extensions range from 2–6 weeks depending on scope." },
   { q: "What guarantee comes with your work?", a: "Every installation is backed by our 10-year comprehensive guarantee covering frames, glass units, hardware and workmanship." },
@@ -70,7 +68,6 @@ function FAQPage() {
           </div>
         </div>
       </section>
-      <CtaBanner />
     </>
   );
 }

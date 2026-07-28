@@ -5,7 +5,6 @@ import {
   Award,
   BadgeCheck,
   Clock,
-  Flag,
   Hammer,
   Leaf,
   Ruler,
@@ -22,8 +21,16 @@ import craftsman from "@/assets/craftsman.jpg";
 import consVictorian from "@/assets/cons-victorian.jpg";
 import consTiled from "@/assets/cons-tiled.jpg";
 import heroVideo from "@/assets/hero-video.mp4";
-import { CtaBanner } from "@/components/site/CtaBanner";
+import sash2 from "@/assets/products/sash-2.jpg";
+import bifold1 from "@/assets/products/bifold-1.jpg";
+import cons2 from "@/assets/products/cons-2.jpg";
+import slimroof1 from "@/assets/products/slimroof-1.jpg";
+import french1 from "@/assets/products/french-1.jpg";
+import casement1 from "@/assets/products/casement-1.jpg";
+import pyramid1 from "@/assets/products/pyramid-1.jpg";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
+import { TrustSeals } from "@/components/site/TrustSeals";
+import { SupplierMarquee } from "@/components/site/SupplierMarquee";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 
 export const Route = createFileRoute("/")({
@@ -45,15 +52,15 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <TrustStrip />
+      <TrustSeals />
       <Services />
       {/* <WhyUs /> */}
       {/* <Performance /> */}
       <Process />
       <BeforeAfter />
+      <SupplierMarquee />
       <Testimonials />
       <Journal />
-      <CtaBanner />
     </>
   );
 }
@@ -86,16 +93,14 @@ function Hero() {
         <div className="hero-glint" />
       </div>
 
-      <div className="container-page relative z-10 w-full py-16">
-        <div className="max-w-3xl space-y-7 text-white">
-          <div
-            className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white text-[11px] font-semibold tracking-[0.18em] uppercase border border-brass/30"
-          >
-            <span className="size-1.5 bg-brass rounded-full animate-pulse" />
-            British Engineering · Est. 1994
-          </div>
+      <div className="container-page relative z-10 w-full py-12">
+        <div className="max-w-2xl space-y-6 text-white">
+          <p className="animate-fade-in eyebrow eyebrow-on-dark">British engineering · Est. 1994</p>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] tracking-tight">
+          {/* Sized down from text-8xl; the credentials that used to sit here as
+              chips now live in the seals band directly below, so the hero says
+              one thing only. */}
+          <h1 className="display-1">
             <span className="hero-line">
               {"Redefining the".split(" ").map((w, i) => (
                 <span key={w} className="hero-word" style={{ ["--wd" as never]: `${120 + i * 110}ms` }}>
@@ -105,53 +110,35 @@ function Hero() {
             </span>
             <span className="hero-line">
               <span className="hero-word" style={{ ["--wd" as never]: "400ms" }}>
-                <span className="text-gradient-brand text-gradient-animate">view of home.</span>
+                <span className="text-brass-2">view of home.</span>
               </span>
             </span>
           </h1>
 
           <p
             style={{ animationDelay: "560ms" }}
-            className="animate-reveal text-lg md:text-xl text-white/80 max-w-xl leading-relaxed"
+            className="animate-reveal text-base md:text-lg text-white/75 measure-body"
           >
             Bespoke windows, doors and conservatories — crafted in Britain.
           </p>
 
           <div
             style={{ animationDelay: "680ms" }}
-            className="animate-reveal flex flex-wrap gap-3 pt-2"
+            className="animate-reveal flex flex-wrap gap-3 pt-1"
           >
             <a
               href="#quote"
-              className="group btn-shine inline-flex items-center gap-2 bg-brass-2 text-navy px-8 py-4 rounded-full font-semibold text-base hover:bg-white transition-all hover:-translate-y-0.5"
+              className="group btn-shine inline-flex items-center gap-2 bg-brass-2 text-navy px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white transition-all hover:-translate-y-0.5"
             >
-              Get Free Quote
+              Get a free quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 border border-white/30 text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white/10 hover:-translate-y-0.5 transition-all"
             >
-              View Our Work
+              View our work
             </Link>
-          </div>
-
-          <div className="pt-5 flex flex-wrap gap-2.5">
-            {[
-              { icon: Award, label: "10-Year Guarantee" },
-              { icon: Flag, label: "Made in Britain" },
-              { icon: Leaf, label: "A++ Energy Rated" },
-              { icon: ShieldCheck, label: "FENSA Registered" },
-            ].map(({ icon: Icon, label }, i) => (
-              <span
-                key={label}
-                style={{ animationDelay: `${900 + i * 130}ms` }}
-                className="animate-reveal inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 text-xs font-semibold text-white/85 border border-white/10 transition-transform duration-300 hover:-translate-y-0.5 hover:border-brass/40"
-              >
-                <Icon className="size-3.5 text-brass-2" />
-                {label}
-              </span>
-            ))}
           </div>
         </div>
       </div>
@@ -166,20 +153,6 @@ function Hero() {
 
 /* ---------------------------- TRUST STRIP --------------------------- */
 
-function TrustStrip() {
-  const items = ["FENSA", "Which? Trusted", "Checkatrade 9.8", "Made in Britain", "TrustMark", "Certass"];
-  return (
-    <section className="border-y border-line bg-canvas">
-      <div className="container-page py-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-        {items.map((i) => (
-          <span key={i} className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-ink-muted">
-            {i}
-          </span>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------ SERVICES ---------------------------- */
 
@@ -209,44 +182,49 @@ const SERVICES = [
 
 function Services() {
   return (
-    <section className="py-16 md:py-20 bg-soft-gray">
+    <section className="py-12 md:py-14 bg-soft-gray">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
-          <div className="max-w-xl">
-            <p className="eyebrow mb-4">Our Specialisms</p>
-            <h2 className="display-2 text-navy measure-display">
-              Architectural solutions for every modern space.
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+          <div className="max-w-lg">
+            <p className="eyebrow mb-3">Our specialisms</p>
+            <h2 className="text-2xl md:text-3xl font-display font-semibold text-navy leading-[1.08] measure-display">
+              Solutions for every modern space.
             </h2>
           </div>
-          <p className="text-ink-muted text-sm max-w-xs">From heritage homes to modern extensions.</p>
+          <p className="text-ink-muted text-sm max-w-xs">Heritage homes to modern extensions.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Copy sits over the image on hover so the card stays compact —
+            same pattern as the product range cards. */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {SERVICES.map((s, i) => (
             <Link
               key={s.to}
               to={s.to}
               data-reveal="up"
-              style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
-              className="group relative overflow-hidden rounded-3xl bg-white p-3 border border-navy/5 card-lift"
+              style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
+              className="group relative overflow-hidden rounded-2xl bg-white border border-line card-lift"
             >
-
-              <div className="glass-glint aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+              <div className="glass-glint relative aspect-[5/4] overflow-hidden">
                 <img
                   src={s.img}
                   alt={s.title}
                   loading="lazy"
                   width={800}
-                  height={600}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[900ms] ease-out"
+                  height={640}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity duration-400 grid place-items-center p-5">
+                  <p className="text-white/90 text-sm text-center leading-relaxed">{s.body}</p>
+                </div>
               </div>
-              <div className="px-3 pb-3">
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-blue mb-1.5">{s.tag}</p>
-                <h3 className="text-xl font-display font-semibold text-navy mb-1.5">{s.title}</h3>
-                <p className="text-navy/60 text-sm mb-4">{s.body}</p>
-                <span className="text-brand-blue font-semibold flex items-center gap-2 text-sm group-hover:gap-3 transition-all">
-                  Explore range <ArrowRight className="size-4" />
+              <div className="flex items-center justify-between gap-3 px-4 py-3.5">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brass">{s.tag}</p>
+                  <h3 className="text-base font-display font-semibold text-navy truncate">{s.title}</h3>
+                </div>
+                <span className="shrink-0 inline-flex items-center justify-center size-8 rounded-full bg-soft-gray text-navy group-hover:bg-navy group-hover:text-white transition-colors">
+                  <ArrowRight className="size-4" />
                 </span>
               </div>
             </Link>
@@ -270,7 +248,7 @@ const WHY = [
 
 function WhyUs() {
   return (
-    <section className="py-16 md:py-20 bg-canvas">
+    <section className="py-12 md:py-16 bg-canvas">
       <div className="container-page">
         <div className="max-w-2xl mb-8">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why choose us</p>
@@ -311,7 +289,7 @@ function Performance() {
   ];
 
   return (
-    <section className="py-14 md:py-16 bg-navy text-white overflow-hidden relative">
+    <section className="py-12 md:py-14 bg-navy text-white overflow-hidden relative">
       <div className="absolute -top-40 -right-40 size-[560px] rounded-full bg-brand-blue/25 blur-3xl animate-float" />
       <div className="absolute -bottom-40 -left-40 size-[500px] rounded-full bg-brand-blue-2/15 blur-3xl" />
 
@@ -393,7 +371,7 @@ const STEPS = [
 
 function Process() {
   return (
-    <section className="py-16 md:py-20 bg-canvas">
+    <section className="py-12 md:py-16 bg-canvas">
       <div className="container-page">
         <div className="max-w-2xl mb-12">
           <p className="eyebrow mb-4">The process</p>
@@ -428,7 +406,7 @@ function Process() {
 
 function BeforeAfter() {
   return (
-    <section className="py-16 md:py-20 bg-canvas">
+    <section className="py-12 md:py-16 bg-canvas">
       <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Recent projects</p>
@@ -483,17 +461,18 @@ const REVIEWS = [
   },
 ];
 
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .toUpperCase();
-}
+/* Recent installations shown above the reviews, so the praise is attached to
+   visible work rather than floating on its own. */
+const REVIEW_PROJECTS = [
+  { img: sash2, label: "Heritage sash · Islington" },
+  { img: bifold1, label: "Glazed elevation · Cheltenham" },
+  { img: cons2, label: "Sun room · Winchester" },
+  { img: slimroof1, label: "Slim rooflight · Kent" },
+];
 
 function Testimonials() {
   return (
-    <section className="py-16 md:py-20 bg-navy text-white">
+    <section className="py-12 md:py-16 bg-navy text-white">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-10">
           <div>
@@ -511,6 +490,29 @@ function Testimonials() {
             <span className="font-semibold text-white">4.9 / 5</span>
             <span>from 1,200+ reviews</span>
           </div>
+        </div>
+
+        {/* Recent installations */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-12">
+          {REVIEW_PROJECTS.map((p, i) => (
+            <figure
+              key={p.label}
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 90}ms` }}
+              className="glass-glint group relative rounded-2xl overflow-hidden aspect-[4/3]"
+            >
+              <img
+                src={p.img}
+                alt={p.label}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
+              <figcaption className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-[11px] md:text-xs font-semibold text-white/90">
+                {p.label}
+              </figcaption>
+            </figure>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
@@ -541,23 +543,61 @@ function Testimonials() {
   );
 }
 
-/* ------------------------------ JOURNAL ----------------------------- */
+/* ---------------------------- GALLERY CTA ---------------------------- */
+
+/* An editorial mosaic rather than four equal boxes: one tall lead image
+   anchors the group and the smaller frames read as supporting shots, which
+   is how architectural portfolios are actually laid out. */
+const GALLERY_PEEK = [
+  { img: french1, label: "French doors · Surrey", cls: "col-span-2 row-span-2 aspect-square sm:aspect-auto" },
+  { img: casement1, label: "Casement · Oxford", cls: "aspect-square" },
+  { img: pyramid1, label: "Pyramid lantern · Bath", cls: "aspect-square" },
+  { img: cons2, label: "Sun room · Winchester", cls: "aspect-square" },
+  { img: sash2, label: "Sash · Islington", cls: "aspect-square" },
+];
 
 function Journal() {
   return (
-    <section className="py-16 md:py-20 bg-canvas">
+    <section className="py-12 md:py-16 bg-canvas">
       <div className="container-page">
-        <div className="rounded-[32px] bg-soft-gray border border-navy/5 px-8 py-12 md:px-14 md:py-14 text-center flex flex-col items-center" data-reveal="up">
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our work</p>
-          <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] max-w-xl">
-            See what precision looks like in real British homes.
-          </h2>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
+          <div className="max-w-xl">
+            <p className="eyebrow mb-4">Our work</p>
+            <h2 className="display-2 text-navy measure-display">
+              Precision, in real British homes.
+            </h2>
+          </div>
           <Link
             to="/gallery"
-            className="mt-7 inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
+            className="group inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors shrink-0"
           >
-            Browse the gallery <ArrowRight className="size-4" />
+            Browse the gallery
+            <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
           </Link>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 sm:auto-rows-[minmax(0,1fr)]">
+          {GALLERY_PEEK.map((g, i) => (
+            <Link
+              key={g.label}
+              to="/gallery"
+              data-reveal="up"
+              style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
+              className={`glass-glint group relative rounded-2xl overflow-hidden ${g.cls}`}
+              aria-label={g.label}
+            >
+              <img
+                src={g.img}
+                alt={g.label}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="absolute bottom-3 left-3 right-3 text-[11px] font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                {g.label}
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

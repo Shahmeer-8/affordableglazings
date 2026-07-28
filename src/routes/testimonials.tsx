@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
-import { Star } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";import { Star } from "lucide-react";
 
 const REVIEWS = [
   { name: "Sarah W.", loc: "Guildford, Surrey", body: "From consultation to installation, the whole experience felt effortless. Our new bi-folds have completely transformed the back of the house." },
@@ -46,7 +44,6 @@ export const Route = createFileRoute("/testimonials")({
           ))}
         </div>
       </section>
-      <CtaBanner />
     </>
   ),
 });

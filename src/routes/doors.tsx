@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, DoorOpen, Fingerprint, KeyRound, Layers, Lock, Palette, ShieldCheck, Smartphone, Sparkles, ThermometerSun } from "lucide-react";
+import { ArrowRight, CheckCircle2, DoorOpen, KeyRound, Layers, Lock, Palette, ShieldCheck, Sparkles, ThermometerSun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
 import doorsHero from "@/assets/doors-hero.jpg";
@@ -9,9 +9,7 @@ import doorsFrench from "@/assets/doors-french.jpg";
 import doorsHardware from "@/assets/doors-hardware.jpg";
 import productDoors from "@/assets/product-doors.jpg";
 import productWindows from "@/assets/product-windows.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import productConservatories from "@/assets/product-conservatories.jpg";
 export const Route = createFileRoute("/doors")({
   head: () => ({
     meta: [
@@ -32,12 +30,6 @@ const SECURITY = [
   { icon: KeyRound, title: "TS007 3★ cylinders", body: "Anti-snap, anti-drill, anti-bump and anti-pick as standard on all entrances." },
   { icon: Layers, title: "Laminated glass", body: "Impact-resistant glass panels bond in place even when shattered." },
   { icon: Lock, title: "Hook-bolt locking", body: "Up to 8 hardened steel hooks and shootbolts spread the load across the frame." },
-];
-
-const SMART = [
-  { icon: Fingerprint, t: "Biometric entry", d: "Read your fingerprint in under 0.4s. Store up to 100 authorised users." },
-  { icon: Smartphone, t: "Smart app control", d: "Grant one-time or scheduled access to guests, cleaners and tradespeople from your phone." },
-  { icon: KeyRound, t: "Keypad backup", d: "Rolling PIN codes and mechanical key override — you're never locked out." },
 ];
 
 const COLOURS = [
@@ -76,13 +68,13 @@ function DoorsPage() {
         <div className="container-page grid lg:grid-cols-12 gap-10 items-center pt-10">
           <div className="lg:col-span-6 relative z-10">
             <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-brand-blue mb-6" data-reveal="fade">Doors Collection</span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] text-navy text-balance" data-reveal="up">
+            <h1 className="display-1 text-navy text-balance" data-reveal="up">
               Grand entrances. <span className="italic text-brand-blue">Effortless</span> everyday.
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-navy/60 max-w-xl leading-relaxed" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
+            <p className="mt-5 text-base md:text-lg text-ink-muted measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
               From solid-core composite front doors to floor-to-ceiling sliding walls of glass — every door we install is built to welcome you home for a lifetime.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
+            <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
               <a href="#quote" className="btn-shine bg-navy text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors inline-flex items-center gap-2">
                 Get a free door quote <ArrowRight className="size-4" />
               </a>
@@ -108,17 +100,6 @@ function DoorsPage() {
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="py-14 md:py-16 bg-white">
-        <div className="container-page max-w-4xl text-center" data-reveal="up">
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The threshold matters</p>
-          <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.05] mb-8 text-balance">
-            A door is the first sentence your home speaks about you.
-          </h2>
-          <p className="text-lg text-navy/60 leading-relaxed">Whether it's the entrance that greets your visitors or the wall of glass that opens onto a summer garden, a well-made door changes the rhythm of your day. We spend as long designing the door you will touch a thousand times as some builders spend on entire rooms.</p>
-        </div>
-      </section>
-
       {/* Product range */}
       <ProductRange category="Doors" dark />
 
@@ -136,7 +117,7 @@ function DoorsPage() {
       </section>
 
       {/* Security */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Security</p>
@@ -155,34 +136,8 @@ function DoorsPage() {
         </div>
       </section>
 
-      {/* Smart lock */}
-      <section className="py-14 md:py-16 bg-soft-gray">
-        <div className="container-page grid lg:grid-cols-2 gap-8 items-center">
-          <div data-reveal="left" className="order-2 lg:order-1">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Smart-lock ready</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-8">Your keys, whenever you want them.</h2>
-            <div className="space-y-5">
-              {SMART.map(({ icon: Icon, t, d }) => (
-                <div key={t} className="flex gap-4">
-                  <div className="size-12 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-soft">
-                    <Icon className="size-5 text-brand-blue" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-semibold text-navy text-lg mb-1">{t}</h3>
-                    <p className="text-navy/60 text-sm leading-relaxed">{d}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-[32px] overflow-hidden aspect-[4/5] shadow-elegant order-1 lg:order-2" data-reveal="right">
-            <img src={doorsHardware} alt="Premium brushed brass door handle detail" className="w-full h-full object-cover" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
       {/* Colour + Glass */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Design your door</p>
@@ -218,7 +173,7 @@ function DoorsPage() {
       </section>
 
       {/* Gallery grid */}
-      <section className="py-14 md:py-16 bg-canvas">
+      <section className="py-12 md:py-14 bg-canvas">
         <div className="container-page">
           <div className="flex items-end justify-between mb-10" data-reveal="up">
             <div>
@@ -238,7 +193,7 @@ function DoorsPage() {
       </section>
 
       {/* Process — vertical */}
-      <section className="py-14 md:py-16 bg-navy text-white">
+      <section className="py-12 md:py-14 bg-navy text-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">How we install</p>
@@ -257,7 +212,7 @@ function DoorsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-14 md:py-16 bg-soft-gray">
+      <section className="py-12 md:py-14 bg-soft-gray">
         <div className="container-page max-w-4xl">
           <div className="text-center mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Frequently asked</p>
@@ -275,7 +230,7 @@ function DoorsPage() {
       </section>
 
       {/* Related */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page grid md:grid-cols-2 gap-6">
           {[
             { to: "/windows" as const, t: "Windows", d: "Casement, sash, tilt & turn", img: productWindows },
@@ -293,7 +248,6 @@ function DoorsPage() {
         </div>
       </section>
 
-      <CtaBanner title="Design your dream door." subtitle="Free consultation, transparent pricing, and a door that will still look brand-new in 2040." />
     </>
   );
 }

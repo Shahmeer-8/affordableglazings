@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
 import { Lightbox } from "@/components/site/Lightbox";
 import heroHome from "@/assets/hero-home.jpg";
 import productWindows from "@/assets/product-windows.jpg";
@@ -126,7 +125,6 @@ function GalleryPage() {
           onIndexChange={setOpenIndex}
         />
       )}
-      <CtaBanner />
     </>
   );
 }

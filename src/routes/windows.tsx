@@ -6,9 +6,7 @@ import windowsHero from "@/assets/windows-hero.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
 import installer from "@/assets/installer.jpg";
 import productDoors from "@/assets/product-doors.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import productConservatories from "@/assets/product-conservatories.jpg";
 export const Route = createFileRoute("/windows")({
   head: () => ({
     meta: [
@@ -83,15 +81,15 @@ function WindowsPage() {
         <img src={windowsHero} alt="Modern British home with premium aluminium windows" className="absolute inset-0 w-full h-full object-cover" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
-        <div className="container-page relative z-10 pb-16 pt-20 text-white">
+        <div className="container-page relative z-10 pb-12 pt-16 text-white">
           <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-white/70 mb-6" data-reveal="fade">Windows Collection</span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] max-w-5xl text-balance" data-reveal="up">
+          <h1 className="display-1 max-w-5xl text-balance" data-reveal="up">
             Windows that <span className="italic text-brand-blue-2">redefine</span> the way you see home.
           </h1>
-          <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
+          <p className="mt-5 text-base md:text-lg text-white/75 measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
             Precision-engineered aluminium, uPVC and timber windows — bespoke to your home, built in Britain and installed by craftsmen who treat your property as their own.
           </p>
-          <div className="mt-10 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
+          <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
             <a href="#quote" className="btn-shine bg-white text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2">
               Get your free quote <ArrowRight className="size-4" />
             </a>
@@ -126,7 +124,7 @@ function WindowsPage() {
       </section>
 
       {/* Performance */}
-      <section className="py-14 md:py-16 bg-navy text-white relative overflow-hidden">
+      <section className="py-12 md:py-14 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, var(--brand-blue) 0%, transparent 50%)" }} />
         <div className="container-page relative">
           <div className="max-w-2xl mb-10" data-reveal="up">
@@ -146,7 +144,7 @@ function WindowsPage() {
       </section>
 
       {/* Glass options */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page">
           <div className="max-w-2xl mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Glass options</p>
@@ -166,7 +164,7 @@ function WindowsPage() {
       </section>
 
       {/* Colours & handle finishes */}
-      <section className="py-14 md:py-16 bg-soft-gray">
+      <section className="py-12 md:py-14 bg-soft-gray">
         <div className="container-page">
           <div className="max-w-2xl mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Colour & finish</p>
@@ -198,7 +196,7 @@ function WindowsPage() {
       </section>
 
       {/* Manufacturing & process */}
-      <section className="py-14 md:py-16 bg-canvas">
+      <section className="py-12 md:py-14 bg-canvas">
         <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="rounded-[28px] overflow-hidden aspect-[4/3] shadow-elegant" data-reveal="left">
             <img src={installer} alt="Professional window installer at work" className="w-full h-full object-cover" loading="lazy" />
@@ -222,7 +220,7 @@ function WindowsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-14 md:py-16 bg-soft-gray">
+      <section className="py-12 md:py-14 bg-soft-gray">
         <div className="container-page grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">FAQs</p>
@@ -244,7 +242,7 @@ function WindowsPage() {
       </section>
 
       {/* Related */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page">
           <div className="flex items-end justify-between mb-12" data-reveal="up">
             <div>
@@ -270,7 +268,6 @@ function WindowsPage() {
         </div>
       </section>
 
-      <CtaBanner title="Ready to see the difference?" subtitle="Book a free in-home consultation. No obligation. No pressure. Just expert advice from people who love what they do." />
     </>
   );
 }

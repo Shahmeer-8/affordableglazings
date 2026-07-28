@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import { PageHero } from "@/components/site/PageHero";
 export const Route = createFileRoute("/roofline")({
   head: () => ({
     meta: [
@@ -32,7 +30,6 @@ export const Route = createFileRoute("/roofline")({
           ))}
         </div>
       </section>
-      <CtaBanner />
     </>
   ),
 });

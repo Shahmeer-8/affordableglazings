@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero";
-import { CtaBanner } from "@/components/site/CtaBanner";
-
+import { PageHero } from "@/components/site/PageHero";
 export const Route = createFileRoute("/repairs")({
   head: () => ({
     meta: [
@@ -28,7 +26,6 @@ export const Route = createFileRoute("/repairs")({
           ))}
         </div>
       </section>
-      <CtaBanner title="Need a repair today?" subtitle="Call our engineers and book a call-out — most jobs completed same day." />
     </>
   ),
 });

@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { ProductRange } from "@/components/site/ProductRange";
-import { CtaBanner } from "@/components/site/CtaBanner";
 import consGable from "@/assets/cons-gable.jpg";
 
 export const Route = createFileRoute("/rooflights")({
@@ -34,15 +33,15 @@ function RooflightsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
-        <div className="container-page relative z-10 pb-16 pt-20 text-white">
+        <div className="container-page relative z-10 pb-12 pt-16 text-white">
           <span className="inline-block text-[11px] font-bold tracking-[0.28em] uppercase text-white/70 mb-6" data-reveal="fade">
             Rooflights Collection
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] max-w-5xl text-balance" data-reveal="up">
+          <h1 className="display-1 max-w-5xl text-balance" data-reveal="up">
             Daylight, delivered <span className="italic text-brand-blue-2">from above.</span>
           </h1>
           <p
-            className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed"
+            className="mt-5 text-base md:text-lg text-white/75 measure-body"
             data-reveal="up"
             style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}
           >
@@ -50,7 +49,7 @@ function RooflightsPage() {
             architectural pyramid designs.
           </p>
           <div
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-7 flex flex-wrap gap-3"
             data-reveal="up"
             style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}
           >
@@ -71,7 +70,7 @@ function RooflightsPage() {
       </section>
 
       {/* Intro */}
-      <section className="py-14 md:py-16 bg-white">
+      <section className="py-12 md:py-14 bg-white">
         <div className="container-page grid lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5" data-reveal="left">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why roof glazing</p>
@@ -100,10 +99,6 @@ function RooflightsPage() {
       {/* Product range */}
       <ProductRange category="Rooflights" dark />
 
-      <CtaBanner
-        title="Need specification advice?"
-        subtitle="Share your plans, preferred system, or any inspiration photos and we'll respond with a tailored estimate within 24 hours."
-      />
     </>
   );
 }

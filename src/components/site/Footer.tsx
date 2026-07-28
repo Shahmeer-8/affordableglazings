@@ -1,10 +1,41 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { QuoteWizard } from "./QuoteWizard";
 
 export function Footer() {
   return (
-    <footer className="bg-shell border-t border-line pt-14 pb-10">
-      <div className="container-page">
+    <footer className="border-t border-line">
+      {/* Quote band. Carries id="quote" — the header CTA and every in-page
+          "Get a quote" link scroll here, so this id is load-bearing. */}
+      <section id="quote" className="scroll-mt-20 bg-navy text-white">
+        <div className="container-page py-12 md:py-14 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          <div className="lg:sticky lg:top-28">
+            <p className="eyebrow eyebrow-on-dark mb-4">Free quote</p>
+            <h2 className="display-2 measure-display">Start your transformation.</h2>
+            <p className="mt-5 text-white/70 leading-relaxed measure-body">
+              Tell us about your project and a specialist will come back within 24 hours. No
+              obligation, no pressure.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
+              <a
+                href="tel:08001234567"
+                className="inline-flex items-center gap-3 text-white font-semibold group"
+              >
+                <span className="inline-flex items-center justify-center size-11 rounded-full bg-white/10 group-hover:bg-brass group-hover:text-navy transition-colors">
+                  <Phone className="size-4" />
+                </span>
+                0800 123 4567
+              </a>
+              <span className="text-white/45 text-sm">Mon–Sat, 8am–6pm</span>
+            </div>
+          </div>
+
+          <QuoteWizard showIntro={false} onDark />
+        </div>
+      </section>
+
+      <div className="bg-shell">
+      <div className="container-page pt-14 pb-10">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 mb-12">
           <div className="col-span-2">
             <div className="text-2xl font-display font-semibold mb-5 text-navy">
@@ -68,14 +99,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-navy/5 gap-6">
-          <p className="text-xs text-ink-muted">© {new Date().getFullYear()} Affordable Glazings Ltd. Registered in England & Wales. FENSA Registered.</p>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-line gap-6">
+          <p className="text-xs text-ink-muted">© {new Date().getFullYear()} Affordable Glazings Ltd. Registered in England &amp; Wales. FENSA Registered.</p>
           <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-ink-muted">
             <Link to="/privacy" className="hover:text-navy">Privacy</Link>
             <Link to="/terms" className="hover:text-navy">Terms</Link>
             <Link to="/cookies" className="hover:text-navy">Cookies</Link>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   );

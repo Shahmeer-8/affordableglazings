@@ -77,7 +77,7 @@ function SearchPage() {
         </form>
       </PageHero>
 
-      <section className="py-14 md:py-16">
+      <section className="py-12 md:py-14">
         <div className="container-page">
           {!query && (
             <p className="text-navy/60">Type a product or style above to see matching pages.</p>
