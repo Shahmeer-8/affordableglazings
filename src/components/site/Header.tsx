@@ -10,8 +10,10 @@ import consGable from "@/assets/cons-gable.jpg";
 const PHONE_DISPLAY = "0800 123 4567";
 const PHONE_HREF = "tel:08001234567";
 
-// Full-width bar: logo hugs the left corner, CTA the right, content spread edge-to-edge.
-const BAR = "mx-auto max-w-[120rem] px-6 lg:px-10 xl:px-16";
+// Matches `container-page` (80rem / 1.5rem inline padding) so the logo lines up
+// with every heading below it. Previously 120rem, which put the header 64px out
+// of alignment at 1440px and 280px out at 1920px.
+const BAR = "mx-auto max-w-[80rem] px-6";
 
 type MegaMenu = {
   key: string;
@@ -105,18 +107,21 @@ export function Header() {
 
   const activeMega = MEGA.find((m) => m.key === active);
 
+  // `sticky` must live on the <header> itself: sticky is clamped to its
+  // containing block, so putting it on an inner div of a short header made the
+  // bar scroll away entirely.
   return (
-    <header className="relative z-50">
-      <div className="sticky top-0 z-50 bg-white border-b border-navy/10">
+    <header className="sticky top-0 z-50">
+      <div className="bg-canvas/85 backdrop-blur-xl border-b border-line">
         <div className="relative" onMouseLeave={scheduleClose}>
-          <div className={`${BAR} flex items-center gap-8 xl:gap-10 h-16 lg:h-[74px]`}>
+          <div className={`${BAR} flex items-center gap-5 xl:gap-8 h-16 lg:h-[74px]`}>
             {/* Logo — sits before the primary nav, with a comfortable gap */}
             <Link to="/" className="shrink-0 text-xl lg:text-2xl font-display font-semibold tracking-tight text-navy">
               Affordable<span className="text-brand-blue">Glazings</span>
             </Link>
 
             {/* Primary nav (desktop) */}
-            <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-semibold text-navy">
+            <nav aria-label="Primary" className="hidden xl:flex items-center gap-5 xl:gap-7 text-[0.9rem] font-semibold text-navy">
               <Link
                 to="/"
                 onMouseEnter={() => openMenu("")}
@@ -152,8 +157,8 @@ export function Header() {
             </nav>
 
             {/* Right cluster */}
-            <div className="ml-auto flex items-center gap-4 lg:gap-6 shrink-0">
-              <div className="hidden lg:flex items-center gap-6 text-sm font-semibold text-navy/70">
+            <div className="ml-auto flex items-center gap-3 lg:gap-4 shrink-0">
+              <div className="hidden xl:flex items-center gap-4 text-[0.9rem] font-semibold text-ink-muted">
                 {SIMPLE.map((m) => (
                   <div
                     key={m.key}
@@ -187,13 +192,13 @@ export function Header() {
                 ))}
               </div>
 
-              <a href={PHONE_HREF} className="hidden xl:block text-right leading-tight group">
+              <a href={PHONE_HREF} className="hidden 2xl:block text-right leading-tight group">
                 <span className="block text-base font-display font-semibold text-navy group-hover:text-brand-blue transition-colors">
                   {PHONE_DISPLAY}
                 </span>
                 <span className="block text-[11px] text-navy/50">Mon–Sat, 8am–6pm</span>
               </a>
-              <a href={PHONE_HREF} className="xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-soft-gray text-navy" aria-label="Call us">
+              <a href={PHONE_HREF} className="2xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-soft-gray text-navy" aria-label="Call us">
                 <Phone className="size-4" />
               </a>
 
@@ -211,7 +216,7 @@ export function Header() {
               <button
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
-                className="lg:hidden inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy"
+                className="xl:hidden inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy"
                 onClick={() => setMobileOpen(true)}
               >
                 <Menu className="size-5" />
@@ -222,7 +227,7 @@ export function Header() {
           {/* Full-width mega panel */}
           {activeMega && (
             <div
-              className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-navy/5 shadow-elegant animate-mega-drop"
+              className="hidden xl:block absolute left-0 right-0 top-full bg-white border-t border-navy/5 shadow-elegant animate-mega-drop"
               onMouseEnter={() => openMenu(activeMega.key)}
             >
               <MegaPanel menu={activeMega} onNavigate={() => setActive(null)} />
@@ -332,7 +337,7 @@ function MobileDrawer({
   onClose: () => void;
 }) {
   return (
-    <div className="lg:hidden fixed inset-0 z-[60]">
+    <div className="xl:hidden fixed inset-0 z-[60]">
       <div className="absolute inset-0 bg-navy/40 backdrop-blur-sm animate-fade-in" onClick={onClose} />
       <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white shadow-2xl flex flex-col animate-slide-in-right">
         <div className="flex items-center justify-between h-16 px-5 border-b border-navy/10">

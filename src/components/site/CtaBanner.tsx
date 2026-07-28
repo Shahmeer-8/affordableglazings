@@ -12,7 +12,7 @@ export function CtaBanner({
 }: { title?: string; subtitle?: string }) {
   return (
     <section id="quote" className="scroll-mt-24 py-10 md:py-12 px-6">
-      <div className="max-w-7xl mx-auto bg-gradient-to-br from-[#3a4150] to-[#1e2129] rounded-[32px] p-6 md:p-10 relative overflow-hidden">
+      <div className="container-page bg-gradient-to-br from-navy-2 to-navy rounded-[32px] p-6 md:p-10 relative overflow-hidden">
         <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-start">
           <div className="text-white space-y-5">
             <h2 className="text-3xl md:text-5xl font-display font-semibold leading-[1.05]">{title}</h2>

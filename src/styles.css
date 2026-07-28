@@ -34,14 +34,27 @@
 
   /* Brand tokens */
   --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
   --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-2: var(--brand-blue-2);
   --color-soft-gray: var(--soft-gray);
   --color-canvas: var(--canvas);
+  --color-shell: var(--shell);
+  --color-line: var(--line);
+  --color-silver: var(--silver);
+  --color-ink-muted: var(--ink-muted);
   --color-brass: var(--brass);
   --color-brass-2: var(--brass-2);
 
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid type scale — continuous clamp() ramps, not breakpoint jumps.
+     Display tops out at 7rem so headlines read as drawn, not scaled. */
+  --text-display-1: clamp(2.75rem, 1.9rem + 4.2vw, 7rem);
+  --text-display-2: clamp(2rem, 1.55rem + 2.2vw, 3.5rem);
+  --text-display-3: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --text-eyebrow: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
 
   --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--navy) 45%, transparent), 0 4px 12px -4px color-mix(in oklab, var(--navy) 12%, transparent);
   --shadow-soft: 0 12px 40px -14px color-mix(in oklab, var(--navy) 20%, transparent);
@@ -54,39 +67,58 @@
 :root {
   --radius: 1rem;
 
-  /* Brand palette — deep navy, royal blue, silver */
-  --navy: oklch(0.16 0.055 265);
-  --navy-2: oklch(0.22 0.07 265);
-  --brand-blue: oklch(0.52 0.22 265);
-  --brand-blue-2: oklch(0.62 0.20 260);
-  --silver: oklch(0.86 0.008 260);
-  --soft-gray: oklch(0.965 0.006 260);
-  --canvas: oklch(0.985 0.003 260);
-  --success: oklch(0.62 0.16 145);
+  /* ── Palette: "Anthracite & Stone" ──────────────────────────────────
+     Warm stone paper + anthracite (RAL 7016, the frame colour customers
+     actually buy) + weathered steel + brass. Saturated blue is removed
+     deliberately: it is the single strongest "budget uPVC" signal in the
+     sector. Global chroma ceiling ~0.075 — saturation, not hue, is what
+     made the old palette read as software.
+     Token NAMES are kept so existing utility classes keep working; only
+     their VALUES change, which shifts the whole site at once.
+     All pairs WCAG 2.x verified (ratios noted).                        */
 
-  /* Warm brass accent — used sparingly for premium contrast */
-  --brass: oklch(0.72 0.11 75);
-  --brass-2: oklch(0.6 0.1 65);
+  /* Ink / dark grounds — anthracite, never #000 */
+  --navy: #1c1f22;              /* ink + dark section ground · 14.59:1 on canvas */
+  --navy-2: #2b3136;            /* elevated dark · white on it 13.16:1 */
+  --ink-muted: #5d6259;         /* secondary text · 5.51:1 on canvas */
+
+  /* Accent — weathered steel (was royal blue #2857e5, chroma 0.22 → 0.07) */
+  --brand-blue: #2d697e;        /* 5.39:1 on canvas · white on it 6.12:1 */
+  --brand-blue-2: #7fa9b8;      /* on-dark variant · 6.09:1 on anthracite */
+
+  /* Light grounds — three surfaces with genuinely perceptible steps
+     (old canvas→soft-gray was 1.06:1, i.e. invisible) */
+  --canvas: #f5f0e8;            /* warm stone paper */
+  --soft-gray: #e9e0d1;         /* 1.15:1 step off canvas */
+  --shell: #d8cbb6;             /* 1.41:1 off canvas — real third surface */
+  --line: #d6cdbe;              /* hairline rules · 1.39:1 */
+  --silver: #c4b8a2;
+
+  --success: oklch(0.62 0.13 145);
+
+  /* Warm brass — used sparingly. Old value failed contrast at 2.41:1. */
+  --brass: #7d6236;             /* 5.04:1 on canvas — now body-safe */
+  --brass-2: #c8a86a;           /* on-dark warm · 6.82:1 on anthracite */
 
   /* Semantic (shadcn) */
   --background: var(--canvas);
   --foreground: var(--navy);
-  --card: oklch(1 0 0);
+  --card: #fbf8f2;
   --card-foreground: var(--navy);
-  --popover: oklch(1 0 0);
+  --popover: #fbf8f2;
   --popover-foreground: var(--navy);
   --primary: var(--navy);
-  --primary-foreground: oklch(1 0 0);
+  --primary-foreground: #f5f0e8;
   --secondary: var(--soft-gray);
   --secondary-foreground: var(--navy);
   --muted: var(--soft-gray);
-  --muted-foreground: oklch(0.5 0.02 260);
+  --muted-foreground: var(--ink-muted);
   --accent: var(--brand-blue);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0.01 260);
-  --input: oklch(0.92 0.01 260);
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.55 0.17 28);
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --input: var(--line);
   --ring: var(--brand-blue);
 }
 
@@ -116,11 +148,78 @@
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+    /* Bricolage ships a 12..96 optical-size axis that was being requested
+       and then thrown away — this is what makes large display type look
+       drawn rather than merely scaled up. */
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
   }
   ::selection {
     background: var(--brand-blue);
     color: white;
   }
+}
+
+/* ── Typographic signature ───────────────────────────────────────────
+   The one reliable "expensive architecture" tell: a huge, tightly
+   negative-tracked display line sitting directly above a tiny, very
+   widely-tracked uppercase label. The tension between the two is the
+   whole effect. Measure caps (18ch display / 46ch body) are what
+   produce the magazine wrap rather than full-width text rivers.      */
+@utility display-1 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-1);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+@utility display-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-2);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+@utility measure-display {
+  max-width: 18ch;
+}
+@utility measure-body {
+  max-width: 46ch;
+}
+
+/* Eyebrow: given real structure (a short rule) instead of just more
+   letter-spacing, and moved off the accent onto brass. */
+@utility eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--brass);
+  &::before {
+    content: "";
+    width: 1.5rem;
+    height: 1px;
+    background: currentColor;
+    flex: none;
+  }
+}
+@utility eyebrow-on-dark {
+  color: var(--brass-2);
+}
+
+/* Hairline rule — replaces drop-shadowed cards as the structural device.
+   The research is unambiguous: rules read premium, card shadows read cheap. */
+@utility rule-top {
+  border-top: 1px solid var(--line);
 }
 
 @keyframes reveal-up {
@@ -160,6 +259,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-pan { animation: none; transform: scale(1.02); }
   .animate-reveal, .animate-fade-in { animation: none; opacity: 1; transform: none; }
+  /* Infinite motion must not run for users who ask for less of it. */
+  .animate-float, .animate-pulse { animation: none; }
 }
 
 /* Hero headline — masked word-by-word rise */
@@ -214,35 +315,6 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-slide-in-right,
   .animate-mega-drop { animation: none; }
-}
-
-/* ---------- Signature: the glazing bar ----------
-   The site's one unifying motif: a background that reads like looking at
-   an actual window instead of decorative blur. A fine astragal grid (small
-   panes) plus a bolder grid at 3x the spacing (the main sash divisions) —
-   exactly how a real Georgian window is built from a few large lights
-   subdivided by thin glazing bars. A soft skylight vignette keeps it from
-   feeling like graph paper. */
-.glazing-grid {
-  position: fixed;
-  inset: 0;
-  z-index: -10;
-  background-color: var(--canvas);
-  background-image:
-    linear-gradient(color-mix(in oklab, var(--navy) 10%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, var(--navy) 10%, transparent) 1px, transparent 1px),
-    linear-gradient(color-mix(in oklab, var(--navy) 5%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, var(--navy) 5%, transparent) 1px, transparent 1px);
-  background-size: 258px 258px, 258px 258px, 86px 86px, 86px 86px;
-  background-position: -1px -1px;
-}
-.glazing-grid::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(90% 55% at 50% -8%, color-mix(in oklab, white 70%, transparent) 0%, transparent 62%),
-    linear-gradient(180deg, transparent 0%, var(--soft-gray) 92%);
 }
 
 /* Slow glass-glint sweep — sunlight passing over a pane. One deliberate

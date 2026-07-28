@@ -3,7 +3,7 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-navy/5 pt-14 pb-10">
+    <footer className="bg-shell border-t border-line pt-14 pb-10">
       <div className="container-page">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 mb-12">
           <div className="col-span-2">
@@ -51,7 +51,7 @@ export function Footer() {
           />
 
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <h5 className="font-bold uppercase text-[10px] tracking-widest text-navy/40 mb-5">Get in touch</h5>
+            <h5 className="font-bold uppercase text-[10px] tracking-widest text-ink-muted mb-5">Get in touch</h5>
             <ul className="space-y-3 text-sm text-navy/70">
               <li>
                 <a href="tel:08001234567" className="flex items-start gap-2 hover:text-brand-blue transition-colors">
@@ -69,8 +69,8 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-navy/5 gap-6">
-          <p className="text-xs text-navy/50">© {new Date().getFullYear()} Affordable Glazings Ltd. Registered in England & Wales. FENSA Registered.</p>
-          <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-navy/50">
+          <p className="text-xs text-ink-muted">© {new Date().getFullYear()} Affordable Glazings Ltd. Registered in England & Wales. FENSA Registered.</p>
+          <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-ink-muted">
             <Link to="/privacy" className="hover:text-navy">Privacy</Link>
             <Link to="/terms" className="hover:text-navy">Terms</Link>
             <Link to="/cookies" className="hover:text-navy">Cookies</Link>
@@ -84,7 +84,7 @@ export function Footer() {
 function FooterCol({ title, links }: { title: string; links: { to: string; label: string; hash?: string }[] }) {
   return (
     <div>
-      <h5 className="font-bold uppercase text-[10px] tracking-widest text-navy/40 mb-5">{title}</h5>
+      <h5 className="font-bold uppercase text-[10px] tracking-widest text-ink-muted mb-5">{title}</h5>
       <ul className="space-y-2.5 text-sm font-medium text-navy/70">
         {links.map((l) => (
           <li key={l.label}>

@@ -123,14 +123,14 @@ function Hero() {
           >
             <a
               href="#quote"
-              className="group btn-shine inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-blue-2 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-[0_10px_40px_-10px_var(--brand-blue)] hover:shadow-[0_20px_60px_-10px_var(--brand-blue)] transition-all hover:-translate-y-0.5"
+              className="group btn-shine inline-flex items-center gap-2 bg-brass-2 text-navy px-8 py-4 rounded-full font-semibold text-base hover:bg-white transition-all hover:-translate-y-0.5"
             >
               Get Free Quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 glass-dark text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-white/15 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-white/10 hover:-translate-y-0.5 transition-all"
             >
               View Our Work
             </Link>
@@ -148,7 +148,7 @@ function Hero() {
                 style={{ animationDelay: `${900 + i * 130}ms` }}
                 className="animate-reveal inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 text-xs font-semibold text-white/85 border border-white/10 transition-transform duration-300 hover:-translate-y-0.5 hover:border-brass/40"
               >
-                <Icon className="size-3.5 text-brand-blue-2" />
+                <Icon className="size-3.5 text-brass-2" />
                 {label}
               </span>
             ))}
@@ -156,7 +156,7 @@ function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60 text-[10px] uppercase tracking-[0.3em] animate-float">
+      <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-white/60 text-[10px] uppercase tracking-[0.3em] animate-float">
         <span>Scroll</span>
         <div className="w-px h-8 bg-white/40" />
       </div>
@@ -169,10 +169,10 @@ function Hero() {
 function TrustStrip() {
   const items = ["FENSA", "Which? Trusted", "Checkatrade 9.8", "Made in Britain", "TrustMark", "Certass"];
   return (
-    <section className="border-y border-navy/5 bg-white">
+    <section className="border-y border-line bg-canvas">
       <div className="container-page py-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
         {items.map((i) => (
-          <span key={i} className="text-xs md:text-sm font-bold uppercase tracking-[0.22em] text-navy/40">
+          <span key={i} className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-ink-muted">
             {i}
           </span>
         ))}
@@ -209,16 +209,16 @@ const SERVICES = [
 
 function Services() {
   return (
-    <section className="pt-12 md:pt-16 pb-8 md:pb-10">
+    <section className="py-16 md:py-20 bg-soft-gray">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div className="max-w-xl">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our Specialisms</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-navy leading-[1.05] text-balance">
+            <p className="eyebrow mb-4">Our Specialisms</p>
+            <h2 className="display-2 text-navy measure-display">
               Architectural solutions for every modern space.
             </h2>
           </div>
-          <p className="text-navy/60 text-sm max-w-xs">From heritage homes to modern extensions.</p>
+          <p className="text-ink-muted text-sm max-w-xs">From heritage homes to modern extensions.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -270,7 +270,7 @@ const WHY = [
 
 function WhyUs() {
   return (
-    <section className="py-14 md:py-16 bg-white">
+    <section className="py-16 md:py-20 bg-canvas">
       <div className="container-page">
         <div className="max-w-2xl mb-8">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why choose us</p>
@@ -393,11 +393,11 @@ const STEPS = [
 
 function Process() {
   return (
-    <section className="pt-8 md:pt-10 pb-14 md:pb-20">
+    <section className="py-16 md:py-20 bg-canvas">
       <div className="container-page">
-        <div className="max-w-2xl mb-8">
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">The process</p>
-          <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">
+        <div className="max-w-2xl mb-12">
+          <p className="eyebrow mb-4">The process</p>
+          <h2 className="display-2 text-navy measure-display">
             Four steps, one flawless finish.
           </h2>
         </div>
@@ -428,7 +428,7 @@ function Process() {
 
 function BeforeAfter() {
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-16 md:py-20 bg-canvas">
       <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Recent projects</p>
@@ -493,47 +493,44 @@ function initials(name: string) {
 
 function Testimonials() {
   return (
-    <section className="py-14 md:py-16">
+    <section className="py-16 md:py-20 bg-navy text-white">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-10">
           <div>
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Reviews</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] max-w-xl">
+            <p className="eyebrow eyebrow-on-dark mb-4">Reviews</p>
+            <h2 className="display-2 measure-display">
               Rated 4.9 by British homeowners.
             </h2>
           </div>
-          <div className="flex items-center gap-2 text-navy/60 text-sm">
-            <div className="flex gap-0.5 text-brand-blue">
+          <div className="flex items-center gap-2 text-white/60 text-sm">
+            <div className="flex gap-0.5 text-brass-2">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="size-4 fill-current" />
               ))}
             </div>
-            <span className="font-semibold text-navy">4.9 / 5</span>
+            <span className="font-semibold text-white">4.9 / 5</span>
             <span>from 1,200+ reviews</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
           {REVIEWS.map((r, i) => (
             <figure
               key={r.name}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
-              className="p-8 rounded-3xl bg-white border border-navy/5 card-lift"
+              className="p-8 bg-navy"
             >
-              <div className="flex gap-0.5 text-brand-blue mb-5">
+              <div className="flex gap-0.5 text-brass-2 mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-navy/80 leading-relaxed mb-6">"{r.body}"</blockquote>
-              <figcaption className="flex items-center gap-3 text-sm">
-                <div className="size-11 rounded-full grid place-items-center text-white font-semibold text-xs shrink-0 bg-gradient-to-br from-brand-blue to-brand-blue-2 ring-2 ring-brass/30 ring-offset-2 ring-offset-white">
-                  {initials(r.name)}
-                </div>
+              <blockquote className="text-white/80 leading-relaxed mb-6 measure-body">"{r.body}"</blockquote>
+              <figcaption className="flex items-center gap-3 text-sm pt-5 border-t border-white/10">
                 <div>
-                  <div className="font-semibold text-navy">{r.name}</div>
-                  <div className="text-navy/50">{r.location}</div>
+                  <div className="font-semibold text-white">{r.name}</div>
+                  <div className="text-white/50">{r.location}</div>
                 </div>
               </figcaption>
             </figure>
@@ -548,7 +545,7 @@ function Testimonials() {
 
 function Journal() {
   return (
-    <section className="py-14 md:py-16 bg-white">
+    <section className="py-16 md:py-20 bg-canvas">
       <div className="container-page">
         <div className="rounded-[32px] bg-soft-gray border border-navy/5 px-8 py-12 md:px-14 md:py-14 text-center flex flex-col items-center" data-reveal="up">
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our work</p>

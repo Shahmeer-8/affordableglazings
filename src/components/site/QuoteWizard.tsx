@@ -39,7 +39,7 @@ export function QuoteWizard({ showIntro = true }: { showIntro?: boolean }) {
                 name="product"
                 defaultValue=""
                 required
-                className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-soft-gray text-navy outline-none focus:border-brand-blue focus:bg-white transition-colors"
+                className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-canvas text-navy outline-none focus:border-brand-blue focus:bg-white transition-colors"
               >
                 <option value="" disabled>Select a product *</option>
                 {PRODUCTS.map((p) => <option key={p}>{p}</option>)}
@@ -58,7 +58,7 @@ export function QuoteWizard({ showIntro = true }: { showIntro?: boolean }) {
                 name="message"
                 rows={3}
                 placeholder="Describe your project (optional)"
-                className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-soft-gray text-navy outline-none focus:border-brand-blue focus:bg-white transition-colors resize-y"
+                className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-canvas text-navy outline-none focus:border-brand-blue focus:bg-white transition-colors resize-y"
               />
             </div>
 
@@ -99,7 +99,7 @@ function Field({ name, placeholder, type = "text" }: { name: string; placeholder
         type={type}
         required
         placeholder={placeholder}
-        className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-soft-gray text-navy placeholder:text-navy/45 outline-none focus:border-brand-blue focus:bg-white transition-colors"
+        className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-canvas text-navy placeholder:text-navy/45 outline-none focus:border-brand-blue focus:bg-white transition-colors"
       />
     </div>
   );
