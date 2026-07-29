@@ -45,12 +45,12 @@ function ProductDetailPage() {
         description={product.tagline}
       >
         <div className="flex flex-wrap gap-3">
-          <Link
-            to="/quote"
+          <a
+            href="#quote"
             className="inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
           >
             Request a quote <ArrowRight className="size-4" />
-          </Link>
+          </a>
           <Link
             to={CATEGORY_PATHS[product.category] ?? "/"}
             hash="range"

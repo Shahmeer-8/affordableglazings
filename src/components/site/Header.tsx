@@ -297,13 +297,13 @@ function MegaPanel({ menu, onNavigate }: { menu: MegaMenu; onNavigate: () => voi
           <div className="relative">
             <p className="text-sm text-white/85 leading-relaxed mb-4">{menu.blurb}</p>
             <div className="flex flex-col gap-2">
-              <Link
-                to="/quote"
+              <a
+                href="#quote"
                 onClick={onNavigate}
                 className="inline-flex items-center justify-center gap-2 bg-white text-navy px-4 py-2.5 rounded-full text-xs font-bold hover:bg-brand-blue hover:text-white transition-colors"
               >
                 Book a free survey
-              </Link>
+              </a>
               <Link
                 to="/gallery"
                 onClick={onNavigate}

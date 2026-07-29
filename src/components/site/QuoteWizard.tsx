@@ -7,11 +7,15 @@ const PRODUCTS = ["Windows", "Doors", "Rooflights", "Conservatories", "Roofline"
  * Single-step "Fast Quote" form used on the /quote page and inside the CTA
  * section on every page. Styled to the site theme (navy / brand-blue).
  */
-export function QuoteWizard({ showIntro = true, onDark = false }: { showIntro?: boolean; onDark?: boolean }) {
+export function QuoteWizard({
+  showIntro = true,
+  onDark = false,
+  compact = false,
+}: { showIntro?: boolean; onDark?: boolean; compact?: boolean }) {
   const [done, setDone] = useState(false);
 
   return (
-    <div className={`rounded-[28px] p-6 md:p-8 ${onDark ? "bg-canvas shadow-2xl" : "bg-white border border-line shadow-elegant"}`}>
+    <div className={`rounded-[28px] ${compact ? "p-5 md:p-6" : "p-6 md:p-8"} ${onDark ? "bg-canvas shadow-2xl" : "bg-white border border-line shadow-elegant"}`}>
       {done ? (
         <div className="text-center py-8">
           <div className="mx-auto size-14 rounded-full bg-green-100 text-green-700 grid place-items-center mb-5">
@@ -46,24 +50,28 @@ export function QuoteWizard({ showIntro = true, onDark = false }: { showIntro?: 
               </select>
             </div>
 
-            <Field name="firstName" placeholder="First name *" />
-            <Field name="phone" type="tel" placeholder="Phone number *" />
-            <Field name="email" type="email" placeholder="Email address *" />
-            <Field name="postcode" placeholder="Postcode *" />
+            {/* Paired fields when compact so the footer form stays short
+                enough to sit beside the link columns. */}
+            <div className={compact ? "grid sm:grid-cols-2 gap-4" : "space-y-4"}>
+              <Field name="firstName" placeholder="First name *" />
+              <Field name="phone" type="tel" placeholder="Phone number *" />
+              <Field name="email" type="email" placeholder="Email address *" />
+              <Field name="postcode" placeholder="Postcode *" />
+            </div>
 
             <div>
               <label htmlFor="fq-message" className="sr-only">Describe your project</label>
               <textarea
                 id="fq-message"
                 name="message"
-                rows={3}
+                rows={compact ? 2 : 3}
                 placeholder="Describe your project (optional)"
                 className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-canvas text-navy outline-none focus:border-brand-blue focus:bg-white transition-colors resize-y"
               />
             </div>
 
             <div>
-              <label htmlFor="fq-file" className="block text-xs font-bold uppercase tracking-[0.18em] text-navy/50 mb-2">
+              <label htmlFor="fq-file" className="block text-xs font-bold uppercase tracking-[0.18em] text-ink-muted mb-2">
                 Attach an image (optional)
               </label>
               <input
@@ -71,7 +79,7 @@ export function QuoteWizard({ showIntro = true, onDark = false }: { showIntro?: 
                 name="attachment"
                 type="file"
                 accept="image/*"
-                className="block w-full text-sm text-navy/60 file:mr-4 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-white file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-brand-blue file:transition-colors"
+                className="block w-full text-sm text-ink-muted file:mr-4 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-white file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-brand-blue file:transition-colors"
               />
             </div>
 
