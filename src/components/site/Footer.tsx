@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { QuoteWizard } from "./QuoteWizard";
+import heroVideo from "@/assets/hero-video.mp4";
+import craftsman from "@/assets/craftsman.jpg";
 
 /**
  * Footer layout: navigation and contact details occupy the left column, the
@@ -8,18 +10,36 @@ import { QuoteWizard } from "./QuoteWizard";
  * footer practice — three link columns with bold headers and subdued links,
  * the form given real contrast and whitespace so it reads as the primary
  * action rather than another list.
+ *
+ * A looping video sits behind everything with a heavy navy scrim — strong
+ * enough that every line of nav/contact text stays fully readable, while
+ * still leaving the motion/imagery visibly present at the edges.
  */
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-shell">
-      <div className="container-page pt-14 pb-8">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-line">
+    <footer className="relative overflow-hidden border-t border-line">
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
+        poster={craftsman}
+        aria-hidden="true"
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-navy/90" />
+
+      <div className="container-page relative pt-14 pb-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-white/10">
           {/* ── Left: brand, navigation, contact ─────────────────────── */}
           <div className="lg:col-span-7">
-            <Link to="/" className="inline-block text-2xl font-display font-semibold text-navy">
-              Affordable<span className="text-brand-blue">Glazings</span>
+            <Link to="/" className="inline-block text-2xl font-display font-semibold text-white">
+              Affordable<span className="text-brand-blue-2">Glazings</span>
             </Link>
-            <p className="mt-3 text-sm text-ink-muted leading-relaxed max-w-sm">
+            <p className="mt-3 text-sm text-white/70 leading-relaxed max-w-sm">
               Bespoke windows, doors, rooflights and conservatories — fabricated in-house and
               installed by our own craftsmen since 1994.
             </p>
@@ -56,7 +76,7 @@ export function Footer() {
 
             {/* Contact block — the details people actually came looking for,
                 given more prominence than a link list. */}
-            <div className="mt-10 pt-8 border-t border-line grid sm:grid-cols-3 gap-6">
+            <div className="mt-10 pt-8 border-t border-white/10 grid sm:grid-cols-3 gap-6">
               <ContactItem icon={Phone} label="Call us" href="tel:08001234567" value="0800 123 4567" hint="Mon–Sat, 8am–6pm" />
               <ContactItem icon={Mail} label="Email" href="mailto:hello@affordableglazings.co.uk" value="hello@affordableglazings.co.uk" hint="Reply within 24 hours" breakAll />
               <ContactItem icon={MapPin} label="Visit" value="Mayfair Industrial Estate, London" hint="Showrooms nationwide" />
@@ -72,7 +92,7 @@ export function Footer() {
                   key={name}
                   href="#"
                   aria-label={name}
-                  className="size-10 grid place-items-center rounded-full bg-canvas border border-line text-navy hover:bg-navy hover:text-white hover:border-navy transition-colors"
+                  className="size-10 grid place-items-center rounded-full bg-white/10 border border-white/15 text-white hover:bg-cta hover:border-cta transition-colors"
                 >
                   <Icon className="size-4" />
                 </a>
@@ -90,14 +110,14 @@ export function Footer() {
 
         {/* ── Bottom bar ───────────────────────────────────────────────── */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-6 gap-4">
-          <p className="text-xs text-ink-muted">
+          <p className="text-xs text-white/50">
             © {new Date().getFullYear()} Affordable Glazings Ltd · Registered in England &amp; Wales ·
             FENSA registered
           </p>
-          <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-ink-muted">
-            <Link to="/privacy" className="hover:text-navy transition-colors">Privacy</Link>
-            <Link to="/terms" className="hover:text-navy transition-colors">Terms</Link>
-            <Link to="/cookies" className="hover:text-navy transition-colors">Cookies</Link>
+          <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-white/50">
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
@@ -122,19 +142,19 @@ function ContactItem({
 }) {
   const body = (
     <>
-      <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-muted">
-        <Icon className="size-3.5 text-brass" />
+      <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
+        <Icon className="size-3.5 text-brass-2" />
         {label}
       </span>
-      <span className={`block mt-1.5 text-sm font-semibold text-navy ${breakAll ? "break-all" : ""}`}>
+      <span className={`block mt-1.5 text-sm font-semibold text-white ${breakAll ? "break-all" : ""}`}>
         {value}
       </span>
-      <span className="block text-xs text-ink-muted mt-0.5">{hint}</span>
+      <span className="block text-xs text-white/50 mt-0.5">{hint}</span>
     </>
   );
 
   return href ? (
-    <a href={href} className="group block hover:text-brand-blue transition-colors">
+    <a href={href} className="group block hover:text-cta transition-colors">
       {body}
     </a>
   ) : (
@@ -145,11 +165,11 @@ function ContactItem({
 function FooterCol({ title, links }: { title: string; links: { to: string; label: string; hash?: string }[] }) {
   return (
     <div>
-      <h5 className="text-[10px] font-bold uppercase tracking-[0.18em] text-navy mb-4">{title}</h5>
-      <ul className="space-y-2.5 text-sm text-ink-muted">
+      <h5 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white mb-4">{title}</h5>
+      <ul className="space-y-2.5 text-sm text-white/60">
         {links.map((l) => (
           <li key={l.label}>
-            <Link to={l.to} hash={l.hash} className="hover:text-brand-blue transition-colors">
+            <Link to={l.to} hash={l.hash} className="hover:text-cta transition-colors">
               {l.label}
             </Link>
           </li>

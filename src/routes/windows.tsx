@@ -2,11 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Award, Layers, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Sun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
+import { HandleFinishes } from "@/components/site/HandleFinishes";
+import { ExploreMore } from "@/components/site/ExploreMore";
 import windowsHero from "@/assets/windows-hero.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
 import installer from "@/assets/installer.jpg";
-import productDoors from "@/assets/product-doors.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
 export const Route = createFileRoute("/windows")({
   head: () => ({
     meta: [
@@ -39,28 +39,16 @@ const GLASS = [
 ];
 
 const COLOURS = [
-  { name: "Anthracite Grey", hex: "#2a2f33" },
-  { name: "Jet Black", hex: "#0f1114" },
-  { name: "Chartwell Green", hex: "#7a8c7a" },
-  { name: "Agate Grey", hex: "#7c7f80" },
-  { name: "Cream", hex: "#efe6d3" },
-  { name: "Rosewood", hex: "#4a2a1a" },
-  { name: "Irish Oak", hex: "#6b3f22" },
-  { name: "Arctic White", hex: "#f5f5f2" },
+  { name: "Anthracite Grey", hex: "#2a2f33", ral: "RAL 7016" },
+  { name: "Jet Black", hex: "#0f1114", ral: "RAL 9005" },
+  { name: "Chartwell Green", hex: "#7a8c7a", ral: "RAL 6021" },
+  { name: "Agate Grey", hex: "#7c7f80", ral: "RAL 7038" },
+  { name: "Cream", hex: "#efe6d3", ral: "RAL 9001" },
+  { name: "Rosewood", hex: "#4a2a1a", ral: "RAL 8016" },
+  { name: "Irish Oak", hex: "#6b3f22", ral: "RAL 8001" },
+  { name: "Arctic White", hex: "#f5f5f2", ral: "RAL 9016" },
 ];
 
-function hexToRgb(hex: string) {
-  const n = parseInt(hex.slice(1), 16);
-  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
-}
-
-const HANDLES = [
-  { name: "Chrome", hex: "linear-gradient(135deg,#e6eaee,#aab2ba)" },
-  { name: "Brushed Nickel", hex: "linear-gradient(135deg,#c3c4bd,#9a9b93)" },
-  { name: "Brass", hex: "linear-gradient(135deg,#d8b878,#a97f3f)" },
-  { name: "Matt Black", hex: "#17181b" },
-  { name: "Heritage Cast Iron", hex: "#33352f" },
-];
 
 const PROCESS = [
   { n: "01", t: "Free consultation", d: "A senior surveyor visits your home, listens to your goals and shares samples, colours and glass options in person." },
@@ -180,23 +168,13 @@ function WindowsPage() {
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
             {COLOURS.map((c, i) => (
               <div key={c.name} className="group" data-reveal="zoom" style={{ ["--reveal-delay" as string]: `${i * 40}ms` } as Record<string, string>}>
-                <div className="rgb-swatch aspect-square rounded-xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} data-rgb={hexToRgb(c.hex)} />
+                <div className="rgb-swatch aspect-square rounded-xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} data-ral={c.ral} />
                 <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-10">
-            <p className="text-xs font-bold text-navy/50 uppercase tracking-[0.18em] mb-4">Handle finishes</p>
-            <div className="flex flex-wrap gap-x-8 gap-y-4">
-              {HANDLES.map((h) => (
-                <div key={h.name} className="flex items-center gap-3">
-                  <span className="size-8 rounded-full shadow-soft ring-1 ring-navy/10" style={{ background: h.hex }} />
-                  <span className="text-sm font-medium text-navy">{h.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <HandleFinishes />
         </div>
       </section>
 
@@ -246,32 +224,7 @@ function WindowsPage() {
         </div>
       </section>
 
-      {/* Related */}
-      <section className="py-12 md:py-14 bg-white">
-        <div className="container-page">
-          <div className="flex items-end justify-between mb-12" data-reveal="up">
-            <div>
-              <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Explore more</p>
-              <h2 className="text-3xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Complete the look.</h2>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { to: "/doors" as const, t: "Doors Collection", d: "Bi-fold, sliding & composite doors", img: productDoors },
-              { to: "/conservatories" as const, t: "Conservatories & Extensions", d: "Bespoke architectural glazing", img: productConservatories },
-            ].map((r) => (
-              <Link key={r.to} to={r.to} className="group relative rounded-[32px] overflow-hidden aspect-[16/10] block">
-                <img src={r.img} alt={r.t} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl md:text-3xl font-display font-semibold mb-1">{r.t}</h3>
-                  <p className="text-sm text-white/70 flex items-center gap-2">{r.d} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ExploreMore current="windows" />
 
     </>
   );

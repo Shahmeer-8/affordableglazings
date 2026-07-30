@@ -2,14 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Compass, Home, Layers, PenTool, Ruler, Sparkles, Sun, ThermometerSun, TreePine, Wrench } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
+import { ExploreMore } from "@/components/site/ExploreMore";
 import consHero from "@/assets/cons-hero.jpg";
 import consVictorian from "@/assets/cons-victorian.jpg";
 import consInterior from "@/assets/cons-interior.jpg";
 import consGable from "@/assets/cons-gable.jpg";
 import consTiled from "@/assets/cons-tiled.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
-import productWindows from "@/assets/product-windows.jpg";
-import productDoors from "@/assets/product-doors.jpg";
 export const Route = createFileRoute("/conservatories")({
   head: () => ({
     meta: [
@@ -251,24 +250,7 @@ function Page() {
         </div>
       </section>
 
-      {/* Related */}
-      <section className="py-12 md:py-14 bg-white">
-        <div className="container-page grid md:grid-cols-2 gap-6">
-          {[
-            { to: "/windows" as const, t: "Windows", d: "Complete the glazing story", img: productWindows },
-            { to: "/doors" as const, t: "Doors", d: "Bi-fold, sliding & French", img: productDoors },
-          ].map((r) => (
-            <Link key={r.to} to={r.to} className="group relative rounded-[32px] overflow-hidden aspect-[16/9] block">
-              <img src={r.img} alt={r.t} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <h3 className="text-3xl font-display font-semibold mb-1">{r.t}</h3>
-                <p className="text-sm text-white/70 flex items-center gap-2">{r.d} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <ExploreMore current="conservatories" />
 
     </>
   );

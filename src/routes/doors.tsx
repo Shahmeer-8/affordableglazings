@@ -3,14 +3,14 @@ import { ArrowRight, CheckCircle2, DoorOpen, KeyRound, Layers, Lock, Palette, Sh
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
 import { GalleryReel } from "@/components/site/GalleryReel";
+import { ExploreMore } from "@/components/site/ExploreMore";
+import { HandleFinishes } from "@/components/site/HandleFinishes";
 import doorsHero from "@/assets/doors-hero.jpg";
 import doorsSliding from "@/assets/doors-sliding.jpg";
 import doorsBifold from "@/assets/doors-bifold.jpg";
 import doorsFrench from "@/assets/doors-french.jpg";
 import doorsHardware from "@/assets/doors-hardware.jpg";
 import productDoors from "@/assets/product-doors.jpg";
-import productWindows from "@/assets/product-windows.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
 import bifold2 from "@/assets/products/bifold-2.jpg";
 import sliding2 from "@/assets/products/sliding-2.jpg";
 import crittall1 from "@/assets/products/crittall-1.jpg";
@@ -37,15 +37,10 @@ const SECURITY = [
 ];
 
 const COLOURS = [
-  { name: "Chartwell Green", hex: "#7a8c7a" }, { name: "Duck Egg", hex: "#a8c8c9" }, { name: "Anthracite", hex: "#2a2f33" },
-  { name: "Racing Green", hex: "#1e3b2c" }, { name: "Rioja Red", hex: "#5c1a20" }, { name: "French Navy", hex: "#1a2a44" },
-  { name: "Cream", hex: "#efe6d3" }, { name: "Slate", hex: "#4c5359" },
+  { name: "Chartwell Green", hex: "#7a8c7a", ral: "RAL 6021" }, { name: "Duck Egg", hex: "#a8c8c9", ral: "RAL 6034" }, { name: "Anthracite", hex: "#2a2f33", ral: "RAL 7016" },
+  { name: "Racing Green", hex: "#1e3b2c", ral: "RAL 6009" }, { name: "Rioja Red", hex: "#5c1a20", ral: "RAL 3005" }, { name: "French Navy", hex: "#1a2a44", ral: "RAL 5013" },
+  { name: "Cream", hex: "#efe6d3", ral: "RAL 9001" }, { name: "Slate", hex: "#4c5359", ral: "RAL 7015" },
 ];
-
-function hexToRgb(hex: string) {
-  const n = parseInt(hex.slice(1), 16);
-  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
-}
 
 const GLASS_STYLES = [
   { t: "Clear bevelled", d: "Traditional cut-glass sparkle for period doors." },
@@ -155,7 +150,7 @@ function DoorsPage() {
               <div className="grid grid-cols-4 gap-3">
                 {COLOURS.map((c) => (
                   <div key={c.name} className="group">
-                    <div className="rgb-swatch aspect-square rounded-2xl shadow-soft transition-transform group-hover:scale-105" style={{ background: c.hex }} data-rgb={hexToRgb(c.hex)} />
+                    <div className="rgb-swatch aspect-square rounded-2xl shadow-soft transition-transform group-hover:scale-105" style={{ background: c.hex }} data-ral={c.ral} />
                     <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
                   </div>
                 ))}
@@ -175,6 +170,7 @@ function DoorsPage() {
               </div>
             </div>
           </div>
+          <HandleFinishes />
         </div>
       </section>
 
@@ -241,24 +237,7 @@ function DoorsPage() {
         </div>
       </section>
 
-      {/* Related */}
-      <section className="py-12 md:py-14 bg-white">
-        <div className="container-page grid md:grid-cols-2 gap-6">
-          {[
-            { to: "/windows" as const, t: "Windows", d: "Casement, sash, tilt & turn", img: productWindows },
-            { to: "/conservatories" as const, t: "Conservatories", d: "Extensions & orangeries", img: productConservatories },
-          ].map((r) => (
-            <Link key={r.to} to={r.to} className="group relative rounded-[32px] overflow-hidden aspect-[16/9] block">
-              <img src={r.img} alt={r.t} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <h3 className="text-3xl font-display font-semibold mb-1">{r.t}</h3>
-                <p className="text-sm text-white/70 flex items-center gap-2">{r.d} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <ExploreMore current="doors" />
 
     </>
   );

@@ -55,7 +55,7 @@ function AboutContactPage() {
         <div className="container-page grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { k: "30+", l: "Years of craft" },
-            { k: "2,400", l: "Homes transformed" },
+            { k: "1,600", l: "Homes transformed" },
             { k: "1,200+", l: "5-star reviews" },
             { k: "0", l: "Subcontractors" },
           ].map((s) => (

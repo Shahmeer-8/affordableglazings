@@ -1,11 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Lightbox } from "@/components/site/Lightbox";
 import { getProduct, type Product } from "@/data/products";
 import { SupplierMarquee } from "@/components/site/SupplierMarquee";
 import { TrustBadgeStrip } from "@/components/site/TrustBadgeStrip";
+import { OurProcess } from "@/components/site/OurProcess";
 
 const CATEGORY_PATHS: Record<string, string> = {
   Windows: "/windows",
@@ -66,6 +67,7 @@ function ProductDetailPage() {
       {(product.category === "Windows" || product.category === "Doors") && <TrustBadgeStrip />}
 
       <Features product={product} />
+      <OurProcess image={product.images[1] ?? product.images[0]} alt={`${product.name} installation in progress`} />
       <Gallery product={product} />
       <SupplierMarquee />
 
@@ -103,11 +105,21 @@ function Features({ product }: { product: Product }) {
 
 function Gallery({ product }: { product: Product }) {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const items = product.images.map((src, i) => ({
     src,
     title: `${product.name} installation ${i + 1}`,
     category: product.category,
   }));
+  const isCarousel = items.length > 3;
+
+  const scrollByCard = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector("[data-card]") as HTMLElement | null;
+    const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
 
   return (
     <section className="py-12 md:py-16">
@@ -117,35 +129,88 @@ function Gallery({ product }: { product: Product }) {
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Recent installations</p>
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Project gallery</h2>
           </div>
-          <Link to="/gallery" className="text-sm font-semibold text-navy hover:text-brand-blue inline-flex items-center gap-2">
-            View the full gallery <ArrowRight className="size-4" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/gallery" className="text-sm font-semibold text-navy hover:text-brand-blue inline-flex items-center gap-2">
+              View the full gallery <ArrowRight className="size-4" />
+            </Link>
+            {isCarousel && (
+              <div className="hidden sm:flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => scrollByCard(-1)}
+                  aria-label="Previous images"
+                  className="size-9 rounded-full border border-navy/15 grid place-items-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-colors"
+                >
+                  <ChevronLeft className="size-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollByCard(1)}
+                  aria-label="Next images"
+                  className="size-9 rounded-full border border-navy/15 grid place-items-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-colors"
+                >
+                  <ChevronRight className="size-4" />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-5 ${product.images.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
-          {items.map((item, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setLightbox(i)}
-              data-reveal="up"
-              style={{ ["--reveal-delay" as never]: `${i * 90}ms` }}
-              className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-navy/5 text-left cursor-zoom-in"
-              aria-label={`Enlarge ${item.title}`}
-            >
-              <img
-                src={item.src}
-                alt={item.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="absolute bottom-4 left-4 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                {item.title}
-              </span>
-            </button>
-          ))}
-        </div>
+        {isCarousel ? (
+          <div
+            ref={scrollerRef}
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-1 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {items.map((item, i) => (
+              <button
+                key={i}
+                data-card
+                type="button"
+                onClick={() => setLightbox(i)}
+                data-reveal="up"
+                style={{ ["--reveal-delay" as never]: `${i * 90}ms` }}
+                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-navy/5 text-left cursor-zoom-in shrink-0 snap-start w-[85%] sm:w-[46%] lg:w-[31.5%]"
+                aria-label={`Enlarge ${item.title}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="absolute bottom-4 left-4 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {item.title}
+                </span>
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-5 ${items.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+            {items.map((item, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setLightbox(i)}
+                data-reveal="up"
+                style={{ ["--reveal-delay" as never]: `${i * 90}ms` }}
+                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-navy/5 text-left cursor-zoom-in"
+                aria-label={`Enlarge ${item.title}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="absolute bottom-4 left-4 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {item.title}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {lightbox !== null && (

@@ -6,6 +6,7 @@ import windowsHero from "@/assets/windows-hero.jpg";
 import doorsHero from "@/assets/doors-hero.jpg";
 import consHero from "@/assets/cons-hero.jpg";
 import consGable from "@/assets/cons-gable.jpg";
+import logo from "@/assets/logo/mylogo.png";
 
 const PHONE_DISPLAY = "0800 123 4567";
 const PHONE_HREF = "tel:08001234567";
@@ -50,7 +51,6 @@ const SIMPLE: { key: string; label: string; links: { label: string; to: string; 
       { label: "FAQs", to: "/faq" },
       { label: "Repairs", to: "/repairs" },
       { label: "Commercial", to: "/commercial" },
-      { label: "Roofline", to: "/roofline" },
       { label: "Contact Us", to: "/about", hash: "contact" },
     ],
   },
@@ -113,10 +113,10 @@ export function Header() {
     <header className="sticky top-0 z-50">
       <div className="bg-canvas/85 backdrop-blur-xl border-b border-line">
         <div className="relative" onMouseLeave={scheduleClose}>
-          <div className={`${BAR} flex items-center gap-5 xl:gap-8 h-16 lg:h-[74px]`}>
+          <div className={`${BAR} flex items-center gap-5 xl:gap-8 h-20 lg:h-[88px]`}>
             {/* Logo — sits before the primary nav, with a comfortable gap */}
-            <Link to="/" className="shrink-0 text-xl lg:text-2xl font-display font-semibold tracking-tight text-navy">
-              Affordable<span className="text-brand-blue">Glazings</span>
+            <Link to="/" className="shrink-0">
+              <img src={logo} alt="Affordable Glazing" className="h-11 lg:h-14 w-auto object-contain" />
             </Link>
 
             {/* Primary nav (desktop) */}
@@ -124,7 +124,7 @@ export function Header() {
               <Link
                 to="/"
                 onMouseEnter={() => openMenu("")}
-                className="h-[74px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
+                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
                 activeProps={{ className: "text-brand-blue" }}
                 activeOptions={{ exact: true }}
               >
@@ -137,7 +137,7 @@ export function Header() {
                   onMouseEnter={() => openMenu(m.key)}
                   onClick={() => navigate({ to: m.to })}
                   aria-expanded={active === m.key}
-                  className={`inline-flex items-center gap-1 h-[74px] border-b-2 -mb-px transition-colors ${
+                  className={`inline-flex items-center gap-1 h-[88px] border-b-2 -mb-px transition-colors ${
                     active === m.key ? "text-brand-blue border-brass" : "border-transparent hover:text-brand-blue"
                   }`}
                 >
@@ -148,7 +148,7 @@ export function Header() {
               <Link
                 to="/gallery"
                 onMouseEnter={() => openMenu("")}
-                className="h-[74px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
+                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
                 activeProps={{ className: "text-brand-blue" }}
               >
                 Gallery
@@ -340,9 +340,7 @@ function MobileDrawer({
       <div className="absolute inset-0 bg-navy/40 backdrop-blur-sm animate-fade-in" onClick={onClose} />
       <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white shadow-2xl flex flex-col animate-slide-in-right">
         <div className="flex items-center justify-between h-16 px-5 border-b border-navy/10">
-          <span className="text-xl font-display font-semibold text-navy">
-            Affordable<span className="text-brand-blue">Glazings</span>
-          </span>
+          <img src={logo} alt="Affordable Glazing" className="h-9 w-auto object-contain" />
           <button aria-label="Close menu" onClick={onClose} className="inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy">
             <X className="size-5" />
           </button>

@@ -394,23 +394,27 @@ function Process() {
               key={n}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
-              className="group relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+              className="group relative rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             >
-              <img
-                src={img}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-navy/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <div className="flex items-start justify-between mb-8">
-                  <span className="text-3xl font-display font-semibold text-brand-blue group-hover:text-white transition-colors duration-500">{n}</span>
-                  <Icon className="size-6 text-navy/40 group-hover:text-white/70 transition-colors duration-500" />
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={img}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/20 to-transparent" />
+                <div className="absolute top-3 left-3 right-3 flex items-start justify-between">
+                  <span className="text-2xl font-display font-semibold text-white drop-shadow">{n}</span>
+                  <Icon className="size-5 text-white/80" />
                 </div>
-                <h3 className="text-xl font-display font-semibold text-navy group-hover:text-white mb-2 transition-colors duration-500">{title}</h3>
-                <p className="text-navy/60 group-hover:text-white/80 text-sm leading-relaxed transition-colors duration-500">{body}</p>
+                <p className="absolute bottom-3 left-3 right-3 text-white/90 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {body}
+                </p>
+              </div>
+              <div className="p-4">
+                <h3 className="text-base font-display font-semibold text-navy">{title}</h3>
               </div>
             </div>
           ))}

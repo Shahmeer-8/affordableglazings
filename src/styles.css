@@ -69,32 +69,30 @@
 :root {
   --radius: 1rem;
 
-  /* ── Palette: "Anthracite & Stone" ──────────────────────────────────
-     Warm stone paper + anthracite (RAL 7016, the frame colour customers
-     actually buy) + weathered steel + brass. Saturated blue is removed
-     deliberately: it is the single strongest "budget uPVC" signal in the
-     sector. Global chroma ceiling ~0.075 — saturation, not hue, is what
-     made the old palette read as software.
+  /* ── Palette: "Royal Blue & Stone" ───────────────────────────────────
+     Requested brand palette: royal blue, white, black and orange — with
+     backgrounds kept off plain white/black, so dark sections run on royal
+     blue and light sections stay on the warm stone/canvas neutrals below.
      Token NAMES are kept so existing utility classes keep working; only
-     their VALUES change, which shifts the whole site at once.
-     All pairs WCAG 2.x verified (ratios noted).                        */
+     their VALUES change, which shifts the whole site at once.             */
 
-  /* Ink / dark grounds — anthracite, never #000 */
-  --navy: #1c1f22;              /* ink + dark section ground · 14.59:1 on canvas */
-  --navy-2: #2b3136;            /* elevated dark · white on it 13.16:1 */
-  --ink-muted: #5d6259;         /* secondary text · 5.51:1 on canvas */
+  /* Ink / dark grounds — deep royal blue, never flat #000 */
+  --navy: #141b45;              /* ink + dark section ground (royal blue, near-black) */
+  --navy-2: #1f2a5e;            /* elevated dark */
+  --ink-muted: #4d5170;         /* secondary text */
 
-  /* Accent — weathered steel (was royal blue #2857e5, chroma 0.22 → 0.07) */
-  --brand-blue: #2d697e;        /* 5.39:1 on canvas · white on it 6.12:1 */
-  --brand-blue-2: #7fa9b8;      /* on-dark variant · 6.09:1 on anthracite */
+  /* Accent — true royal blue */
+  --brand-blue: #2542c7;        /* primary accent · buttons, links, icons */
+  --brand-blue-2: #94a8f2;      /* on-dark variant */
 
-  /* Light grounds — three surfaces with genuinely perceptible steps
-     (old canvas→soft-gray was 1.06:1, i.e. invisible) */
-  --canvas: #f5f0e8;            /* warm stone paper */
-  --soft-gray: #e9e0d1;         /* 1.15:1 step off canvas */
-  --shell: #d8cbb6;             /* 1.41:1 off canvas — real third surface */
-  --line: #d6cdbe;              /* hairline rules · 1.39:1 */
-  --silver: #c4b8a2;
+  /* Light grounds — trying a light-orange tint (per request) instead of
+     stone paper; same lightness steps, just a warmer, more orange cast.
+     Easy revert: swap these five back to the stone values above. */
+  --canvas: #fdf0e0;             /* light orange paper */
+  --soft-gray: #f8dcb8;          /* step off canvas */
+  --shell: #eec98e;              /* third surface */
+  --line: #ecc588;               /* hairline rules */
+  --silver: #d9a862;
 
   --success: oklch(0.62 0.13 145);
 
@@ -109,12 +107,12 @@
   /* Semantic (shadcn) */
   --background: var(--canvas);
   --foreground: var(--navy);
-  --card: #fbf8f2;
+  --card: #fef8ef;
   --card-foreground: var(--navy);
-  --popover: #fbf8f2;
+  --popover: #fef8ef;
   --popover-foreground: var(--navy);
   --primary: var(--navy);
-  --primary-foreground: #f5f0e8;
+  --primary-foreground: #fdf0e0;
   --secondary: var(--soft-gray);
   --secondary-foreground: var(--navy);
   --muted: var(--soft-gray);
@@ -474,13 +472,13 @@
   .marquee-track { animation: none; }
 }
 
-/* Colour swatch → RGB tooltip on hover. `data-rgb` carries the pre-formatted
-   "R, G, B" string so no JS is needed to show it. */
+/* Colour swatch → RAL code tooltip on hover. `data-ral` carries the
+   pre-formatted "RAL XXXX" string so no JS is needed to show it. */
 .rgb-swatch {
   position: relative;
 }
 .rgb-swatch::after {
-  content: "rgb(" attr(data-rgb) ")";
+  content: attr(data-ral);
   position: absolute;
   bottom: calc(100% + 8px);
   left: 50%;

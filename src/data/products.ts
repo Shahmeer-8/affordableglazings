@@ -33,6 +33,9 @@ import slimroof2 from '@/assets/products/slimroof-2.jpg';
 import slimroof3 from '@/assets/products/slimroof-3.jpg';
 import pyramid1 from '@/assets/products/pyramid-1.jpg';
 import pyramid2 from '@/assets/products/pyramid-2.jpg';
+import aliverRooflight from '@/assets/products/rooflight-real/slim-rooflight-1.jpg';
+import aliverOrangery1 from '@/assets/products/rooflight-real/pyramid-rooflight-1.jpg';
+import aliverOrangery2 from '@/assets/products/rooflight-real/pyramid-rooflight-2.jpg';
 import cons1 from '@/assets/products/cons-1.jpg';
 import cons2 from '@/assets/products/cons-2.jpg';
 import cons3 from '@/assets/products/cons-3.jpg';
@@ -222,33 +225,35 @@ const ROOFLIGHTS: Product[] = [
     slug: "slimrooflight",
     name: "Slim Rooflights",
     category: "Rooflights",
-    summary: "Ultra-slim framed roof lanterns that maximise daylight with minimal sightlines.",
-    cardFeatures: ["Super-slim aluminium profiles", "Maximum natural light entry"],
-    tagline: "Ultra-slim framed roof lanterns designed to maximise daylight with modern minimal sightlines and superior thermal performance.",
+    summary: "A fixed, flat rooflight system with a concealed frame that brings natural light in all year round.",
+    cardFeatures: ["Thermally broken aluminium & polyamide", "Concealed fixing system"],
+    tagline: "Bringing natural light into the home all year round, our high-performance Aliver-specification rooflight system is a fixed, flat solution that creates a contemporary look for any property.",
     features: [
-      "Super-slim aluminium profiles",
-      "Maximum natural light entry",
-      "Contemporary minimal design",
-      "High thermal efficiency",
-      "Ideal for kitchens, extensions & flat roofs",
+      "Thermally broken aluminium frame with polyamide components",
+      "Exceptional thermal insulation and high light transmission",
+      "Accepts both double and triple glazed units",
+      "Unique concealed fixing system for a clean, elegant sightline",
+      "Glazing units can be removed without removing the frame",
+      "Fast, straightforward installation — durable and low-maintenance",
     ],
-    images: [slimroof1, slimroof2, slimroof3],
+    images: [aliverRooflight, slimroof1, slimroof2, slimroof3],
   },
   {
     slug: "pyramidrooflight",
     name: "Pyramid Rooflights",
     category: "Rooflights",
-    summary: "Four-sided architectural roof lanterns with balanced daylight and strong structure.",
-    cardFeatures: ["Symmetrical pyramid design", "360° natural light flow"],
-    tagline: "Pyramid sky lanterns: a four-sided architectural roof lantern offering balanced daylight, elegant aesthetics, and excellent structural stability.",
+    summary: "A contemporary, thermally-efficient orangery roof system with slim profiles that maximise glass area.",
+    cardFeatures: ["Slim, thermally-broken profiles", "Dual-colour options available"],
+    tagline: "A contemporary, high-quality and thermally-efficient orangery roof system, built on easy-to-fabricate, slim, thermally-broken aluminium profiles for a 25° pitched roof.",
     features: [
-      "Symmetrical pyramid design",
-      "360° natural light flow",
-      "Strong and weather-resistant frame",
-      "Excellent insulation performance",
-      "Suitable for flat and pitched roofs",
+      "Thermally broken aluminium/polyamide construction on a 25° pitch",
+      "Clean, slim lines that maximise glass area for uninterrupted views",
+      "Dual-colour option — a different colour inside and outside",
+      "Extensive colour palette: white, pastels, bronze, silver and vibrant reds",
+      "Pressure plates with anti-tamper screws for added security",
+      "Compatible with standard 28mm double-glazed units; fast, straightforward installation",
     ],
-    images: [pyramid1, pyramid2],
+    images: [aliverOrangery1, aliverOrangery2, pyramid1, pyramid2],
   },
 ];
 
