@@ -41,7 +41,6 @@ export function Footer() {
                   { to: "/about", label: "Our story" },
                   { to: "/gallery", label: "Gallery" },
                   { to: "/testimonials", label: "Testimonials" },
-                  { to: "/blog", label: "Journal" },
                 ]}
               />
               <FooterCol

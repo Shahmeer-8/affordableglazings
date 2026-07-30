@@ -38,9 +38,9 @@ export function TrustSeals() {
 function Seal({ top, mid, bottom }: { top: string; mid: string; bottom: string }) {
   return (
     <svg viewBox="0 0 100 100" className="size-14 md:size-16 shrink-0" role="img" aria-label={`${top} ${mid} ${bottom}`}>
-      {/* outer + inner ring */}
-      <circle cx="50" cy="50" r="47" fill="none" stroke="var(--brass)" strokeWidth="1.5" opacity="0.55" />
-      <circle cx="50" cy="50" r="41" fill="none" stroke="var(--brass)" strokeWidth="0.75" opacity="0.35" />
+      {/* filled brand-blue seal face */}
+      <circle cx="50" cy="50" r="47" fill="var(--brand-blue)" />
+      <circle cx="50" cy="50" r="41" fill="none" stroke="white" strokeWidth="0.75" opacity="0.35" />
       {/* notched ticks around the rim, like a struck seal */}
       {Array.from({ length: 36 }).map((_, i) => (
         <line
@@ -49,9 +49,9 @@ function Seal({ top, mid, bottom }: { top: string; mid: string; bottom: string }
           y1="4.5"
           x2="50"
           y2="8"
-          stroke="var(--brass)"
+          stroke="white"
           strokeWidth="0.9"
-          opacity="0.4"
+          opacity="0.5"
           transform={`rotate(${i * 10} 50 50)`}
         />
       ))}
@@ -62,7 +62,7 @@ function Seal({ top, mid, bottom }: { top: string; mid: string; bottom: string }
         fontFamily="var(--font-display)"
         fontSize="27"
         fontWeight="600"
-        fill="var(--navy)"
+        fill="white"
       >
         {mid}
       </text>
@@ -74,7 +74,7 @@ function Seal({ top, mid, bottom }: { top: string; mid: string; bottom: string }
         fontSize="9"
         fontWeight="600"
         letterSpacing="1.2"
-        fill="var(--brass)"
+        fill="var(--brass-2)"
       >
         ★★★
       </text>

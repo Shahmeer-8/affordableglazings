@@ -45,6 +45,8 @@
   --color-ink-muted: var(--ink-muted);
   --color-brass: var(--brass);
   --color-brass-2: var(--brass-2);
+  --color-cta: var(--cta);
+  --color-cta-hover: var(--cta-hover);
 
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -99,6 +101,10 @@
   /* Warm brass — used sparingly. Old value failed contrast at 2.41:1. */
   --brass: #7d6236;             /* 5.04:1 on canvas — now body-safe */
   --brass-2: #c8a86a;           /* on-dark warm · 6.82:1 on anthracite */
+
+  /* CTA — every action button site-wide (outside the header/nav) uses this. */
+  --cta: #e67e22;
+  --cta-hover: #c9690f;
 
   /* Semantic (shadcn) */
   --background: var(--canvas);
@@ -444,7 +450,10 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 38s linear infinite;
+  animation: marquee-scroll var(--marquee-duration, 38s) linear infinite;
+}
+.marquee-track-reverse {
+  animation-direction: reverse;
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-seq {
@@ -453,6 +462,9 @@
   gap: 1rem;
   padding-inline: 0.5rem;
 }
+.marquee-seq-lg {
+  gap: 1.25rem;
+}
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -460,4 +472,33 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee { overflow-x: auto; mask-image: none; }
   .marquee-track { animation: none; }
+}
+
+/* Colour swatch → RGB tooltip on hover. `data-rgb` carries the pre-formatted
+   "R, G, B" string so no JS is needed to show it. */
+.rgb-swatch {
+  position: relative;
+}
+.rgb-swatch::after {
+  content: "rgb(" attr(data-rgb) ")";
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  white-space: nowrap;
+  background: var(--navy);
+  color: white;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+  z-index: 20;
+}
+.rgb-swatch:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }

@@ -72,7 +72,7 @@ export function ProductRange({ category, dark = false }: { category: string; dar
                 </Link>
                 <a
                   href="#quote"
-                  className="shrink-0 bg-navy text-white px-3.5 py-2 rounded-full text-xs font-semibold hover:bg-brand-blue transition-colors"
+                  className="shrink-0 bg-cta text-white px-3.5 py-2 rounded-full text-xs font-semibold hover:bg-cta-hover transition-colors"
                 >
                   Get a quote
                 </a>

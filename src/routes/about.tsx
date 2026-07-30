@@ -115,7 +115,7 @@ function AboutContactPage() {
                 <label htmlFor="message" className="text-xs font-bold uppercase tracking-[0.22em] text-navy/50">Message</label>
                 <textarea id="message" rows={5} name="message" required className="mt-2 w-full px-5 py-4 rounded-2xl border border-navy/10 bg-soft-gray outline-none focus:border-brand-blue focus:bg-white transition-colors" />
               </div>
-              <button type="submit" className="w-full sm:w-auto bg-navy text-white px-8 py-4 rounded-full font-semibold hover:bg-brand-blue transition-colors">
+              <button type="submit" className="w-full sm:w-auto bg-cta text-white px-8 py-4 rounded-full font-semibold hover:bg-cta-hover transition-colors">
                 Send message
               </button>
             </form>

@@ -70,7 +70,7 @@ function SearchPage() {
           />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-navy text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-cta text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
           >
             Search
           </button>

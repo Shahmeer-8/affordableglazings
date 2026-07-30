@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 
-const PRODUCTS = ["Windows", "Doors", "Rooflights", "Conservatories", "Roofline", "Repairs", "Commercial"] as const;
-
 /**
  * Single-step "Fast Quote" form used on the /quote page and inside the CTA
  * section on every page. Styled to the site theme (navy / brand-blue).
@@ -36,24 +34,10 @@ export function QuoteWizard({
           )}
 
           <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setDone(true); }}>
-            <div>
-              <label htmlFor="fq-product" className="sr-only">Product</label>
-              <select
-                id="fq-product"
-                name="product"
-                defaultValue=""
-                required
-                className="w-full px-4 py-3.5 rounded-xl border border-navy/10 bg-canvas text-navy outline-none focus:border-brand-blue focus:bg-white transition-colors"
-              >
-                <option value="" disabled>Select a product *</option>
-                {PRODUCTS.map((p) => <option key={p}>{p}</option>)}
-              </select>
-            </div>
-
             {/* Paired fields when compact so the footer form stays short
                 enough to sit beside the link columns. */}
             <div className={compact ? "grid sm:grid-cols-2 gap-4" : "space-y-4"}>
-              <Field name="firstName" placeholder="First name *" />
+              <Field name="name" placeholder="Name *" />
               <Field name="phone" type="tel" placeholder="Phone number *" />
               <Field name="email" type="email" placeholder="Email address *" />
               <Field name="postcode" placeholder="Postcode *" />
@@ -79,13 +63,13 @@ export function QuoteWizard({
                 name="attachment"
                 type="file"
                 accept="image/*"
-                className="block w-full text-sm text-ink-muted file:mr-4 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-white file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-brand-blue file:transition-colors"
+                className="block w-full text-sm text-ink-muted file:mr-4 file:rounded-full file:border-0 file:bg-cta file:px-4 file:py-2 file:text-white file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-cta-hover file:transition-colors"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-navy text-white px-8 py-3.5 rounded-full font-semibold hover:bg-brand-blue transition-colors inline-flex items-center justify-center gap-2"
+              className="w-full bg-cta text-white px-8 py-3.5 rounded-full font-semibold hover:bg-cta-hover transition-colors inline-flex items-center justify-center gap-2"
             >
               Get my fast quote <ArrowRight className="size-4" />
             </button>

@@ -6,7 +6,7 @@ import windowsHero from "@/assets/windows-hero.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
 import installer from "@/assets/installer.jpg";
 import productDoors from "@/assets/product-doors.jpg";
-import productConservatories from "@/assets/product-conservatories.jpg";
+import productConservatories from "@/assets/product-conservatories.jpg";
 export const Route = createFileRoute("/windows")({
   head: () => ({
     meta: [
@@ -49,6 +49,11 @@ const COLOURS = [
   { name: "Arctic White", hex: "#f5f5f2" },
 ];
 
+function hexToRgb(hex: string) {
+  const n = parseInt(hex.slice(1), 16);
+  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+}
+
 const HANDLES = [
   { name: "Chrome", hex: "linear-gradient(135deg,#e6eaee,#aab2ba)" },
   { name: "Brushed Nickel", hex: "linear-gradient(135deg,#c3c4bd,#9a9b93)" },
@@ -90,10 +95,10 @@ function WindowsPage() {
             Aluminium, uPVC and timber — bespoke to your home, built in Britain.
           </p>
           <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-            <a href="#quote" className="btn-shine bg-white text-navy px-8 py-4 rounded-full text-sm font-semibold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2">
+            <a href="#quote" className="btn-shine bg-cta text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2">
               Get your free quote <ArrowRight className="size-4" />
             </a>
-            <Link to="/gallery" className="border border-white/30 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors">
+            <Link to="/gallery" className="border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
               Explore the gallery
             </Link>
           </div>
@@ -175,7 +180,7 @@ function WindowsPage() {
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
             {COLOURS.map((c, i) => (
               <div key={c.name} className="group" data-reveal="zoom" style={{ ["--reveal-delay" as string]: `${i * 40}ms` } as Record<string, string>}>
-                <div className="aspect-square rounded-xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} />
+                <div className="rgb-swatch aspect-square rounded-xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} data-rgb={hexToRgb(c.hex)} />
                 <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
               </div>
             ))}

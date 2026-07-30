@@ -9,7 +9,7 @@ import consGable from "@/assets/cons-gable.jpg";
 import consTiled from "@/assets/cons-tiled.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import productWindows from "@/assets/product-windows.jpg";
-import productDoors from "@/assets/product-doors.jpg";
+import productDoors from "@/assets/product-doors.jpg";
 export const Route = createFileRoute("/conservatories")({
   head: () => ({
     meta: [
@@ -78,10 +78,10 @@ function Page() {
             Architect-led conservatories and orangeries, built for British weather.
           </p>
           <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-            <a href="#quote" className="btn-shine bg-brand-blue text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors inline-flex items-center gap-2">
+            <a href="#quote" className="btn-shine bg-cta text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2">
               Design your extension <ArrowRight className="size-4" />
             </a>
-            <Link to="/gallery" className="border border-white/30 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors">
+            <Link to="/gallery" className="border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
               See recent projects
             </Link>
           </div>

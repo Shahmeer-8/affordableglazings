@@ -5,6 +5,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Lightbox } from "@/components/site/Lightbox";
 import { getProduct, type Product } from "@/data/products";
 import { SupplierMarquee } from "@/components/site/SupplierMarquee";
+import { TrustBadgeStrip } from "@/components/site/TrustBadgeStrip";
 
 const CATEGORY_PATHS: Record<string, string> = {
   Windows: "/windows",
@@ -43,23 +44,26 @@ function ProductDetailPage() {
         eyebrow={`Product range · ${product.category}`}
         title={<>{product.name.replace(/\.$/, "")}<span className="text-brand-blue">.</span></>}
         description={product.tagline}
+        image={product.images[0]}
       >
         <div className="flex flex-wrap gap-3">
           <a
             href="#quote"
-            className="inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
+            className="inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
           >
             Request a quote <ArrowRight className="size-4" />
           </a>
           <Link
             to={CATEGORY_PATHS[product.category] ?? "/"}
             hash="range"
-            className="inline-flex items-center gap-2 border border-navy/10 text-navy px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white transition-colors"
+            className="inline-flex items-center gap-2 border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
           >
             <ArrowLeft className="size-4" /> Back to all {product.category.toLowerCase()}
           </Link>
         </div>
       </PageHero>
+
+      {(product.category === "Windows" || product.category === "Doors") && <TrustBadgeStrip />}
 
       <Features product={product} />
       <Gallery product={product} />

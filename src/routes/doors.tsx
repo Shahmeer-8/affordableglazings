@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, DoorOpen, KeyRound, Layers, Lock, Palette, ShieldCheck, Sparkles, ThermometerSun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
+import { GalleryReel } from "@/components/site/GalleryReel";
 import doorsHero from "@/assets/doors-hero.jpg";
 import doorsSliding from "@/assets/doors-sliding.jpg";
 import doorsBifold from "@/assets/doors-bifold.jpg";
@@ -10,6 +11,9 @@ import doorsHardware from "@/assets/doors-hardware.jpg";
 import productDoors from "@/assets/product-doors.jpg";
 import productWindows from "@/assets/product-windows.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
+import bifold2 from "@/assets/products/bifold-2.jpg";
+import sliding2 from "@/assets/products/sliding-2.jpg";
+import crittall1 from "@/assets/products/crittall-1.jpg";
 export const Route = createFileRoute("/doors")({
   head: () => ({
     meta: [
@@ -37,6 +41,11 @@ const COLOURS = [
   { name: "Racing Green", hex: "#1e3b2c" }, { name: "Rioja Red", hex: "#5c1a20" }, { name: "French Navy", hex: "#1a2a44" },
   { name: "Cream", hex: "#efe6d3" }, { name: "Slate", hex: "#4c5359" },
 ];
+
+function hexToRgb(hex: string) {
+  const n = parseInt(hex.slice(1), 16);
+  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+}
 
 const GLASS_STYLES = [
   { t: "Clear bevelled", d: "Traditional cut-glass sparkle for period doors." },
@@ -75,10 +84,10 @@ function DoorsPage() {
               Composite front doors to sliding walls of glass — built to last a lifetime.
             </p>
             <div className="mt-6 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-              <a href="#quote" className="btn-shine bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors inline-flex items-center gap-2">
+              <a href="#quote" className="btn-shine bg-cta text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2">
                 Get a free door quote <ArrowRight className="size-4" />
               </a>
-              <Link to="/gallery" className="border border-navy/15 text-navy px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white transition-colors">
+              <Link to="/gallery" className="border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
                 View installations
               </Link>
             </div>
@@ -146,7 +155,7 @@ function DoorsPage() {
               <div className="grid grid-cols-4 gap-3">
                 {COLOURS.map((c) => (
                   <div key={c.name} className="group">
-                    <div className="aspect-square rounded-2xl shadow-soft transition-transform group-hover:scale-105" style={{ background: c.hex }} />
+                    <div className="rgb-swatch aspect-square rounded-2xl shadow-soft transition-transform group-hover:scale-105" style={{ background: c.hex }} data-rgb={hexToRgb(c.hex)} />
                     <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
                   </div>
                 ))}
@@ -179,14 +188,20 @@ function DoorsPage() {
             </div>
             <Link to="/gallery" className="text-sm font-semibold text-brand-blue hidden md:inline-flex items-center gap-2">Full gallery <ArrowRight className="size-4" /></Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[doorsHero, doorsBifold, doorsFrench, doorsSliding, doorsHardware, productDoors, doorsBifold, doorsHero].map((src, i) => (
-              <div key={i} className={`overflow-hidden rounded-2xl ${i === 0 || i === 5 ? "col-span-2 aspect-[2/1]" : "aspect-square"}`} data-reveal="zoom" style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>}>
-                <img src={src} alt={`Door project ${i + 1}`} className="w-full h-full object-cover transition-transform duration-[1400ms] hover:scale-110" loading="lazy" />
-              </div>
-            ))}
-          </div>
         </div>
+        <GalleryReel
+          items={[
+            { img: doorsHero, label: "Composite front door · Surrey" },
+            { img: doorsBifold, label: "Bi-fold elevation · Cheltenham" },
+            { img: doorsFrench, label: "French doors · Bath" },
+            { img: doorsSliding, label: "Sliding doors · Winchester" },
+            { img: doorsHardware, label: "Smart-lock hardware · Kent" },
+            { img: productDoors, label: "Entrance suite · Oxford" },
+            { img: bifold2, label: "Glazed elevation · Islington" },
+            { img: sliding2, label: "Slim sightlines · Guildford" },
+            { img: crittall1, label: "Crittall-style doors · Chester" },
+          ]}
+        />
       </section>
 
       {/* Process — vertical */}

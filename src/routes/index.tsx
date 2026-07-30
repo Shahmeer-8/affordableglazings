@@ -32,6 +32,14 @@ import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { TrustSeals } from "@/components/site/TrustSeals";
 import { SupplierMarquee } from "@/components/site/SupplierMarquee";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
+import { GalleryReel } from "@/components/site/GalleryReel";
+import bay1 from "@/assets/products/bay-1.jpg";
+import heritage1 from "@/assets/products/heritage-1.jpg";
+import flush1 from "@/assets/products/flush-1.jpg";
+import stepSurvey from "@/assets/process/survey.jpg";
+import stepFabrication from "@/assets/process/fabrication.jpg";
+import stepInstall from "@/assets/process/install.jpg";
+import stepAftercare from "@/assets/process/aftercare.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -128,14 +136,14 @@ function Hero() {
           >
             <a
               href="#quote"
-              className="group btn-shine inline-flex items-center gap-2 bg-brass-2 text-navy px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white transition-all hover:-translate-y-0.5"
+              className="group btn-shine inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-cta-hover transition-all hover:-translate-y-0.5"
             >
               Get a free quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 border border-white/30 text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 border border-cta text-cta px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-cta hover:text-white hover:-translate-y-0.5 transition-all"
             >
               View our work
             </Link>
@@ -321,7 +329,7 @@ function Performance() {
           <div className="flex flex-wrap gap-3 pt-4">
             <Link
               to="/windows"
-              className="bg-white text-navy px-8 py-4 rounded-xl font-bold hover:bg-brand-blue hover:text-white transition-colors inline-flex items-center gap-2"
+              className="bg-cta text-white px-8 py-4 rounded-xl font-bold hover:bg-cta-hover transition-colors inline-flex items-center gap-2"
             >
               Explore specifications <ArrowUpRight className="size-4" />
             </Link>
@@ -363,10 +371,10 @@ function Performance() {
 /* ------------------------------ PROCESS ----------------------------- */
 
 const STEPS = [
-  { n: "01", icon: Ruler, title: "Technical Survey", body: "Laser-accurate measurements and a design consultation at your home." },
-  { n: "02", icon: Hammer, title: "Bespoke Fabrication", body: "Your frames are crafted in our UK facility to your exact specification." },
-  { n: "03", icon: Truck, title: "White-Glove Install", body: "Clean, respectful and precise installation by FENSA-certified fitters." },
-  { n: "04", icon: BadgeCheck, title: "10-Year Aftercare", body: "Enjoy peace of mind with our industry-leading comprehensive warranty." },
+  { n: "01", icon: Ruler, title: "Technical Survey", body: "Laser-accurate measurements and a design consultation at your home.", img: stepSurvey },
+  { n: "02", icon: Hammer, title: "Bespoke Fabrication", body: "Your frames are crafted in our UK facility to your exact specification.", img: stepFabrication },
+  { n: "03", icon: Truck, title: "White-Glove Install", body: "Clean, respectful and precise installation by FENSA-certified fitters.", img: stepInstall },
+  { n: "04", icon: BadgeCheck, title: "10-Year Aftercare", body: "Enjoy peace of mind with our industry-leading comprehensive warranty.", img: stepAftercare },
 ];
 
 function Process() {
@@ -381,19 +389,29 @@ function Process() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {STEPS.map(({ n, icon: Icon, title, body }, i) => (
+          {STEPS.map(({ n, icon: Icon, title, body, img }, i) => (
             <div
               key={n}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
-              className="relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500"
+              className="group relative p-8 rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             >
-              <div className="flex items-start justify-between mb-8">
-                <span className="text-3xl font-display font-semibold text-brand-blue">{n}</span>
-                <Icon className="size-6 text-navy/40" />
+              <img
+                src={img}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500"
+              />
+              <div className="absolute inset-0 bg-navy/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <div className="flex items-start justify-between mb-8">
+                  <span className="text-3xl font-display font-semibold text-brand-blue group-hover:text-white transition-colors duration-500">{n}</span>
+                  <Icon className="size-6 text-navy/40 group-hover:text-white/70 transition-colors duration-500" />
+                </div>
+                <h3 className="text-xl font-display font-semibold text-navy group-hover:text-white mb-2 transition-colors duration-500">{title}</h3>
+                <p className="text-navy/60 group-hover:text-white/80 text-sm leading-relaxed transition-colors duration-500">{body}</p>
               </div>
-              <h3 className="text-xl font-display font-semibold text-navy mb-2">{title}</h3>
-              <p className="text-navy/60 text-sm leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
@@ -419,7 +437,7 @@ function BeforeAfter() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 bg-navy text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors"
+              className="inline-flex items-center gap-2 bg-cta text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
             >
               View the full gallery <ArrowRight className="size-4" />
             </Link>
@@ -545,22 +563,22 @@ function Testimonials() {
 
 /* ---------------------------- GALLERY CTA ---------------------------- */
 
-/* An editorial mosaic rather than four equal boxes: one tall lead image
-   anchors the group and the smaller frames read as supporting shots, which
-   is how architectural portfolios are actually laid out. */
-const GALLERY_PEEK = [
-  { img: french1, label: "French doors · Surrey", cls: "col-span-2 row-span-2 aspect-square sm:aspect-auto" },
-  { img: casement1, label: "Casement · Oxford", cls: "aspect-square" },
-  { img: pyramid1, label: "Pyramid lantern · Bath", cls: "aspect-square" },
-  { img: cons2, label: "Sun room · Winchester", cls: "aspect-square" },
-  { img: sash2, label: "Sash · Islington", cls: "aspect-square" },
+const GALLERY_REEL = [
+  { img: french1, label: "French doors · Surrey" },
+  { img: casement1, label: "Casement · Oxford" },
+  { img: pyramid1, label: "Pyramid lantern · Bath" },
+  { img: cons2, label: "Sun room · Winchester" },
+  { img: sash2, label: "Sash · Islington" },
+  { img: bay1, label: "Bay window · Guildford" },
+  { img: heritage1, label: "Heritage sash · Bath" },
+  { img: flush1, label: "Flush casement · Chester" },
 ];
 
 function Journal() {
   return (
-    <section className="py-12 md:py-16 bg-canvas">
+    <section className="py-12 md:py-14 bg-canvas overflow-hidden">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
           <div className="max-w-xl">
             <p className="eyebrow mb-4">Our work</p>
             <h2 className="display-2 text-navy measure-display">
@@ -569,37 +587,15 @@ function Journal() {
           </div>
           <Link
             to="/gallery"
-            className="group inline-flex items-center gap-2 bg-navy text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors shrink-0"
+            className="group inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors shrink-0"
           >
             Browse the gallery
             <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 sm:auto-rows-[minmax(0,1fr)]">
-          {GALLERY_PEEK.map((g, i) => (
-            <Link
-              key={g.label}
-              to="/gallery"
-              data-reveal="up"
-              style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
-              className={`glass-glint group relative rounded-2xl overflow-hidden ${g.cls}`}
-              aria-label={g.label}
-            >
-              <img
-                src={g.img}
-                alt={g.label}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="absolute bottom-3 left-3 right-3 text-[11px] font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                {g.label}
-              </span>
-            </Link>
-          ))}
-        </div>
       </div>
+
+      <GalleryReel items={GALLERY_REEL} />
     </section>
   );
 }

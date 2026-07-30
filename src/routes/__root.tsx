@@ -29,10 +29,10 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or may have moved. Let's get you back to something beautiful.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <Link to="/" className="bg-navy text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-brand-blue transition-colors">
+          <Link to="/" className="bg-cta text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors">
             Go home
           </Link>
-          <Link to="/about" hash="contact" className="border border-navy/10 text-navy px-6 py-3 rounded-full text-sm font-semibold hover:bg-white transition-colors">
+          <Link to="/about" hash="contact" className="border border-cta text-cta px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
             Contact us
           </Link>
         </div>
@@ -56,11 +56,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
             onClick={() => { router.invalidate(); reset(); }}
-            className="bg-navy text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-brand-blue"
+            className="bg-cta text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta-hover"
           >
             Try again
           </button>
-          <a href="/" className="border border-navy/10 px-6 py-3 rounded-full text-sm font-semibold">Go home</a>
+          <a href="/" className="border border-cta text-cta px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">Go home</a>
         </div>
       </div>
     </div>
