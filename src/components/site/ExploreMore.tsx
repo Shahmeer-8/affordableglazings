@@ -17,12 +17,12 @@ export function ExploreMore({ current }: { current: "windows" | "doors" | "roofl
   const rest = PAGES.filter((p) => p.key !== current);
 
   return (
-    <section className="py-12 md:py-14 bg-white">
+    <section className="py-12 md:py-14 bg-cta">
       <div className="container-page">
         <div className="flex items-end justify-between mb-8" data-reveal="up">
           <div>
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Explore more</p>
-            <h2 className="text-3xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Complete the look.</h2>
+            <p className="text-xs font-bold text-white/80 uppercase tracking-[0.22em] mb-3">Explore more</p>
+            <h2 className="text-3xl md:text-5xl font-display font-semibold text-white leading-[1.05]">Complete the look.</h2>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

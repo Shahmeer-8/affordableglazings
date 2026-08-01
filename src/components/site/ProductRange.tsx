@@ -62,17 +62,17 @@ export function ProductRange({ category, dark = false }: { category: string; dar
                 </div>
               </Link>
 
-              <div className="flex items-center justify-between gap-3 px-4 py-3.5">
+              <div className="flex items-center justify-between gap-3 px-4 py-3.5 bg-cta">
                 <Link
                   to="/products/$slug"
                   params={{ slug: p.slug }}
-                  className="min-w-0 font-display font-semibold text-navy text-base hover:text-brand-blue transition-colors truncate"
+                  className="min-w-0 font-display font-semibold text-white text-base hover:text-navy transition-colors truncate"
                 >
                   {p.name}
                 </Link>
                 <a
                   href="#quote"
-                  className="shrink-0 bg-cta text-white px-3.5 py-2 rounded-full text-xs font-semibold hover:bg-cta-hover transition-colors"
+                  className="shrink-0 bg-white text-cta px-3.5 py-2 rounded-full text-xs font-semibold hover:bg-navy hover:text-white transition-colors"
                 >
                   Get a quote
                 </a>

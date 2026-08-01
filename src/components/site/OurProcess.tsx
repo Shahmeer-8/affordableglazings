@@ -8,21 +8,21 @@ const PROCESS = [
 
 export function OurProcess({ image, alt }: { image: string; alt: string }) {
   return (
-    <section className="py-12 md:py-14 bg-canvas">
+    <section className="py-12 md:py-14 bg-navy">
       <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="rounded-[28px] overflow-hidden aspect-[4/3] shadow-elegant" data-reveal="left">
           <img src={image} alt={alt} className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div data-reveal="right">
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our process</p>
-          <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-6">From first visit to final polish.</h2>
+          <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Our process</p>
+          <h2 className="text-3xl md:text-4xl font-display font-semibold text-white leading-[1.05] mb-6">From first visit to final polish.</h2>
           <ol className="space-y-4">
             {PROCESS.map((p) => (
               <li key={p.n} className="flex gap-5 group">
-                <div className="text-2xl font-display font-semibold text-brand-blue/50 group-hover:text-brand-blue transition-colors shrink-0 w-10">{p.n}</div>
+                <div className="text-2xl font-display font-semibold text-brand-blue-2/50 group-hover:text-brand-blue-2 transition-colors shrink-0 w-10">{p.n}</div>
                 <div>
-                  <h3 className="font-display font-semibold text-navy mb-0.5">{p.t}</h3>
-                  <p className="text-navy/60 text-sm leading-relaxed">{p.d}</p>
+                  <h3 className="font-display font-semibold text-white mb-0.5">{p.t}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{p.d}</p>
                 </div>
               </li>
             ))}

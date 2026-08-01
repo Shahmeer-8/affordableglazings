@@ -77,10 +77,10 @@ function Page() {
             Architect-led conservatories and orangeries, built for British weather.
           </p>
           <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-            <a href="#quote" className="btn-shine bg-cta text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2">
+            <a href="#quote" className="btn-shine bg-transparent border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center gap-2">
               Design your extension <ArrowRight className="size-4" />
             </a>
-            <Link to="/gallery" className="border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
+            <Link to="/gallery" className="border border-white text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors">
               See recent projects
             </Link>
           </div>
@@ -136,16 +136,16 @@ function Page() {
       </section>
 
       {/* Roofs */}
-      <section className="py-12 md:py-14 bg-navy text-white">
+      <section className="py-12 md:py-14 bg-black text-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Roof options</p>
+            <p className="text-xs font-bold text-[#6F84D8] uppercase tracking-[0.22em] mb-3">Roof options</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">The roof does the heavy lifting.</h2>
             <p className="mt-6 text-white/60 text-lg">Glass or tile, lantern or lean-to — the roof you choose defines the room, the light, the temperature, and the energy bill.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {ROOFS.map(({ icon: Icon, t, d }, i) => (
-              <div key={t} className="p-8 rounded-3xl bg-white/5 border border-white/10 card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={t} className="p-8 rounded-3xl bg-navy shadow-elegant card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <Icon className="size-7 text-brand-blue-2 mb-6" />
                 <h3 className="font-display font-semibold text-xl mb-3">{t}</h3>
                 <p className="text-sm text-white/60 leading-relaxed">{d}</p>

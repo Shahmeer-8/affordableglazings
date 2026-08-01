@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, Layers, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Sun } from "lucide-react";
+import { ArrowRight, Award, Palette, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Sun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
-import { HandleFinishes } from "@/components/site/HandleFinishes";
 import { ExploreMore } from "@/components/site/ExploreMore";
 import windowsHero from "@/assets/windows-hero.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
@@ -83,10 +82,10 @@ function WindowsPage() {
             Aluminium, uPVC and timber — bespoke to your home, built in Britain.
           </p>
           <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-            <a href="#quote" className="btn-shine bg-cta text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2">
+            <a href="#quote" className="btn-shine bg-transparent border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center gap-2">
               Get your free quote <ArrowRight className="size-4" />
             </a>
-            <Link to="/gallery" className="border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
+            <Link to="/gallery" className="border border-white text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors">
               Explore the gallery
             </Link>
           </div>
@@ -117,16 +116,16 @@ function WindowsPage() {
       </section>
 
       {/* Performance */}
-      <section className="py-12 md:py-14 bg-navy text-white relative overflow-hidden">
+      <section className="py-12 md:py-14 bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, var(--brand-blue) 0%, transparent 50%)" }} />
         <div className="container-page relative">
           <div className="max-w-2xl mb-10" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Performance</p>
+            <p className="text-xs font-bold text-[#6F84D8] uppercase tracking-[0.22em] mb-3">Performance</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">Silence. Warmth. Security. Measured.</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {PERFORMANCE.map(({ icon: Icon, title, body }, i) => (
-              <div key={title} className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={title} className="p-8 rounded-3xl bg-navy shadow-elegant card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <Icon className="size-7 text-brand-blue-2 mb-6" />
                 <h3 className="text-xl font-display font-semibold mb-3">{title}</h3>
                 <p className="text-sm text-white/60 leading-relaxed">{body}</p>
@@ -146,8 +145,8 @@ function WindowsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {GLASS.map((g, i) => (
-              <div key={g.title} data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>} className="p-5 rounded-2xl bg-soft-gray border border-transparent hover:border-brand-blue/30 hover:bg-white hover:shadow-soft transition-all">
-                <Layers className="size-5 text-brand-blue mb-3" />
+              <div key={g.title} data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>} className="p-5 rounded-2xl bg-canvas border border-navy/5 hover:border-brand-blue/30 hover:shadow-soft transition">
+                <Palette className="size-5 text-brand-blue mb-3" />
                 <h3 className="font-display font-semibold text-navy mb-1.5">{g.title}</h3>
                 <p className="text-sm text-navy/60 leading-relaxed">{g.body}</p>
               </div>
@@ -162,7 +161,7 @@ function WindowsPage() {
           <div className="max-w-2xl mb-8" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Colour & finish</p>
             <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-3">200+ RAL colours. Zero compromise.</h2>
-            <p className="text-navy/60">Matt, satin, textured or high-gloss — plus hand-applied woodgrain foils and a full range of handle finishes.</p>
+            <p className="text-navy/60">Matt, satin, textured or high-gloss — plus hand-applied woodgrain foils in every RAL shade.</p>
           </div>
 
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
@@ -173,27 +172,25 @@ function WindowsPage() {
               </div>
             ))}
           </div>
-
-          <HandleFinishes />
         </div>
       </section>
 
       {/* Manufacturing & process */}
-      <section className="py-12 md:py-14 bg-canvas">
+      <section className="py-12 md:py-14 bg-navy">
         <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="rounded-[28px] overflow-hidden aspect-[4/3] shadow-elegant" data-reveal="left">
             <img src={installer} alt="Professional window installer at work" className="w-full h-full object-cover" loading="lazy" />
           </div>
           <div data-reveal="right">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Our process</p>
-            <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-6">From first visit to final polish.</h2>
+            <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Our process</p>
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-white leading-[1.05] mb-6">From first visit to final polish.</h2>
             <ol className="space-y-4">
               {PROCESS.map((p) => (
                 <li key={p.n} className="flex gap-5 group">
-                  <div className="text-2xl font-display font-semibold text-brand-blue/50 group-hover:text-brand-blue transition-colors shrink-0 w-10">{p.n}</div>
+                  <div className="text-2xl font-display font-semibold text-brand-blue-2/50 group-hover:text-brand-blue-2 transition-colors shrink-0 w-10">{p.n}</div>
                   <div>
-                    <h3 className="font-display font-semibold text-navy mb-0.5">{p.t}</h3>
-                    <p className="text-navy/60 text-sm leading-relaxed">{p.d}</p>
+                    <h3 className="font-display font-semibold text-white mb-0.5">{p.t}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">{p.d}</p>
                   </div>
                 </li>
               ))}

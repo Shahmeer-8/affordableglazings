@@ -79,7 +79,7 @@ function DoorsPage() {
               Composite front doors to sliding walls of glass — built to last a lifetime.
             </p>
             <div className="mt-6 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-              <a href="#quote" className="btn-shine bg-cta text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2">
+              <a href="#quote" className="btn-shine bg-transparent border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center gap-2">
                 Get a free door quote <ArrowRight className="size-4" />
               </a>
               <Link to="/gallery" className="border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
@@ -138,39 +138,41 @@ function DoorsPage() {
       </section>
 
       {/* Colour + Glass */}
-      <section className="py-12 md:py-14 bg-white">
+      <section className="py-12 md:py-14 bg-soft-gray">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Design your door</p>
-            <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Colour. Glass. Hardware. Yours.</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-3">Colour. Glass. Hardware. Yours.</h2>
           </div>
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div data-reveal="up">
-              <h3 className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-6">Signature colours</h3>
-              <div className="grid grid-cols-4 gap-3">
-                {COLOURS.map((c) => (
-                  <div key={c.name} className="group">
-                    <div className="rgb-swatch aspect-square rounded-2xl shadow-soft transition-transform group-hover:scale-105" style={{ background: c.hex }} data-ral={c.ral} />
-                    <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-sm text-navy/55">Plus 200+ RAL matches available on request — including dual-tone inside/outside.</p>
+          <div data-reveal="up">
+            <h3 className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-6">Signature colours</h3>
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
+              {COLOURS.map((c) => (
+                <div key={c.name} className="group">
+                  <div className="rgb-swatch aspect-square rounded-xl shadow-soft transition-transform group-hover:scale-[1.04]" style={{ background: c.hex }} data-ral={c.ral} />
+                  <p className="mt-2 text-[11px] font-medium text-navy text-center">{c.name}</p>
+                </div>
+              ))}
             </div>
-            <div data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
-              <h3 className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-6">Glass styles</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {GLASS_STYLES.map((g) => (
-                  <div key={g.t} className="p-5 rounded-2xl bg-canvas border border-navy/5 hover:border-brand-blue/30 hover:shadow-soft transition">
-                    <Palette className="size-5 text-brand-blue mb-3" />
-                    <h4 className="font-semibold text-navy mb-1">{g.t}</h4>
-                    <p className="text-sm text-navy/60">{g.d}</p>
-                  </div>
-                ))}
-              </div>
+            <p className="mt-6 text-sm text-navy/55">Plus 200+ RAL matches available on request — including dual-tone inside/outside.</p>
+          </div>
+
+          <div className="mt-12" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
+            <h3 className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-6">Glass styles</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {GLASS_STYLES.map((g) => (
+                <div key={g.t} className="p-5 rounded-2xl bg-canvas border border-navy/5 hover:border-brand-blue/30 hover:shadow-soft transition">
+                  <Palette className="size-5 text-brand-blue mb-3" />
+                  <h4 className="font-semibold text-navy mb-1">{g.t}</h4>
+                  <p className="text-sm text-navy/60">{g.d}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <HandleFinishes />
+
+          <div className="mt-12">
+            <HandleFinishes />
+          </div>
         </div>
       </section>
 
@@ -201,15 +203,15 @@ function DoorsPage() {
       </section>
 
       {/* Process — vertical */}
-      <section className="py-12 md:py-14 bg-navy text-white">
+      <section className="py-12 md:py-14 bg-black text-white">
         <div className="container-page">
           <div className="max-w-2xl mb-10" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">How we install</p>
+            <p className="text-xs font-bold text-[#6F84D8] uppercase tracking-[0.22em] mb-3">How we install</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">Four unhurried steps.</h2>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {PROCESS.map((p, i) => (
-              <div key={p.n} className="p-8 rounded-3xl border border-white/10 relative" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={p.n} className="p-8 rounded-3xl bg-navy shadow-elegant relative" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <div className="text-5xl font-display font-semibold text-brand-blue-2/40 mb-5">{p.n}</div>
                 <h3 className="font-display font-semibold text-xl mb-2">{p.t}</h3>
                 <p className="text-white/60 text-sm leading-relaxed">{p.d}</p>

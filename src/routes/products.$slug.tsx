@@ -50,7 +50,7 @@ function ProductDetailPage() {
         <div className="flex flex-wrap gap-3">
           <a
             href="#quote"
-            className="inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
+            className="inline-flex items-center gap-2 bg-transparent border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
           >
             Request a quote <ArrowRight className="size-4" />
           </a>
@@ -89,7 +89,7 @@ function Features({ product }: { product: Product }) {
               key={f}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 70}ms` }}
-              className="flex items-start gap-4 p-6 rounded-3xl bg-soft-gray border border-transparent hover:border-brand-blue/20 hover:bg-white hover:shadow-soft transition-all duration-500"
+              className="flex items-start gap-4 p-6 rounded-3xl bg-white border border-navy/5 card-lift"
             >
               <div className="size-10 rounded-2xl bg-white grid place-items-center text-brand-blue shrink-0 shadow-soft">
                 <Check className="size-5" />

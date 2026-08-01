@@ -53,13 +53,13 @@ function RooflightsPage() {
           >
             <a
               href="#quote"
-              className="btn-shine bg-cta text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors inline-flex items-center gap-2"
+              className="btn-shine bg-transparent border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center gap-2"
             >
               Get your free quote <ArrowRight className="size-4" />
             </a>
             <Link
               to="/gallery"
-              className="border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
+              className="border border-white text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors"
             >
               Explore the gallery
             </Link>
