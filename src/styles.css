@@ -69,36 +69,36 @@
 :root {
   --radius: 1rem;
 
-  /* ── Palette: "Royal Blue & Stone" ───────────────────────────────────
-     Requested brand palette: royal blue, white, black and orange — with
-     backgrounds kept off plain white/black, so dark sections run on royal
-     blue and light sections stay on the warm stone/canvas neutrals below.
-     Token NAMES are kept so existing utility classes keep working; only
-     their VALUES change, which shifts the whole site at once.             */
+  /* ── Palette: "Navy & Orange" ─────────────────────────────────────────
+     Reference: navy-blue dark sections + clean white light sections,
+     orange reserved for buttons/small accents only. Token NAMES are kept
+     so existing utility classes keep working; only their VALUES change. */
 
   /* Ink / dark grounds — deep royal blue, never flat #000 */
   --navy: #141b45;              /* ink + dark section ground (royal blue, near-black) */
   --navy-2: #1f2a5e;            /* elevated dark */
-  --ink-muted: #4d5170;         /* secondary text */
+  --ink-muted: #5a5f78;         /* secondary text */
 
   /* Accent — true royal blue */
-  --brand-blue: #2542c7;        /* primary accent · buttons, links, icons */
+  --brand-blue: #2542c7;        /* primary accent · links, icons */
   --brand-blue-2: #94a8f2;      /* on-dark variant */
 
-  /* Light grounds — trying a light-orange tint (per request) instead of
-     stone paper; same lightness steps, just a warmer, more orange cast.
-     Easy revert: swap these five back to the stone values above. */
-  --canvas: #fdf0e0;             /* light orange paper */
-  --soft-gray: #f8dcb8;          /* step off canvas */
-  --shell: #eec98e;              /* third surface */
-  --line: #ecc588;               /* hairline rules */
-  --silver: #d9a862;
+  /* Light grounds — clean white/near-white, matching the reference. Three
+     surfaces still exist for layering, but the steps are now neutral gray
+     instead of a blue or orange tint. */
+  --canvas: #fcfcfc;             /* main page background */
+  --soft-gray: #f5f6f8;          /* second surface */
+  --shell: #e9ebef;              /* third surface */
+  --line: #e4e6eb;               /* hairline rules */
+  --silver: #c2c6d1;
 
   --success: oklch(0.62 0.13 145);
 
-  /* Warm brass — used sparingly. Old value failed contrast at 2.41:1. */
-  --brass: #7d6236;             /* 5.04:1 on canvas — now body-safe */
-  --brass-2: #c8a86a;           /* on-dark warm · 6.82:1 on anthracite */
+  /* Orange accent — the same family as the CTA button colour below, used
+     for small recurring details (tags, star ratings, dividers) so orange
+     genuinely shows up across the theme and not only inside buttons. */
+  --brass: #a8560f;             /* 4.85:1 on canvas — text-safe */
+  --brass-2: #f0a050;           /* on-dark variant · 7.74:1 on navy */
 
   /* CTA — every action button site-wide (outside the header/nav) uses this. */
   --cta: #e67e22;
@@ -107,20 +107,20 @@
   /* Semantic (shadcn) */
   --background: var(--canvas);
   --foreground: var(--navy);
-  --card: #fef8ef;
+  --card: #fcfcfc;
   --card-foreground: var(--navy);
-  --popover: #fef8ef;
+  --popover: #fcfcfc;
   --popover-foreground: var(--navy);
   --primary: var(--navy);
-  --primary-foreground: #fdf0e0;
+  --primary-foreground: #fcfcfc;
   --secondary: var(--soft-gray);
   --secondary-foreground: var(--navy);
   --muted: var(--soft-gray);
   --muted-foreground: var(--ink-muted);
   --accent: var(--brand-blue);
-  --accent-foreground: #ffffff;
+  --accent-foreground: #fcfcfc;
   --destructive: oklch(0.55 0.17 28);
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #fcfcfc;
   --border: var(--line);
   --input: var(--line);
   --ring: var(--brand-blue);
@@ -197,7 +197,8 @@
 }
 
 /* Eyebrow: given real structure (a short rule) instead of just more
-   letter-spacing, and moved off the accent onto brass. */
+   letter-spacing, coloured with the royal-blue accent so it reads on
+   every page rather than only in buttons/backgrounds. */
 @utility eyebrow {
   display: flex;
   align-items: center;
@@ -207,7 +208,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--brass);
+  color: var(--brand-blue);
   &::before {
     content: "";
     width: 1.5rem;
@@ -217,7 +218,7 @@
   }
 }
 @utility eyebrow-on-dark {
-  color: var(--brass-2);
+  color: var(--brand-blue-2);
 }
 
 /* Hairline rule — replaces drop-shadowed cards as the structural device.

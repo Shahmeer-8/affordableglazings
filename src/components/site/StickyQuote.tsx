@@ -5,7 +5,7 @@ export function StickyQuote() {
     <a href="#quote"
       className="fixed bottom-6 right-6 z-40 group flex items-center gap-3 bg-white border border-navy/10 p-2 pr-5 rounded-full shadow-elegant hover:scale-[1.03] transition-transform"
     >
-      <span className="size-10 rounded-full bg-cta grid place-items-center text-white shadow-soft">
+      <span className="size-10 rounded-full bg-navy grid place-items-center text-[#FCFCFC] shadow-soft group-hover:bg-cta transition-colors">
         <Calculator className="size-4" />
       </span>
       <span className="text-left pr-1">

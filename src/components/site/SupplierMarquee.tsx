@@ -49,7 +49,7 @@ export function SupplierMarquee({
               {lap.map((logo, i) => (
                 <span
                   key={`${copy}-${i}`}
-                  className="shrink-0 grid place-items-center h-20 w-40 rounded-xl bg-white border border-line/70 px-4"
+                  className="shrink-0 grid place-items-center h-20 w-40 rounded-xl bg-white border border-[#EAEAEA] shadow-sm px-4"
                 >
                   <img
                     src={logo.src}

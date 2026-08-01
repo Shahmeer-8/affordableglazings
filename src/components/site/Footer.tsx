@@ -92,7 +92,7 @@ export function Footer() {
                   key={name}
                   href="#"
                   aria-label={name}
-                  className="size-10 grid place-items-center rounded-full bg-white/10 border border-white/15 text-white hover:bg-cta hover:border-cta transition-colors"
+                  className="size-10 grid place-items-center rounded-full bg-navy text-[#FCFCFC] hover:bg-cta transition-colors"
                 >
                   <Icon className="size-4" />
                 </a>
@@ -166,7 +166,7 @@ function FooterCol({ title, links }: { title: string; links: { to: string; label
   return (
     <div>
       <h5 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white mb-4">{title}</h5>
-      <ul className="space-y-2.5 text-sm text-white/60">
+      <ul className="space-y-2.5 text-sm text-[#C6CAD8]">
         {links.map((l) => (
           <li key={l.label}>
             <Link to={l.to} hash={l.hash} className="hover:text-cta transition-colors">

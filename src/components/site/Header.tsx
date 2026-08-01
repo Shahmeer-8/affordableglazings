@@ -6,7 +6,8 @@ import windowsHero from "@/assets/windows-hero.jpg";
 import doorsHero from "@/assets/doors-hero.jpg";
 import consHero from "@/assets/cons-hero.jpg";
 import consGable from "@/assets/cons-gable.jpg";
-import logo from "@/assets/logo/mylogo.png";
+import logo from "@/assets/logo/mylogo-white.png";
+import logoDark from "@/assets/logo/mylogo.png";
 
 const PHONE_DISPLAY = "0800 123 4567";
 const PHONE_HREF = "tel:08001234567";
@@ -111,7 +112,7 @@ export function Header() {
   // bar scroll away entirely.
   return (
     <header className="sticky top-0 z-50">
-      <div className="bg-canvas/85 backdrop-blur-xl border-b border-line">
+      <div className="bg-[#1C2045] backdrop-blur-xl border-b border-white/10">
         <div className="relative" onMouseLeave={scheduleClose}>
           <div className={`${BAR} flex items-center gap-5 xl:gap-8 h-20 lg:h-[88px]`}>
             {/* Logo — sits before the primary nav, with a comfortable gap */}
@@ -120,12 +121,12 @@ export function Header() {
             </Link>
 
             {/* Primary nav (desktop) */}
-            <nav aria-label="Primary" className="hidden xl:flex items-center gap-5 xl:gap-7 text-[0.9rem] font-semibold text-navy">
+            <nav aria-label="Primary" className="hidden xl:flex items-center gap-5 xl:gap-7 text-[0.9rem] font-semibold text-white">
               <Link
                 to="/"
                 onMouseEnter={() => openMenu("")}
-                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
-                activeProps={{ className: "text-brand-blue" }}
+                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue-2 -mb-px"
+                activeProps={{ className: "text-brand-blue-2" }}
                 activeOptions={{ exact: true }}
               >
                 Home
@@ -138,7 +139,7 @@ export function Header() {
                   onClick={() => navigate({ to: m.to })}
                   aria-expanded={active === m.key}
                   className={`inline-flex items-center gap-1 h-[88px] border-b-2 -mb-px transition-colors ${
-                    active === m.key ? "text-brand-blue border-brass" : "border-transparent hover:text-brand-blue"
+                    active === m.key ? "text-brand-blue-2 border-cta" : "border-transparent hover:text-brand-blue-2"
                   }`}
                 >
                   {m.label}
@@ -148,8 +149,8 @@ export function Header() {
               <Link
                 to="/gallery"
                 onMouseEnter={() => openMenu("")}
-                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
-                activeProps={{ className: "text-brand-blue" }}
+                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue-2 -mb-px"
+                activeProps={{ className: "text-brand-blue-2" }}
               >
                 Gallery
               </Link>
@@ -157,7 +158,7 @@ export function Header() {
 
             {/* Right cluster */}
             <div className="ml-auto flex items-center gap-3 lg:gap-4 shrink-0">
-              <div className="hidden xl:flex items-center gap-4 text-[0.9rem] font-semibold text-ink-muted">
+              <div className="hidden xl:flex items-center gap-4 text-[0.9rem] font-semibold text-white/60">
                 {SIMPLE.map((m) => (
                   <div
                     key={m.key}
@@ -167,7 +168,7 @@ export function Header() {
                     <button
                       type="button"
                       aria-expanded={active === m.key}
-                      className={`inline-flex items-center gap-1 transition-colors ${active === m.key ? "text-brand-blue" : "hover:text-brand-blue"}`}
+                      className={`inline-flex items-center gap-1 transition-colors ${active === m.key ? "text-brand-blue-2" : "hover:text-brand-blue-2"}`}
                     >
                       {m.label}
                       <ChevronDown className={`size-3.5 transition-transform ${active === m.key ? "rotate-180" : ""}`} />
@@ -192,19 +193,19 @@ export function Header() {
               </div>
 
               <a href={PHONE_HREF} className="hidden 2xl:block text-right leading-tight group">
-                <span className="block text-base font-display font-semibold text-navy group-hover:text-brand-blue transition-colors">
+                <span className="block text-base font-display font-semibold text-white group-hover:text-brand-blue-2 transition-colors">
                   {PHONE_DISPLAY}
                 </span>
-                <span className="block text-[11px] text-navy/50">Mon–Sat, 8am–6pm</span>
+                <span className="block text-[11px] text-white/50">Mon–Sat, 8am–6pm</span>
               </a>
-              <a href={PHONE_HREF} className="2xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-soft-gray text-navy" aria-label="Call us">
+              <a href={PHONE_HREF} className="2xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-white/10 text-white" aria-label="Call us">
                 <Phone className="size-4" />
               </a>
 
               <button
                 type="button"
                 onClick={goToQuote}
-                className="hidden sm:inline-flex items-center gap-2 bg-brand-blue text-white pl-5 pr-4 py-2.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors shadow-soft"
+                className="hidden sm:inline-flex items-center gap-2 bg-cta text-white pl-5 pr-4 py-2.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors shadow-soft"
               >
                 Free Quote
                 <span className="inline-flex items-center justify-center size-5 rounded-full bg-white/20">
@@ -215,7 +216,7 @@ export function Header() {
               <button
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
-                className="xl:hidden inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy"
+                className="xl:hidden inline-flex items-center justify-center size-10 rounded-full border border-white/15 text-white"
                 onClick={() => setMobileOpen(true)}
               >
                 <Menu className="size-5" />
@@ -340,7 +341,7 @@ function MobileDrawer({
       <div className="absolute inset-0 bg-navy/40 backdrop-blur-sm animate-fade-in" onClick={onClose} />
       <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white shadow-2xl flex flex-col animate-slide-in-right">
         <div className="flex items-center justify-between h-16 px-5 border-b border-navy/10">
-          <img src={logo} alt="Affordable Glazing" className="h-9 w-auto object-contain" />
+          <img src={logoDark} alt="Affordable Glazing" className="h-9 w-auto object-contain" />
           <button aria-label="Close menu" onClick={onClose} className="inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy">
             <X className="size-5" />
           </button>
@@ -437,7 +438,7 @@ function MobileDrawer({
           <button
             type="button"
             onClick={onQuote}
-            className="bg-brand-blue text-white text-center py-3.5 rounded-full text-sm font-semibold hover:bg-navy transition-colors"
+            className="bg-cta text-white text-center py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
           >
             Get Free Quote
           </button>

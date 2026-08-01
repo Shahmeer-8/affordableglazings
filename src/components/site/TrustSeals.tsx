@@ -15,7 +15,7 @@ const SEALS = [
 
 export function TrustSeals() {
   return (
-    <section className="bg-canvas border-y border-line">
+    <section className="bg-canvas border-b border-[#ECECEC]">
       <div className="container-page py-8 md:py-10">
         <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-16">
           {SEALS.map((s) => (
@@ -38,8 +38,8 @@ export function TrustSeals() {
 function Seal({ top, mid, bottom }: { top: string; mid: string; bottom: string }) {
   return (
     <svg viewBox="0 0 100 100" className="size-14 md:size-16 shrink-0" role="img" aria-label={`${top} ${mid} ${bottom}`}>
-      {/* filled brand-blue seal face */}
-      <circle cx="50" cy="50" r="47" fill="var(--brand-blue)" />
+      {/* filled orange seal face */}
+      <circle cx="50" cy="50" r="47" fill="var(--cta)" />
       <circle cx="50" cy="50" r="41" fill="none" stroke="white" strokeWidth="0.75" opacity="0.35" />
       {/* notched ticks around the rim, like a struck seal */}
       {Array.from({ length: 36 }).map((_, i) => (
@@ -74,7 +74,7 @@ function Seal({ top, mid, bottom }: { top: string; mid: string; bottom: string }
         fontSize="9"
         fontWeight="600"
         letterSpacing="1.2"
-        fill="var(--brass-2)"
+        fill="white"
       >
         ★★★
       </text>

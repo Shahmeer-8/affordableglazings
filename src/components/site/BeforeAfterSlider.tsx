@@ -59,7 +59,7 @@ export function BeforeAfterSlider({
       }}
     >
       <img src={after} alt={afterLabel} draggable={false} className="absolute inset-0 w-full h-full object-cover" />
-      <span className="absolute bottom-4 right-4 text-[10px] font-bold uppercase tracking-[0.2em] bg-white/90 text-navy px-3 py-1.5 rounded-full pointer-events-none">
+      <span className="absolute bottom-4 right-4 text-[10px] font-bold uppercase tracking-[0.2em] bg-black/85 text-[#FCFCFC] px-3 py-1.5 rounded-full pointer-events-none">
         {afterLabel}
       </span>
 
@@ -68,7 +68,7 @@ export function BeforeAfterSlider({
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
       >
         <img src={before} alt={beforeLabel} draggable={false} className="absolute inset-0 w-full h-full object-cover" />
-        <span className="absolute bottom-4 left-4 text-[10px] font-bold uppercase tracking-[0.2em] bg-navy/80 text-white px-3 py-1.5 rounded-full pointer-events-none">
+        <span className="absolute bottom-4 left-4 text-[10px] font-bold uppercase tracking-[0.2em] bg-black/85 text-[#FCFCFC] px-3 py-1.5 rounded-full pointer-events-none">
           {beforeLabel}
         </span>
       </div>

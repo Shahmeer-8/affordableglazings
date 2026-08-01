@@ -91,8 +91,7 @@ function Hero() {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
+        <div className="absolute inset-0 bg-navy/78" />
         {/* Header-safe scrim: guarantees nav legibility regardless of what the video is showing up top */}
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-navy/70 via-navy/25 to-transparent" />
         {/* subtle grain */}
@@ -118,14 +117,14 @@ function Hero() {
             </span>
             <span className="hero-line">
               <span className="hero-word" style={{ ["--wd" as never]: "400ms" }}>
-                <span className="text-brass-2">view of home.</span>
+                <span className="text-[#2E6BFF]">view of home.</span>
               </span>
             </span>
           </h1>
 
           <p
             style={{ animationDelay: "560ms" }}
-            className="animate-reveal text-base md:text-lg text-white/75 measure-body"
+            className="animate-reveal text-base md:text-lg text-[#D6D9E8] measure-body"
           >
             Bespoke windows, doors and conservatories — crafted in Britain.
           </p>
@@ -136,14 +135,14 @@ function Hero() {
           >
             <a
               href="#quote"
-              className="group btn-shine inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-cta-hover transition-all hover:-translate-y-0.5"
+              className="group btn-shine inline-flex items-center gap-2 bg-transparent border border-cta text-cta px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-cta hover:text-white transition-all hover:-translate-y-0.5"
             >
               Get a free quote
               <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 border border-cta text-cta px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-cta hover:text-white hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 border border-white text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white hover:text-navy hover:-translate-y-0.5 transition-all"
             >
               View our work
             </Link>
@@ -190,16 +189,16 @@ const SERVICES = [
 
 function Services() {
   return (
-    <section className="py-12 md:py-14 bg-soft-gray">
+    <section className="py-12 md:py-14 bg-black">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
           <div className="max-w-lg">
-            <p className="eyebrow mb-3">Our specialisms</p>
-            <h2 className="text-2xl md:text-3xl font-display font-semibold text-navy leading-[1.08] measure-display">
+            <p className="eyebrow mb-3 text-[#6F84D8]">Our specialisms</p>
+            <h2 className="text-2xl md:text-3xl font-display font-semibold text-[#FCFCFC] leading-[1.08] measure-display">
               Solutions for every modern space.
             </h2>
           </div>
-          <p className="text-ink-muted text-sm max-w-xs">Heritage homes to modern extensions.</p>
+          <p className="text-[#BFC4D8] text-sm max-w-xs">Heritage homes to modern extensions.</p>
         </div>
 
         {/* Copy sits over the image on hover so the card stays compact —
@@ -211,7 +210,7 @@ function Services() {
               to={s.to}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
-              className="group relative overflow-hidden rounded-2xl bg-white border border-line card-lift"
+              className="group relative overflow-hidden rounded-2xl bg-navy shadow-elegant card-lift"
             >
               <div className="glass-glint relative aspect-[5/4] overflow-hidden">
                 <img
@@ -228,10 +227,10 @@ function Services() {
               </div>
               <div className="flex items-center justify-between gap-3 px-4 py-3.5">
                 <div className="min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brass">{s.tag}</p>
-                  <h3 className="text-base font-display font-semibold text-navy truncate">{s.title}</h3>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C5CAD8]">{s.tag}</p>
+                  <h3 className="text-base font-display font-semibold text-[#FCFCFC] truncate">{s.title}</h3>
                 </div>
-                <span className="shrink-0 inline-flex items-center justify-center size-8 rounded-full bg-soft-gray text-navy group-hover:bg-navy group-hover:text-white transition-colors">
+                <span className="shrink-0 inline-flex items-center justify-center size-8 rounded-full border border-cta text-cta group-hover:bg-cta group-hover:text-white transition-colors">
                   <ArrowRight className="size-4" />
                 </span>
               </div>
@@ -413,8 +412,8 @@ function Process() {
                   {body}
                 </p>
               </div>
-              <div className="p-4">
-                <h3 className="text-base font-display font-semibold text-navy">{title}</h3>
+              <div className="p-4 bg-cta">
+                <h3 className="text-base font-display font-semibold text-white">{title}</h3>
               </div>
             </div>
           ))}
@@ -428,25 +427,25 @@ function Process() {
 
 function BeforeAfter() {
   return (
-    <section className="py-12 md:py-16 bg-canvas">
+    <section className="py-12 md:py-16 bg-navy">
       <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
-          <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Recent projects</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-navy leading-[1.05] mb-3">
+          <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Recent projects</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-[#FCFCFC] leading-[1.05] mb-3">
             See the difference precision makes.
           </h2>
-          <p className="text-navy/60 leading-relaxed mb-5 max-w-lg">
+          <p className="text-[#C7CBE0] leading-relaxed mb-5 max-w-lg">
             From dated conservatories to award-winning glass extensions — every project tells a story of transformation.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 bg-cta text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
+              className="inline-flex items-center gap-2 bg-transparent border border-cta text-cta px-6 py-3 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
             >
               View the full gallery <ArrowRight className="size-4" />
             </Link>
-            <span className="text-sm text-navy/40 flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-brass" />
+            <span className="text-sm text-white/40 flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-cta" />
               Drag to compare
             </span>
           </div>
@@ -494,22 +493,22 @@ const REVIEW_PROJECTS = [
 
 function Testimonials() {
   return (
-    <section className="py-12 md:py-16 bg-navy text-white">
+    <section className="py-12 md:py-16 bg-black text-white">
       <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-10">
           <div>
-            <p className="eyebrow eyebrow-on-dark mb-4">Reviews</p>
-            <h2 className="display-2 measure-display">
+            <p className="eyebrow mb-4 text-[#6F84D8]">Reviews</p>
+            <h2 className="display-2 measure-display text-[#FCFCFC]">
               Rated 4.9 by British homeowners.
             </h2>
           </div>
-          <div className="flex items-center gap-2 text-white/60 text-sm">
-            <div className="flex gap-0.5 text-brass-2">
+          <div className="flex items-center gap-2 text-[#B9BED3] text-sm">
+            <div className="flex gap-0.5 text-cta">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="size-4 fill-current" />
               ))}
             </div>
-            <span className="font-semibold text-white">4.9 / 5</span>
+            <span className="font-semibold text-[#FCFCFC]">4.9 / 5</span>
             <span>from 1,200+ reviews</span>
           </div>
         </div>
@@ -545,16 +544,16 @@ function Testimonials() {
               style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
               className="p-8 bg-navy"
             >
-              <div className="flex gap-0.5 text-brass-2 mb-5">
+              <div className="flex gap-0.5 text-cta mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-white/80 leading-relaxed mb-6 measure-body">"{r.body}"</blockquote>
+              <blockquote className="text-[#D2D6E8] leading-relaxed mb-6 measure-body">"{r.body}"</blockquote>
               <figcaption className="flex items-center gap-3 text-sm pt-5 border-t border-white/10">
                 <div>
-                  <div className="font-semibold text-white">{r.name}</div>
-                  <div className="text-white/50">{r.location}</div>
+                  <div className="font-semibold text-[#FCFCFC]">{r.name}</div>
+                  <div className="text-[#A9AFBF]">{r.location}</div>
                 </div>
               </figcaption>
             </figure>
@@ -591,7 +590,7 @@ function Journal() {
           </div>
           <Link
             to="/gallery"
-            className="group inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors shrink-0"
+            className="group inline-flex items-center gap-2 bg-transparent border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors shrink-0"
           >
             Browse the gallery
             <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
