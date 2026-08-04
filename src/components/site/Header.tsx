@@ -112,7 +112,7 @@ export function Header() {
   // bar scroll away entirely.
   return (
     <header className="sticky top-0 z-50">
-      <div className="bg-[#1C2045] backdrop-blur-xl border-b border-white/10">
+      <div className="bg-chrome backdrop-blur-xl border-b border-white/10">
         <div className="relative" onMouseLeave={scheduleClose}>
           <div className={`${BAR} flex items-center gap-5 xl:gap-8 h-20 lg:h-[88px]`}>
             {/* Logo — sits before the primary nav, with a comfortable gap */}

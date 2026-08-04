@@ -30,7 +30,7 @@ export function Footer() {
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-navy/90" />
+      <div className="absolute inset-0 bg-chrome/92" />
 
       <div className="container-page relative pt-14 pb-8">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-white/10">
