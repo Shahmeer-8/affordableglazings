@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, Palette, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Sun } from "lucide-react";
+import { ArrowRight, Award, ShieldCheck, ThermometerSun, Volume2, Wrench, Sparkles, Sun } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
 import { ExploreMore } from "@/components/site/ExploreMore";
 import windowsHero from "@/assets/windows-hero.jpg";
 import windowsInterior from "@/assets/windows-interior.jpg";
 import installer from "@/assets/installer.jpg";
+import { GlassOptions } from "@/components/site/GlassOptions";
+import { Swipeable } from "@/components/site/Swipeable";
 export const Route = createFileRoute("/windows")({
   head: () => ({
     meta: [
@@ -26,15 +28,6 @@ const PERFORMANCE = [
   { icon: Volume2, title: "42 dB Acoustic Rating", body: "Laminated acoustic glass laminates reduce traffic and neighbour noise by up to 90%. Ideal for homes near main roads, flight paths or busy town centres." },
   { icon: ShieldCheck, title: "PAS 24:2022 Secure", body: "Every window is tested and certified to Secured by Design standards, with multi-point shootbolt locking, anti-jemmy hinges and toughened or laminated glass." },
   { icon: Sun, title: "Solar Control Glass", body: "Optional solar coatings deflect summer heat gain without dimming light — a game-changer for south-facing rooms and glass extensions." },
-];
-
-const GLASS = [
-  { title: "Double Glazing", body: "Argon-filled 28mm units with Low-E glass — our energy-rated standard." },
-  { title: "Triple Glazing", body: "44mm sealed units with two Low-E coatings for passive-house performance." },
-  { title: "Acoustic Glass", body: "6.4mm laminated inner pane engineered to absorb high-frequency traffic noise." },
-  { title: "Obscure & Privacy", body: "Fifteen textured patterns — from stippled and cotswold to contemporary linear." },
-  { title: "Georgian Bars", body: "Internal, external or through-pane astragals in every colour and profile." },
-  { title: "Leaded Lights", body: "Hand-soldered lead cames in diamond, square and stained-glass configurations." },
 ];
 
 const COLOURS = [
@@ -89,7 +82,7 @@ function WindowsPage() {
               Explore the gallery
             </Link>
           </div>
-          <div className="mt-8 grid grid-cols-4 gap-4 max-w-2xl" data-reveal="up" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl" data-reveal="up" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
             {[["12k+", "Homes glazed"], ["A++", "Energy rating"], ["4.9★", "10-year avg."], ["10yr", "Guarantee"]].map(([n, l]) => (
               <div key={l}>
                 <div className="text-xl md:text-2xl font-display font-semibold">{n}</div>
@@ -104,11 +97,11 @@ function WindowsPage() {
       <ProductRange category="Windows" dark />
 
       {/* Full-bleed lifestyle */}
-      <section className="relative h-[48vh] min-h-[340px] overflow-hidden">
+      <section className="relative h-[34vh] min-h-[240px] md:h-[48vh] md:min-h-[340px] overflow-hidden">
         <img src={windowsInterior} alt="Luxury interior flooded with light through floor-to-ceiling windows" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1600} height={1000} />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
-        <div className="container-page relative z-10 h-full flex items-end pb-16">
-          <blockquote className="max-w-2xl text-white text-2xl md:text-4xl font-display leading-[1.15] text-balance" data-reveal="up">
+        <div className="container-page relative z-10 h-full flex items-end pb-8 md:pb-16">
+          <blockquote className="max-w-2xl text-white text-xl md:text-4xl font-display leading-[1.15] text-balance" data-reveal="up">
             "The light through these windows changed the whole feeling of the house. It's like living in a different home."
             <footer className="mt-6 text-sm uppercase tracking-widest text-white/60">— Elizabeth H., Guildford</footer>
           </blockquote>
@@ -123,37 +116,19 @@ function WindowsPage() {
             <p className="text-xs font-bold text-[#6F84D8] uppercase tracking-[0.22em] mb-3">Performance</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">Silence. Warmth. Security. Measured.</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <Swipeable at="md" gap="gap-5" tone="dark" className="md:grid-cols-2 lg:grid-cols-4">
             {PERFORMANCE.map(({ icon: Icon, title, body }, i) => (
-              <div key={title} className="p-8 rounded-3xl bg-navy shadow-elegant card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={title} className="p-8 rounded-3xl bg-navy shadow-elegant card-lift shrink-0 w-[78%] snap-start md:w-auto md:shrink" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <Icon className="size-7 text-brand-blue-2 mb-6" />
                 <h3 className="text-xl font-display font-semibold mb-3">{title}</h3>
                 <p className="text-sm text-white/60 leading-relaxed">{body}</p>
               </div>
             ))}
-          </div>
+          </Swipeable>
         </div>
       </section>
 
-      {/* Glass options */}
-      <section className="py-12 md:py-14 bg-white">
-        <div className="container-page">
-          <div className="max-w-2xl mb-8" data-reveal="up">
-            <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Glass options</p>
-            <h2 className="text-3xl md:text-4xl font-display font-semibold text-navy leading-[1.05] mb-3">The glass is where the magic happens.</h2>
-            <p className="text-navy/60 leading-relaxed">More than 70% of a window's performance is decided by the glass — we build every sealed unit around the way you live.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {GLASS.map((g, i) => (
-              <div key={g.title} data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>} className="p-5 rounded-2xl bg-canvas border border-navy/5 hover:border-brand-blue/30 hover:shadow-soft transition">
-                <Palette className="size-5 text-brand-blue mb-3" />
-                <h3 className="font-display font-semibold text-navy mb-1.5">{g.title}</h3>
-                <p className="text-sm text-navy/60 leading-relaxed">{g.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GlassOptions />
 
       {/* Colours & handle finishes */}
       <section className="py-12 md:py-14 bg-soft-gray">

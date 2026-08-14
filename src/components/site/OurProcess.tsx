@@ -1,3 +1,5 @@
+import { Swipeable } from "./Swipeable";
+
 const PROCESS = [
   { n: "01", t: "Free consultation", d: "A senior surveyor visits your home, listens to your goals and shares samples, colours and glass options in person." },
   { n: "02", t: "Precision survey", d: "Every aperture is laser-measured. We photograph, template and confirm every reveal so nothing is left to chance." },
@@ -16,9 +18,15 @@ export function OurProcess({ image, alt }: { image: string; alt: string }) {
         <div data-reveal="right">
           <p className="text-xs font-bold text-brand-blue-2 uppercase tracking-[0.22em] mb-3">Our process</p>
           <h2 className="text-3xl md:text-4xl font-display font-semibold text-white leading-[1.05] mb-6">From first visit to final polish.</h2>
-          <ol className="space-y-4">
+          {/* Stacked, five steps ran to roughly a full phone screen on every
+              product page. Swiped, the 01–05 numbering still carries the
+              sequence, so nothing is lost by laying them out sideways. */}
+          <Swipeable as="ol" at="lg" tone="dark" className="lg:grid-cols-1">
             {PROCESS.map((p) => (
-              <li key={p.n} className="flex gap-5 group">
+              <li
+                key={p.n}
+                className="flex gap-5 group shrink-0 w-[82%] snap-start lg:w-auto lg:shrink"
+              >
                 <div className="text-2xl font-display font-semibold text-brand-blue-2/50 group-hover:text-brand-blue-2 transition-colors shrink-0 w-10">{p.n}</div>
                 <div>
                   <h3 className="font-display font-semibold text-white mb-0.5">{p.t}</h3>
@@ -26,7 +34,7 @@ export function OurProcess({ image, alt }: { image: string; alt: string }) {
                 </div>
               </li>
             ))}
-          </ol>
+          </Swipeable>
         </div>
       </div>
     </section>

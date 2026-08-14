@@ -92,7 +92,12 @@ function GalleryPage() {
       </section>
       <section className="py-8 pb-16">
         <div className="container-page">
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [&>*]:mb-5">
+          {/* Two masonry columns on mobile rather than one. A gallery is the
+              one place a visitor genuinely wants many items at once, so the
+              fix here is halving the column height, not hiding items behind
+              a swipe — at 2-up each thumbnail is still ~160px wide, plenty
+              to judge a project by before tapping into the lightbox. */}
+          <div className="columns-2 lg:columns-3 gap-3 sm:gap-5 [&>*]:mb-3 sm:[&>*]:mb-5">
             {filtered.map((p, i) => (
               <button
                 key={p.src + p.title}

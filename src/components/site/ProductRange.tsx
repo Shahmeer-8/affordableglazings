@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { PRODUCT_CATEGORIES } from "@/data/products";
+import { Swipeable } from "./Swipeable";
 
 /**
  * Product range grid for a category landing page. Renders the category's
@@ -26,13 +27,16 @@ export function ProductRange({ category, dark = false }: { category: string; dar
         {/* Compact cards: only the name and the actions sit in the card body.
             The summary and key features reveal over the image on hover, which
             keeps every card the same short height regardless of copy length. */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${cat.products.length >= 3 ? "lg:grid-cols-3" : "lg:grid-cols-2 max-w-3xl"}`}>
+        <Swipeable
+          at="sm"
+          className={`sm:grid-cols-2 ${cat.products.length >= 3 ? "lg:grid-cols-3" : "lg:grid-cols-2 lg:max-w-3xl"}`}
+        >
           {cat.products.map((p, i) => (
             <article
               key={p.slug}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 90}ms` }}
-              className={`group relative overflow-hidden rounded-2xl border border-line card-lift ${dark ? "bg-white" : "bg-white"}`}
+              className={`group relative overflow-hidden rounded-2xl border border-line card-lift shrink-0 w-[78%] snap-start sm:w-auto sm:shrink ${dark ? "bg-white" : "bg-white"}`}
             >
               <Link
                 to="/products/$slug"
@@ -79,7 +83,7 @@ export function ProductRange({ category, dark = false }: { category: string; dar
               </div>
             </article>
           ))}
-        </div>
+        </Swipeable>
       </div>
     </section>
   );

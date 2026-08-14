@@ -4,6 +4,7 @@ import productWindows from "@/assets/product-windows.jpg";
 import productDoors from "@/assets/product-doors.jpg";
 import productConservatories from "@/assets/product-conservatories.jpg";
 import consGable from "@/assets/cons-gable.jpg";
+import { Swipeable } from "./Swipeable";
 
 const PAGES = [
   { key: "windows", to: "/windows" as const, t: "Windows", d: "Casement, sash, tilt & turn", img: productWindows },
@@ -25,14 +26,14 @@ export function ExploreMore({ current }: { current: "windows" | "doors" | "roofl
             <h2 className="text-3xl md:text-5xl font-display font-semibold text-white leading-[1.05]">Complete the look.</h2>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Swipeable at="sm" tone="dark" className="sm:grid-cols-3">
           {rest.map((r, i) => (
             <Link
               key={r.to}
               to={r.to}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] block"
+              className="group relative rounded-2xl overflow-hidden aspect-[4/3] block shrink-0 w-[78%] snap-start sm:w-auto sm:shrink"
             >
               <img src={r.img} alt={r.t} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
@@ -42,7 +43,7 @@ export function ExploreMore({ current }: { current: "windows" | "doors" | "roofl
               </div>
             </Link>
           ))}
-        </div>
+        </Swipeable>
       </div>
     </section>
   );

@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero";import { Star } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Swipeable } from "@/components/site/Swipeable";
+import { Star } from "lucide-react";
 
 const REVIEWS = [
   { name: "Sarah W.", loc: "Guildford, Surrey", body: "From consultation to installation, the whole experience felt effortless. Our new bi-folds have completely transformed the back of the house." },
@@ -27,9 +29,9 @@ export const Route = createFileRoute("/testimonials")({
         description="Over 1,200 five-star reviews across Google, Trustpilot and Checkatrade."
       />
       <section className="py-16">
-        <div className="container-page grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <Swipeable at="md" gap="gap-5" outerClassName="container-page" className="md:grid-cols-2 lg:grid-cols-3">
           {REVIEWS.map((r) => (
-            <figure key={r.name} className="p-8 rounded-3xl bg-white border border-navy/5 hover:shadow-elegant transition-shadow">
+            <figure key={r.name} className="p-8 rounded-3xl bg-white border border-navy/5 hover:shadow-elegant transition-shadow shrink-0 w-[78%] snap-start md:w-auto md:shrink">
               <div className="flex gap-0.5 text-brand-blue mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
@@ -42,7 +44,7 @@ export const Route = createFileRoute("/testimonials")({
               </figcaption>
             </figure>
           ))}
-        </div>
+        </Swipeable>
       </section>
     </>
   ),

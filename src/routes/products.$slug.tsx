@@ -7,6 +7,7 @@ import { getProduct, type Product } from "@/data/products";
 import { SupplierMarquee } from "@/components/site/SupplierMarquee";
 import { TrustBadgeStrip } from "@/components/site/TrustBadgeStrip";
 import { OurProcess } from "@/components/site/OurProcess";
+import { Swipeable } from "@/components/site/Swipeable";
 
 const CATEGORY_PATHS: Record<string, string> = {
   Windows: "/windows",
@@ -83,13 +84,13 @@ function Features({ product }: { product: Product }) {
           <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-4">Why choose this range</p>
           <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05]">Features</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Swipeable at="md" className="md:grid-cols-2">
           {product.features.map((f, i) => (
             <div
               key={f}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 70}ms` }}
-              className="flex items-start gap-4 p-6 rounded-3xl bg-white border border-navy/5 card-lift"
+              className="flex items-start gap-4 p-6 rounded-3xl bg-white border border-navy/5 card-lift shrink-0 w-[78%] snap-start md:w-auto md:shrink"
             >
               <div className="size-10 rounded-2xl bg-white grid place-items-center text-brand-blue shrink-0 shadow-soft">
                 <Check className="size-5" />
@@ -97,7 +98,7 @@ function Features({ product }: { product: Product }) {
               <p className="text-navy/80 font-medium pt-2">{f}</p>
             </div>
           ))}
-        </div>
+        </Swipeable>
       </div>
     </section>
   );
@@ -159,7 +160,7 @@ function Gallery({ product }: { product: Product }) {
         {isCarousel ? (
           <div
             ref={scrollerRef}
-            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-1 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="cards-scroll cards-scroll-md flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-1 px-1"
           >
             {items.map((item, i) => (
               <button
@@ -186,7 +187,7 @@ function Gallery({ product }: { product: Product }) {
             ))}
           </div>
         ) : (
-          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-5 ${items.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+          <Swipeable at="sm" gap="gap-5" className={`sm:grid-cols-2 ${items.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
             {items.map((item, i) => (
               <button
                 key={i}
@@ -194,7 +195,7 @@ function Gallery({ product }: { product: Product }) {
                 onClick={() => setLightbox(i)}
                 data-reveal="up"
                 style={{ ["--reveal-delay" as never]: `${i * 90}ms` }}
-                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-navy/5 text-left cursor-zoom-in"
+                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-navy/5 text-left cursor-zoom-in shrink-0 w-[85%] snap-start sm:w-auto sm:shrink"
                 aria-label={`Enlarge ${item.title}`}
               >
                 <img
@@ -209,7 +210,7 @@ function Gallery({ product }: { product: Product }) {
                 </span>
               </button>
             ))}
-          </div>
+          </Swipeable>
         )}
       </div>
 

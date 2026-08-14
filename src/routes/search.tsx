@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Search as SearchIcon } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
+import { Swipeable } from "@/components/site/Swipeable";
 import { ALL_PRODUCTS } from "@/data/products";
 
 const PAGES: { title: string; to: string; hint: string }[] = [
@@ -91,13 +92,13 @@ function SearchPage() {
           )}
 
           {products.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Swipeable at="sm" gap="gap-6" className="sm:grid-cols-2 lg:grid-cols-3">
               {products.map((p) => (
                 <Link
                   key={p.slug}
                   to="/products/$slug"
                   params={{ slug: p.slug }}
-                  className="group rounded-3xl overflow-hidden bg-white border border-navy/5 card-lift"
+                  className="group rounded-3xl overflow-hidden bg-white border border-navy/5 card-lift shrink-0 w-[78%] snap-start sm:w-auto sm:shrink"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img src={p.images[0]} alt={p.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -109,7 +110,7 @@ function SearchPage() {
                   </div>
                 </Link>
               ))}
-            </div>
+            </Swipeable>
           )}
 
           {pages.length > 0 && (

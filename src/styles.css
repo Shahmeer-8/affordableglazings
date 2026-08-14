@@ -149,6 +149,11 @@
   }
   html {
     scroll-behavior: smooth;
+    /* `clip`, not `hidden`: hidden turns the root into a scroll container,
+       which silently kills `position: sticky` on the header. This is the
+       backstop that stops one mis-sized full-bleed row from letting the
+       whole phone screen pan sideways. */
+    overflow-x: clip;
   }
   body {
     background-color: var(--color-background);
@@ -479,6 +484,56 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee { overflow-x: auto; mask-image: none; }
   .marquee-track { animation: none; }
+}
+
+/* ── Mobile card carousel ─────────────────────────────────────────────
+   Every multi-card grid site-wide (feature cards, product cards, reviews)
+   becomes a horizontal snap-scroll row on small screens instead of a
+   stacked grid, so a phone never has to scroll past N stacked cards to
+   reach the next section. Applied through the `Swipeable` component.
+
+   Cards are sized at ~62–82% width in the markup so the next one visibly
+   peeks in from the edge; the fade mask here softens that cut so it reads
+   as "continues off-screen" rather than "clipped". `Swipeable` adds a live
+   scroll bar underneath as the third signal.
+
+   The suffix names the breakpoint the row stays a carousel *up to*, so the
+   fade ends on exactly the same query as the `md:grid` / `lg:grid` that
+   turns the row back into a grid. Without the variants a `md:` carousel
+   lost its fade from 640px up while still scrolling horizontally. */
+.cards-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-padding-inline: 1.5rem;
+  /* Swipeable rewrites these as you scroll so the fade only ever sits on a
+     side that actually has more content. A fixed right-hand fade kept
+     implying "more this way" after the last card had already been reached. */
+  --fade-l: 0%;
+  --fade-r: 18%;
+  &::-webkit-scrollbar { display: none; }
+}
+@media (max-width: 639.98px) {
+  .cards-scroll { mask-image: var(--cards-fade); }
+}
+@media (max-width: 767.98px) {
+  .cards-scroll-md { mask-image: var(--cards-fade); }
+}
+@media (max-width: 1023.98px) {
+  .cards-scroll-lg { mask-image: var(--cards-fade); }
+}
+@property --fade-l { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --fade-r { syntax: "<percentage>"; inherits: false; initial-value: 18%; }
+.cards-scroll {
+  --cards-fade: linear-gradient(
+    90deg,
+    transparent 0%,
+    black var(--fade-l),
+    black calc(100% - var(--fade-r)),
+    transparent 100%
+  );
+  /* @property makes the two lengths animatable, so the fade grows and
+     shrinks rather than popping on at the ends of the travel. */
+  transition: --fade-l 200ms linear, --fade-r 200ms linear;
 }
 
 /* Colour swatch → RAL code tooltip on hover. `data-ral` carries the

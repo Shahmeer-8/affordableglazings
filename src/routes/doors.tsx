@@ -5,6 +5,8 @@ import { ProductRange } from "@/components/site/ProductRange";
 import { GalleryReel } from "@/components/site/GalleryReel";
 import { ExploreMore } from "@/components/site/ExploreMore";
 import { HandleFinishes } from "@/components/site/HandleFinishes";
+import { GlassOptions } from "@/components/site/GlassOptions";
+import { Swipeable } from "@/components/site/Swipeable";
 import doorsHero from "@/assets/doors-hero.jpg";
 import doorsSliding from "@/assets/doors-sliding.jpg";
 import doorsBifold from "@/assets/doors-bifold.jpg";
@@ -105,14 +107,14 @@ function DoorsPage() {
       <ProductRange category="Doors" dark />
 
       {/* Full-bleed lifestyle */}
-      <section className="relative h-[75vh] overflow-hidden">
+      <section className="relative h-[42vh] min-h-[300px] md:h-[75vh] overflow-hidden">
         <img src={doorsSliding} alt="Sliding doors opening onto garden" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/70 to-navy/10" />
         <div className="container-page relative h-full flex items-center">
           <div className="max-w-2xl text-white" data-reveal="up">
             <p className="text-xs font-bold tracking-[0.28em] uppercase text-brand-blue-2 mb-4">Feature focus</p>
-            <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02] mb-6 text-balance">Blur the line between inside and out.</h2>
-            <p className="text-lg text-white/75 leading-relaxed">Aluminium sliding and bi-fold systems with 20mm sightlines. Ultra-thin frames. Structural glass panels up to 3m tall. Because the garden shouldn't feel like a different room.</p>
+            <h2 className="text-2xl md:text-6xl font-display font-semibold leading-[1.05] md:leading-[1.02] mb-3 md:mb-6 text-balance">Blur the line between inside and out.</h2>
+            <p className="text-sm md:text-lg text-white/75 leading-relaxed">Aluminium sliding and bi-fold systems with 20mm sightlines. Ultra-thin frames. Structural glass panels up to 3m tall. Because the garden shouldn't feel like a different room.</p>
           </div>
         </div>
       </section>
@@ -125,17 +127,19 @@ function DoorsPage() {
             <h2 className="text-4xl md:text-5xl font-display font-semibold text-navy leading-[1.05] mb-6">Peace of mind, engineered into every millimetre.</h2>
             <p className="text-navy/65 leading-relaxed">A door is only as secure as its weakest component. That's why we specify the hardware first and build the door around it — not the other way round.</p>
           </div>
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4" data-reveal="right">
+          <Swipeable at="sm" outerClassName="lg:col-span-7" reveal="right" className="sm:grid-cols-2">
             {SECURITY.map(({ icon: Icon, title, body }, i) => (
-              <div key={title} className="p-7 rounded-2xl bg-navy text-white card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 80}ms` } as Record<string, string>}>
+              <div key={title} className="p-7 rounded-2xl bg-navy text-white card-lift shrink-0 w-[78%] snap-start sm:w-auto sm:shrink" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 80}ms` } as Record<string, string>}>
                 <Icon className="size-6 text-brand-blue-2 mb-4" />
                 <h3 className="font-display font-semibold text-lg mb-2">{title}</h3>
                 <p className="text-sm text-white/60 leading-relaxed">{body}</p>
               </div>
             ))}
-          </div>
+          </Swipeable>
         </div>
       </section>
+
+      <GlassOptions />
 
       {/* Colour + Glass */}
       <section className="py-12 md:py-14 bg-soft-gray">
@@ -159,15 +163,15 @@ function DoorsPage() {
 
           <div className="mt-12" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
             <h3 className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-6">Glass styles</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Swipeable at="sm" className="sm:grid-cols-2 lg:grid-cols-4">
               {GLASS_STYLES.map((g) => (
-                <div key={g.t} className="p-5 rounded-2xl bg-canvas border border-navy/5 hover:border-brand-blue/30 hover:shadow-soft transition">
+                <div key={g.t} className="p-5 rounded-2xl bg-canvas border border-navy/5 hover:border-brand-blue/30 hover:shadow-soft transition shrink-0 w-[78%] snap-start sm:w-auto sm:shrink">
                   <Palette className="size-5 text-brand-blue mb-3" />
                   <h4 className="font-semibold text-navy mb-1">{g.t}</h4>
                   <p className="text-sm text-navy/60">{g.d}</p>
                 </div>
               ))}
-            </div>
+            </Swipeable>
           </div>
 
           <div className="mt-12">
@@ -209,15 +213,15 @@ function DoorsPage() {
             <p className="text-xs font-bold text-[#6F84D8] uppercase tracking-[0.22em] mb-3">How we install</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">Four unhurried steps.</h2>
           </div>
-          <div className="grid md:grid-cols-4 gap-6">
+          <Swipeable at="md" gap="gap-6" tone="dark" className="md:grid-cols-4">
             {PROCESS.map((p, i) => (
-              <div key={p.n} className="p-8 rounded-3xl bg-navy shadow-elegant relative" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={p.n} className="p-8 rounded-3xl bg-navy shadow-elegant relative shrink-0 w-[78%] snap-start md:w-auto md:shrink" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <div className="text-5xl font-display font-semibold text-brand-blue-2/40 mb-5">{p.n}</div>
                 <h3 className="font-display font-semibold text-xl mb-2">{p.t}</h3>
                 <p className="text-white/60 text-sm leading-relaxed">{p.d}</p>
               </div>
             ))}
-          </div>
+          </Swipeable>
         </div>
       </section>
 

@@ -35,7 +35,7 @@ export function Footer() {
       <div className="container-page relative pt-14 pb-8">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-white/10">
           {/* ── Left: brand, navigation, contact ─────────────────────── */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 lg:order-none">
             <Link to="/" className="inline-block text-2xl font-display font-semibold text-white">
               Affordable<span className="text-brand-blue-2">Glazings</span>
             </Link>
@@ -44,7 +44,10 @@ export function Footer() {
               installed by our own craftsmen since 1994.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-8">
+            {/* Three across even on the narrowest phone — at two columns the
+                third list wrapped onto its own row and doubled the block's
+                height for no gain in readability. */}
+            <div className="mt-8 grid grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-8">
               <FooterCol
                 title="Products"
                 links={[
@@ -75,11 +78,39 @@ export function Footer() {
             </div>
 
             {/* Contact block — the details people actually came looking for,
-                given more prominence than a link list. */}
-            <div className="mt-10 pt-8 border-t border-white/10 grid sm:grid-cols-3 gap-6">
-              <ContactItem icon={Phone} label="Call us" href="tel:08001234567" value="0800 123 4567" hint="Mon–Sat, 8am–6pm" />
-              <ContactItem icon={Mail} label="Email" href="mailto:hello@affordableglazings.co.uk" value="hello@affordableglazings.co.uk" hint="Reply within 24 hours" breakAll />
-              <ContactItem icon={MapPin} label="Visit" value="Mayfair Industrial Estate, London" hint="Showrooms nationwide" />
+                given more prominence than a link list.
+
+                Three across on mobile too. Stacked, each item's label +
+                value + hint made a 200px column of text nobody scrolls
+                through on a phone; as a row of three tap targets the phone
+                and email stay one thumb away and the hints drop out, since
+                "Mon–Sat, 8am–6pm" is not what someone reaching for the
+                footer on a phone is looking for. */}
+            <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-3 gap-3 sm:gap-6">
+              <ContactItem
+                icon={Phone}
+                label="Call us"
+                href="tel:08001234567"
+                value="0800 123 4567"
+                shortValue="0800 123 4567"
+                hint="Mon–Sat, 8am–6pm"
+              />
+              <ContactItem
+                icon={Mail}
+                label="Email"
+                href="mailto:hello@affordableglazings.co.uk"
+                value="hello@affordableglazings.co.uk"
+                shortValue="Email us"
+                hint="Reply within 24 hours"
+                breakAll
+              />
+              <ContactItem
+                icon={MapPin}
+                label="Visit"
+                value="Mayfair Industrial Estate, London"
+                shortValue="London HQ"
+                hint="Showrooms nationwide"
+              />
             </div>
 
             <div className="mt-8 flex items-center gap-3">
@@ -102,8 +133,14 @@ export function Footer() {
 
           {/* ── Right: quote form ────────────────────────────────────────
               id="quote" is load-bearing — the header CTA and every in-page
-              "get a quote" link scrolls to it. */}
-          <div id="quote" className="lg:col-span-5 scroll-mt-24">
+              "get a quote" link scrolls to it.
+
+              order-first on mobile: in a single column the form would
+              otherwise sit below twelve nav links, three contact blocks and
+              a social row — the page's primary conversion buried under its
+              least-used content. On lg it returns to the right-hand column,
+              where the eye reaches it without any of that scrolling. */}
+          <div id="quote" className="order-first lg:order-none lg:col-span-5 scroll-mt-24">
             <QuoteWizard compact />
           </div>
         </div>
@@ -129,6 +166,7 @@ function ContactItem({
   icon: Icon,
   label,
   value,
+  shortValue,
   hint,
   href,
   breakAll = false,
@@ -136,24 +174,28 @@ function ContactItem({
   icon: typeof Phone;
   label: string;
   value: string;
+  /** Thumb-sized stand-in for `value` on mobile, where the full address or
+      email address would wrap to four lines inside a third of the screen. */
+  shortValue: string;
   hint: string;
   href?: string;
   breakAll?: boolean;
 }) {
   const body = (
     <>
-      <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
-        <Icon className="size-3.5 text-brass-2" />
-        {label}
+      <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
+        <Icon className="size-3.5 text-brass-2 shrink-0" />
+        <span className="truncate">{label}</span>
       </span>
-      <span className={`block mt-1.5 text-sm font-semibold text-white ${breakAll ? "break-all" : ""}`}>
+      <span className={`hidden sm:block mt-1.5 text-sm font-semibold text-white ${breakAll ? "break-all" : ""}`}>
         {value}
       </span>
-      <span className="block text-xs text-white/50 mt-0.5">{hint}</span>
+      <span className="sm:hidden block mt-1.5 text-xs font-semibold text-white">{shortValue}</span>
+      <span className="hidden sm:block text-xs text-white/50 mt-0.5">{hint}</span>
     </>
   );
 
- return href ? (
+  return href ? (
     <a href={href} className="group block hover:text-cta transition-colors">
       {body}
     </a>
@@ -166,7 +208,9 @@ function FooterCol({ title, links }: { title: string; links: { to: string; label
   return (
     <div>
       <h5 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white mb-4">{title}</h5>
-      <ul className="space-y-2.5 text-sm text-[#C6CAD8]">
+      {/* 13px on mobile: at 14px "Conservatories" wraps inside a third of a
+          375px screen and knocks the three lists out of alignment. */}
+      <ul className="space-y-2.5 text-[13px] sm:text-sm leading-snug text-[#C6CAD8]">
         {links.map((l) => (
           <li key={l.label}>
             <Link to={l.to} hash={l.hash} className="hover:text-cta transition-colors">

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
+import { Swipeable } from "@/components/site/Swipeable";
 import craftsman from "@/assets/craftsman.jpg";
 
 const LOCATIONS = [
@@ -60,8 +61,8 @@ function AboutContactPage() {
             { k: "0", l: "Subcontractors" },
           ].map((s) => (
             <div key={s.l}>
-              <div className="text-5xl font-display font-semibold text-brand-blue mb-2">{s.k}</div>
-              <div className="text-xs uppercase tracking-[0.2em] text-navy/60">{s.l}</div>
+              <div className="text-4xl md:text-5xl font-display font-semibold text-brand-blue mb-2">{s.k}</div>
+              <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-navy/60">{s.l}</div>
             </div>
           ))}
         </div>
@@ -81,22 +82,29 @@ function AboutContactPage() {
           </div>
 
           <div className="grid lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-2 space-y-5">
+            {/* Swipes on mobile so the message form is reachable without
+                scrolling past three full-height contact cards first. */}
+            <Swipeable
+              at="lg"
+              gap="gap-5"
+              outerClassName="lg:col-span-2"
+              className="lg:grid-cols-1"
+            >
               {[
                 { icon: Phone, t: "Call", v: "0800 123 4567", h: "Mon–Sat, 8am–6pm" },
                 { icon: Mail, t: "Email", v: "hello@affordableglazings.co.uk", h: "Replies within 4 hours" },
                 { icon: MapPin, t: "Visit", v: "Mayfair Industrial Estate, London", h: "Showrooms in Kent, Manchester & Birmingham" },
               ].map(({ icon: Icon, t, v, h }) => (
-                <div key={t} className="p-6 rounded-3xl bg-white border border-navy/5">
+                <div key={t} className="p-6 rounded-3xl bg-white border border-navy/5 shrink-0 w-[78%] snap-start lg:w-auto lg:shrink">
                   <div className="size-11 rounded-2xl bg-soft-gray grid place-items-center text-brand-blue mb-4">
                     <Icon className="size-5" />
                   </div>
                   <div className="text-xs font-bold uppercase tracking-[0.22em] text-navy/40 mb-1">{t}</div>
-                  <div className="text-lg font-semibold text-navy">{v}</div>
+                  <div className="text-lg font-semibold text-navy break-words">{v}</div>
                   <div className="text-sm text-navy/60 mt-1">{h}</div>
                 </div>
               ))}
-            </div>
+            </Swipeable>
 
             <form
               className="lg:col-span-3 p-8 md:p-10 rounded-3xl bg-white border border-navy/5 space-y-5"

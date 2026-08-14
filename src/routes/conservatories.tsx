@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, Compass, Home, Layers, PenTool, Ruler, Sparkl
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductRange } from "@/components/site/ProductRange";
 import { ExploreMore } from "@/components/site/ExploreMore";
+import { Swipeable } from "@/components/site/Swipeable";
 import consHero from "@/assets/cons-hero.jpg";
 import consVictorian from "@/assets/cons-victorian.jpg";
 import consInterior from "@/assets/cons-interior.jpg";
@@ -111,26 +112,26 @@ function Page() {
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Why build a conservatory</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Four reasons your future self will thank you.</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <Swipeable at="md" gap="gap-5" className="md:grid-cols-2 lg:grid-cols-4">
             {REASONS.map(({ icon: Icon, t, d }, i) => (
-              <div key={t} className="p-8 rounded-3xl bg-white border border-navy/5 card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={t} className="p-8 rounded-3xl bg-white border border-navy/5 card-lift shrink-0 w-[78%] snap-start md:w-auto md:shrink" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <Icon className="size-7 text-brand-blue mb-6" />
                 <h3 className="font-display font-semibold text-navy text-xl mb-3">{t}</h3>
                 <p className="text-sm text-navy/60 leading-relaxed">{d}</p>
               </div>
             ))}
-          </div>
+          </Swipeable>
         </div>
       </section>
 
       {/* Full-bleed showpiece */}
-      <section className="relative h-[75vh] overflow-hidden">
+      <section className="relative h-[42vh] min-h-[300px] md:h-[75vh] overflow-hidden">
         <img src={consInterior} alt="Bright modern conservatory interior filled with plants" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/80" />
-        <div className="container-page relative h-full flex items-end pb-16">
+        <div className="container-page relative h-full flex items-end pb-8 md:pb-16">
           <div className="max-w-3xl text-white" data-reveal="up">
             <p className="text-xs font-bold tracking-[0.28em] uppercase text-brand-blue-2 mb-4">Interior inspiration</p>
-            <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02] text-balance">Yours to style, ours to build.</h2>
+            <h2 className="text-2xl md:text-6xl font-display font-semibold leading-[1.05] md:leading-[1.02] text-balance">Yours to style, ours to build.</h2>
           </div>
         </div>
       </section>
@@ -143,23 +144,23 @@ function Page() {
             <h2 className="text-4xl md:text-6xl font-display font-semibold leading-[1.02]">The roof does the heavy lifting.</h2>
             <p className="mt-6 text-white/60 text-lg">Glass or tile, lantern or lean-to — the roof you choose defines the room, the light, the temperature, and the energy bill.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <Swipeable at="md" gap="gap-5" tone="dark" className="md:grid-cols-2 lg:grid-cols-4">
             {ROOFS.map(({ icon: Icon, t, d }, i) => (
-              <div key={t} className="p-8 rounded-3xl bg-navy shadow-elegant card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
+              <div key={t} className="p-8 rounded-3xl bg-navy shadow-elegant card-lift shrink-0 w-[78%] snap-start md:w-auto md:shrink" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 100}ms` } as Record<string, string>}>
                 <Icon className="size-7 text-brand-blue-2 mb-6" />
                 <h3 className="font-display font-semibold text-xl mb-3">{t}</h3>
                 <p className="text-sm text-white/60 leading-relaxed">{d}</p>
               </div>
             ))}
-          </div>
-          <div className="mt-16 grid md:grid-cols-2 gap-6" data-reveal="up">
-            <div className="rounded-[28px] overflow-hidden aspect-[16/10]">
+          </Swipeable>
+          <Swipeable at="md" gap="gap-6" tone="dark" reveal="up" outerClassName="mt-16" className="md:grid-cols-2">
+            <div className="rounded-[28px] overflow-hidden aspect-[16/10] shrink-0 w-[86%] snap-start md:w-auto md:shrink">
               <img src={consTiled} alt="Tiled roof conservatory" className="w-full h-full object-cover" loading="lazy" />
             </div>
-            <div className="rounded-[28px] overflow-hidden aspect-[16/10]">
+            <div className="rounded-[28px] overflow-hidden aspect-[16/10] shrink-0 w-[86%] snap-start md:w-auto md:shrink">
               <img src={consGable} alt="Gable-end conservatory at dusk" className="w-full h-full object-cover" loading="lazy" />
             </div>
-          </div>
+          </Swipeable>
         </div>
       </section>
 
@@ -192,15 +193,15 @@ function Page() {
             <p className="text-xs font-bold text-brand-blue uppercase tracking-[0.22em] mb-3">Construction process</p>
             <h2 className="text-4xl md:text-6xl font-display font-semibold text-navy leading-[1.02]">Six stages, one team.</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <Swipeable at="md" gap="gap-5" className="md:grid-cols-2 lg:grid-cols-3">
             {PROCESS.map((p, i) => (
-              <div key={p.n} className="p-8 rounded-3xl bg-soft-gray card-lift" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 80}ms` } as Record<string, string>}>
+              <div key={p.n} className="p-8 rounded-3xl bg-soft-gray card-lift shrink-0 w-[78%] snap-start md:w-auto md:shrink" data-reveal="up" style={{ ["--reveal-delay" as string]: `${i * 80}ms` } as Record<string, string>}>
                 <div className="text-5xl font-display font-semibold text-brand-blue/40 mb-4">{p.n}</div>
                 <h3 className="font-display font-semibold text-navy text-xl mb-2">{p.t}</h3>
                 <p className="text-navy/60 text-sm leading-relaxed">{p.d}</p>
               </div>
             ))}
-          </div>
+          </Swipeable>
         </div>
       </section>
 
@@ -214,13 +215,21 @@ function Page() {
             </div>
             <Link to="/gallery" className="text-sm font-semibold text-brand-blue hidden md:inline-flex items-center gap-2">All projects <ArrowRight className="size-4" /></Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* The 2×2 hero tile is a desktop mosaic device — in the mobile
+              carousel every tile is the same square so the swipe rhythm
+              stays even. */}
+          <Swipeable at="md" className="md:grid-cols-4">
             {[consHero, consVictorian, consInterior, consGable, consTiled, productConservatories, consInterior, consHero].map((src, i) => (
-              <div key={i} className={`overflow-hidden rounded-2xl ${i === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"}`} data-reveal="zoom" style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>}>
+              <div
+                key={i}
+                className={`overflow-hidden rounded-2xl aspect-square shrink-0 w-[62%] snap-start md:w-auto md:shrink ${i === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+                data-reveal="zoom"
+                style={{ ["--reveal-delay" as string]: `${i * 60}ms` } as Record<string, string>}
+              >
                 <img src={src} alt={`Conservatory project ${i + 1}`} className="w-full h-full object-cover transition-transform duration-[1400ms] hover:scale-110" loading="lazy" />
               </div>
             ))}
-          </div>
+          </Swipeable>
         </div>
       </section>
 

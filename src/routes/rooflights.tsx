@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { ProductRange } from "@/components/site/ProductRange";
 import { ExploreMore } from "@/components/site/ExploreMore";
+import { GlassOptions } from "@/components/site/GlassOptions";
 import consGable from "@/assets/cons-gable.jpg";
 
 export const Route = createFileRoute("/rooflights")({
@@ -96,6 +97,8 @@ function RooflightsPage() {
 
       {/* Product range */}
       <ProductRange category="Rooflights" dark />
+
+      <GlassOptions />
 
       <ExploreMore current="rooflights" />
 

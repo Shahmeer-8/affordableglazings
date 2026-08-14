@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { Swipeable } from "@/components/site/Swipeable";
 import shopLine from "@/assets/commercial/shop-line.jpg";
 import shopFront from "@/assets/commercial/shop-front.jpg";
 import smartWall from "@/assets/commercial/smart-wall.jpg";
@@ -29,13 +30,17 @@ export const Route = createFileRoute("/commercial")({
         description="Turnkey commercial glazing partnerships for developers, architects and main contractors."
       />
       <section className="py-16 bg-white">
-        <div className="container-page grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* container-page is load-bearing here: the row's -mx-6 bleed needs a
+            padded parent to bleed out of, or it overhangs the viewport and
+            drags a horizontal scrollbar onto the whole page on mobile. */}
+        <div className="container-page">
+        <Swipeable at="lg" gap="gap-5" className="lg:grid-cols-4">
           {SERVICES.map((s, i) => (
             <div
               key={s.t}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 80}ms` }}
-              className="group relative rounded-3xl bg-soft-gray overflow-hidden"
+              className="group relative rounded-3xl bg-soft-gray overflow-hidden shrink-0 w-[62%] snap-start lg:w-auto lg:shrink"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
@@ -55,6 +60,7 @@ export const Route = createFileRoute("/commercial")({
               </div>
             </div>
           ))}
+        </Swipeable>
         </div>
       </section>
     </>

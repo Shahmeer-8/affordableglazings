@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e7ebf8"/>
+      <stop offset="100%" stop-color="#c2c6d1"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#g)"/>
+  <text x="100" y="105" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#141B45" font-weight="600">Triple Glazing</text>
+  <text x="100" y="124" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#5a5f78">placeholder image</text>
+</svg>

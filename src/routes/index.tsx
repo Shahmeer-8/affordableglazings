@@ -33,6 +33,7 @@ import { TrustSeals } from "@/components/site/TrustSeals";
 import { SupplierMarquee } from "@/components/site/SupplierMarquee";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { GalleryReel } from "@/components/site/GalleryReel";
+import { Swipeable } from "@/components/site/Swipeable";
 import bay1 from "@/assets/products/bay-1.jpg";
 import heritage1 from "@/assets/products/heritage-1.jpg";
 import flush1 from "@/assets/products/flush-1.jpg";
@@ -203,14 +204,14 @@ function Services() {
 
         {/* Copy sits over the image on hover so the card stays compact —
             same pattern as the product range cards. */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Swipeable at="sm" tone="dark" className="sm:grid-cols-3">
           {SERVICES.map((s, i) => (
             <Link
               key={s.to}
               to={s.to}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
-              className="group relative overflow-hidden rounded-2xl bg-navy shadow-elegant card-lift"
+              className="group relative overflow-hidden rounded-2xl bg-navy shadow-elegant card-lift shrink-0 w-[78%] snap-start sm:w-auto sm:shrink"
             >
               <div className="glass-glint relative aspect-[5/4] overflow-hidden">
                 <img
@@ -236,7 +237,7 @@ function Services() {
               </div>
             </Link>
           ))}
-        </div>
+        </Swipeable>
       </div>
     </section>
   );
@@ -387,13 +388,13 @@ function Process() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <Swipeable at="md" gap="gap-5" className="md:grid-cols-2 lg:grid-cols-4">
           {STEPS.map(({ n, icon: Icon, title, body, img }, i) => (
             <div
               key={n}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 100}ms` }}
-              className="group relative rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+              className="group relative rounded-3xl bg-white border border-navy/5 hover:border-brand-blue/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 w-[72%] snap-start md:w-auto md:shrink"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
@@ -417,7 +418,7 @@ function Process() {
               </div>
             </div>
           ))}
-        </div>
+        </Swipeable>
       </div>
     </section>
   );
@@ -536,13 +537,13 @@ function Testimonials() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+        <Swipeable at="md" gap="gap-4 md:gap-px" tone="dark" className="bg-transparent md:bg-white/10 md:grid-cols-3">
           {REVIEWS.map((r, i) => (
             <figure
               key={r.name}
               data-reveal="up"
               style={{ ["--reveal-delay" as never]: `${i * 120}ms` }}
-              className="p-8 bg-navy"
+              className="p-8 bg-navy rounded-2xl md:rounded-none shrink-0 w-[82%] snap-start md:w-auto md:shrink"
             >
               <div className="flex gap-0.5 text-cta mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -558,7 +559,7 @@ function Testimonials() {
               </figcaption>
             </figure>
           ))}
-        </div>
+        </Swipeable>
       </div>
     </section>
   );
