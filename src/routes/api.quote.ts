@@ -23,7 +23,18 @@ const Payload = z.object({
   name: z.string().min(1).max(120),
   phone: z.string().min(1).max(40),
   postcode: z.string().min(1).max(20),
-  email: z.string().email().max(200),
+  // Optional. Name, phone and postcode are already enough to quote from, so a
+  // missing email must not cost the enquiry. An empty string is accepted; a
+  // non-empty one still has to be a real address, otherwise reply_to below
+  // would be set to something undeliverable.
+  email: z
+    .string()
+    .max(200)
+    .optional()
+    .default("")
+    .refine((v) => v === "" || z.string().email().safeParse(v).success, {
+      message: "Enter a valid email address",
+    }),
   message: z.string().max(4000).optional().default(""),
   source: z.string().max(200).optional().default("Website"),
   // Bots fill every field they find; a real person never sees this one.
@@ -61,7 +72,7 @@ function buildHtml(d: z.infer<typeof Payload>) {
         <tbody style="display:table;width:100%;padding:16px 24px">
           ${row("Name", d.name)}
           ${row("Phone", d.phone)}
-          ${row("Email", d.email)}
+          ${d.email ? row("Email", d.email) : row("Email", "Not given — call them back")}
           ${row("Postcode", d.postcode)}
           ${d.message ? row("Project", d.message) : ""}
           ${d.attachment ? row("Attached", d.attachment.filename) : ""}
@@ -115,9 +126,16 @@ export const Route = createFileRoute("/api/quote")({
             body: JSON.stringify({
               from,
               to: [process.env.QUOTE_TO_EMAIL || TO_EMAIL],
-              // So hitting Reply in the inbox goes to the customer, not to us.
-              reply_to: parsed.email,
-              subject: `Quote request — ${parsed.name} (${parsed.postcode})`,
+              // So hitting Reply in the inbox goes to the customer. Omitted
+              // entirely when no address was given — Resend rejects the whole
+              // send on an empty reply_to, which would turn "no email" into
+              // "no enquiry at all".
+              ...(parsed.email ? { reply_to: parsed.email } : {}),
+              // The "phone back" marker is in the subject so it's visible in
+              // the inbox list, before anyone opens the message.
+              subject: `Quote request — ${parsed.name} (${parsed.postcode})${
+                parsed.email ? "" : " · phone back"
+              }`,
               html: buildHtml(parsed),
               ...(parsed.attachment
                 ? {

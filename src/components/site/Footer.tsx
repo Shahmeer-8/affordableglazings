@@ -53,7 +53,7 @@ export function Footer() {
                 links={[
                   { to: "/windows", label: "Windows" },
                   { to: "/doors", label: "Doors" },
-                  { to: "/rooflights", label: "Roof" },
+                  { to: "/rooflights", label: "Roofs" },
                   { to: "/conservatories", label: "Conservatories" },
                   // { to: "/roofline", label: "Roofline" },
                 ]}

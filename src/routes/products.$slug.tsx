@@ -48,17 +48,21 @@ function ProductDetailPage() {
         description={product.tagline}
         image={product.images[0]}
       >
-        <div className="flex flex-wrap gap-3">
+        {/* Full-width and stacked on mobile. Side by side, "Back to all
+            conservatories" is long enough to wrap the pair onto two rows
+            anyway, so they may as well be two clean full-width tap targets
+            rather than two ragged pills. */}
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
           <a
             href="#quote"
-            className="inline-flex items-center gap-2 bg-transparent border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-transparent border border-cta text-cta w-full sm:w-auto px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
           >
             Request a quote <ArrowRight className="size-4" />
           </a>
           <Link
             to={CATEGORY_PATHS[product.category] ?? "/"}
             hash="range"
-            className="inline-flex items-center gap-2 border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
+            className="inline-flex items-center justify-center gap-2 border border-cta text-cta w-full sm:w-auto px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors"
           >
             <ArrowLeft className="size-4" /> Back to all {product.category.toLowerCase()}
           </Link>

@@ -37,7 +37,7 @@ type MegaMenu = {
 const MEGA: MegaMenu[] = [
   { key: "windows", label: "Windows", to: "/windows", category: "Windows", image: windowsHero, blurb: "A++ rated, made-to-measure and installed by our own craftsmen." },
   { key: "doors", label: "Doors", to: "/doors", category: "Doors", image: doorsHero, blurb: "Composite, French, sliding and bi-fold doors, PAS 24 secured." },
-  { key: "rooflights", label: "Roof", to: "/rooflights", category: "Rooflights", image: consGable, blurb: "Slim and pyramid roof lanterns that flood rooms with daylight." },
+  { key: "rooflights", label: "Roofs", to: "/rooflights", category: "Rooflights", image: consGable, blurb: "Slim and pyramid roof lanterns that flood rooms with daylight." },
   { key: "conservatories", label: "Conservatories", to: "/conservatories", category: "Conservatories", image: consHero, blurb: "Light-filled extensions built for year-round comfort." },
 ];
 

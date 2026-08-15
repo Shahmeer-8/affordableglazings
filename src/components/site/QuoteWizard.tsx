@@ -179,7 +179,16 @@ export function QuoteWizard({
                 className="absolute left-[-9999px] size-0 opacity-0"
               />
 
-              <Field name="email" type="email" placeholder="Email address *" defaultValue={values.email} />
+              {/* Optional: a phone number and postcode are already enough to
+                  quote from, so an email address the visitor doesn't want to
+                  give shouldn't be the thing that loses the enquiry. */}
+              <Field
+                name="email"
+                type="email"
+                placeholder="Email address (optional)"
+                defaultValue={values.email}
+                optional
+              />
 
               <div>
                 <label htmlFor="fq-message" className="sr-only">Describe your project</label>
@@ -255,7 +264,8 @@ function Field({
   placeholder,
   type = "text",
   defaultValue,
-}: { name: string; placeholder: string; type?: string; defaultValue?: string }) {
+  optional = false,
+}: { name: string; placeholder: string; type?: string; defaultValue?: string; optional?: boolean }) {
   return (
     <div>
       <label htmlFor={`fq-${name}`} className="sr-only">{placeholder.replace(" *", "")}</label>
@@ -263,7 +273,7 @@ function Field({
         id={`fq-${name}`}
         name={name}
         type={type}
-        required
+        required={!optional}
         defaultValue={defaultValue}
         placeholder={placeholder}
         className="w-full px-4 py-3.5 rounded-xl border border-[#2F3B80] bg-[#0F1434] text-[15px] text-white placeholder:text-[#9EA6C5] outline-none focus:border-cta transition-colors"

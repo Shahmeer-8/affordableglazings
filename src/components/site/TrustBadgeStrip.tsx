@@ -23,7 +23,7 @@ type Badge = {
    White on the orange would only reach 2.85:1, so that badge takes navy text. */
 const BADGES: Badge[] = [
   { slug: "guarantee", top: "10 Year Guarantee", glyph: "10", bottom: "Insurance backed", bg: "#141B45", fg: "#FFFFFF" },
-  { slug: "reviews", top: "Rated by 1,200+", glyph: "4.9", bottom: "Verified homeowners", bg: "#E67E22", fg: "#141B45" },
+  { slug: "turnaround", top: "Quick Turnaround", glyph: "24/7", bottom: "Same day quote", bg: "#E67E22", fg: "#141B45" },
   { slug: "britain", top: "Made in Britain", glyph: "UK", bottom: "Fabricated in-house", bg: "#2542C7", fg: "#FFFFFF" },
   { slug: "price", top: "Price Promise", glyph: "£", bottom: "Like-for-like", bg: "#000000", fg: "#FFFFFF" },
 ];
@@ -32,7 +32,11 @@ export function TrustBadgeStrip() {
   return (
     <section className="py-8 md:py-10 bg-white border-b border-line">
       <div className="container-page">
-        <ul className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+        {/* A 2×2 grid on phones rather than a wrapping flex row. Four 80px
+            seals with 32px gaps measure 304px, so three fit a 327px content
+            width and the fourth wraps alone onto a second row — a lopsided
+            3+1 that reads as a layout fault. */}
+        <ul className="grid grid-cols-2 place-items-center gap-y-8 gap-x-6 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-8 md:gap-14">
           {BADGES.map((b) => (
             <li key={b.slug}>
               <Seal badge={b} />
@@ -48,6 +52,13 @@ function Seal({ badge }: { badge: Badge }) {
   const { slug, top, glyph, bottom, bg, fg } = badge;
   const topArc = `arc-top-${slug}`;
   const bottomArc = `arc-bottom-${slug}`;
+  // "24/7" is twice the character count of "10" or "£". Left at 26 it would
+  // collide with the top and bottom arc text on both flanks, so glyphs of
+  // four characters or more step down to sit inside the ring.
+  const glyphSize = glyph.length >= 4 ? 18 : 26;
+  // Raised to match, since SVG text grows up from its baseline — otherwise
+  // the smaller glyph drifts down toward the bottom arc.
+  const glyphBaseline = glyph.length >= 4 ? 54 : 57;
 
   return (
     <svg
@@ -92,11 +103,11 @@ function Seal({ badge }: { badge: Badge }) {
 
       <text
         x="50"
-        y="57"
+        y={glyphBaseline}
         textAnchor="middle"
         fill={fg}
         fontFamily="var(--font-display)"
-        fontSize="26"
+        fontSize={glyphSize}
         fontWeight="600"
       >
         {glyph}
