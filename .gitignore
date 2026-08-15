@@ -17,6 +17,12 @@ dist-ssr
 .nitro
 *.local
 
+# Secrets — the quote form reads the mailbox password from the environment,
+# so a local .env holds a live credential. .env.example is the tracked one.
+.env
+.env.*
+!.env.example
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
