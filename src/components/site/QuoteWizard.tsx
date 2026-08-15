@@ -98,8 +98,8 @@ export function QuoteWizard({
           <div className="mx-auto size-14 rounded-full bg-green-100 text-green-700 grid place-items-center mb-5">
             <Check className="size-7" />
           </div>
-          <h3 className="text-2xl font-display font-semibold text-[#FCFCFC] mb-2">We've got it.</h3>
-          <p className="text-[#BFC4D8] max-w-md mx-auto">
+          <h3 className="text-[24px] font-display font-semibold text-white mb-2">We've got it.</h3>
+          <p className="text-[15px] text-white max-w-md mx-auto">
             Thanks {values.name?.split(" ")[0] || "— "}, a specialist will reply within 24 hours to arrange your
             free, no-obligation quote.
           </p>
@@ -109,12 +109,12 @@ export function QuoteWizard({
           {showIntro && (
             <div className="mb-5">
               <div className="flex items-baseline justify-between gap-4">
-                <h3 className="text-2xl md:text-3xl font-display font-semibold text-[#FCFCFC]">Fast Quote</h3>
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9EA6C5] shrink-0" role="status">
+                <h3 className="text-[26px] md:text-[30px] font-display font-semibold text-white">Fast Quote</h3>
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white shrink-0" role="status">
                   Step {step + 1} of 2
                 </span>
               </div>
-              <p className="mt-2 text-[#BFC4D8] text-sm leading-relaxed">
+              <p className="mt-2 text-white text-[14px] leading-relaxed">
                 {step === 0
                   ? "Two quick steps. We'll send a tailored estimate within 24 hours."
                   : "Almost there — anything else you'd like us to know?"}
@@ -155,7 +155,7 @@ export function QuoteWizard({
               >
                 Continue <ArrowRight className="size-4" />
               </button>
-              <p className="text-xs text-[#9EA6C5] text-center">Takes under a minute · No obligation.</p>
+              <p className="text-[12px] text-white text-center">Takes under a minute · No obligation.</p>
             </form>
           ) : (
             <form
@@ -189,12 +189,12 @@ export function QuoteWizard({
                   rows={compact ? 2 : 3}
                   defaultValue={values.message}
                   placeholder="Describe your project (optional)"
-                  className="w-full px-4 py-3.5 rounded-xl border border-[#2F3B80] bg-[#0F1434] text-[#FCFCFC] placeholder:text-[#9EA6C5] outline-none focus:border-cta transition-colors resize-y"
+                  className="w-full px-4 py-3.5 rounded-xl border border-[#2F3B80] bg-[#0F1434] text-[15px] text-white placeholder:text-[#9EA6C5] outline-none focus:border-cta transition-colors resize-y"
                 />
               </div>
 
               <div>
-                <label htmlFor="fq-file" className="block text-xs font-bold uppercase tracking-[0.18em] text-[#9EA6C5] mb-2">
+                <label htmlFor="fq-file" className="block text-[11px] font-bold uppercase tracking-[0.18em] text-white mb-2">
                   Attach an image (optional)
                 </label>
                 <input
@@ -202,7 +202,7 @@ export function QuoteWizard({
                   name="attachment"
                   type="file"
                   accept="image/*"
-                  className="block w-full text-sm text-[#9EA6C5] file:mr-4 file:rounded-full file:border-0 file:bg-cta file:px-4 file:py-2 file:text-white file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-cta-hover file:transition-colors"
+                  className="block w-full text-[13px] text-white file:mr-4 file:rounded-full file:border-0 file:bg-cta file:px-4 file:py-2 file:text-white file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-cta-hover file:transition-colors"
                 />
               </div>
 
@@ -241,7 +241,7 @@ export function QuoteWizard({
                   )}
                 </button>
               </div>
-              <p className="text-xs text-[#9EA6C5] text-center">We reply within 24 hours.</p>
+              <p className="text-[12px] text-white text-center">We reply within 24 hours.</p>
             </form>
           )}
         </>
@@ -266,7 +266,7 @@ function Field({
         required
         defaultValue={defaultValue}
         placeholder={placeholder}
-        className="w-full px-4 py-3.5 rounded-xl border border-[#2F3B80] bg-[#0F1434] text-[#FCFCFC] placeholder:text-[#9EA6C5] outline-none focus:border-cta transition-colors"
+        className="w-full px-4 py-3.5 rounded-xl border border-[#2F3B80] bg-[#0F1434] text-[15px] text-white placeholder:text-[#9EA6C5] outline-none focus:border-cta transition-colors"
       />
     </div>
   );

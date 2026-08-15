@@ -36,10 +36,10 @@ export function Footer() {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-white/10">
           {/* ── Left: brand, navigation, contact ─────────────────────── */}
           <div className="lg:col-span-7 lg:order-none">
-            <Link to="/" className="inline-block text-2xl font-display font-semibold text-white">
+            <Link to="/" className="inline-block text-[26px] font-display font-semibold text-white">
               Affordable<span className="text-brand-blue-2">Glazings</span>
             </Link>
-            <p className="mt-3 text-sm text-white/70 leading-relaxed max-w-sm">
+            <p className="mt-3 text-[14px] text-white leading-relaxed max-w-sm">
               Bespoke windows, doors, rooflights and conservatories — fabricated in-house and
               installed by our own craftsmen since 1994.
             </p>
@@ -53,9 +53,9 @@ export function Footer() {
                 links={[
                   { to: "/windows", label: "Windows" },
                   { to: "/doors", label: "Doors" },
-                  { to: "/rooflights", label: "Rooflights" },
+                  { to: "/rooflights", label: "Roof" },
                   { to: "/conservatories", label: "Conservatories" },
-                  { to: "/roofline", label: "Roofline" },
+                  // { to: "/roofline", label: "Roofline" },
                 ]}
               />
               <FooterCol
@@ -123,7 +123,7 @@ export function Footer() {
                   key={name}
                   href="#"
                   aria-label={name}
-                  className="size-10 grid place-items-center rounded-full bg-navy text-[#FCFCFC] hover:bg-cta transition-colors"
+                  className="size-10 grid place-items-center rounded-full bg-navy text-white hover:bg-cta transition-colors"
                 >
                   <Icon className="size-4" />
                 </a>
@@ -147,14 +147,14 @@ export function Footer() {
 
         {/* ── Bottom bar ───────────────────────────────────────────────── */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-6 gap-4">
-          <p className="text-xs text-white/50">
+          <p className="text-[12px] text-white">
             © {new Date().getFullYear()} Affordable Glazings Ltd · Registered in England &amp; Wales ·
             FENSA registered
           </p>
-          <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-white/50">
-            <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+          <div className="flex flex-wrap gap-6 text-[11px] font-semibold uppercase tracking-widest text-white">
+            <Link to="/privacy" className="hover:text-cta transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-cta transition-colors">Terms</Link>
+            <Link to="/cookies" className="hover:text-cta transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
@@ -183,15 +183,18 @@ function ContactItem({
 }) {
   const body = (
     <>
-      <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
+      <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white">
         <Icon className="size-3.5 text-brass-2 shrink-0" />
         <span className="truncate">{label}</span>
       </span>
-      <span className={`hidden sm:block mt-1.5 text-sm font-semibold text-white ${breakAll ? "break-all" : ""}`}>
+      <span className={`hidden sm:block mt-1.5 text-[15px] font-semibold text-white ${breakAll ? "break-all" : ""}`}>
         {value}
       </span>
-      <span className="sm:hidden block mt-1.5 text-xs font-semibold text-white">{shortValue}</span>
-      <span className="hidden sm:block text-xs text-white/50 mt-0.5">{hint}</span>
+      <span className="sm:hidden block mt-1.5 text-[13px] font-semibold text-white">{shortValue}</span>
+      {/* Everything in the footer is pure white now, so the hint can no
+          longer step back by going dimmer — size and weight carry the
+          hierarchy instead (12px regular under 15px semibold). */}
+      <span className="hidden sm:block text-[12px] font-normal text-white mt-0.5">{hint}</span>
     </>
   );
 
@@ -207,10 +210,10 @@ function ContactItem({
 function FooterCol({ title, links }: { title: string; links: { to: string; label: string; hash?: string }[] }) {
   return (
     <div>
-      <h5 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white mb-4">{title}</h5>
-      {/* 13px on mobile: at 14px "Conservatories" wraps inside a third of a
+      <h5 className="text-[11px] font-bold uppercase tracking-[0.18em] text-white mb-4">{title}</h5>
+      {/* 13px on mobile: at 15px "Conservatories" wraps inside a third of a
           375px screen and knocks the three lists out of alignment. */}
-      <ul className="space-y-2.5 text-[13px] sm:text-sm leading-snug text-[#C6CAD8]">
+      <ul className="space-y-2.5 text-[13px] sm:text-[15px] leading-snug text-white">
         {links.map((l) => (
           <li key={l.label}>
             <Link to={l.to} hash={l.hash} className="hover:text-cta transition-colors">
