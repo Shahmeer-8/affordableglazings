@@ -1,7 +1,19 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 
 type Values = Record<string, string>;
+
+const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
+
+/** Strips the `data:<mime>;base64,` prefix the API expects to be absent. */
+function fileToBase64(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1] ?? "");
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
 
 /**
  * Two-step "Fast Quote" form used inside the footer CTA.
@@ -26,9 +38,58 @@ export function QuoteWizard({
   const [step, setStep] = useState<0 | 1>(0);
   const [values, setValues] = useState<Values>({});
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const capture = (form: HTMLFormElement) =>
-    Object.fromEntries(new FormData(form).entries()) as Values;
+    Object.fromEntries(
+      Array.from(new FormData(form).entries()).filter(([, v]) => typeof v === "string"),
+    ) as Values;
+
+  const submit = async (form: HTMLFormElement) => {
+    setSending(true);
+    setError(null);
+    const fields = { ...values, ...capture(form) };
+
+    try {
+      const file = (form.elements.namedItem("attachment") as HTMLInputElement | null)?.files?.[0];
+      let attachment;
+      if (file) {
+        if (file.size > MAX_ATTACHMENT_BYTES) {
+          setError("That image is over 5MB — please attach a smaller one.");
+          setSending(false);
+          return;
+        }
+        attachment = {
+          filename: file.name,
+          content: await fileToBase64(file),
+          contentType: file.type || "application/octet-stream",
+        };
+      }
+
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...fields,
+          source: `Fast Quote — ${typeof window !== "undefined" ? window.location.pathname : "/"}`,
+          attachment,
+        }),
+      });
+      const data = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+
+      if (!res.ok || !data?.ok) {
+        setError(data?.error ?? "Something went wrong. Please call 0800 123 4567.");
+        return;
+      }
+      setValues(fields);
+      setDone(true);
+    } catch {
+      setError("We couldn't reach the server. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div className={`rounded-[28px] border border-[#2B336B] bg-navy ${compact ? "p-5 md:p-6" : "p-6 md:p-8"} shadow-2xl`}>
@@ -101,14 +162,22 @@ export function QuoteWizard({
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                setValues((v) => ({ ...v, ...capture(e.currentTarget) }));
-                setDone(true);
+                void submit(e.currentTarget);
               }}
             >
               {/* Step one's answers travel with the final submission. */}
               {["name", "phone", "postcode"].map((k) => (
                 <input key={k} type="hidden" name={k} value={values[k] ?? ""} readOnly />
               ))}
+              {/* Honeypot — hidden from people, irresistible to bots. */}
+              <input
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] size-0 opacity-0"
+              />
 
               <Field name="email" type="email" placeholder="Email address *" defaultValue={values.email} />
 
@@ -137,20 +206,39 @@ export function QuoteWizard({
                 />
               </div>
 
+              {error && (
+                <p
+                  role="alert"
+                  className="text-sm text-[#FFC9A8] bg-cta/15 border border-cta/40 rounded-xl px-4 py-3"
+                >
+                  {error}
+                </p>
+              )}
+
               <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={() => setStep(0)}
-                  className="shrink-0 size-12 rounded-full border border-white/20 text-[#BFC4D8] grid place-items-center hover:border-white/50 hover:text-white transition-colors"
+                  disabled={sending}
+                  className="shrink-0 size-12 rounded-full border border-white/20 text-[#BFC4D8] grid place-items-center hover:border-white/50 hover:text-white transition-colors disabled:opacity-50"
                   aria-label="Back to your details"
                 >
                   <ArrowLeft className="size-4" />
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-transparent border border-cta text-cta px-6 py-3.5 rounded-full font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center justify-center gap-2"
+                  disabled={sending}
+                  className="flex-1 bg-transparent border border-cta text-cta px-6 py-3.5 rounded-full font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-cta"
                 >
-                  Get my fast quote <ArrowRight className="size-4" />
+                  {sending ? (
+                    <>
+                      Sending <Loader2 className="size-4 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Get my fast quote <ArrowRight className="size-4" />
+                    </>
+                  )}
                 </button>
               </div>
               <p className="text-xs text-[#9EA6C5] text-center">We reply within 24 hours.</p>

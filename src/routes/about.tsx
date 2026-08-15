@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
+import { Check, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Swipeable } from "@/components/site/Swipeable";
 import craftsman from "@/assets/craftsman.jpg";
@@ -106,27 +107,7 @@ function AboutContactPage() {
               ))}
             </Swipeable>
 
-            <form
-              className="lg:col-span-3 p-8 md:p-10 rounded-3xl bg-white border border-navy/5 space-y-5"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Thanks — we'll be in touch.");
-              }}
-            >
-              <div className="grid md:grid-cols-2 gap-5">
-                <Field label="Full name" name="name" />
-                <Field label="Email" name="email" type="email" />
-                <Field label="Phone" name="phone" type="tel" />
-                <Field label="Postcode" name="postcode" />
-              </div>
-              <div>
-                <label htmlFor="message" className="text-xs font-bold uppercase tracking-[0.22em] text-navy/50">Message</label>
-                <textarea id="message" rows={5} name="message" required className="mt-2 w-full px-5 py-4 rounded-2xl border border-navy/10 bg-soft-gray outline-none focus:border-brand-blue focus:bg-white transition-colors" />
-              </div>
-              <button type="submit" className="w-full sm:w-auto bg-cta text-white px-8 py-4 rounded-full font-semibold hover:bg-cta-hover transition-colors">
-                Send message
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
@@ -203,6 +184,88 @@ function AboutContactPage() {
       </section>
 
     </>
+  );
+}
+
+/** Posts to the same /api/quote endpoint as the footer wizard, tagged with a
+    different `source` so the sales inbox can tell the two apart. Previously
+    this form only fired an alert() — every message sent from it was lost. */
+function ContactForm() {
+  const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setState("sending");
+    setError(null);
+    const fields = Object.fromEntries(new FormData(e.currentTarget).entries());
+
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...fields, source: "Contact form — /about" }),
+      });
+      const data = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+      if (!res.ok || !data?.ok) {
+        setError(data?.error ?? "Something went wrong. Please call 0800 123 4567.");
+        setState("idle");
+        return;
+      }
+      setState("sent");
+    } catch {
+      setError("We couldn't reach the server. Please check your connection and try again.");
+      setState("idle");
+    }
+  };
+
+  if (state === "sent") {
+    return (
+      <div className="lg:col-span-3 p-8 md:p-10 rounded-3xl bg-white border border-navy/5 flex flex-col items-center justify-center text-center min-h-72">
+        <div className="size-14 rounded-full bg-brand-blue/10 text-brand-blue grid place-items-center mb-5">
+          <Check className="size-7" />
+        </div>
+        <h3 className="text-2xl font-display font-semibold text-navy mb-2">Message sent.</h3>
+        <p className="text-navy/60 max-w-sm">
+          Thanks — one of our specialists will reply within 4 working hours.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="lg:col-span-3 p-8 md:p-10 rounded-3xl bg-white border border-navy/5 space-y-5"
+      onSubmit={onSubmit}
+    >
+      <div className="grid md:grid-cols-2 gap-5">
+        <Field label="Full name" name="name" />
+        <Field label="Email" name="email" type="email" />
+        <Field label="Phone" name="phone" type="tel" />
+        <Field label="Postcode" name="postcode" />
+      </div>
+      <div>
+        <label htmlFor="message" className="text-xs font-bold uppercase tracking-[0.22em] text-navy/50">Message</label>
+        <textarea id="message" rows={5} name="message" required className="mt-2 w-full px-5 py-4 rounded-2xl border border-navy/10 bg-soft-gray outline-none focus:border-brand-blue focus:bg-white transition-colors" />
+      </div>
+      <input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] size-0 opacity-0" />
+      {error && (
+        <p role="alert" className="text-sm text-cta bg-cta/10 border border-cta/30 rounded-xl px-4 py-3">
+          {error}
+        </p>
+      )}
+      <button
+        type="submit"
+        disabled={state === "sending"}
+        className="w-full sm:w-auto bg-cta text-white px-8 py-4 rounded-full font-semibold hover:bg-cta-hover transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-60"
+      >
+        {state === "sending" ? (
+          <>Sending <Loader2 className="size-4 animate-spin" /></>
+        ) : (
+          "Send message"
+        )}
+      </button>
+    </form>
   );
 }
 

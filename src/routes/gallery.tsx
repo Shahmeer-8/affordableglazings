@@ -73,20 +73,33 @@ function GalleryPage() {
       />
       <section className="py-8">
         <div className="container-page">
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                onClick={() => setFilter(c)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
-                  filter === c
-                    ? "bg-navy text-white"
-                    : "bg-soft-gray text-navy/70 hover:bg-navy/10"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center gap-2">
+            {CATEGORIES.map((c) => {
+              const n = c === "All" ? PROJECTS.length : PROJECTS.filter((p) => p.category === c).length;
+              return (
+                <button
+                  key={c}
+                  onClick={() => setFilter(c)}
+                  aria-pressed={filter === c}
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
+                    filter === c
+                      ? "bg-navy text-white"
+                      : "bg-soft-gray text-navy/70 hover:bg-navy/10"
+                  }`}
+                >
+                  {c}
+                  {/* The count is what makes a filter worth tapping — without
+                      it every pill looks equally likely to be empty. */}
+                  <span
+                    className={`text-[11px] font-bold tabular-nums ${
+                      filter === c ? "text-cta" : "text-navy/40"
+                    }`}
+                  >
+                    {n}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -111,10 +124,13 @@ function GalleryPage() {
                     loading="lazy"
                     className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/0 to-navy/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brass">{p.category}</span>
-                    <p className="text-white font-semibold text-sm mt-1">{p.title}</p>
+                  {/* Captions are hover-revealed on desktop but permanently
+                      visible on touch, where there is no hover to reveal them
+                      — every label on this page was unreachable on a phone. */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/75 via-navy/10 to-navy/0 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all duration-500">
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-brass-2">{p.category}</span>
+                    <p className="text-white font-semibold text-xs sm:text-sm mt-0.5 sm:mt-1 leading-snug">{p.title}</p>
                   </div>
                 </div>
               </button>

@@ -6,16 +6,23 @@ import windowsHero from "@/assets/windows-hero.jpg";
 import doorsHero from "@/assets/doors-hero.jpg";
 import consHero from "@/assets/cons-hero.jpg";
 import consGable from "@/assets/cons-gable.jpg";
-import logo from "@/assets/logo/mylogo-white.png";
-import logoDark from "@/assets/logo/mylogo.png";
+// The original artwork. The white-text variant existed only because the bar
+// used to be near-black; on a white header the original reads as intended and
+// the drawer can share the single file.
+import logo from "@/assets/logo/mylogo.png";
 
 const PHONE_DISPLAY = "0800 123 4567";
 const PHONE_HREF = "tel:08001234567";
 
-// Matches `container-page` (80rem / 1.5rem inline padding) so the logo lines up
-// with every heading below it. Previously 120rem, which put the header 64px out
-// of alignment at 1440px and 280px out at 1920px.
-const BAR = "mx-auto max-w-[80rem] px-6";
+// Tracks `container-page` (80rem / 1.5rem padding) up to 1536px, so the logo
+// lines up with every heading below it at the widths most people browse at.
+//
+// Above that it is allowed to widen. A nav carrying nine items, a phone number
+// and a CTA has a different natural width from a 46ch paragraph, and holding
+// it to 80rem on a 1920px screen left ~300px of empty white on each side with
+// the whole bar bunched in the middle. Growing to 92rem closes roughly half of
+// that while keeping the logo near the content's optical left edge.
+const BAR = "mx-auto max-w-[80rem] 2xl:max-w-[92rem] px-6 2xl:px-10";
 
 type MegaMenu = {
   key: string;
@@ -60,6 +67,7 @@ const SIMPLE: { key: string; label: string; links: { label: string; to: string; 
 export function Header() {
   const [active, setActive] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileSection, setMobileSection] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const { pathname } = useLocation();
@@ -80,6 +88,18 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  // A white bar sitting on `bg-canvas` (#fcfcfc) has almost no edge of its
+  // own — a 1px hairline is the whole separation, and it disappears entirely
+  // where a section is pure white. The shadow only appears once the page has
+  // moved, so the header stays flat at rest and gains depth exactly when it
+  // starts overlapping content.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const openMenu = (key: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -112,7 +132,15 @@ export function Header() {
   // bar scroll away entirely.
   return (
     <header className="sticky top-0 z-50">
-      <div className="bg-chrome backdrop-blur-xl border-b border-white/10">
+      {/* Opaque, not translucent: the hero photography on every product page
+          scrolls directly under this bar, and a see-through white header
+          turns navy nav labels into low-contrast grey the moment a dark
+          image passes behind them. */}
+      <div
+        className={`bg-white border-b transition-shadow duration-300 ${
+          scrolled ? "border-navy/10 shadow-[0_1px_16px_rgba(20,27,69,0.10)]" : "border-navy/[0.07]"
+        }`}
+      >
         <div className="relative" onMouseLeave={scheduleClose}>
           <div className={`${BAR} flex items-center gap-5 xl:gap-8 h-20 lg:h-[88px]`}>
             {/* Logo — sits before the primary nav, with a comfortable gap */}
@@ -121,12 +149,16 @@ export function Header() {
             </Link>
 
             {/* Primary nav (desktop) */}
-            <nav aria-label="Primary" className="hidden xl:flex items-center gap-5 xl:gap-7 text-[0.9rem] font-semibold text-white">
+            {/* brand-blue (#2542C7) rather than brand-blue-2 (#94a8f2) for
+                every hover/active state: the pale tint was picked to lift off
+                a near-black bar and lands at 2.2:1 on white, where the royal
+                blue is 7.8:1. */}
+            <nav aria-label="Primary" className="hidden xl:flex items-center gap-5 xl:gap-7 text-[0.9rem] font-semibold text-navy">
               <Link
                 to="/"
                 onMouseEnter={() => openMenu("")}
-                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue-2 -mb-px"
-                activeProps={{ className: "text-brand-blue-2" }}
+                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
+                activeProps={{ className: "text-brand-blue" }}
                 activeOptions={{ exact: true }}
               >
                 Home
@@ -139,7 +171,7 @@ export function Header() {
                   onClick={() => navigate({ to: m.to })}
                   aria-expanded={active === m.key}
                   className={`inline-flex items-center gap-1 h-[88px] border-b-2 -mb-px transition-colors ${
-                    active === m.key ? "text-brand-blue-2 border-cta" : "border-transparent hover:text-brand-blue-2"
+                    active === m.key ? "text-brand-blue border-cta" : "border-transparent hover:text-brand-blue"
                   }`}
                 >
                   {m.label}
@@ -149,8 +181,8 @@ export function Header() {
               <Link
                 to="/gallery"
                 onMouseEnter={() => openMenu("")}
-                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue-2 -mb-px"
-                activeProps={{ className: "text-brand-blue-2" }}
+                className="h-[88px] inline-flex items-center border-b-2 border-transparent hover:text-brand-blue -mb-px"
+                activeProps={{ className: "text-brand-blue" }}
               >
                 Gallery
               </Link>
@@ -158,7 +190,7 @@ export function Header() {
 
             {/* Right cluster */}
             <div className="ml-auto flex items-center gap-3 lg:gap-4 shrink-0">
-              <div className="hidden xl:flex items-center gap-4 text-[0.9rem] font-semibold text-white/60">
+              <div className="hidden xl:flex items-center gap-4 text-[0.9rem] font-semibold text-navy/65">
                 {SIMPLE.map((m) => (
                   <div
                     key={m.key}
@@ -168,7 +200,7 @@ export function Header() {
                     <button
                       type="button"
                       aria-expanded={active === m.key}
-                      className={`inline-flex items-center gap-1 transition-colors ${active === m.key ? "text-brand-blue-2" : "hover:text-brand-blue-2"}`}
+                      className={`inline-flex items-center gap-1 transition-colors ${active === m.key ? "text-brand-blue" : "hover:text-brand-blue"}`}
                     >
                       {m.label}
                       <ChevronDown className={`size-3.5 transition-transform ${active === m.key ? "rotate-180" : ""}`} />
@@ -193,22 +225,36 @@ export function Header() {
               </div>
 
               <a href={PHONE_HREF} className="hidden 2xl:block text-right leading-tight group">
-                <span className="block text-base font-display font-semibold text-white group-hover:text-brand-blue-2 transition-colors">
+                <span className="block text-base font-display font-semibold text-navy group-hover:text-brand-blue transition-colors">
                   {PHONE_DISPLAY}
                 </span>
-                <span className="block text-[11px] text-white/50">Mon–Sat, 8am–6pm</span>
+                <span className="block text-[11px] text-navy/55">Mon–Sat, 8am–6pm</span>
               </a>
-              <a href={PHONE_HREF} className="2xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-white/10 text-white" aria-label="Call us">
+              <a
+                href={PHONE_HREF}
+                className="2xl:hidden inline-flex items-center justify-center size-10 rounded-full bg-soft-gray text-navy hover:bg-navy hover:text-white transition-colors"
+                aria-label="Call us"
+              >
                 <Phone className="size-4" />
               </a>
 
               <button
                 type="button"
                 onClick={goToQuote}
-                className="hidden sm:inline-flex items-center gap-2 bg-cta text-white pl-5 pr-4 py-2.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors shadow-soft"
+                /* #E67E22 keeps the brand CTA colour, but two things that were
+                   invisible on the near-black bar break on white:
+                     · white label on the orange is 2.85:1 — fails AA. Navy on
+                       the same orange is 5.79:1, so the label flips.
+                     · the orange block itself is only 2.85:1 against white,
+                       under the 3:1 WCAG minimum for a UI control's edge. The
+                       darker-orange ring (#C9690F, 3.81:1) supplies that edge
+                       without altering the fill colour.
+                   On hover it inverts to the dark orange with white text,
+                   which is 3.81:1 and reads as a deliberate press state. */
+                className="hidden sm:inline-flex items-center gap-2 bg-cta text-navy ring-1 ring-cta-hover pl-5 pr-4 py-2.5 rounded-full text-sm font-bold hover:bg-cta-hover hover:text-white transition-colors shadow-soft"
               >
                 Free Quote
-                <span className="inline-flex items-center justify-center size-5 rounded-full bg-white/20">
+                <span className="inline-flex items-center justify-center size-5 rounded-full bg-navy/15">
                   <ChevronDown className="size-3.5 -rotate-90" />
                 </span>
               </button>
@@ -216,7 +262,7 @@ export function Header() {
               <button
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
-                className="xl:hidden inline-flex items-center justify-center size-10 rounded-full border border-white/15 text-white"
+                className="xl:hidden inline-flex items-center justify-center size-10 rounded-full border border-navy/15 text-navy hover:bg-soft-gray transition-colors"
                 onClick={() => setMobileOpen(true)}
               >
                 <Menu className="size-5" />
@@ -227,7 +273,10 @@ export function Header() {
           {/* Full-width mega panel */}
           {activeMega && (
             <div
-              className="hidden xl:block absolute left-0 right-0 top-full bg-white border-t border-navy/5 shadow-elegant animate-mega-drop"
+              /* border-navy/5 was enough to fold a white panel away from a
+                 near-black bar. Now both surfaces are white, so this line is
+                 the only thing saying "panel", not "taller header". */
+              className="hidden xl:block absolute left-0 right-0 top-full bg-white border-t border-navy/10 shadow-elegant animate-mega-drop"
               onMouseEnter={() => openMenu(activeMega.key)}
             >
               <MegaPanel menu={activeMega} onNavigate={() => setActive(null)} />
@@ -341,7 +390,7 @@ function MobileDrawer({
       <div className="absolute inset-0 bg-navy/40 backdrop-blur-sm animate-fade-in" onClick={onClose} />
       <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white shadow-2xl flex flex-col animate-slide-in-right">
         <div className="flex items-center justify-between h-16 px-5 border-b border-navy/10">
-          <img src={logoDark} alt="Affordable Glazing" className="h-9 w-auto object-contain" />
+          <img src={logo} alt="Affordable Glazing" className="h-9 w-auto object-contain" />
           <button aria-label="Close menu" onClick={onClose} className="inline-flex items-center justify-center size-10 rounded-full border border-navy/10 text-navy">
             <X className="size-5" />
           </button>
@@ -438,7 +487,10 @@ function MobileDrawer({
           <button
             type="button"
             onClick={onQuote}
-            className="bg-cta text-white text-center py-3.5 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors"
+            /* Same treatment as the desktop Free Quote button — this drawer
+               is a white panel too, so white-on-orange fails here for the
+               identical reason. */
+            className="bg-cta text-navy ring-1 ring-cta-hover text-center py-3.5 rounded-full text-sm font-bold hover:bg-cta-hover hover:text-white transition-colors"
           >
             Get Free Quote
           </button>

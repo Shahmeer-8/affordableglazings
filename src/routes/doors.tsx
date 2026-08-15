@@ -69,36 +69,50 @@ const FAQS = [
 function DoorsPage() {
   return (
     <>
-      {/* Split hero */}
-      <section className="relative py-10 md:py-12 bg-canvas overflow-hidden">
-        <div className="container-page grid lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-6 relative z-10">
-            <p className="eyebrow mb-3" data-reveal="fade">Doors collection</p>
-            <h1 className="display-1 text-navy" data-reveal="up">
-              Grand entrances. <span className="italic text-brand-blue">Effortless</span> everyday.
-            </h1>
-            <p className="mt-4 text-base text-ink-muted measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
-              Composite front doors to sliding walls of glass — built to last a lifetime.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
-              <a href="#quote" className="btn-shine bg-transparent border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center gap-2">
-                Get a free door quote <ArrowRight className="size-4" />
-              </a>
-              <Link to="/gallery" className="border border-cta text-cta px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors">
-                View installations
-              </Link>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-ink-muted" data-reveal="fade" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
-              <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue" /> PAS 24 Secured</span>
-              <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue" /> 10-year guarantee</span>
-            </div>
+      {/* Immersive hero — identical structure to Windows and Rooflights.
+          The split layout this replaces was the odd one out of the four
+          category pages: it opened on a small boxed photo against a pale
+          background, so Doors read as a lesser page than its siblings even
+          though it sells the most photogenic product on the site. Full-bleed
+          also lets the door itself carry the headline rather than competing
+          with it from a separate column. */}
+      <section className="relative min-h-[58vh] flex items-end overflow-hidden">
+        <img
+          src={doorsHero}
+          alt="Luxury anthracite composite front door with brass hardware"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1600}
+          height={1000}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-navy/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
+        <div className="container-page relative z-10 w-full pb-10 pt-14 text-white">
+          <p className="eyebrow eyebrow-on-dark mb-3" data-reveal="fade">Doors collection</p>
+          <h1 className="display-1 max-w-5xl text-balance" data-reveal="up">
+            Grand entrances. <span className="italic text-brand-blue-2">Effortless</span> everyday.
+          </h1>
+          <p className="mt-5 text-base md:text-lg text-white/75 measure-body" data-reveal="up" style={{ ["--reveal-delay" as string]: "120ms" } as Record<string, string>}>
+            Composite front doors to sliding walls of glass — built to last a lifetime.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3" data-reveal="up" style={{ ["--reveal-delay" as string]: "240ms" } as Record<string, string>}>
+            <a
+              href="#quote"
+              className="btn-shine bg-transparent border border-cta text-cta px-8 py-4 rounded-full text-sm font-semibold hover:bg-cta hover:text-white transition-colors inline-flex items-center gap-2"
+            >
+              Get a free door quote <ArrowRight className="size-4" />
+            </a>
+            <Link
+              to="/gallery"
+              className="border border-white text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-navy transition-colors"
+            >
+              View installations
+            </Link>
           </div>
-          {/* Landscape crop instead of a 4/5 portrait — the portrait was what
-              pushed this hero past one screen. */}
-          <div className="lg:col-span-6 relative" data-reveal="right">
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-elegant">
-              <img src={doorsHero} alt="Luxury anthracite composite front door with brass hardware" className="w-full h-full object-cover" width={1600} height={1200} />
-            </div>
+          {/* Trust chips recoloured for the dark scrim — brand-blue at 3.1:1
+              on navy was the weakest text on the old light hero. */}
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-white/70" data-reveal="fade" style={{ ["--reveal-delay" as string]: "360ms" } as Record<string, string>}>
+            <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue-2" /> PAS 24 Secured</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-brand-blue-2" /> 10-year guarantee</span>
           </div>
         </div>
       </section>
