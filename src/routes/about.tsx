@@ -92,7 +92,7 @@ function AboutContactPage() {
               className="lg:grid-cols-1"
             >
               {[
-                { icon: Phone, t: "Call", v: "0800 123 4567", h: "Mon–Sat, 8am–6pm" },
+                { icon: Phone, t: "Call", v: "0800 123 4567", h: "Mon–Sun, 8am–6pm" },
                 { icon: Mail, t: "Email", v: "hello@affordableglazings.co.uk", h: "Replies within 4 hours" },
                 { icon: MapPin, t: "Visit", v: "Mayfair Industrial Estate, London", h: "Showrooms in Kent, Manchester & Birmingham" },
               ].map(({ icon: Icon, t, v, h }) => (

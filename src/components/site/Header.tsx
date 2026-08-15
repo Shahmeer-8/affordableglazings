@@ -228,7 +228,7 @@ export function Header() {
                 <span className="block text-base font-display font-semibold text-navy group-hover:text-brand-blue transition-colors">
                   {PHONE_DISPLAY}
                 </span>
-                <span className="block text-[11px] text-navy/55">Mon–Sat, 8am–6pm</span>
+                <span className="block text-[11px] text-navy/55">Mon–Sun, 8am–6pm</span>
               </a>
               <a
                 href={PHONE_HREF}

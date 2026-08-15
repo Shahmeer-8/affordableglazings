@@ -84,7 +84,7 @@ export function Footer() {
                 value + hint made a 200px column of text nobody scrolls
                 through on a phone; as a row of three tap targets the phone
                 and email stay one thumb away and the hints drop out, since
-                "Mon–Sat, 8am–6pm" is not what someone reaching for the
+                "Mon–Sun, 8am–6pm" is not what someone reaching for the
                 footer on a phone is looking for. */}
             <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-3 gap-3 sm:gap-6">
               <ContactItem
@@ -93,7 +93,7 @@ export function Footer() {
                 href="tel:08001234567"
                 value="0800 123 4567"
                 shortValue="0800 123 4567"
-                hint="Mon–Sat, 8am–6pm"
+                hint="Mon–Sun, 8am–6pm"
               />
               <ContactItem
                 icon={Mail}
